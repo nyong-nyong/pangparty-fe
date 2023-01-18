@@ -1,0 +1,14 @@
+.pieceContainer {
+  background-color: bisque;
+  width: 20rem;
+  border-radius: 20px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.pieceWrite {
+  position: relative;
+  margin: 20px;
+  background-color: aqua;
+  text-align: center;
+}
