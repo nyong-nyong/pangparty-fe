@@ -17,12 +17,12 @@ export default function CreatePiece() {
   // 작성완료시 제출하고 내용 초기화 
   const submitPiece = (e) => {
     setCreatedPieces( [...createdPieces, pieceContent])
-    setPieceContent({'id': 0, 'content': '', 'locZ': 0})
+    setPieceContent({'id': 0, 'content': '', 'locZ': 0, 'font': ''})
   }
 
   // 타이핑되는 내용 저장
   const typingPiece = (e) => {
-    setPieceContent({'id':Date.now() , 'content':e.target.value, 'locZ':0 })
+    setPieceContent({'id':Date.now() , 'content':e.target.value, 'locZ':0, 'font': '' })
   }
   
   const checking = () => {
