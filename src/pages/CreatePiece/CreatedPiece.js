@@ -18,7 +18,7 @@ function CreatedPiece(props) {
             return (
               <div key={item.id}>
                 <Draggable>
-                  <p onClick={itemClick} style={{height:"100px", width:"20%", backgroundColor:"aqua"}}>{item.content}</p>
+                  <p onClick={itemClick} className={`RollingPaperCard-${item['font']}`} style={{height:"100px", width:"20%", backgroundColor:"aqua"}}>{item.content}</p>
                 </Draggable>
               </div>
             )
@@ -29,4 +29,4 @@ function CreatedPiece(props) {
   )
 }
 
-export default CreatedPiece
+export default CreatedPiece;

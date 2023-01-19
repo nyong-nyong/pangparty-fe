@@ -9,7 +9,7 @@ import { ContextFonts } from './CreatePieceFont';
 export default function CreatePiece() {
 
   // 작성되는 내용, 작성 완료시 비워줘야 뒤로 왔을 때 비어있어요.
-  const [pieceContent, setPieceContent] = useState({'id': 0, 'content': '', 'locZ': 0, 'font': ''})
+  const [pieceContent, setPieceContent] = useState({'id': 0, 'content': '', 'locZ': 0, 'font': 'Pretendard'})
 
   // 작성완료되어 아래로 넘겨줄 내용, 추후엔 DB로 넘겨주게 수정해야함. 일단 이 위치에서 리스트를 저장함
   const [createdPieces, setCreatedPieces] = useState([])
@@ -17,16 +17,16 @@ export default function CreatePiece() {
   // 작성완료시 제출하고 내용 초기화 
   const submitPiece = (e) => {
     setCreatedPieces( [...createdPieces, pieceContent])
-    setPieceContent({'id': 0, 'content': '', 'locZ': 0, 'font': ''})
+    setPieceContent({'id': 0, 'content': '', 'locZ': 0, 'font': 'Pretendard'})
+    const newClassName = `RollingPaperCard-Pretendard`
+    const inputTextArea = document.getElementById('inputTextArea')
+    inputTextArea.className = newClassName
+    // console.log(inputTextArea)
   }
 
   // 타이핑되는 내용 저장
   const typingPiece = (e) => {
     setPieceContent({'id':Date.now() , 'content':e.target.value, 'locZ':0, 'font': '' })
-  }
-  
-  const checking = () => {
-    console.log(createdPieces)
   }
 
   // 폰트 버튼 클릭시 발생하는 이벤트 처리
@@ -45,6 +45,7 @@ export default function CreatePiece() {
 
       <div className='pieceContainer'> 
         <textarea
+          id='inputTextArea'
           className='pieceWrite' cols="30" rows="10"
           onChange={typingPiece}
           value={pieceContent.content}
