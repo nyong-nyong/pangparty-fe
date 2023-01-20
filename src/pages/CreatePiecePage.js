@@ -6,7 +6,7 @@ import "../components/CreatePiece/CreatePiece.css";
 
 // 롤링페이퍼 작성하는 페이지
 
-export default function CreatePiece() {
+export default function CreatePiecePage() {
   // 작성되는 내용, 작성 완료시 비워줘야 뒤로 왔을 때 비어있어요.
   const [pieceContent, setPieceContent] = useState({
     id: 0,
