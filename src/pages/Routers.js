@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 
 import React from "react";
-import Home from "./Home/Home";
-import IntroEvent from "./IntroEvent/IntroEvent";
-import CreatePiece from "./CreatePiece/CreatePiece";
-import PieceList from "./PieceList/PieceList";
+import Home from "./Home";
+import IntroEvent from "./IntroEvent";
+import CreatePiece from "./CreatePiece";
+import PieceList from "./PieceList";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
