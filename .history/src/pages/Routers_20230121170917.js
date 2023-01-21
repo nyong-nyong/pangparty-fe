@@ -16,7 +16,7 @@ export default function Routers() {
       <Route path="event" element={<IntroEvent />} />
       <Route path="piece" element={<CreatePiece />} />
       <Route path="rollingpaper" element={<PieceList />} />
-      
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
