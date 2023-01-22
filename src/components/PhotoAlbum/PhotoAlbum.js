@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import PhotoUpload from './PhotoUpload';
 
 export default function PhotoAlbum() {
 
@@ -25,9 +26,12 @@ export default function PhotoAlbum() {
                 <PhotoFrame src={photo.photo_url}/>
               </div>
             )
+          } else {
+            return null
           }
         })}
       </AlbumFrame>
+      <PhotoUpload/>
     </div>
   )
 }
