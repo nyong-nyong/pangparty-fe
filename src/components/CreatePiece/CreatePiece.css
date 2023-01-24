@@ -38,7 +38,7 @@
   margin: 5px;
 }
 
-.changeButton:active {
+.changeButton:focus {
   background-color: #FFA48F;
   color: white;
 }

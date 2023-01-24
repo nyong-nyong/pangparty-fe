@@ -1,7 +1,12 @@
 import React from 'react'
+import styled from "styled-components"
 import { ContextFonts } from "./CreatePieceFont";
 
 function RpThemeChange(props) {
+
+  const ColorContainer = styled.div`
+    background: 
+  `;
 
     if (props.fontActivation){
       return(
@@ -20,7 +25,11 @@ function RpThemeChange(props) {
     )
   } else if (props.colorActivation) {
     return(
-      <div>배경색 변경</div>
+      <div>
+        <h2>배경색 변경</h2>
+        
+
+      </div>
     )
   } else {
     return(

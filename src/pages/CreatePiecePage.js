@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ContextFonts } from "../components/CreatePiece/CreatePieceFont";
+import styled from "styled-components"
 import RpThemeChange from "../components/CreatePiece/RpThemeChange";
 import CreatedPiece from "../components/CreatePiece/CreatedPiece";
 import "../components/CreatePiece/CreatePiece.css";
@@ -85,7 +85,7 @@ export default function CreatePiecePage() {
 
   return (
     <div style={{display: 'flex', alignItems:'center', flexDirection:'column'}}>
-      <h1>롤링페이퍼 작성페이지</h1>
+      <h1>롤링페이퍼 작성페이지 </h1>
 
       <div className="pieceContainer">
         <textarea
@@ -96,14 +96,17 @@ export default function CreatePiecePage() {
           value={pieceContent.content}
           ref={inputRef}
         ></textarea>
-        <input type="text" className="writerName" onChange={typingWriter} value={pieceContent.writer_name} placeholder="from"/>
+        <span>
+          From.
+          <input type="text" className="writerName" onChange={typingWriter} value={pieceContent.writer_name} placeholder=""/>
+        </span>
         
       </div>
         {/* 버튼 눌렀을 때 그 버튼 기능에 맞는 compnent만 렌더링 합니다. */}
         <div className="buttonContainer">
-          <button className="changeButton" onClick={isFontActive} value="font">T</button>
-          <button className="changeButton" onClick={isAlignActive} value="align">정렬</button>
-          <button className="changeButton" onClick={isColorActive} value="color">컬러</button>
+          <button className="changeButton" id="fontChangeButton" onClick={isFontActive} value="font">T</button>
+          <button className="changeButton" id="alignChangeButton" onClick={isAlignActive} value="align">정렬</button>
+          <button className="changeButton" id="colorChangeButton" onClick={isColorActive} value="color">컬러</button>
         </div>
 
         <RpThemeChange 
