@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import "../common/Modal.css";
 
-export default function Modal({ setModalOpen }) {
+export default function Modal({ setModalOpen, InnerComponent }) {
   // 모달창 닫기
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // const modalRef = useRef < HTMLDivElement > null;
+  console.log(InnerComponent)
+
   const modalRef = useRef();
 
   useEffect(() => {
@@ -18,12 +19,12 @@ export default function Modal({ setModalOpen }) {
     };
     // 이벤트 핸들러 등록
     document.addEventListener("mousedown", handler);
-    document.addEventListener('touchstart', handler); // 모바일 대응
+    document.addEventListener("touchstart", handler); // 모바일 대응
 
     return () => {
       // 이벤트 핸들러 해제
       document.removeEventListener("mousedown", handler);
-      document.removeEventListener('touchstart', handler); // 모바일 대응
+      document.removeEventListener("touchstart", handler); // 모바일 대응
     };
   });
 
@@ -33,6 +34,7 @@ export default function Modal({ setModalOpen }) {
         x
       </button>
       <p>모달창</p>
+      <InnerComponent/>
     </div>
   );
 }
