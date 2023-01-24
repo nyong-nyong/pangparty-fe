@@ -9,9 +9,10 @@ import "../components/CreatePiece/CreatePiece.css";
 export default function CreatePiecePage() {
   // 작성되는 내용, 작성 완료시 비워줘야 뒤로 왔을 때 비어있어요.
   const [pieceContent, setPieceContent] = useState({
-    id: 0,
+    uid: 0,                         // 식별key값 (현재 임의로 Date.now로 사용 중)
+    member_uid: null,               // 유저 id값, 회원 비회원 여부 확인 가능
+    writer_name: "",                // 작성가능한 이름, 초기값 세팅 필요
     content: "",
-    locZ: 0,
     font: "Pretendard",
   });
 
@@ -21,7 +22,7 @@ export default function CreatePiecePage() {
   // 작성완료시 제출하고 내용 초기화
   const submitPiece = (e) => {
     setCreatedPieces([...createdPieces, pieceContent]);
-    setPieceContent({ id: 0, content: "", locZ: 0, font: "Pretendard" });
+    setPieceContent({uid: 0,member_uid: null, writer_name: "",content: "",font: "Pretendard"});
     const newClassName = `RollingPaperCard-Pretendard`;
     const inputTextArea = document.getElementById("inputTextArea");
     inputTextArea.className = newClassName;
@@ -56,23 +57,24 @@ export default function CreatePiecePage() {
         <textarea
           id="inputTextArea"
           className="pieceWrite"
-          cols="30"
-          rows="10"
+          placeholder="내용을 입력해주세요"
           onChange={typingPiece}
           value={pieceContent.content}
           ref={inputRef}
         ></textarea>
+        <input type="text" className="writerName" placeholder="from"/>
+        <div className="fontChooser">
+          <ContextFonts
+            pieceContent={pieceContent}
+            setPieceContent={setPieceContent}
+            handleFontBtnClick={handleFontBtnClick}
+          />
+        </div>
         {/* 일단 데이터 이동 확인을 위해 link에서 밖으로 뺐습니다. */}
-        <button type="submit" onClick={submitPiece}>
+        <button type="submit" onClick={submitPiece} style={{ margin: "5%" }}>
           작성완료
         </button>
         {/* 폰트 버튼 기능 추가 */}
-        <ContextFonts
-          pieceContent={pieceContent}
-          setPieceContent={setPieceContent}
-          handleFontBtnClick={handleFontBtnClick}
-        />
-
         {/* 내용작성 시 enter를 통해 줄바꿈을 하게 되는데, form으로 submit이벤트 발동시키면 줄바꿈 해야하는데 제출되어버리니까 form으로 묶지 않았습니다.  */}
       </div>
 

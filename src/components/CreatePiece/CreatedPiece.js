@@ -16,9 +16,9 @@ function CreatedPiece(props) {
         {props.createdPieces.map(item => {
           if (item) {
             return (
-              <div key={item.id}>
+              <div key={item.id} className="pieceContainer">
                 <Draggable>
-                  <p onClick={itemClick} className={`RollingPaperCard-${item['font']}`} style={{height:"100px", width:"20%", backgroundColor:"aqua"}}>{item.content}</p>
+                  <p onClick={itemClick} className={`RollingPaperCard-${item['font']}`}>{item.content}</p>
                 </Draggable>
               </div>
             )
