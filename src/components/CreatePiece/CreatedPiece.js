@@ -1,13 +1,7 @@
 import React from 'react'
-import Draggable from 'react-draggable'
-
 
 function CreatedPiece(props) {
   
-  const itemClick = (e) => {
-    console.log(e.target)
-  }
-
   return (
     <div>
       <h3>CreatedPiece: 임시 데이터 전달 확인소</h3>
@@ -17,9 +11,10 @@ function CreatedPiece(props) {
           if (item) {
             return (
               <div key={item.id} className="pieceContainer">
-                <Draggable>
-                  <p onClick={itemClick} className={`RollingPaperCard-${item['font']}`}>{item.content}</p>
-                </Draggable>
+                <div className={`RollingPaperCard-${item['font']}`}>
+                  <p >{item.content}</p>
+                  <p>{`From. ${item.writer_name}`}</p>
+                </div>
               </div>
             )
           } 

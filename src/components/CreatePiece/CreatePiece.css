@@ -18,6 +18,31 @@
   border: none;
 }
 
+.writerName {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 5%;  
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.changeButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  margin: 5px;
+}
+
+.changeButton:active {
+  background-color: #FFA48F;
+  color: white;
+}
+
 .fontChooser {
   width: 100%;
 }
