@@ -1,5 +1,8 @@
 
-<svg class="w-10 h-10" viewBox="0 0 174 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg 
+  width="current"
+  height="current"
+  class="w-10 h-10" viewBox="0 0 174 174" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M45.783 87.1704H9" stroke="currentColor" stroke-width="16.5549" stroke-miterlimit="10" stroke-linecap="round"></path>
   <path d="M45.783 87.1704H9" stroke="currentColor" stroke-opacity="0.2" stroke-width="16.5549" stroke-miterlimit="10" stroke-linecap="round"></path>
   <path d="M165.288 87.1704H128.557" stroke="currentColor" stroke-width="16.5549" stroke-miterlimit="10" stroke-linecap="round"></path>
