@@ -17,7 +17,10 @@ export default function PieceListPage() {
       <div style={{ width: "100%", height: "500px" }}></div>
       <button onClick={showModal}>스티커 붙이기</button>
       {modalOpen && (
-        <Modal setModalOpen={setModalOpen} InnerComponent={StickerLists} />
+        <Modal
+          setModalOpen={setModalOpen}
+          InnerComponent={StickerLists}
+        />
       )}
       <Link to="/">🏡 회귀 🏡</Link>
     </div>
