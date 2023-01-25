@@ -15,6 +15,7 @@ import teddy from "../../assets/stickers/teddybear.png";
 // 2. 이미지 파일 public에 저장한 후 경로 변경 할 것
 
 export default function StickerList() {
+
   return (
     <div>
       <Pang width="50px" />
