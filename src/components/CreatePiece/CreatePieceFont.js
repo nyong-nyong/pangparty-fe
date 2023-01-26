@@ -35,6 +35,10 @@ export const ContextFonts = React.memo(({pieceContent, setPieceContent, handleFo
           key={button.id}
           onClick={handleFontClick}
           value={button.fontStyle}
+          style={{
+            width: "auto",
+            margin: "10px"
+          }}
         >
           {button.fontName}
         </button>
