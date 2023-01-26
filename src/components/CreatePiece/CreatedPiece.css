@@ -1,0 +1,9 @@
+.pieceContainer {
+  margin: auto;
+  background-color: bisque;
+  width: 20rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
