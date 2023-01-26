@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components"
+// import styled from "styled-components"
 import RpThemeChange from "../components/CreatePiece/RpThemeChange";
 import CreatedPiece from "../components/CreatePiece/CreatedPiece";
 import "../components/CreatePiece/CreatePiece.css";
