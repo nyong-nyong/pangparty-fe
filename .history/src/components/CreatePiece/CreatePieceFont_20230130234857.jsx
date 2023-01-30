@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ContextFonts = React.memo(
+const ContextFonts = <React></React>.memo(
 	({ pieceContent, setPieceContent, handleFontBtnClick }) => {
 		const fontbuttons = [
 			{

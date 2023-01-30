@@ -30,7 +30,7 @@ export default function Modal({ setModalOpen, InnerComponent }) {
 
 	return (
 		<div ref={modalRef} className='container'>
-			<button type='button' className='close' onClick={closeModal}>
+			<button type='button' className='close' onClick={closeModal} >
 				x
 			</button>
 			<p>모달창</p>

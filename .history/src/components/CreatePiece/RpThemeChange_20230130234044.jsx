@@ -1,10 +1,10 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { ContextFonts } from './CreatePieceFont';
 
 function RpThemeChange(props) {
-	// const ColorContainer = styled.div`
-	// 	background: ;
-	// `;
+	const ColorContainer = styled.div`
+		background: ;
+	`;
 
 	if (props.fontActivation) {
 		return (
@@ -25,9 +25,8 @@ function RpThemeChange(props) {
 				<h2>배경색 변경</h2>
 			</div>
 		);
-	} else {
-		return <div>암것도없지롱</div>;
 	}
+	return <div>암것도없지롱</div>;
 }
 
 export default RpThemeChange;

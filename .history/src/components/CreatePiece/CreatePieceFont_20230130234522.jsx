@@ -48,4 +48,3 @@ const ContextFonts = React.memo(
 	},
 );
 
-export default ContextFonts;

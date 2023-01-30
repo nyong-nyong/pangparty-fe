@@ -17,7 +17,6 @@ function CreatedPiece(props) {
 								<Draggable>
 									<p
 										onClick={itemClick}
-										aria-hidden='true'
 										className={`RollingPaperCard-${item.font}`}
 										style={{
 											height: '100px',

@@ -1,10 +1,10 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { ContextFonts } from './CreatePieceFont';
 
 function RpThemeChange(props) {
-	// const ColorContainer = styled.div`
-	// 	background: ;
-	// `;
+	const ColorContainer = styled.div`
+		background: ;
+	`;
 
 	if (props.fontActivation) {
 		return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import {  } from "module";
 
 const ContextFonts = React.memo(
 	({ pieceContent, setPieceContent, handleFontBtnClick }) => {

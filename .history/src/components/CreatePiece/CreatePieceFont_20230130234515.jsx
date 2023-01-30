@@ -48,4 +48,6 @@ const ContextFonts = React.memo(
 	},
 );
 
-export default ContextFonts;
+export default function CreatePieceFont(params) {
+	
+};
