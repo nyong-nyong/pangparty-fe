@@ -1,7 +1,11 @@
 import React from 'react'
+import PhotoLikes from './PhotoLikes'
 
 export default function PhotoDetail({photoSelected, setPhotoSelected, setModalOpen}) {
   return (
-    <div>{photoSelected.uid}</div>
+    <div>
+      {photoSelected.uid}
+      <PhotoLikes />
+    </div>
   )
 }
