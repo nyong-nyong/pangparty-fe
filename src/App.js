@@ -2,6 +2,8 @@ import { BrowserRouter } from "react-router-dom"
 
 import Routers from './pages/Routers'; 
 
+import { RecoilRoot } from 'recoil'
+
 import './styles/App.css'
 
 // 여기는 완전 최상위 컴포넌트
@@ -9,9 +11,11 @@ import './styles/App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routers />
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Routers />
+      </BrowserRouter>  
+    </RecoilRoot>
   );
 }
 
