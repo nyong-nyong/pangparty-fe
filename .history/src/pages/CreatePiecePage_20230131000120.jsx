@@ -67,13 +67,13 @@ export default function CreatePiecePage() {
 		setColorActivation(false);
 	};
 
-	const isAlignActive = () => {
+	const isAlignActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(!alignActivation);
 		setColorActivation(false);
 	};
 
-	const isColorActive = () => {
+	const isColorActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(false);
 		setColorActivation(!colorActivation);

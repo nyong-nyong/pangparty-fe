@@ -61,19 +61,19 @@ export default function CreatePiecePage() {
 		});
 	};
 
-	const isFontActive = () => {
+	const isFontActive = (e) => {
 		setFontActivation(!fontActivation);
 		setAlignActivation(false);
 		setColorActivation(false);
 	};
 
-	const isAlignActive = () => {
+	const isAlignActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(!alignActivation);
 		setColorActivation(false);
 	};
 
-	const isColorActive = () => {
+	const isColorActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(false);
 		setColorActivation(!colorActivation);

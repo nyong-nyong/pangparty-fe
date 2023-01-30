@@ -61,19 +61,19 @@ export default function CreatePiecePage() {
 		});
 	};
 
-	const isFontActive = () => {
+	const isFontActive = (e) => {
 		setFontActivation(!fontActivation);
 		setAlignActivation(false);
 		setColorActivation(false);
 	};
 
-	const isAlignActive = () => {
+	const isAlignActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(!alignActivation);
 		setColorActivation(false);
 	};
 
-	const isColorActive = () => {
+	const isColorActive = (e) => {
 		setFontActivation(false);
 		setAlignActivation(false);
 		setColorActivation(!colorActivation);
@@ -84,7 +84,7 @@ export default function CreatePiecePage() {
 
 	const handleFontBtnClick = () => {
 		inputRef.current.focus();
-		const newClassName = `RollingPaperCard-${pieceContent.font}`;
+		const newClassName = `RollingPaperCard-${pieceContent['"font"']}`;
 		inputRef.current.className = newClassName;
 		// console.log(inputRef.current.className)
 	};
