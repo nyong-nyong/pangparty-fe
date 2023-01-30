@@ -1,13 +1,13 @@
-import React from "react";
-import stickers from "./sticker.json";
-import Draggable from "react-draggable";
+import React from 'react';
+import stickers from './sticker.json';
+import Draggable from 'react-draggable';
 
 export default function StickerLists(setModalOpen) {
-  const test = (e) => {
-    console.log(e.target);
-  };
+	const test = (e) => {
+		console.log(e.target);
+	};
 
-  /* 
+	/* 
     리덕스 공부해서 향후 추가할 예정!!
     Dragable은 지워도 됨
 
@@ -22,18 +22,18 @@ export default function StickerLists(setModalOpen) {
 
   const stickerData = stickers.stickerList.map((sticker) => {
     return (
-      <div key={sticker.uid}>
-        <Draggable>
-          <img
-            src={sticker.url}
-            alt="스티커"
-            width="100px"
-            onDragStart={test}
-          />
-        </Draggable>
-      </div>
-    );
-  });
+			<div key={sticker.uid}>
+				<Draggable>
+					<img
+						src={sticker.url}
+						alt='스티커'
+						width='100px'
+						onDragStart={test}
+					/>
+				</Draggable>
+			</div>
+		);
+	});
 
-  return <div>{stickerData}</div>;
+	return <div>{stickerData}</div>;
 }

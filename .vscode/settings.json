@@ -1,0 +1,5 @@
+{
+  "editor.codeActionOnSave": {
+    "source.fixAll": true
+  }
+}
