@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import PhotoComment from './PhotoComment';
+import PhotoCommentUpload from './PhotoCommentUpload';
 
 export default function PhotoCommentList() {
   const [commentList, setCommentList] = useState([]);
@@ -19,15 +21,14 @@ export default function PhotoCommentList() {
         {commentList.map((comment) => {
           if(comment) {
             return (
-              <span key={comment.uid}>
-                {comment.content}
-              </span>
+              <PhotoComment key={comment.uid} comment={comment} commentList={commentList} setCommentList={setCommentList}/>
             )
           } else {
             return null
           }
         })}
       {/* </CommentFrame> */}
+      <PhotoCommentUpload commentList={commentList} setCommentList={setCommentList}/>
     </div>
   )
 }
