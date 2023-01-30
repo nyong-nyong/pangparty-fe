@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './Modal.css';
+import '../common/Modal.css';
 
 export default function Modal({ setModalOpen, InnerComponent }) {
 	// 모달창 닫기

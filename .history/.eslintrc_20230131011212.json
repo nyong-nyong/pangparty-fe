@@ -21,7 +21,13 @@
 	"rules": {
 		"prettier/prettier": ["error", { "endOfLine": "auto" }],
 		"react/prop-types": "off",
-		"react/destructuring-assignment": [0, "always"],
-		"no-else-return": ["error", { "allowElseIf": true }]
+		"react/destructuring-assignment": [0, "always"]
 	}
+	// "react/self-closing-comp": [
+	// 	"error",
+	// 	{
+	// 		"component": true,
+	// 		"html": true
+	// 	}
+	// ]
 }

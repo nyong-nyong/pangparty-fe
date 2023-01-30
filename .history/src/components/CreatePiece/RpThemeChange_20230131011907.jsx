@@ -27,7 +27,7 @@ function RpThemeChange(props) {
 			</div>
 		);
 	}
-	return <div>암것도없지롱</div>;
+		return <div>암것도없지롱</div>;
 }
 
 export default RpThemeChange;

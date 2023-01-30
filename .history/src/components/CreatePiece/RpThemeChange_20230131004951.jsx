@@ -26,8 +26,7 @@ function RpThemeChange(props) {
 				<h2>배경색 변경</h2>
 			</div>
 		);
-	}
-	return <div>암것도없지롱</div>;
+	} else return <div>암것도없지롱</div>;
 }
 
 export default RpThemeChange;
