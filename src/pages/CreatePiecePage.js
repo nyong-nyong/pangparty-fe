@@ -49,43 +49,55 @@ export default function CreatePiecePage() {
     }
   };
 
+  // 작성 완료시 api post 이벤트 발생으로 수정 예정
   const postPiece = (e) => {
     console.log(e);
+  };
+
+  // 테마 변경을 위한 버튼
+  const themeChangeHandler = (e) => {
+    console.log(e.target);
   };
 
   return (
     <div
       style={{ display: "flex", alignItems: "center", flexDirection: "column" }}
     >
-      <h1>롤링페이퍼 작성페이지 </h1>
-
       {/* 상단 좌우 이동 버튼 임시 제작 */}
-      <div>
+      <div style={{ display: "flex", margin: "20px" }}>
         <button>이전</button>
+        <h4>롤링페이퍼 작성페이지</h4>
         <button onClick={postPiece}>다음</button>
       </div>
 
       {/* 롤링페이퍼 작성 */}
-      <div className="pieceContainer" onChange={pieceHandler}>
+      <div
+        className="pieceContainer"
+        onChange={pieceHandler}
+        style={{ backgroundColor: `#${pieceContent.bgColor}` }}
+      >
         <textarea
           id="inputTextArea"
           className="content"
           placeholder="내용을 입력해주세요"
           value={pieceContent.content}
         ></textarea>
-        <span>
-          From.
+        <div
+          className="from"
+          style={{ fontFamily: `#${pieceContent.fontFamily}` }}
+        >
+          <p>From.</p>
           <input
             type="text"
             className="writerUid"
             placeholder=""
             value={pieceContent.writerUid}
           />
-        </span>
+        </div>
       </div>
 
       {/* 버튼 눌렀을 때 그 버튼 기능에 맞는 compnent만 렌더링 합니다. */}
-      <div className="buttonContainer">
+      <div className="buttonContainer" onClick={themeChangeHandler}>
         <button className="changeButton" id="fontChangeButton" value="font">
           T
         </button>

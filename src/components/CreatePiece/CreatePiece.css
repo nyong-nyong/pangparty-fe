@@ -1,8 +1,8 @@
 .pieceContainer {
   margin: auto;
-  background-color: bisque;
-  width: 20rem;
-  border-radius: 20px;
+  width: 320px;
+  height: 315px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -18,10 +18,16 @@
   border: none;
 }
 
-.writerName {
+.from {
+  display: flex;
+  background-color: transparent;
+  width: 150px;
+  margin-bottom: 5%;  
+}
+
+.writerUid {
   background-color: transparent;
   border: none;
-  margin-bottom: 5%;  
 }
 
 .buttonContainer {
