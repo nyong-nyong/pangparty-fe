@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
 // import styled from "styled-components"
 import RpThemeChange from '../components/CreatePiece/RpThemeChange';
 import CreatedPiece from '../components/CreatePiece/CreatedPiece';
 import '../components/CreatePiece/CreatePiece.css';
+import type { useRef, useState } from 'react';
 
 // 롤링페이퍼 작성하는 페이지
 

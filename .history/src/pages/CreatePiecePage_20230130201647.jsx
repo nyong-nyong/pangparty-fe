@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
 // import styled from "styled-components"
 import RpThemeChange from '../components/CreatePiece/RpThemeChange';
 import CreatedPiece from '../components/CreatePiece/CreatedPiece';
 import '../components/CreatePiece/CreatePiece.css';
+import { useRef, useState } from 'react';
 
 // 롤링페이퍼 작성하는 페이지
 
@@ -123,7 +123,7 @@ export default function CreatePiecePage() {
 				<button
 					className='changeButton'
 					id='fontChangeButton'
-					type='button'
+					type=''
 					onClick={isFontActive}
 					value='font'>
 					T
@@ -131,7 +131,6 @@ export default function CreatePiecePage() {
 				<button
 					className='changeButton'
 					id='alignChangeButton'
-					type='button'
 					onClick={isAlignActive}
 					value='align'>
 					정렬
@@ -139,7 +138,6 @@ export default function CreatePiecePage() {
 				<button
 					className='changeButton'
 					id='colorChangeButton'
-					type='button'
 					onClick={isColorActive}
 					value='color'>
 					컬러
@@ -167,7 +165,7 @@ export default function CreatePiecePage() {
 			</div>
 
 			<Link to='/rollingpaper'>
-				<button type='button' style={{ marginTop: '20px' }}>
+				<button style={{ marginTop: '20px' }}>
 					피스리스트로 가는 임시 이동 버튼
 				</button>
 			</Link>

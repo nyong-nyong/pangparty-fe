@@ -29,7 +29,6 @@ function CreatedPiece(props) {
 							</div>
 						);
 					}
-					return null;
 				})}
 			</div>
 		</div>

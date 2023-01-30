@@ -9,7 +9,7 @@ export default function HomePage() {
 
 			<Link to='/event/intro'>이벤트 소개페이지 바로가기</Link>
 			<Link to='/event/create'>
-				<button type='button'>🎉이벤트 만들기🎉</button>
+				<button type='b'>🎉이벤트 만들기🎉</button>
 			</Link>
 		</div>
 	);

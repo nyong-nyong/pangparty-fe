@@ -17,7 +17,7 @@ function CreatedPiece(props) {
 								<Draggable>
 									<p
 										onClick={itemClick}
-										className={`RollingPaperCard-${item.font}`}
+										className={`RollingPaperCard-${item['font']}`}
 										style={{
 											height: '100px',
 											width: '20%',
@@ -29,7 +29,6 @@ function CreatedPiece(props) {
 							</div>
 						);
 					}
-					return null;
 				})}
 			</div>
 		</div>
