@@ -25,6 +25,7 @@ export default function PhotoAlbum() {
 							</div>
 						);
 					}
+					return null;
 				})}
 			</AlbumFrame>
 		</div>

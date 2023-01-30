@@ -5,7 +5,7 @@ export default function NotFoundPage() {
 		<div>
 			<h1>존재하지 않는 페이지입니다!</h1>
 			<Link to='/'>
-				<button>🏡 회귀 🏡</button>
+				<button type='button'>🏡 회귀 🏡</button>
 			</Link>
 		</div>
 	);

@@ -16,8 +16,10 @@ export default function PieceListPage() {
 	return (
 		<div>
 			<h1>완성된 롤링페이퍼 페이지</h1>
-			<div style={{ width: '100%', height: '500px' }}/>
-			<button onClick={showModal}>스티커 붙이기</button>
+			<div style={{ width: '100%', height: '500px' }} />
+			<button type='button' onClick={showModal}>
+				스티커 붙이기
+			</button>
 			{modalOpen && (
 				<Modal setModalOpen={setModalOpen} InnerComponent={StickerLists} />
 			)}
