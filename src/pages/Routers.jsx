@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 
-import React from 'react';
 import Home from './HomePage';
 import IntroEvent from './IntroEventPage';
 import CreatePiece from './CreatePiecePage';

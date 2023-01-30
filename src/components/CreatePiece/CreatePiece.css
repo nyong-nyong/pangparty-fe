@@ -1,66 +1,66 @@
 .pieceContainer {
-  margin: auto;
-  background-color: bisque;
-  width: 20rem;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+	margin: auto;
+	background-color: bisque;
+	width: 20rem;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
 #inputTextArea {
-  margin: 10%;
-  width: 100%;
-  height: 10rem;
-  text-align: center;
-  resize: none;
-  background-color: transparent;
-  border: none;
+	margin: 10%;
+	width: 100%;
+	height: 10rem;
+	text-align: center;
+	resize: none;
+	background-color: transparent;
+	border: none;
 }
 
 .writerName {
-  background-color: transparent;
-  border: none;
-  margin-bottom: 5%;  
+	background-color: transparent;
+	border: none;
+	margin-bottom: 5%;
 }
 
 .buttonContainer {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .changeButton {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  border: none;
-  margin: 5px;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	border: none;
+	margin: 5px;
 }
 
 .changeButton:focus {
-  background-color: #FFA48F;
-  color: white;
+	background-color: #ffa48f;
+	color: white;
 }
 
 .fontChooser {
-  width: 100%;
+	width: 100%;
 }
 
 .RollingPaperCard-Pretendard {
-  /* width: 366px;
+	/* width: 366px;
   height: 379px; */
-  font-family: 'Pretendard-Regular';
+	font-family: 'Pretendard-Regular';
 }
 
 .RollingPaperCard-KyoboHandwriting2020A {
-  /* width: 366px;
+	/* width: 366px;
   height: 379px; */
-  font-family: 'KyoboHandwriting2020A';
+	font-family: 'KyoboHandwriting2020A';
 }
 
 .RollingPaperCard-KOTRAHOPE {
-  /* width: 366px;
+	/* width: 366px;
   height: 379px; */
-  font-family: 'KOTRAHOPE';
+	font-family: 'KOTRAHOPE';
 }

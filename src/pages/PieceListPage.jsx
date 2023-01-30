@@ -1,6 +1,6 @@
 /* eslint-disabled */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../components/common/Modal';
 import StickerLists from '../components/Sticker/StickerLists';
@@ -16,7 +16,7 @@ export default function PieceListPage() {
 	return (
 		<div>
 			<h1>완성된 롤링페이퍼 페이지</h1>
-			<div style={{ width: '100%', height: '500px' }}></div>
+			<div style={{ width: '100%', height: '500px' }}/>
 			<button onClick={showModal}>스티커 붙이기</button>
 			{modalOpen && (
 				<Modal setModalOpen={setModalOpen} InnerComponent={StickerLists} />

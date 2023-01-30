@@ -7,7 +7,7 @@
 		"plugin:react/recommended",
 		"airbnb",
 		"plugin:prettier/recommended",
-		"plugin:react/jsx-runtime"
+		"plugin:react/jsx-runtime" // react-17 이상 jsx 확장자 사용 권고
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -20,4 +20,11 @@
 	"rules": {
 		"prettier/prettier": ["error", { "endOfLine": "auto" }]
 	}
+	// "react/self-closing-comp": [
+	// 	"error",
+	// 	{
+	// 		"component": true,
+	// 		"html": true
+	// 	}
+	// ]
 }
