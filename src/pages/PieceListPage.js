@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../components/common/Modal";
 import StickerLists from "../components/Sticker/StickerLists";
-import requests from "../api/requests";
 import axios from "axios";
 
 // 완성된 롤링페이퍼 페이지
@@ -28,7 +27,31 @@ export default function PieceListPage() {
   return (
     <div>
       <h1>완성된 롤링페이퍼 페이지</h1>
-      <div>{pieceList[0] ? pieceList[0].content : ""}</div>
+      <div>
+        {pieceList.map((piece) => {
+          if (piece) {
+            return (
+              <div
+                key={piece.rollingPaperPieceUid}
+                className="piece"
+                style={{
+                  width: "150px",
+                  height: "auto",
+                  padding: "10px",
+                  margin: "10px",
+                  borderRadius: "20px",
+                  backgroundColor: `#${piece.bgColor}`,
+                  textAlign: `${piece.textAlign}`,
+                  fontFamily: `${piece.fontFamily}`,
+                }}
+              >
+                <content>{piece.content}</content>
+                <p>From. {piece.writerUid}</p>
+              </div>
+            );
+          }
+        })}
+      </div>
       <button onClick={showModal}>스티커 붙이기</button>
       {modalOpen && (
         <Modal setModalOpen={setModalOpen} InnerComponent={StickerLists} />
