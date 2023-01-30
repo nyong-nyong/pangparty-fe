@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ContextFonts = React.memo(
+const ContextFonts = React.memo(
 	({ pieceContent, setPieceContent, handleFontBtnClick }) => {
 		const fontbuttons = [
 			{
@@ -48,4 +48,4 @@ export const ContextFonts = React.memo(
 	},
 );
 
-export default ContextFonts;
+export ContextFonts;
