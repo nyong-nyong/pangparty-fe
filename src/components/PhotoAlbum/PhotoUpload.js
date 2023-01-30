@@ -28,12 +28,18 @@ export default function PhotoUpload() {
 
       await axios({
         method: 'post',
-        url: 'http://localhost:4000/requests',
+        url: 'https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album/500001',
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 

@@ -2,18 +2,26 @@ import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import PhotoUpload from './PhotoUpload';
+import PhotoDetail from './PhotoDetail';
 
 export default function PhotoAlbum() {
 
   const [dummyPhotos, setDummyPhotos] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [photoSelected, setPhotoSelected] = useState({})
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('http://localhost:4000/requests');
-      setDummyPhotos(request.data);
+      const request = await axios.get('https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album?page=1&limit=30');
+      setDummyPhotos(request.data.media);
     }
     fetchData();
   }, [])
+
+  const handleModalClick = (photo) => {
+    setModalOpen(true)
+    setPhotoSelected(photo)
+  }
 
   return (
     <div>
@@ -22,8 +30,8 @@ export default function PhotoAlbum() {
         {dummyPhotos.map((photo) => {
           if(photo) {
             return (
-              <div key={photo.uid}>
-                <PhotoFrame src={photo.photo_url}/>
+              <div key={photo.uid} onClick={() => handleModalClick(photo)}>
+                <PhotoFrame src={photo.mediaUrl}/>
               </div>
             )
           } else {
@@ -31,6 +39,15 @@ export default function PhotoAlbum() {
           }
         })}
       </AlbumFrame>
+      <br/>
+      {modalOpen && 
+        <PhotoDetail 
+          photoSelected={photoSelected} 
+          setPhotoSelected={setPhotoSelected} 
+          setModalOpen={setModalOpen}
+        />
+      }
+      <br/>
       <PhotoUpload/>
     </div>
   )
