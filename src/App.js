@@ -1,6 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import Routers from './pages/Routers';
+import Routers from './pages/Routers'; 
+
+import { RecoilRoot } from 'recoil'
 
 import './styles/App.css';
 
@@ -8,11 +10,13 @@ import './styles/App.css';
 // 완성된 페이지들만 뿌려주세요.
 
 function App() {
-	return (
-		<BrowserRouter>
-			<Routers />
-		</BrowserRouter>
-	);
+  return (
+    <RecoilRoot>
+      <BrowserRouter>
+        <Routers />
+      </BrowserRouter>  
+    </RecoilRoot>
+  );
 }
 
 export default App;
