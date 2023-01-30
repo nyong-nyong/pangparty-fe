@@ -22,7 +22,7 @@ export default function Routers() {
 			<Route path='piece' element={<CreatePiece />} />
 			<Route path='rollingpaper'>
 				<Route path='' element={<PieceList />} />
-				<Route path='sticker' element={<StickerList />} />
+				<Route path='/sticker' element={<StickerList />} />
 			</Route>
 			<Route path='*' element={<NotFoundPage />} />
 		</Routes>

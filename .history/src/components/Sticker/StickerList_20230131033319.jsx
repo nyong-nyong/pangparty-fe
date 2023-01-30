@@ -1,19 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function StickerList() {
 	const [sticker, setSticker] = useState({});
 
-	const onClick = async () => {
-		try {
-			const response = await axios.get(
-				'https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/stickers',
-			);
-			setSticker(response.data);
-		} catch (e) {
-			console.log(e);
-		}
-	};
+  const 
 
 	// useEffect(() => {
 	// 	async function fetchData() {
@@ -32,9 +23,7 @@ export default function StickerList() {
 	return (
 		<div>
 			<h1>스티커리스트</h1>
-			<button type='button' onClick={onClick}>
-				불러오기
-			</button>
+      <button type='button' onClick={onClick}>불러오기</button>
 		</div>
 	);
 }
