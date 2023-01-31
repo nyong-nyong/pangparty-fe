@@ -2,21 +2,22 @@ import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import PhotoUpload from './PhotoUpload';
-import PhotoDetail from './PhotoDetail';
+import PhotoCarousel from './PhotoCarousel';
 
 export default function PhotoAlbum() {
 
   const [dummyPhotos, setDummyPhotos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [photoSelected, setPhotoSelected] = useState({})
+  const [photoSelected, setPhotoSelected] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album?page=1&limit=30');
+      const request = await axios.get('https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album?page=1&limit=30'
+      );
       setDummyPhotos(request.data.media);
     }
     fetchData();
-  }, [])
+  }, [dummyPhotos])
 
   const handleModalClick = (photo) => {
     setModalOpen(true)
@@ -41,9 +42,9 @@ export default function PhotoAlbum() {
       </AlbumFrame>
       <br/>
       {modalOpen && 
-        <PhotoDetail 
-          photoSelected={photoSelected} 
-          setPhotoSelected={setPhotoSelected} 
+        <PhotoCarousel 
+          photoList={dummyPhotos}
+          photoSelected={photoSelected}
           setModalOpen={setModalOpen}
         />
       }

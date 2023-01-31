@@ -1,20 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import styled from 'styled-components'
+import axios from 'axios'
 import PhotoCommentList from './PhotoCommentList'
 import PhotoLikes from './PhotoLikes'
-import styled from 'styled-components';
 
-export default function PhotoDetail({photoSelected, setPhotoSelected, setModalOpen}) {
+export default function PhotoDetail({photo, setModalOpen}) {
   const clickHandle = () => {
     setModalOpen(false);
   }
 
   return (
-    <Modal>
+    <div>
       <span onClick={clickHandle}>X</span>
-      <img src={photoSelected.mediaUrl} width="300px" height="200px"></img>
-      <PhotoLikes />
-      <PhotoCommentList />
-    </Modal>
+      <img src={photo.mediaUrl} width="300px" height="200px"></img>
+      <PhotoLikes photo={photo}/>
+      <PhotoCommentList photo={photo}/>
+    </div>
   )
 }
 

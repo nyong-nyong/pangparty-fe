@@ -3,13 +3,13 @@ import axios from 'axios'
 import PhotoComment from './PhotoComment';
 import PhotoCommentUpload from './PhotoCommentUpload';
 
-export default function PhotoCommentList() {
+export default function PhotoCommentList({photo}) {
   const [commentList, setCommentList] = useState([]);
   
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album/500001/comments?limit=30');
-      console.log(request.data.comments)
+      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album/${photo.uid}/comments?limit=30`);
+      // console.log(request.data.comments)
       setCommentList(request.data.comments);
     }
     fetchData();
@@ -28,7 +28,7 @@ export default function PhotoCommentList() {
           }
         })}
       {/* </CommentFrame> */}
-      <PhotoCommentUpload commentList={commentList} setCommentList={setCommentList}/>
+      <PhotoCommentUpload photoId={photo.uid} commentList={commentList} setCommentList={setCommentList}/>
     </div>
   )
 }
