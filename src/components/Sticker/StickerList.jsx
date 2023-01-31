@@ -1,33 +1,26 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../../api/axios';
+import requests from '../../api/requests';
 
 export default function StickerList() {
-	const [sticker, setSticker] = useState({});
+	const [stickerList, setStickerList] = useState([]);
 
-	const onClick = async () => {
-		try {
-			const response = await axios.get(
-				'https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/stickers',
-			);
-			setSticker(response.data);
-		} catch (e) {
-			console.log(e);
+	const onClick = () => {
+		async function getSticker() {
+			await axios
+				.get(requests.fetchStickers)
+				.then((response) => {
+					setStickerList(response.data.stickers);
+					console.log(response.data);
+				})
+				.catch((e) => {
+					console.log(e);
+				});
 		}
+		getSticker();
 	};
 
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		const request = await axios
-	// 			.get(
-	// 				'https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/stickers',
-	// 			)
-	// 			.then((res) => {
-	// 				setSticker(res.data);
-	// 			});
-	// 	}
-	// });
-
-	if (!sticker) return <div>...loading</div>;
+	if (!stickerList) return <div>...loading</div>;
 
 	return (
 		<div>
@@ -35,6 +28,9 @@ export default function StickerList() {
 			<button type='button' onClick={onClick}>
 				불러오기
 			</button>
+			{stickerList.map((sticker) => {
+				return <img key={sticker.uid} src={sticker.url} alt='h' />;
+			})}
 		</div>
 	);
 }

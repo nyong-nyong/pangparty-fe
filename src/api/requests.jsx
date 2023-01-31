@@ -1,5 +1,4 @@
-// const requests = {
-// 	fetchStickers: '/stickers',
-// };
-
-// export default requsets;
+const requests = {
+	fetchStickers: '/stickers',
+};
+export default requests;
