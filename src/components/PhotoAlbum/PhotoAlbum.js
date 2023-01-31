@@ -6,13 +6,15 @@ import PhotoCarousel from './PhotoCarousel';
 
 export default function PhotoAlbum() {
 
+  const tmpAlbumId = 300001;
+
   const [dummyPhotos, setDummyPhotos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [photoSelected, setPhotoSelected] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album?page=1&limit=30'
+      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${tmpAlbumId}/album?page=1&limit=30`
       );
       setDummyPhotos(request.data.media);
     }
@@ -46,10 +48,11 @@ export default function PhotoAlbum() {
           photoList={dummyPhotos}
           photoSelected={photoSelected}
           setModalOpen={setModalOpen}
+          albumId={tmpAlbumId}
         />
       }
       <br/>
-      <PhotoUpload/>
+      <PhotoUpload albumId={tmpAlbumId}/>
     </div>
   )
 }

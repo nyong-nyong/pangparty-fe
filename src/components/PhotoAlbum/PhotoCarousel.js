@@ -5,7 +5,7 @@ import PhotoDetail from './PhotoDetail';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function PhotoCarousel({photoList, photoSelected, setModalOpen}) {
+function PhotoCarousel({photoList, photoSelected, setModalOpen, albumId}) {
 
   const style = {
     width: "350px",
@@ -33,6 +33,7 @@ function PhotoCarousel({photoList, photoSelected, setModalOpen}) {
                 key={photo.uid}
                 photo={photo} 
                 setModalOpen={setModalOpen}
+                albumId={albumId}
               />
             )
           }

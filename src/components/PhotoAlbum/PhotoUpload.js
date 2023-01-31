@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
-export default function PhotoUpload() {
+export default function PhotoUpload({albumId}) {
 
   const [photoFile, setPhotoFile] = useState("")
   const photoRef = useRef()
@@ -28,7 +28,7 @@ export default function PhotoUpload() {
 
       await axios({
         method: 'post',
-        url: 'https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album/500001',
+        url: `https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${albumId}/album/500001`,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data'

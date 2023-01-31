@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-export default function PhotoCommentUpload({photoId, commentList, setCommentList}) {
+export default function PhotoCommentUpload({photoId, commentList, setCommentList, albumId}) {
 
   const createBtnClick = (e) => {
     e.preventDefault();

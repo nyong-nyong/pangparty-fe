@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 
-export default function PhotoComment({comment, commentList, setCommentList}) {
+export default function PhotoComment({comment, commentList, setCommentList, albumId}) {
   const myId = 100003;
 
   const deleteBtnClick = (e) => {

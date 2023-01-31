@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-export default function PhotoLikes({photo}) {
+export default function PhotoLikes({photo, albumId}) {
   const [likeCnt, setLikeCnt] = useState(0);
   const [isLiked, setIsLiked] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/300001/album/${photo.uid}/likes`);
+      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${albumId}/album/${photo.uid}/likes`);
       // 좋아요 개수 불러오기
       // setLikeCnt(request.data);
       // setIsLiked(request.data);
