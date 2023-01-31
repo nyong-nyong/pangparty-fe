@@ -1,0 +1,10 @@
+.colorsContainer {
+  display: inline-flex;
+  width: auto;
+}
+
+.colorBox {
+  width: 52px;
+  height: 52px;
+  margin:  5px;
+}

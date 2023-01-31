@@ -1,4 +1,4 @@
 const requests = {
-	fetchStickers: '/stickers',
+  fetchStickers: "/stickers",
 };
 export default requests;
