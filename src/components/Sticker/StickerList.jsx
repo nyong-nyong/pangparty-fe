@@ -29,7 +29,9 @@ export default function StickerList() {
 				불러오기
 			</button>
 			{stickerList.map((sticker) => {
-				return <img key={sticker.uid} src={sticker.url} alt='h' />;
+				return (
+					<img key={sticker.uid} src={sticker.url} alt='h' width='100px' />
+				);
 			})}
 		</div>
 	);
