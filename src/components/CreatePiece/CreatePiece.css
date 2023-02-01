@@ -1,10 +1,9 @@
-.createPieceContainer{
+.createPieceContainer {
   display: "flex";
-  align-items: "center";
   flex-direction: "column";
 }
 
-.createPiecePageHeader{
+.createPiecePageHeader {
   display: flex;
   margin: 20px;
   align-items: center;
@@ -20,7 +19,7 @@
 .pieceContent {
   margin: 10%;
   width: 80%;
-  height: auto;
+  height: 180px;
   text-align: center;
   resize: none;
   background-color: transparent;
@@ -28,13 +27,20 @@
 }
 
 .from {
-  display: flexbox;
+  position: relative;
+  display: inline;
   background-color: transparent;
-  width: 100%;
+  padding-left: 45%;
   margin-bottom: 5%;
 }
 
+.fromTag {
+  display: inline;
+}
+
 .writerUid {
+  display: inline;
+  width: 35%;
   background-color: transparent;
   border: none;
 }

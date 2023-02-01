@@ -22,7 +22,7 @@ export default function CreatePiecePage() {
   // 테마 변경 활성화 여부
   const [themeChange, setThemeChange] = useState({
     font: false,
-    align: true,
+    align: false,
     color: false,
   });
 
@@ -78,8 +78,6 @@ export default function CreatePiecePage() {
         onChange={pieceHandler}
         style={{
           backgroundColor: `#${pieceContent.bgColor}`,
-          textAlign: `${pieceContent.textAlign}`,
-          align: `${pieceContent.textAlign}`,
         }}
       >
         <textarea
@@ -100,7 +98,7 @@ export default function CreatePiecePage() {
             fontFamily: `${pieceContent.fontFamily}`,
           }}
         >
-          <p>From.</p>
+          <p className="fromTag">From.</p>
           <input
             type="text"
             className="writerUid"
@@ -113,12 +111,6 @@ export default function CreatePiecePage() {
             }}
           />
         </div>
-      </div>
-
-      <div
-        style={{ width: "100px", height: "100px", backgroundColor: "bisque" }}
-      >
-        <h4 style={{ textAlign: "right" }}>하위</h4>
       </div>
 
       {/* 버튼 눌렀을 때 그 버튼 기능에 맞는 compnent만 렌더링 합니다. */}

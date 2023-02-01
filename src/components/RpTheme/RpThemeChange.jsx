@@ -133,7 +133,7 @@ function RpThemeChange({ pieceContent, setPieceContent, themeChange }) {
       </div>
     );
   }
-  return <div>암것도없지롱</div>;
+  return <div> </div>;
 }
 
 export default RpThemeChange;
