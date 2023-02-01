@@ -1,8 +1,9 @@
-import axios from 'axios';
-import React, { useState, useRef } from 'react'
+import axios from '../../api/axios'
+import requests from '../../api/requests';
+import { useState, useRef } from 'react'
 import styled from 'styled-components';
 
-export default function PhotoUpload({albumId}) {
+export default function PhotoUpload({eventUid}) {
 
   const [photoFile, setPhotoFile] = useState("")
   const photoRef = useRef()
@@ -26,9 +27,7 @@ export default function PhotoUpload({albumId}) {
 
       for(const data of formData) console.log(data)
 
-      await axios({
-        method: 'post',
-        url: `https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${albumId}/album/500001`,
+      await axios.post(requests.events.album.postMedia(eventUid), {
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data'

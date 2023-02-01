@@ -1,25 +1,27 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import PhotoUpload from './PhotoUpload';
 import PhotoCarousel from './PhotoCarousel';
+import axios from '../../api/axios';
+import requests from '../../api/requests';
 
 export default function PhotoAlbum() {
 
-  const tmpAlbumId = 300001;
+  const eventUid = 300001;
+  const page = 1;
+  const limit = 3000;
 
-  const [dummyPhotos, setDummyPhotos] = useState([]);
+  const [photoList, setPhotoList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [photoSelected, setPhotoSelected] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${tmpAlbumId}/album?page=1&limit=30`
-      );
-      setDummyPhotos(request.data.media);
+      const request = await axios.get(requests.events.album.mediaAll(eventUid, page, limit));
+      setPhotoList(request.data.media);
     }
     fetchData();
-  }, [dummyPhotos])
+  }, [])
 
   const handleModalClick = (photo) => {
     setModalOpen(true)
@@ -30,7 +32,7 @@ export default function PhotoAlbum() {
     <div>
       <h1>PhotoAlbum</h1>
       <AlbumFrame>
-        {dummyPhotos.map((photo) => {
+        {photoList.map((photo) => {
           if(photo) {
             return (
               <div key={photo.uid} onClick={() => handleModalClick(photo)}>
@@ -45,14 +47,14 @@ export default function PhotoAlbum() {
       <br/>
       {modalOpen && 
         <PhotoCarousel 
-          photoList={dummyPhotos}
-          photoSelected={photoSelected}
+          photoList={photoList}
+          mediaUid={photoSelected.uid}
           setModalOpen={setModalOpen}
-          albumId={tmpAlbumId}
+          eventUid={eventUid}
         />
       }
       <br/>
-      <PhotoUpload albumId={tmpAlbumId}/>
+      <PhotoUpload eventUid={eventUid}/>
     </div>
   )
 }

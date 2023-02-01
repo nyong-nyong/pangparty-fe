@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import { useState, useEffect } from 'react'
+import axios from '../../api/axios'
+import requests from '../../api/requests';
 
 export default function PhotoLikes({photo, albumId}) {
   const [likeCnt, setLikeCnt] = useState(0);

@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import PhotoCommentList from './PhotoCommentList'
 import PhotoLikes from './PhotoLikes'
 
-export default function PhotoDetail({photo, setModalOpen, albumId}) {
+export default function PhotoDetail({photo, setModalOpen, eventUid}) {
   const clickHandle = () => {
     setModalOpen(false);
   }
@@ -13,8 +11,8 @@ export default function PhotoDetail({photo, setModalOpen, albumId}) {
     <div>
       <span onClick={clickHandle}>X</span>
       <img src={photo.mediaUrl} width="300px" height="200px"></img>
-      <PhotoLikes photo={photo} albumId={albumId}/>
-      <PhotoCommentList photo={photo} albumId={albumId}/>
+      <PhotoLikes photo={photo} eventUid={eventUid}/>
+      <PhotoCommentList photo={photo} eventUid={eventUid}/>
     </div>
   )
 }
