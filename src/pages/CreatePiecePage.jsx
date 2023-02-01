@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import RpThemeChange from "../components/CreatePiece/RpThemeChange";
+import RpThemeChange from "../components/RpTheme/RpThemeChange";
 import "../components/CreatePiece/CreatePiece.css";
 
 // 롤링페이퍼 작성하는 페이지
@@ -147,7 +147,6 @@ export default function CreatePiecePage() {
         pieceContent={pieceContent}
         setPieceContent={setPieceContent}
         themeChange={themeChange}
-        setThemeChange={setThemeChange}
       />
 
       <Link to="/rollingpaper">
