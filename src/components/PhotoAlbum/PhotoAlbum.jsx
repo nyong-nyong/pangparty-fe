@@ -47,7 +47,6 @@ export default function PhotoAlbum() {
       <br/>
       {modalOpen && 
         <PhotoCarousel 
-          photoList={photoList}
           mediaUid={photoSelected.uid}
           setModalOpen={setModalOpen}
           eventUid={eventUid}

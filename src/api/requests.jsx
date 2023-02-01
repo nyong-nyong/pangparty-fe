@@ -6,6 +6,7 @@ const requests = {
 
     album: {
       albumBaseUrl: "/album",
+      commentBaseUrl: "/comments",
 
       /** 앨범 미디어 전체 GET 요청 */
       mediaAll(eventUid, page, limit) {
@@ -18,8 +19,13 @@ const requests = {
       },
 
       /** 앨범 미디어 상세 정보 GET 요청 */
-      getDetail(eventUid, mediaUid) {
+      getMediaDetail(eventUid, mediaUid) {
         return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}`;
+      },
+
+      /** 앨범 미디어 댓글 리스트 GET 요청 */
+      getMediaComment(eventUid, mediaUid, page, limit) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.commentBaseUrl}?page=${page}&limit=${limit}`;
       },
     },
   },

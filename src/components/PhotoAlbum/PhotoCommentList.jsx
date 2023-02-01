@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from '../../api/axios';
+import requests from '../../api/requests';
 import PhotoComment from './PhotoComment';
 import PhotoCommentUpload from './PhotoCommentUpload';
 
-export default function PhotoCommentList({photo, albumId}) {
+export default function PhotoCommentList({photo, eventUid}) {
   const [commentList, setCommentList] = useState([]);
   
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io/events/${albumId}/album/${photo.uid}/comments?limit=30`);
-      // console.log(request.data.comments)
+      const request = await axios.get(requests.events.album.getMediaComment(eventUid, photo.uid, 1, 30));
+      console.log(requests.events.album.getMediaComment(eventUid, photo.uid, 1, 30))
+      console.log(request.data)
       setCommentList(request.data.comments);
     }
     fetchData();
-  }, [])
+  }, [photo])
 
   return (
     <div>
@@ -21,14 +23,14 @@ export default function PhotoCommentList({photo, albumId}) {
         {commentList.map((comment) => {
           if(comment) {
             return (
-              <PhotoComment key={comment.uid} comment={comment} commentList={commentList} setCommentList={setCommentList} albumId={albumId}/>
+              <PhotoComment key={comment.uid} comment={comment} commentList={commentList} setCommentList={setCommentList} eventUid={eventUid}/>
             )
           } else {
             return null
           }
         })}
       {/* </CommentFrame> */}
-      <PhotoCommentUpload photoId={photo.uid} commentList={commentList} setCommentList={setCommentList} albumId={albumId}/>
+      {/* <PhotoCommentUpload photoId={photo.uid} commentList={commentList} setCommentList={setCommentList} eventUid={eventUid}/> */}
     </div>
   )
 }

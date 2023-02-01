@@ -10,8 +10,9 @@ export default function PhotoDetail({photo, setModalOpen, eventUid}) {
   return (
     <div>
       <span onClick={clickHandle}>X</span>
+      <span>{photo.uid}</span>
       <img src={photo.mediaUrl} width="300px" height="200px"></img>
-      <PhotoLikes photo={photo} eventUid={eventUid}/>
+      {/* <PhotoLikes photo={photo} eventUid={eventUid}/> */}
       <PhotoCommentList photo={photo} eventUid={eventUid}/>
     </div>
   )

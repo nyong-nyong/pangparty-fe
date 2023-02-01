@@ -10,67 +10,98 @@ import "slick-carousel/slick/slick-theme.css";
 
 function PhotoCarousel({mediaUid, setModalOpen, eventUid}) {
   const [photo, setPhoto] = useState({});
-  const [prevPhotoUid, setPrevPhotoUid] = useState({});
-  const [nextPhotoUid, setNextPhotoUid] = useState({});
   const [photoList, setPhotoList] = useState([]);
 
   useEffect(() => {
-    function getPhotoList(prevDetail, nowDetail, nextDetail) {
-      const newPhotoList = [prevDetail, nowDetail, nextDetail];
-      setPhotoList(newPhotoList);
-      console.log(photoList)
-      return setPhoto(nowDetail);
-    }
-
     async function fetchData() {
-      const nowDetail = await axios.get(requests.events.album.getDetail(eventUid, mediaUid));
-      const prevMediaUid = await nowDetail.data.prev;
-      const nextMediaUid = await nowDetail.data.next;
-      const prevDetail = await axios.get(requests.events.album.getDetail(eventUid, prevMediaUid));
-      const nextDetail = await axios.get(requests.events.album.getDetail(eventUid, nextMediaUid));
+      const nowDetail = await axios.get(requests.events.album.getMediaDetail(eventUid, mediaUid));
+      setPhoto(nowDetail.data);
+      console.log(nowDetail.data)
+      if(nowDetail.data.prev) {
+        const prevDetail = await axios.get(requests.events.album.getMediaDetail(eventUid, nowDetail.data.prev));
+        if(nowDetail.data.next) {
+          const nextDetail = await axios.get(requests.events.album.getMediaDetail(eventUid, nowDetail.data.next)); 
+          setPhotoList([prevDetail.data, nowDetail.data, nextDetail.data])
+          // sliderSettings.initialSlide = 1;
+          // console.log(sliderSettings)
+          // setSliderSettings({...sliderSettings, initialSlide:2})
+          return;
+        }
+        setPhotoList([prevDetail.data, nowDetail.data, {}]);
+        // sliderSettings.initialSlide = 1;
+        // console.log(sliderSettings)
+        // setSliderSettings({...sliderSettings, initialSlide:1})
+        return;
+      }
+      if(nowDetail.data.next) {
+        console.log(nowDetail.data.next)
+        console.log(requests.events.album.getMediaDetail(eventUid, nowDetail.data.next))
+        const nextDetail = await axios.get(requests.events.album.getMediaDetail(eventUid, nowDetail.data.next)); 
+        setPhotoList([{}, nowDetail.data, nextDetail.data])
+        // console.log([nowDetail.data, nextDetail.data])
+        // sliderSettings.initialSlide = 0;
+        // console.log(sliderSettings)
+        // setSliderSettings({...sliderSettings, initialSlide:0})
+        return;
+      }
+      setPhotoList([{}, nowDetail.data, {}]);
+      // sliderSettings.initialSlide = 0;
+      // console.log(sliderSettings)
+      // setSliderSettings({...sliderSettings, initialSlide:0})
     }
     fetchData();
-  }, []);
-// useEffect 덩어리로 다 fetch 해오기
-  useEffect(() => {
-    async function fetchData
-  }, [])
+  }, [mediaUid]);
 
   const style = {
     width: "350px",
     height: "400px",
   };
 
+  // const [sliderSettings, setSliderSettings] = useState({
+  //   lazyLoad: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  // })
+
   const sliderSettings = {
-    dots: false,
     lazyLoad: true,
-    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: 2,
-  };
+    initialSlide: 1,
+    infinite: false
+  }
+  
+
+  const check = () => {
+    console.log({...sliderSettings});
+    console.log(photoList);
+  }
 
   return (
     <div style={style}>
-      {photoList[0] ? <span>{photoList[0].uid}</span> : "ㅎㅎ"}
-      {/* <Slider {...sliderSettings}>
+      {photo.uid && <Slider {...sliderSettings}>
         {photoList.map((item) => {
           if(item) {
+            if(!item.uid) {
+              return <></>
+            }
             return (
-              <span key={item.uid}>{item.uid}</span>
-              // <PhotoDetail 
-              //   key={item.uid}
-              //   photo={item} 
-              //   setModalOpen={setModalOpen}
-              //   eventUid={eventUid}
-              // />
+              <PhotoDetail 
+                key={item.uid}
+                photo={item}
+                setModalOpen={setModalOpen}
+                eventUid={eventUid}
+              />
             )
           }
           return null;
         })}
-      </Slider> */}
-
+      </Slider>
+      }
+      <button onClick={check}></button>
     </div>
   )
 }
