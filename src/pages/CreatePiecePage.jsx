@@ -29,35 +29,25 @@ export default function CreatePiecePage() {
   // 타이핑 중인 내용 확인 함수
   const pieceHandler = (e) => {
     if (e.target.className === "writerUid") {
-      setPieceContent({
-        rollingPaperPieceUid: "",
-        writerUid: e.target.value,
-        createTime: Date.now(),
-        modifyTime: Date.now(),
-        content: pieceContent.content,
-        bgColor: "CFCFCF",
-        fontFamily: "Pretendard",
-        textColor: "000000",
-        textAlign: "center",
-      });
-    } else if (e.target.className === "content") {
-      setPieceContent({
-        rollingPaperPieceUid: "",
-        writerUid: pieceContent.writerUid,
-        createTime: Date.now(),
-        modifyTime: Date.now(),
-        content: e.target.value,
-        bgColor: "CFCFCF",
-        fontFamily: "Pretendard",
-        textColor: "000000",
-        textAlign: "center",
-      });
+      const newPieceInfo = { ...pieceContent };
+      newPieceInfo.writerUid = e.target.value;
+      newPieceInfo.createTime = Date.now();
+      newPieceInfo.modifyTime = Date.now();
+      setPieceContent(newPieceInfo);
+    }
+    if (e.target.className === "pieceContent") {
+      const newPieceInfo = { ...pieceContent };
+      newPieceInfo.content = e.target.value;
+      newPieceInfo.createTime = Date.now();
+      newPieceInfo.modifyTime = Date.now();
+      setPieceContent(newPieceInfo);
     }
   };
 
   // 작성 완료시 api post 이벤트 발생으로 수정 예정
   const postPiece = (e) => {
-    console.log(e);
+    e.preventDefault();
+    console.log(pieceContent);
   };
 
   // 테마 변경을 위한 버튼
@@ -89,27 +79,46 @@ export default function CreatePiecePage() {
         style={{
           backgroundColor: `#${pieceContent.bgColor}`,
           textAlign: `${pieceContent.textAlign}`,
-          color: `#${pieceContent.textColor}`,
+          align: `${pieceContent.textAlign}`,
         }}
       >
         <textarea
           className="pieceContent"
           placeholder="내용을 입력해주세요"
-          value={pieceContent.content}
-          style={{ fontFamily: `${pieceContent.fontFamily}` }}
+          defaultValue={pieceContent.content}
+          style={{
+            fontFamily: `${pieceContent.fontFamily}`,
+            color: `#${pieceContent.textColor}`,
+            textAlign: `${pieceContent.textAlign}`,
+          }}
         />
         <div
           className="from"
-          style={{ fontFamily: `${pieceContent.fontFamily}` }}
+          style={{
+            width: "100px",
+            color: `#${pieceContent.textColor}`,
+            fontFamily: `${pieceContent.fontFamily}`,
+          }}
         >
           <p>From.</p>
           <input
             type="text"
             className="writerUid"
             placeholder=""
-            value={pieceContent.writerUid}
+            defaultValue={pieceContent.writerUid}
+            style={{
+              display: "inline-block",
+              fontFamily: `${pieceContent.fontFamily}`,
+              color: `#${pieceContent.textColor}`,
+            }}
           />
         </div>
+      </div>
+
+      <div
+        style={{ width: "100px", height: "100px", backgroundColor: "bisque" }}
+      >
+        <h4 style={{ textAlign: "right" }}>하위</h4>
       </div>
 
       {/* 버튼 눌렀을 때 그 버튼 기능에 맞는 compnent만 렌더링 합니다. */}
