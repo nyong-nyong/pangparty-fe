@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Moveable from "react-moveable";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
@@ -43,6 +44,7 @@ export default function StickerList() {
       <button type="button" onClick={onClick}>
         스티커 불러오기
       </button>
+      <Moveable></Moveable>
       {stickerList.map((sticker) => {
         return <img key={sticker.uid} src={sticker.url} alt="" width="100px" />;
       })}
