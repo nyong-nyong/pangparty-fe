@@ -1,0 +1,13 @@
+.pieceListContainer {
+  display: block;
+  width: 100%;
+}
+
+.piece {
+  width: 150px;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
