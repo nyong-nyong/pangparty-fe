@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import Draggable from "react-draggable";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
 export default function StickerList() {
   const [stickerList, setStickerList] = useState([]);
 
-  const onClick = () => {
+  useEffect(() => {
     async function getSticker() {
       await axios
         .get(requests.fetchStickers)
@@ -18,21 +19,18 @@ export default function StickerList() {
         });
     }
     getSticker();
-  };
+  });
 
   if (!stickerList) return <div>...loading</div>;
 
   return (
     <div>
-      <h1>스티커리스트</h1>
-      <button type="button" onClick={onClick}>
-        불러오기
-      </button>
+      <h1>⭐스티커 붙이기⭐</h1>
+      {/* <Draggable> */}
       {stickerList.map((sticker) => {
-        return (
-          <img key={sticker.uid} src={sticker.url} alt="h" width="100px" />
-        );
+        return <img key={sticker.uid} src={sticker.url} alt="" width="100px" />;
       })}
+      {/* </Draggable> */}
     </div>
   );
 }
