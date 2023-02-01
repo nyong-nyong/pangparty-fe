@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { stickerClickState, stickerState } from "./Atom";
+import ReactDOM from "react-dom/client";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import MoveablePiece from "./MoveablePiece";
 
 export default function StickerList() {
   const [stickerList, setStickerList] = useState([]);
-  const [stickerInfo, setStickerInfo] = useRecoilState(stickerState);
-  const [stickerClick, setStickerClick] = useRecoilState(stickerClickState);
 
   // 최초 랜더링시 실행
   useEffect(() => {
@@ -24,16 +22,12 @@ export default function StickerList() {
     getSticker();
   });
 
-  const saveStickerInfo = (e) => {
-    console.log(e.target);
+  // const saveStickerInfo = (e) => {
+  //   console.log(e.target);
+  // 1. atom을 활용해 sticker정보, click여부 저장(클릭 여부를 통해 피스리스트에서 확인)
 
-    setStickerInfo(e.target);
-    setStickerClick(true);
-
-    // 1. atom을 활용해 sticker정보, click여부 저장(클릭 여부를 통해 피스리스트에서 확인)
-
-    // 2. 페이지 이동
-  };
+  // 2. 페이지 이동
+  // };
 
   if (!stickerList) return <div>...loading</div>;
 
@@ -47,7 +41,14 @@ export default function StickerList() {
               <img
                 src={sticker.url}
                 alt=""
-                onClick={saveStickerInfo}
+                onClick={() => {
+                  console.log(sticker);
+                  const root = ReactDOM.createRoot(
+                    document.getElementById("root")
+                  );
+                  console.log(root);
+                  root.render(<MoveablePiece sticker={sticker} />);
+                }}
                 aria-hidden="true"
                 width="100px"
                 height="100px"
