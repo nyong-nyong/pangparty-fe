@@ -23,9 +23,10 @@
     "react/prop-types": "off",
     "react/destructuring-assignment": [0, "always"],
     "no-else-return": ["error", { "allowElseIf": true }],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": false, "projectDependencies": false } // dev-dedency 무시
-    ]
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   { "projectDependencies": false } // dev-dedency 무시
+    // ],
+    "react/jsx-props-no-spreading": "off"
   }
 }

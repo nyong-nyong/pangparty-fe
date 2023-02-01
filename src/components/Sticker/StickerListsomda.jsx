@@ -1,11 +1,24 @@
 import { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
+// import * as ReactDOM from "react-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-import MoveablePiece from "./MoveablePiece";
+// import MoveablePiece from "./MoveablePiece";
 
 export default function StickerList() {
   const [stickerList, setStickerList] = useState([]);
+
+  const [stickerInfo, setStickerInfo] = useState({
+    width: "100px",
+    height: "100px",
+    left: "0px",
+    top: "0px",
+    transform: {
+      rotate: "0deg",
+      scaleX: 1,
+      scaleY: 1,
+      matrix3d: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+    },
+  });
 
   // 최초 랜더링시 실행
   useEffect(() => {
@@ -22,13 +35,6 @@ export default function StickerList() {
     getSticker();
   });
 
-  // const saveStickerInfo = (e) => {
-  //   console.log(e.target);
-  // 1. atom을 활용해 sticker정보, click여부 저장(클릭 여부를 통해 피스리스트에서 확인)
-
-  // 2. 페이지 이동
-  // };
-
   if (!stickerList) return <div>...loading</div>;
 
   return (
@@ -41,17 +47,17 @@ export default function StickerList() {
               <img
                 src={sticker.url}
                 alt=""
-                onClick={() => {
-                  console.log(sticker);
-                  const root = ReactDOM.createRoot(
-                    document.getElementById("root")
-                  );
-                  console.log(root);
-                  root.render(<MoveablePiece sticker={sticker} />);
-                }}
+                // onClick={() => {
+                //   console.log(sticker);
+                //   const root = ReactDOM.createRoot(
+                //     document.getElementById("RP-page")
+                //   );
+                //   const newSticker = <MoveablePiece sticker={sticker} />;
+                //   root.render(newSticker);
+                // }}
                 aria-hidden="true"
-                width="100px"
-                height="100px"
+                width={stickerInfo.width}
+                height={stickerInfo.height}
               />
             </div>
           );
