@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useSetRecoilState } from "recoil";
-// import { useRecoilState, useRecoilValue } from "recoil";
+// import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -10,7 +10,11 @@ export default function StickerListModal({ setModalOpen }) {
   const [stickerList, setStickerList] = useState([]);
   // const [clickSticker, setClickSticker] = useState(undefined);
   // const stickerInfoValue = useRecoilValue(stickerState);
-  const setStickerInfo = useSetRecoilState(stickerState);
+  // const setStickerInfo = useSetRecoilState(stickerState);
+
+  // 한별 수정
+  // eslint-disable-next-line no-unused-vars
+  const [stickerInfo, setStickerInfo] = useRecoilState(stickerState);
 
   // 모달창 닫기
   const closeModal = () => {

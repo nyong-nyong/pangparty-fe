@@ -3,8 +3,8 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useRecoilValue } from "recoil";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
+// import { useRecoilState } from "recoil";
 import { stickerState } from "../components/Sticker/Atom";
 import MoveablePiece from "../components/Sticker/MoveablePiece";
 import StickerListModal from "../components/Sticker/StickerListModal";
@@ -12,8 +12,12 @@ import StickerListModal from "../components/Sticker/StickerListModal";
 export default function PieceListPage() {
   const [modalOpen, setModalOpen] = useState(false);
   // const stickerInfoValue = useRecoilValue(stickerState);
-  const setStickerInfo = useSetRecoilState(stickerState);
+  // const setStickerInfo = useRecoilState(stickerState);
 
+  // 한별 수정
+  const stickerInfo = useRecoilValue(stickerState);
+
+  // 모달 오픈
   const showModal = () => {
     setModalOpen(true);
   };
@@ -27,7 +31,11 @@ export default function PieceListPage() {
       </button>
       {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
       {/* {stickerInfoValue && <MoveablePiece sticker={stickerInfoValue} />} */}
-      {setStickerInfo && <MoveablePiece sticker={setStickerInfo} />}
+
+      {/* 한별 수정 */}
+      {/* {setStickerInfo && <MoveablePiece sticker={setStickerInfo} />} */}
+      {stickerInfo && <MoveablePiece sticker={stickerInfo} />}
+
       <Link to="/">🏡 회귀 🏡</Link>
     </div>
   );
