@@ -55,7 +55,7 @@ export default function StickerListModal({ setModalOpen }) {
             <div key={sticker.uid}>
               <img
                 src={sticker.url}
-                alt=""
+                alt="스티커"
                 // onClick={}
                 aria-hidden="true"
                 width="100px"
