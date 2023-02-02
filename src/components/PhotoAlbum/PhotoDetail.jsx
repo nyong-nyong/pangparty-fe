@@ -12,8 +12,8 @@ export default function PhotoDetail({photo, setModalOpen, eventUid}) {
       <span onClick={clickHandle}>X</span>
       <span>{photo.uid}</span>
       <img src={photo.mediaUrl} width="300px" height="200px"></img>
-      {/* <PhotoLikes photo={photo} eventUid={eventUid}/> */}
-      <PhotoCommentList photo={photo} eventUid={eventUid}/>
+      <PhotoLikes mediaUid={photo.uid} eventUid={eventUid} isLikedProps={photo.isLiked}/>
+      <PhotoCommentList mediaUid={photo.uid} eventUid={eventUid}/>
     </div>
   )
 }

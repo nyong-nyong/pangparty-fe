@@ -7,6 +7,9 @@ const instance = axios.create({
   // baseURL: "https://ba1b80f8-dd6e-4776-99b1-4219d0443b4e.mock.pstmn.io",
 
   // 희연 팀
+  // baseURL: "https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io",
+
+  // 최종 목업
   baseURL: "https://ee36ec81-32f6-4dd1-8f67-4b330393e56e.mock.pstmn.io",
   timeout: 3000,
 });

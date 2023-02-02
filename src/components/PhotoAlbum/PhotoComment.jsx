@@ -1,32 +1,42 @@
-import React from 'react'
-import axios from 'axios';
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
-export default function PhotoComment({comment, commentList, setCommentList, eventUid}) {
-  const myId = 100003;
+export default function PhotoComment({
+  comment,
+  commentList,
+  setCommentList,
+  eventUid,
+  mediaUid,
+}) {
+  const myId = "gyugyu";
 
   const deleteBtnClick = (e) => {
     e.preventDefault();
     async function deleteComment() {
-      await axios.post('', {
-      })
-      .then(response => {
-        const newCommentList = commentList.filter(c => c.uid !== comment.uid);
-        setCommentList(newCommentList)
-        console.log(e.target)
-      })
-      .catch(error => {
-        console.log(e.target)
-        console.log(error);
-      })
+      await axios
+        .delete(requests.events.album.delComment(eventUid, mediaUid, comment.uid))
+        .then((response) => {
+          const newCommentList = commentList.filter(
+            (c) => c.uid !== comment.uid
+          );
+          console.log(response);
+          setCommentList(newCommentList);
+        })
+        .catch((error) => {
+          console.log(e.target);
+          console.log(error);
+        });
     }
     deleteComment();
-  }
+  };
 
   return (
     <div>
-      {comment.content}
+      {comment.memberId} : {comment.content}
       {comment.createTime}
-      <span onClick={deleteBtnClick}>{comment.writerUid === myId ? 'X' : ''}</span>
+      <span onClick={deleteBtnClick}>
+      {comment.memberId === myId ? "X" : ""}</span>
+      <br/>
     </div>
-  )
+  );
 }
