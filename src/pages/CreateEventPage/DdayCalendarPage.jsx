@@ -1,12 +1,28 @@
 /* eslint-disable */
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+import moment from "moment";
+import "../../styles/DdayCalendarPage.css";
 
 function DdayCalendar() {
+  const [value, onChange] = useState(new Date());
+
   return (
-    <div>
-      <h1>축하일은 언제인가요?</h1>
-      <p>여기에 달력을 넣어주세용</p>
-      <p>D-day</p>
+    <div style={{ fontFamily: "Pretendard-Regular" }}>
+      <h3>축하일은 언제인가요?</h3>
+      <div className="dDayContainer">
+        <Calendar
+          onChange={onChange}
+          formatDay={(locale, date) => moment(date).format("D")}
+          value={value}
+        />
+        <div className="dDay">
+          <p className="dDayText">D-day</p>
+          {moment(value).format("YYYY년 MM월 DD일")}
+        </div>
+      </div>
+
       <Link to="/event/discript">
         <button>다음</button>
       </Link>

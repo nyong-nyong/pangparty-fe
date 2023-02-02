@@ -8,11 +8,13 @@ import "./styles/App.css";
 
 function App() {
   return (
-    <RecoilRoot>
-      <BrowserRouter>
-        <Routers />
-      </BrowserRouter>
-    </RecoilRoot>
+    <div className="appContainer">
+      <RecoilRoot>
+        <BrowserRouter>
+          <Routers />
+        </BrowserRouter>
+      </RecoilRoot>
+    </div>
   );
 }
 
