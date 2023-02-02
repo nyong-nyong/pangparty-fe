@@ -1,13 +1,17 @@
 .pieceListContainer {
-  display: block;
-  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  width: 98%;
+  background-color: antiquewhite;
+  padding-left: 10px;
 }
 
 .piece {
-  width: 150px;
-  height: auto;
+  overflow: scroll;
+  width: 36%;
+  height: 146px;
   padding: 10px;
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 8px;
   font-size: 13px;
 }
