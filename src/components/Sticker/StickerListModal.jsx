@@ -6,6 +6,8 @@ import MoveablePiece from "./MoveablePiece";
 
 export default function StickerListModal({ setModalOpen }) {
   const [stickerList, setStickerList] = useState([]);
+  const [clickSticker, setClickSticker] = useState(undefined);
+
   // 모달창 닫기
   const closeModal = () => {
     setModalOpen(false);
@@ -13,6 +15,7 @@ export default function StickerListModal({ setModalOpen }) {
 
   const modalRef = useRef();
 
+  // 랜더링
   useEffect(() => {
     async function getSticker() {
       await axios
@@ -42,31 +45,42 @@ export default function StickerListModal({ setModalOpen }) {
     };
   }, []);
 
+  const stickerHandler = (e, sticker) => {
+    // console.log(sticker);
+    setClickSticker(sticker);
+    setModalOpen(false);
+    // console.log(clickSticker);
+  };
+
   if (!stickerList) return <div>...loading</div>;
 
   return (
-    <div ref={modalRef} className="container">
-      <button type="button" className="close" onClick={closeModal}>
-        x
-      </button>
-      {stickerList.map((sticker) => {
-        if (sticker) {
-          return (
-            <div key={sticker.uid}>
-              <img
-                src={sticker.url}
-                alt="스티커"
-                // onClick={}
-                aria-hidden="true"
-                width="100px"
-                height="100px"
-              />
-            </div>
-          );
-        }
-        return null;
-      })}
-      <MoveablePiece />
+    <div>
+      <div ref={modalRef} className="modalContainer">
+        <button type="button" className="close" onClick={closeModal}>
+          x
+        </button>
+        <div className="stickerImg">
+          {stickerList.map((sticker) => {
+            if (sticker) {
+              return (
+                <div key={sticker.uid} aria-hidden="true">
+                  <img
+                    src={sticker.url}
+                    alt="스티커"
+                    aria-hidden="true"
+                    width="100px"
+                    height="100px"
+                    onClick={(e) => stickerHandler(e, sticker)}
+                  />
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+      {clickSticker && <MoveablePiece sticker={clickSticker} />}
     </div>
   );
 }

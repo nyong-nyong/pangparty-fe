@@ -2,13 +2,15 @@
 // 원하는 기능만 남겨놓고 삭제할것
 
 // import ReactDOM from "react-dom";
-import Moveable from "react-moveable";
 import { ref } from "framework-utils";
 import { Frame } from "scenejs";
+import Moveable from "react-moveable";
+import React from "react";
 import "./MoveablePiece.css";
 
 class MoveablePiece extends React.Component {
   frame = new Frame({
+    position: "absolute",
     width: "100px",
     height: "100px",
     left: "0px",
@@ -30,7 +32,7 @@ class MoveablePiece extends React.Component {
   render() {
     const { scalable, warpable, resizable, target } = this.state;
     const sticker = this.props.sticker ? this.props.sticker : {};
-    console.log(sticker);
+    // console.log(sticker);`
 
     return (
       <>
@@ -65,9 +67,23 @@ class MoveablePiece extends React.Component {
         />
         <div className="container">
           <div className="moveable">
-            {sticker && <img src={sticker.url} width="100px" height="100px;" />}
+            {/* {sticker && (
+              <img
+                src={sticker.url}
+                // src={sticker}
+                position="relative"
+                width="100px"
+                height="100px;"
+              />
+            )} */}
             {/* {sticker} */}
-            {/* <p>하위</p> */}
+            <img
+              src={sticker.url}
+              // src={sticker}
+              position="relative"
+              width="100px"
+              height="100px;"
+            />
           </div>
         </div>
         <div className="label" ref={ref(this, "label")} />

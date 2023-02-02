@@ -10,7 +10,6 @@ export default function PieceListPage() {
 
   const showModal = () => {
     setModalOpen(true);
-    console.log("click");
   };
 
   return (
