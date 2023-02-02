@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PhotoAlbum from "../components/PhotoAlbum/PhotoAlbum";
+// import PhotoAlbum from "../components/PhotoAlbum/PhotoAlbum";
 
 export default function IntroEventPage() {
   return (
@@ -8,7 +8,7 @@ export default function IntroEventPage() {
 
       <Link to="/piece">✏️롤링페이퍼 쓰기 버튼</Link>
 
-      <PhotoAlbum />
+      {/* <PhotoAlbum /> */}
     </div>
   );
 }

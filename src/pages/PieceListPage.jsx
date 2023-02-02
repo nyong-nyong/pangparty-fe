@@ -19,14 +19,14 @@ export default function PieceListPage() {
       <button type="button" onClick={showModal}>
         🧸스티커 붙이기🧸
       </button>
-      {/* {modalOpen && <StickerListModal setModalOpen={setModalOpen} />} */}
-      <StickerListModal modalOpen setModalOpen />
+      {modalOpen && (
+        <StickerListModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      )}
+      {/* <StickerListModal modalOpen={modalOpen} setModalOpen={setModalOpen} /> */}
       <Link to="/">🏡 회귀 🏡</Link>
     </div>
   );
 }
-// StickerListModal에서 클릭한 sticker정보만 
+// StickerListModal에서 클릭한 sticker정보만
 // recoil로 저장한 후 PieceListPage로 useRecoil 해서
 // Movable 호출하기
-
-
