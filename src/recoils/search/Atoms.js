@@ -7,7 +7,12 @@ const searchTextState = atom({
 
 const searchResultsState = atom({
   key: 'searchResultsState',
-  default: {},
+  default: [],
 })
 
-export { searchTextState, searchResultsState };
+const searchTypeState = atom({
+  key: 'searchTypeState',
+  default: 'event',
+})
+
+export { searchTextState, searchResultsState, searchTypeState };

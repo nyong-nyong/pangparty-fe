@@ -1,14 +1,16 @@
 import React from 'react'
-import { useRecoilState } from 'recoil'
-import { searchTextState, searchResultsState } from 'recoils/search/Atoms'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { searchTextState, searchResultsState, searchTypeState } from 'recoils/search/Atoms'
 import { useDebounce } from 'hooks/useDebounce'
 import { useEffect } from 'react'
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
-export default function SearchBar({type}) {
+export default function SearchBar() {
+  const type = useRecoilValue(searchTypeState)
   const [searchText, setSearchText] = useRecoilState(searchTextState)
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState)
+
   const onChange = (e) => {
     setSearchText(e.target.value);
   }
@@ -19,9 +21,10 @@ export default function SearchBar({type}) {
     if(debouncedSearchText) {
       fetchSearchText(debouncedSearchText)
     }
-  }, [debouncedSearchText])
+  }, [debouncedSearchText, type])
 
   const fetchSearchText = async (debouncedSearchText) => {
+    console.log(type)
     const request = await axios.get(
       requests.search.getSearch(type, debouncedSearchText, 1, 30)
     )
