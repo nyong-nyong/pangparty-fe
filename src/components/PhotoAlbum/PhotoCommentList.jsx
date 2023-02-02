@@ -13,8 +13,10 @@ export default function PhotoCommentList({ mediaUid, eventUid }) {
       const request = await axios.get(
         requests.events.album.getMediaComment(eventUid, mediaUid, 1, 30)
       );
-      console.log(requests.events.album.getMediaComment(eventUid, mediaUid, 1, 30))
-      console.log(request)
+      console.log(
+        requests.events.album.getMediaComment(eventUid, mediaUid, 1, 30)
+      );
+      console.log(request);
       setCommentList(request.data.comments);
       setCommentLength(request.data.total);
     }
@@ -24,7 +26,9 @@ export default function PhotoCommentList({ mediaUid, eventUid }) {
   return (
     <div>
       {/* <CommentFrame> */}
-      {commentLength !== undefined && <span>총 {commentLength}개의 댓글이 있습니다.\n</span>}
+      {commentLength !== undefined && (
+        <span>총 {commentLength}개의 댓글이 있습니다.\n</span>
+      )}
       {commentList &&
         commentList.map((comment) => {
           if (comment) {
@@ -42,7 +46,12 @@ export default function PhotoCommentList({ mediaUid, eventUid }) {
           return null;
         })}
       {/* </CommentFrame> */}
-      <PhotoCommentUpload mediaUid={mediaUid} commentList={commentList} setCommentList={setCommentList} eventUid={eventUid}/>
+      <PhotoCommentUpload
+        mediaUid={mediaUid}
+        commentList={commentList}
+        setCommentList={setCommentList}
+        eventUid={eventUid}
+      />
     </div>
   );
 }

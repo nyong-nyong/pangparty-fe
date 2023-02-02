@@ -27,19 +27,19 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
       await axios
         .delete(requests.events.album.delLikes(eventUid, mediaUid))
         .then((response) => {
-          setLikeCnt(likeCnt-1);
+          setLikeCnt(likeCnt - 1);
           setIsLiked(!isLiked);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    
+
     async function like() {
       await axios
         .post(requests.events.album.postLikes(eventUid, mediaUid))
         .then((response) => {
-          setLikeCnt(likeCnt+1);
+          setLikeCnt(likeCnt + 1);
           setIsLiked(!isLiked);
         })
         .catch((error) => {

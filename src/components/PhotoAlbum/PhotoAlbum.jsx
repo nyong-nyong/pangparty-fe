@@ -36,9 +36,14 @@ export default function PhotoAlbum() {
         {photoList.map((photo) => {
           if (photo) {
             return (
-              <div key={photo.uid} onClick={() => handleModalClick(photo)}>
+              <button
+                type="button"
+                key={photo.uid}
+                onClick={() => handleModalClick(photo)}
+                onKeyDown={() => handleModalClick(photo)}
+              >
                 <PhotoFrame src={photo.mediaUrl} />
-              </div>
+              </button>
             );
           }
           return null;

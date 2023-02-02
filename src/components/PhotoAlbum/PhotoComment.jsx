@@ -14,7 +14,9 @@ export default function PhotoComment({
     e.preventDefault();
     async function deleteComment() {
       await axios
-        .delete(requests.events.album.delComment(eventUid, mediaUid, comment.uid))
+        .delete(
+          requests.events.album.delComment(eventUid, mediaUid, comment.uid)
+        )
         .then((response) => {
           const newCommentList = commentList.filter(
             (c) => c.uid !== comment.uid
@@ -35,8 +37,9 @@ export default function PhotoComment({
       {comment.memberId} : {comment.content}
       {comment.createTime}
       <span onClick={deleteBtnClick}>
-      {comment.memberId === myId ? "X" : ""}</span>
-      <br/>
+        {comment.memberId === myId ? "X" : ""}
+      </span>
+      <br />
     </div>
   );
 }
