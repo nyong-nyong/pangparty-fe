@@ -6,7 +6,6 @@ import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
 import CreateEventPage from "./CreateEventPage";
-import StickerList from "../components/Sticker/StickerList";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -22,7 +21,6 @@ export default function Routers() {
       <Route path="piece" element={<CreatePiece />} />
       <Route path="rollingpaper">
         <Route path="" element={<PieceList />} />
-        <Route path="sticker" element={<StickerList />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
