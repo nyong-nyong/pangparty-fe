@@ -8,7 +8,7 @@ export default function HomePage() {
       <h1>여기가 Home 입니다.</h1>
 
       <Link to="/event/intro">이벤트 소개페이지 바로가기</Link>
-      <Link to="/event/create">
+      <Link to="/event/tagmember">
         <button type="button">🎉이벤트 만들기🎉</button>
       </Link>
     </div>
