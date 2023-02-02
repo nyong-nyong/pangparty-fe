@@ -1,21 +1,26 @@
-import { Link } from "react-router-dom";
-
+// 모달창으로 분리한 것
 // 완성된 롤링페이퍼 페이지
 
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import StickerListModal from "../components/Sticker/StickerListModal";
+
 export default function PieceListPage() {
-  // 1. atomvalue 받아오기
+  const [modalOpen, setModalOpen] = useState(false);
 
-  // 2. 쏜 click여부 true인지 확인하기
-
-  // 3. true이면 sticker 정보 활용해서 띄우고 무버블 씌우기!
+  const showModal = () => {
+    setModalOpen(true);
+    console.log("click");
+  };
 
   return (
     <div id="RP-page">
       <h1>완성된 롤링페이퍼 페이지</h1>
       <div style={{ width: "100%", height: "500px" }} />
-      <Link to="/rollingpaper/sticker">
-        <button type="button">🧸스티커 붙이기🧸</button>
-      </Link>
+      <button type="button" onClick={showModal}>
+        🧸스티커 붙이기🧸
+      </button>
+      {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
       <Link to="/">🏡 회귀 🏡</Link>
     </div>
   );

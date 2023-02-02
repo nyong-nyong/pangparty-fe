@@ -1,7 +1,6 @@
 /* eslint-disable */
 // 원하는 기능만 남겨놓고 삭제할것
 
-import React from "react";
 // import ReactDOM from "react-dom";
 import Moveable from "react-moveable";
 import { ref } from "framework-utils";

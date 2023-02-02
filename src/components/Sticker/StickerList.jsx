@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { stickerClickState, stickerState } from "./Atom";
