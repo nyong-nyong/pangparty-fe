@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import moment from "moment";
+import TempHistory from "../../components/common/TempHistory";
 import "../../styles/DdayCalendarPage.css";
 
 function DdayCalendar() {
@@ -26,6 +27,7 @@ function DdayCalendar() {
       <Link to="/event/discript">
         <button>다음</button>
       </Link>
+      <TempHistory />
     </div>
   );
 }

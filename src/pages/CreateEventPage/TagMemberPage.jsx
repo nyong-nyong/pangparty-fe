@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Link } from "react-router-dom";
+import TempHistory from "../../components/common/TempHistory";
 
 export default function TagMemberPage() {
   return (
@@ -12,6 +13,7 @@ export default function TagMemberPage() {
         <button>다음</button>
       </Link>
       <button>친구 계정이 없어요</button>
+      <TempHistory />
     </div>
   );
 }
