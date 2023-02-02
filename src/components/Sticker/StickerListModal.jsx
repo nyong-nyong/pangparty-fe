@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-// import { useSetRecoilState } from "recoil";
 import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
@@ -8,11 +7,6 @@ import "./StickerListModal.css";
 
 export default function StickerListModal({ setModalOpen }) {
   const [stickerList, setStickerList] = useState([]);
-  // const [clickSticker, setClickSticker] = useState(undefined);
-  // const stickerInfoValue = useRecoilValue(stickerState);
-  // const setStickerInfo = useSetRecoilState(stickerState);
-
-  // 한별 수정
   // eslint-disable-next-line no-unused-vars
   const [stickerInfo, setStickerInfo] = useRecoilState(stickerState);
 
@@ -30,7 +24,6 @@ export default function StickerListModal({ setModalOpen }) {
         .get(requests.fetchStickers)
         .then((response) => {
           setStickerList(response.data.stickers);
-          // console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
@@ -56,10 +49,8 @@ export default function StickerListModal({ setModalOpen }) {
 
   const stickerHandler = (e, sticker) => {
     e.preventDefault();
-    // stickerInfoValue(sticker);
     setStickerInfo(sticker);
     setModalOpen(false);
-    // console.log(sticker);
   };
 
   if (!stickerList) return <div>...loading</div>;
