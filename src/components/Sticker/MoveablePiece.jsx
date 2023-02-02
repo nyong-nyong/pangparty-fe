@@ -152,8 +152,8 @@ display: block; transform: translate(${clientX}px, ${
     });
   };
   onDrag = ({ target, clientX, clientY, top, left, isPinch }) => {
-    this.frame.set("left", `${left}px`);
-    this.frame.set("top", `${top}px`);
+    this.frame.set("left", `${left + 50}px`);
+    this.frame.set("top", `${top + 50}px`);
     this.setTransform(target);
     if (!isPinch) {
       this.setLabel(clientX, clientY, `X: ${left}px<br/>Y: ${top}px`);
