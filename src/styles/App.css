@@ -3,8 +3,28 @@
   margin: 0 auto;
   max-width: 360px;
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 800px;
+  min-height: 700px;
   border: 1px solid;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.contentWrapper {
+  flex: 1;
+}
+
+.footer {
+  margin: 5px 15px;
+}
+
+.footerbutton {
+  all: unset;
+  margin: 5px;
+  padding: 1px;
 }
 
 @font-face {
