@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Routers from "./pages/Routers";
+import NavBar from "./components/common/Navbar";
 import "./styles/App.css";
 
 // 여기는 완전 최상위 컴포넌트
@@ -11,6 +12,7 @@ function App() {
     <div className="appContainer">
       <RecoilRoot>
         <BrowserRouter>
+          <NavBar />
           <Routers />
         </BrowserRouter>
       </RecoilRoot>
