@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./StickerListModal.css";
+import MoveablePiece from "./MoveablePiece";
 
-export default function StickerListModal({ setModalOpen }) {
+export default function StickerListModal({ setModalOpen, modalOpen }) {
   const [stickerList, setStickerList] = useState([]);
   const [clickSticker, setClickSticker] = useState(undefined);
 
@@ -12,8 +13,6 @@ export default function StickerListModal({ setModalOpen }) {
     setModalOpen(false);
   };
 
-  const modalRef = useRef();
-
   // 랜더링
   useEffect(() => {
     async function getSticker() {
@@ -21,41 +20,25 @@ export default function StickerListModal({ setModalOpen }) {
         .get(requests.fetchStickers)
         .then((response) => {
           setStickerList(response.data.stickers);
-          console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     }
     getSticker();
-
-    const handler = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        setModalOpen(false);
-      }
-    };
-    // 이벤트 핸들러 등록
-    document.addEventListener("mousedown", handler);
-    document.addEventListener("touchstart", handler); // 모바일 대응
-
-    return () => {
-      // 이벤트 핸들러 해제
-      document.removeEventListener("mousedown", handler);
-      document.removeEventListener("touchstart", handler); // 모바일 대응
-    };
   }, []);
 
   const stickerHandler = (e, sticker) => {
     setClickSticker(sticker);
-    setModalOpen(false);
+    // setModalOpen(false);
   };
 
+  // 로딩중..
   if (!stickerList) return <div>...loading</div>;
 
   return (
     <div>
-      <h1>여기여기</h1>
-      <div ref={modalRef} className="modalContainer">
+      {modalOpen && (
         <div className="modalContainer">
           <button type="button" className="close" onClick={closeModal}>
             x
@@ -80,7 +63,9 @@ export default function StickerListModal({ setModalOpen }) {
             })}
           </div>
         </div>
-      </div>
+      )}
+      {/* <div>{clickSticker && <MoveablePiece sticker={clickSticker} />}</div> */}
+      <div>{clickSticker && <MoveablePiece sticker={clickSticker} />}</div>
     </div>
   );
 }

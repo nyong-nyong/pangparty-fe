@@ -8,8 +8,8 @@ import requests from "../../api/requests";
 
 export default function StickerList() {
   const [stickerList, setStickerList] = useState([]);
-  const [stickerInfo, setStickerInfo] = useRecoilState(stickerState);
-  const [stickerClick, setStickerClick] = useRecoilState(stickerClickState);
+  // const [stickerInfo, setStickerInfo] = useRecoilState(stickerState);
+  // const [stickerClick, setStickerClick] = useRecoilState(stickerClickState);
 
   // 최초 랜더링시 실행
   useEffect(() => {
@@ -26,16 +26,16 @@ export default function StickerList() {
     getSticker();
   });
 
-  const saveStickerInfo = (e) => {
-    console.log(e.target);
+  // const saveStickerInfo = (e) => {
+  //   console.log(e.target);
 
-    setStickerInfo(e.target);
-    setStickerClick(true);
+  //   setStickerInfo(e.target);
+  //   setStickerClick(true);
 
-    // 1. atom을 활용해 sticker정보, click여부 저장(클릭 여부를 통해 피스리스트에서 확인)
+  //   // 1. atom을 활용해 sticker정보, click여부 저장(클릭 여부를 통해 피스리스트에서 확인)
 
-    // 2. 페이지 이동
-  };
+  //   // 2. 페이지 이동
+  // };
 
   if (!stickerList) return <div>...loading</div>;
 
