@@ -1,174 +1,154 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
-// import styled from "styled-components"
-import RpThemeChange from "../components/CreatePiece/RpThemeChange";
-import CreatedPiece from "../components/CreatePiece/CreatedPiece";
+import RpThemeChange from "../components/RpTheme/RpThemeChange";
 import "../components/CreatePiece/CreatePiece.css";
 
 // 롤링페이퍼 작성하는 페이지
 
 export default function CreatePiecePage() {
-  // 작성되는 내용, 작성 완료시 비워줘야 뒤로 왔을 때 비어있어요.
+  // 작성되는 내용
   const [pieceContent, setPieceContent] = useState({
-    uid: 0, // 식별key값 (현재 임의로 Date.now로 사용 중)
-    member_uid: null, // 유저 id값, 회원 비회원 여부 확인 가능
-    writer_name: "", // 작성가능한 이름, 초기값 세팅 필요
+    rollingPaperPieceUid: "",
+    writerUid: "",
+    createTime: "",
+    modifyTime: "",
     content: "",
-    font: "Pretendard",
+    bgColor: "CFCFCF",
+    fontFamily: "Pretendard",
+    textColor: "000000",
+    textAlign: "center",
   });
 
-  // 작성완료되어 아래로 넘겨줄 내용, 추후엔 DB로 넘겨주게 수정해야함. 일단 이 위치에서 리스트를 저장함
-  const [createdPieces, setCreatedPieces] = useState([]);
+  // 테마 변경 활성화 여부
+  const [themeChange, setThemeChange] = useState({
+    font: false,
+    align: false,
+    color: false,
+  });
 
-  const [fontActivation, setFontActivation] = useState(false);
-  const [alignActivation, setAlignActivation] = useState(false);
-  const [colorActivation, setColorActivation] = useState(false);
-
-  // 작성완료시 제출하고 내용 초기화
-  const submitPiece = () => {
-    setCreatedPieces([...createdPieces, pieceContent]);
-    setPieceContent({
-      uid: 0,
-      member_uid: null,
-      writer_name: "",
-      content: "",
-      font: "Pretendard",
-    });
-    const newClassName = `RollingPaperCard-Pretendard`;
-    const inputTextArea = document.getElementById("inputTextArea");
-    inputTextArea.className = newClassName;
-    // console.log(inputTextArea)
+  // 타이핑 중인 내용 확인 함수
+  const pieceHandler = (e) => {
+    if (e.target.className === "writerUid") {
+      const newPieceInfo = { ...pieceContent };
+      newPieceInfo.writerUid = e.target.value;
+      newPieceInfo.createTime = Date.now();
+      newPieceInfo.modifyTime = Date.now();
+      setPieceContent(newPieceInfo);
+    }
+    if (e.target.className === "pieceContent") {
+      const newPieceInfo = { ...pieceContent };
+      newPieceInfo.content = e.target.value;
+      newPieceInfo.createTime = Date.now();
+      newPieceInfo.modifyTime = Date.now();
+      setPieceContent(newPieceInfo);
+    }
   };
 
-  // 타이핑되는 내용 저장
-  const typingPiece = (e) => {
-    setPieceContent({
-      uid: Date.now(), // 식별key값 (현재 임의로 Date.now로 사용 중)
-      member_uid: null, // 유저 id값, 회원 비회원 여부 확인 가능
-      writer_name: pieceContent.writer_name, // 작성가능한 이름, 초기값 세팅 필요
-      content: e.target.value,
-      font: pieceContent.font,
-    });
+  // 작성 완료시 api post 이벤트 발생으로 수정 예정
+  const postPiece = (e) => {
+    e.preventDefault();
+    console.log(pieceContent);
   };
 
-  const typingWriter = (e) => {
-    setPieceContent({
-      uid: Date.now(), // 식별key값 (현재 임의로 Date.now로 사용 중)
-      member_uid: null, // 유저 id값, 회원 비회원 여부 확인 가능
-      writer_name: e.target.value, // 작성가능한 이름, 초기값 세팅 필요
-      content: pieceContent.content,
-      font: pieceContent.font,
-    });
-  };
-
-  const isFontActive = () => {
-    setFontActivation(!fontActivation);
-    setAlignActivation(false);
-    setColorActivation(false);
-  };
-
-  const isAlignActive = () => {
-    setFontActivation(false);
-    setAlignActivation(!alignActivation);
-    setColorActivation(false);
-  };
-
-  const isColorActive = () => {
-    setFontActivation(false);
-    setAlignActivation(false);
-    setColorActivation(!colorActivation);
-  };
-
-  // 폰트 버튼 클릭시 발생하는 이벤트 처리
-  const inputRef = useRef(null);
-
-  const handleFontBtnClick = () => {
-    inputRef.current.focus();
-    const newClassName = `RollingPaperCard-${pieceContent.font}`;
-    inputRef.current.className = newClassName;
-    // console.log(inputRef.current.className)
+  // 테마 변경을 위한 버튼
+  const themeChangeHandler = (e) => {
+    const newThemeChange = {
+      font: false,
+      align: false,
+      color: false,
+    };
+    newThemeChange[e.target.value] = true;
+    setThemeChange(newThemeChange);
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>롤링페이퍼 작성페이지 </h1>
+    <div className="createPieceContainer">
+      {/* 상단 좌우 이동 버튼 임시 제작 */}
+      <div className="createPiecePageHeader">
+        <button type="button">이전</button>
+        <h4>롤링페이퍼 작성페이지</h4>
+        <button type="button" onClick={postPiece}>
+          다음
+        </button>
+      </div>
 
-      <div className="pieceContainer">
+      {/* 롤링페이퍼 작성 */}
+      <div
+        className="pieceContainer"
+        onChange={pieceHandler}
+        style={{
+          backgroundColor: `#${pieceContent.bgColor}`,
+        }}
+      >
         <textarea
-          id="inputTextArea"
-          className="pieceWrite"
+          className="pieceContent"
           placeholder="내용을 입력해주세요"
-          onChange={typingPiece}
-          value={pieceContent.content}
-          ref={inputRef}
+          defaultValue={pieceContent.content}
+          style={{
+            fontFamily: `${pieceContent.fontFamily}`,
+            color: `#${pieceContent.textColor}`,
+            textAlign: `${pieceContent.textAlign}`,
+          }}
         />
-        <span>
-          From.
+        <div
+          className="from"
+          style={{
+            width: "100px",
+            color: `#${pieceContent.textColor}`,
+            fontFamily: `${pieceContent.fontFamily}`,
+          }}
+        >
+          <p className="fromTag">From.</p>
           <input
             type="text"
-            className="writerName"
-            onChange={typingWriter}
-            value={pieceContent.writer_name}
+            className="writerUid"
             placeholder=""
+            defaultValue={pieceContent.writerUid}
+            style={{
+              display: "inline-block",
+              fontFamily: `${pieceContent.fontFamily}`,
+              color: `#${pieceContent.textColor}`,
+            }}
           />
-        </span>
+        </div>
       </div>
+
       {/* 버튼 눌렀을 때 그 버튼 기능에 맞는 compnent만 렌더링 합니다. */}
       <div className="buttonContainer">
         <button
+          type="button"
           className="changeButton"
           id="fontChangeButton"
-          type="button"
-          onClick={isFontActive}
           value="font"
+          onClick={themeChangeHandler}
         >
           T
         </button>
         <button
+          type="button"
           className="changeButton"
           id="alignChangeButton"
-          type="button"
-          onClick={isAlignActive}
           value="align"
+          onClick={themeChangeHandler}
         >
           정렬
         </button>
         <button
+          type="button"
           className="changeButton"
           id="colorChangeButton"
-          type="button"
-          onClick={isColorActive}
           value="color"
+          onClick={themeChangeHandler}
         >
           컬러
         </button>
       </div>
 
       <RpThemeChange
-        fontActivation={fontActivation}
-        alignActivation={alignActivation}
-        colorActivation={colorActivation}
         pieceContent={pieceContent}
         setPieceContent={setPieceContent}
-        handleFontBtnClick={handleFontBtnClick}
+        themeChange={themeChange}
       />
-
-      {/* 일단 데이터 이동 확인을 위해 link에서 밖으로 뺐습니다. */}
-      <button type="submit" onClick={submitPiece} style={{ margin: "5%" }}>
-        다음
-      </button>
-      {/* 폰트 버튼 기능 추가 */}
-      {/* 내용작성 시 enter를 통해 줄바꿈을 하게 되는데, form으로 submit이벤트 발동시키면 줄바꿈 해야하는데 제출되어버리니까 form으로 묶지 않았습니다.  */}
-
-      <div style={{ marginTop: "20px" }}>
-        <CreatedPiece createdPieces={createdPieces} />
-      </div>
 
       <Link to="/rollingpaper">
         <button type="button" style={{ marginTop: "20px" }}>
