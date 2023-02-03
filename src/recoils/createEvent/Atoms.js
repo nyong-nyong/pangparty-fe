@@ -1,12 +1,12 @@
 import { atom } from "recoil";
 
-/** 축히 당할 사람 정보 */
+// 축하 당할 사람 정보
 const targetsTagState = atom({
   key: "targetsTagState",
   default: [],
 });
 
-/** 디데이 날짜 정보 */
+// 디데이 날짜 정보
 const dDayState = atom({
   key: "dDayState",
   default: "",
@@ -24,6 +24,19 @@ const hashTagState = atom({
   default: [],
 });
 
+// 이벤트 이미지 정보
+const imgUrlState = atom({
+  key: "imgUrlState",
+  default: "",
+});
+
+// 이벤트명 정보
+const eventNameState = atom({
+  key: "eventNameState",
+  default: "",
+});
+
+/*
 const createEventState = atom({
   key: "createEventState",
   default: {
@@ -63,11 +76,13 @@ const createEventState = atom({
     hasFunding: 0,
   },
 });
+*/
 
 export {
   targetsTagState,
   dDayState,
   eventIntroState,
   hashTagState,
-  createEventState,
+  imgUrlState,
+  eventNameState,
 };

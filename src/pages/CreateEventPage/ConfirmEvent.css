@@ -1,0 +1,23 @@
+.bannerContainer {
+  width: 80%;
+}
+
+.banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.confirmContainer {
+  font-family: "Pretendard-Regular";
+  margin-left: 20px;
+}
+
+.confirmInfos {
+  margin-bottom: 40px;
+}
+
+.labels {
+  color: #ff957d;
+  margin-left: -5px;
+}

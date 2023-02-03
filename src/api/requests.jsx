@@ -13,6 +13,7 @@ const requests = {
   },
 
   events: {
+    postEvent: eventsBaseUrl,
     album: {
       albumBaseUrl: "/album",
       commentBaseUrl: "/comments",

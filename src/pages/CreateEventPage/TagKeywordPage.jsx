@@ -7,9 +7,11 @@ function TagKeywordPage() {
   const [hashTagInfo, setHashTagInfo] = useRecoilState(hashTagState);
 
   const hashTagHandler = (e) => {
-    let newhashTag = { ...hashTagInfo };
-    newhashTag = e.target.value;
-    setHashTagInfo(newhashTag)
+    const newhashTag = {
+      uid: 123,
+      name: e.target.value,
+    };
+    setHashTagInfo(newhashTag);
   };
   return (
     <div>

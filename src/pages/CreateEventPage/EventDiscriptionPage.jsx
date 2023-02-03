@@ -7,8 +7,8 @@ function EventDiscription() {
   const [eventIntroInfo, setEventIntroInfo] = useRecoilState(eventIntroState);
 
   const eventIntroHandler = (e) => {
-    let newEventIntro = { ...eventIntroInfo };
-    newEventIntro = e.target.value
+    // let newEventIntro = { ...eventIntroInfo };
+    const newEventIntro = e.target.value
     setEventIntroInfo(newEventIntro)
   };
 

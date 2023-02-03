@@ -14,6 +14,7 @@ function DdayCalendar() {
   const dDayHandler = (e) =>{
     e.preventDefault();
     const newDDay = value
+    // console.log(typeof(value));
     setDDayInfo(newDDay)
   }
 
