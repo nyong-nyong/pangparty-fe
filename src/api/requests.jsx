@@ -7,22 +7,22 @@ const requests = {
     searchBaseUrl: "/search",
 
     /** 검색 값 GET 요청(type : member, event, hashtag) */
-    getSearch(type, query, page, limit) {
-      return `${this.searchBaseUrl}/type=${type}&query=${query}&page=${page}&limite=${limit}`;
+    getSearch(type, keyword, page, limit) {
+      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&limit=${limit}`;
     },
   },
 
   following: {
     followingBaseUrl: "/following",
 
-    /** 팔로우 POST 요청 */
+    /** 팔로우 POST 요청 : body에 해당 {"id": value} 넣어주기 */
     postFollowing() {
-      reutrn ``;
+      return this.followingBaseUrl;
     },
 
-    /** 팔로우 취소 DEL 요청 */
+    /** 팔로우 취소 DEL 요청 : body에 해당 {"id": value} 넣어주기 */
     delFollowing() {
-      reutrn ``;
+      return this.followingBaseUrl;
     },
   },
 

@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
 
-export default function SearchMemberResult(member) {
+export default function SearchMemberResult({member}) {
 
   const [isFollowed, setIsFollowed] = useState();
 
   useEffect(() => {
     setIsFollowed(member.isFollowed);
+    // console.log(member.isFollowed)
   }, [member]);
 
   const onClickProfile = () => {
@@ -23,9 +24,10 @@ export default function SearchMemberResult(member) {
 
     async function unfollow() {
       await axios
-        .delete(requests.following.delFollowing())
+        .delete(requests.following.delFollowing(), {id: member.id})
         .then((res) => {
           setIsFollowed(!isFollowed)
+          console.log(res)
         })
         .catch((err) => {
           console.log(err);
@@ -34,23 +36,24 @@ export default function SearchMemberResult(member) {
 
     async function follow() {
       await axios
-        .delete(requests.following.postFollowing())
+        .post(requests.following.postFollowing(), {id: member.id})
         .then((res) => {
           setIsFollowed(!isFollowed)
+          console.log(res)
         })
         .catch((err) => {
           console.log(err);
         });
     }
     
-    if(isFollowed) return unfollow;
-    return follow;
+    if(isFollowed) return unfollow();
+    return follow();
   }
 
   return (
-    <div>
+    <li>
       <div onClick={onClickProfile}>
-        <img src={member.imgUrl}/>
+        <img src={member.imgUrl} width="100px" height="100px"/>
       </div>
       <div onClick={onClickProfile}>
         <span>{member.id}</span>
@@ -62,6 +65,6 @@ export default function SearchMemberResult(member) {
           <button onClick={(e) => onClickFollow(e)}>팔로우</button>
         }
       </div>
-    </div>
+    </li>
   )
 }
