@@ -1,28 +1,29 @@
 /* 모달창을 화면 중앙. 최상단에 노출 */
 .modalContainer {
-  /* 모달창 크기 */
+  /*모달창크기*/
   width: 300px;
-
-  /* 최상단 위치 */
+  /*최상단위치*/
   z-index: 300;
-
-  /* 중앙 배치 */
-  /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
-  /* translate는 본인의 크기 기준으로 작동한다. */
+  /*중앙배치*/ /*top,bottom,left,right는브라우저기준으로작동한다.*/ 
   position: absolute;
   top: 50%;
   left: 50%;
+  /*translate는본인의크기기준으로작동한다.*/
   transform: translate(-50%, -50%);
-
-  /* 모달창 디자인 */
-  background-color: rgba(100, 100, 100, 0.1);
+  /*모달창디자인*/
+  background-color: rgba(71, 71, 71, 0.4);
   border-radius: 8px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 /* 모달창 내부 X버튼 */
 .close {
   position: absolute;
   border: none;
-  right: 10px;
-  top: 10px;
+  background-color: transparent;
+  right: 3%;
+  top: 3%;
 }

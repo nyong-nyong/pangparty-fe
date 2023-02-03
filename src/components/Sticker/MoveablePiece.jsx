@@ -8,6 +8,30 @@ import Moveable from "react-moveable";
 import React from "react";
 import "./MoveablePiece.css";
 
+// 한별 수정
+const customAble = {
+  name: "tooltool",
+  render(moveable) {
+    const { renderPoses } = moveable.state;
+
+    return (
+      <button
+        className="stickerClose"
+        onClick={() => {
+          alert("ㅎㅎ");
+        }}
+        style={{
+          position: "absolute",
+          transform: `translate(-50%, -50%) translate(${renderPoses[1][0]}px, ${renderPoses[1][1]}px) translateZ(-50px)`,
+          zIndex: 100,
+        }}
+      >
+        <img alt="exit" src={`${process.env.PUBLIC_URL}/image/exit.png`} style={{width: "10px"}}/>
+      </button>
+    );
+  },
+};
+
 class MoveablePiece extends React.Component {
   frame = new Frame({
     position: "absolute",
@@ -26,11 +50,9 @@ class MoveablePiece extends React.Component {
     target: null,
     container: null,
     scalable: true,
-    resizable: false,
-    warpable: false,
   };
   render() {
-    const { scalable, warpable, resizable, target } = this.state;
+    const { scalable, target } = this.state;
     const sticker = this.props.sticker ? this.props.sticker : {};
     // console.log(sticker);
 
@@ -43,161 +65,102 @@ class MoveablePiece extends React.Component {
           container={document.body}
           draggable={true}
           scalable={scalable}
-          resizable={resizable}
-          warpable={warpable}
           rotatable={true}
-          pinchable={true}
           origin={false}
           throttleDrag={1}
           throttleRotate={0.2}
-          throttleResize={1}
           throttleScale={0.01}
           onDrag={this.onDrag}
-          onResize={this.onResize}
           onScale={this.onScale}
-          onWarp={this.onWarp}
           onRotate={this.onRotate}
-          onPinch={this.onPinch}
           onDragEnd={this.onEnd}
           onScaleEnd={this.onEnd}
-          onResizeEnd={this.onEnd}
-          onWarpEnd={this.onEnd}
           onRotateEnd={this.onEnd}
-          onPinchEnd={this.onEnd}
+          // 한별 수정
+          ables={[customAble]}
+          tooltool={true}
         />
+
+        {/* 스티커 이미지 = moveable한 container */}
         <div className="container">
           <div className="moveable">
-            {sticker && (
-              <img
-                src={sticker.url}
-                // src={sticker}
-                position="relative"
-                width="100px"
-                height="100px;"
-              />
-            )}
-            {/* {sticker} */}
-            {/* <img
-              src={sticker.url}
-              // src={sticker}
-              position="relative"
-              width="100px"
-              height="100px;"
-            /> */}
+            <span>
+              {sticker && (
+                <img
+                  src={sticker.url}
+                  position="relative"
+                  width="100px"
+                  height="100px;"
+                />
+              )}
+            </span>
           </div>
         </div>
+
+        {/* 선택 영역 = label */}
         <div className="label" ref={ref(this, "label")} />
       </>
     );
   }
+
+  // 마운트 발생
   componentDidMount() {
     this.setState({
       target: document.querySelector(".moveable"),
     });
-    window.addEventListener("resize", this.onWindowReisze);
   }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.onWindowReisze);
-  }
-  onWindowReisze = () => {
-    this.moveable.updateRect();
-  };
   clickScalable = () => {
     this.setState({
       scalable: true,
-      resizable: false,
-      warpable: false,
     });
   };
-  clickResizable = () => {
-    this.setState({
-      scalable: false,
-      resizable: true,
-      warpable: false,
-    });
-  };
-  clickWarpable = () => {
-    this.setState({
-      scalable: false,
-      resizable: false,
-      warpable: true,
-    });
-  };
-
   setTransform(target) {
     target.style.cssText = this.frame.toCSS();
   }
   setLabel(clientX, clientY, text) {
-    this.label.style.cssText = `
-display: block; transform: translate(${clientX}px, ${
-      clientY - 10
-    }px) translate(-100%, -100%) translateZ(-100px);`;
+    this.label.style.cssText = `display: block; 
+      transform: translate(${clientX}px, ${clientY - 10}px) 
+      translate(-100%, -100%)
+      translateZ(-100px);`;
     this.label.innerHTML = text;
   }
-  onPinch = ({ clientX, clientY }) => {
-    setTimeout(() => {
-      this.setLabel(
-        clientX,
-        clientY,
-        `X: ${this.frame.get("left")}
-  <br/>Y: ${this.frame.get("top")}
-  <br/>W: ${this.frame.get("width")}
-  <br/>H: ${this.frame.get("height")}
-  <br/>S: ${this.frame.get("transform", "scaleX").toFixed(2)}, ${this.frame
-          .get("transform", "scaleY")
-          .toFixed(2)}
-  <br/>R: ${parseFloat(this.frame.get("transform", "rotate")).toFixed(1)}deg
-  `
-      );
-    });
-  };
-  onDrag = ({ target, clientX, clientY, top, left, isPinch }) => {
-    this.frame.set("left", `${left + 50}px`);
-    this.frame.set("top", `${top + 50}px`);
+  // onDrag = ({ target, clientX, clientY, top, left, isPinch }) => {
+  onDrag = ({ target, top, left }) => {
+    // `${left + 50}px` -> `${left}px`
+    // 커서 조정 수정(23.02.03 11: 37)
+    this.frame.set("left", `${left}px`);
+    this.frame.set("top", `${top}px`);
     this.setTransform(target);
-    if (!isPinch) {
-      this.setLabel(clientX, clientY, `X: ${left}px<br/>Y: ${top}px`);
-    }
+    // if (!isPinch) {
+    //   this.setLabel(clientX, clientY, `X: ${left}px<br/>Y: ${top}px`);
+    // }
   };
-  onScale = ({ target, delta, clientX, clientY, isPinch }) => {
+  // onScale = ({ target, delta, clientX, clientY, isPinch }) => {
+  onScale = ({ target, delta }) => {
     const scaleX = this.frame.get("transform", "scaleX") * delta[0];
-    const scaleY = this.frame.get("transform", "scaleY") * delta[1];
+    // delta[1] -> delta[0]로 수정(23.02.03 10:35 한별)
+    // 대각선 방향 스케일만 커지게 된..듯?
+    const scaleY = this.frame.get("transform", "scaleY") * delta[0];
     this.frame.set("transform", "scaleX", scaleX);
     this.frame.set("transform", "scaleY", scaleY);
     this.setTransform(target);
-    if (!isPinch) {
-      this.setLabel(
-        clientX,
-        clientY,
-        `S: ${scaleX.toFixed(2)}, ${scaleY.toFixed(2)}`
-      );
-    }
+    // if (!isPinch) {
+    //   this.setLabel(
+    //     clientX,
+    //     clientY,
+    //     `S: ${scaleX.toFixed(2)}, ${scaleY.toFixed(2)}`
+    //   );
+    // }
   };
-  onRotate = ({ target, clientX, clientY, beforeDelta, isPinch }) => {
+  // onRotate = ({ target, clientX, clientY, beforeDelta, isPinch }) => {
+  onRotate = ({ target, beforeDelta }) => {
     const deg = parseFloat(this.frame.get("transform", "rotate")) + beforeDelta;
 
     this.frame.set("transform", "rotate", `${deg}deg`);
     this.setTransform(target);
-    if (!isPinch) {
-      this.setLabel(clientX, clientY, `R: ${deg.toFixed(1)}`);
-    }
-  };
-  onResize = ({ target, clientX, clientY, width, height, isPinch }) => {
-    this.frame.set("width", `${width}px`);
-    this.frame.set("height", `${height}px`);
-    this.setTransform(target);
-    if (!isPinch) {
-      this.setLabel(clientX, clientY, `W: ${width}px<br/>H: ${height}px`);
-    }
-  };
-  onWarp = ({ target, clientX, clientY, delta, multiply }) => {
-    this.frame.set(
-      "transform",
-      "matrix3d",
-      multiply(this.frame.get("transform", "matrix3d"), delta)
-    );
-    this.setTransform(target);
-    this.setLabel(clientX, clientY, `X: ${clientX}px<br/>Y: ${clientY}px`);
+    // if (!isPinch) {
+    //   this.setLabel(clientX, clientY, `R: ${deg.toFixed(1)}`);
+    // }
   };
   onEnd = () => {
     this.label.style.display = "none";

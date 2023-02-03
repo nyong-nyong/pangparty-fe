@@ -10,23 +10,38 @@
 }
 
 .container {
-  position: relative;
-  top: 100px;
-  left: 100px;
+  position: absolute;
+  top: calc(30% - 50px);
+  left: calc(50% - 50px);
   transform: translate(-50%, -50%);
   z-index: 999;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 .moveable {
-  font-family: "Roboto", sans-serif;
   position: relative;
   width: 100px;
   height: 100px;
   text-align: center;
-  font-size: 40px;
   margin: 0px auto;
-  font-weight: 100;
-  letter-spacing: 1px;
+}
+
+.stickerClose {
+  position: relative;
+  border: none;
+  background-color: red;
+  border-radius: 10rem;
+  width: 20px;
+  height: 20px;
+  z-index: 1001;
+  left: 60%;
+  -webkit-border-radius: 10rem;
+  -moz-border-radius: 10rem;
+  -ms-border-radius: 10rem;
+  -o-border-radius: 10rem;
 }
 
 .moveable span {
@@ -35,6 +50,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 .description {
@@ -71,13 +90,17 @@
   padding: 12px 30px;
   min-width: 140px;
   text-align: center;
-  /* font-weight: 400; */
+  /*font-weight: 400;*/
   display: inline-block;
   box-sizing: border-box;
   margin: 5px;
   transition: all ease 0.5s;
   font-size: 15px;
   background: transparent;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -ms-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
 }
 .buttons button:hover,
 .buttons button.selected,
@@ -105,6 +128,10 @@
   font-size: 12px;
   display: none;
   transform: translate(-100%, -100%);
+  -webkit-transform: translate(-100%, -100%);
+  -moz-transform: translate(-100%, -100%);
+  -ms-transform: translate(-100%, -100%);
+  -o-transform: translate(-100%, -100%);
 }
 
 .page.feature,

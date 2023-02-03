@@ -51,6 +51,7 @@ export default function StickerListModal({ setModalOpen }) {
     e.preventDefault();
     setStickerInfo(sticker);
     setModalOpen(false);
+    // console.log(e);
   };
 
   if (!stickerList) return <div>...loading</div>;
@@ -59,7 +60,7 @@ export default function StickerListModal({ setModalOpen }) {
     <div>
       <div ref={modalRef} className="modalContainer">
         <button type="button" className="close" onClick={closeModal}>
-          x
+          <img alt="exit" src={`${process.env.PUBLIC_URL}/image/exit.png`} />
         </button>
         <div className="stickerImg">
           {stickerList.map((sticker) => {
