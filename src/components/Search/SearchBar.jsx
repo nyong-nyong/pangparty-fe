@@ -23,20 +23,21 @@ export default function SearchBar() {
   const debouncedSearchText = useDebounce(searchText, 1000);
 
   const fetchSearchText = async (text) => {
-    // console.log(type);
+    console.log(type);
     const request = await axios
       .get(requests.search.getSearch(type, text, 1, 30))
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setSearchResults(response.data.results);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
       });
   };
 
   useEffect(() => {
     if (debouncedSearchText) {
+      // console.log(debouncedSearchText)
       fetchSearchText(debouncedSearchText);
     }
   }, [debouncedSearchText, type]);
