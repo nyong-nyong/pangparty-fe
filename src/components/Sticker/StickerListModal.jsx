@@ -47,6 +47,8 @@ export default function StickerListModal({ setModalOpen }) {
     };
   }, []);
 
+  // sticker 클릭하면 recoil에 클릭한 sticekr 저장
+  // modal은 closw
   const stickerHandler = (e, sticker) => {
     e.preventDefault();
     setStickerInfo(sticker);

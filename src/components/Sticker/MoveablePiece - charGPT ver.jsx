@@ -4,16 +4,37 @@
 // import ReactDOM from "react-dom";
 import { ref } from "framework-utils";
 import { Frame } from "scenejs";
+import { stickerState } from "./Atom";
+import { useRecoilState } from "recoil";
 import Moveable from "react-moveable";
 import React from "react";
 import "./MoveablePiece.css";
-import StickerClose from "./StickerClose";
 
+// 한별 수정
 const customAble = {
   name: "tooltool",
   render(moveable) {
-    // 한별 수정 23-02-03 17:21
-    return <StickerClose />;
+    const { renderPoses } = moveable.state;
+
+    return (
+      <button
+        className="stickerClose"
+        onClick={() => {
+          const resetSticker = useRecoilState(stickerState);
+        }}
+        style={{
+          position: "absolute",
+          transform: `translate(-50%, -50%) translate(${renderPoses[1][0]}px, ${renderPoses[1][1]}px) translateZ(-50px)`,
+          zIndex: 100,
+        }}
+      >
+        <img
+          alt="exit"
+          src={`${process.env.PUBLIC_URL}/image/exit.png`}
+          style={{ width: "10px" }}
+        />
+      </button>
+    );
   },
 };
 
