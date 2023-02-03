@@ -8,7 +8,21 @@ const requests = {
 
     /** 검색 값 GET 요청(type : member, event, hashtag) */
     getSearch(type, query, page, limit) {
-      return `${this.searchBaseUrl}?type=${type}&query=${query}&page=${page}&limite=${limit}`;
+      return `${this.searchBaseUrl}/type=${type}&query=${query}&page=${page}&limite=${limit}`;
+    },
+  },
+
+  following: {
+    followingBaseUrl: "/following",
+
+    /** 팔로우 POST 요청 */
+    postFollowing() {
+      reutrn ``;
+    },
+
+    /** 팔로우 취소 DEL 요청 */
+    delFollowing() {
+      reutrn ``;
     },
   },
 
