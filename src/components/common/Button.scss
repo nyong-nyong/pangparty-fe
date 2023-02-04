@@ -9,10 +9,27 @@ $blue: #678cff; // 주석 선언
   border: none;
   cursor: pointer;
 
-  height: 2.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
+  // 사이즈 관리
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
   background: $blue; // 주석 사용
   &:hover {

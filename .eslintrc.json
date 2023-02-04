@@ -25,8 +25,13 @@
     "no-else-return": ["error", { "allowElseIf": true }],
     "import/no-extraneous-dependencies": [
       "error",
-      { "projectDependencies": false }, // npm install시 생기는 import 오류 무시
-      { "peerDependencies": true }
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false,
+        "bundledDependencies": false,
+        "dependencies": false
+      }
     ],
     "react/jsx-props-no-spreading": "off"
   }

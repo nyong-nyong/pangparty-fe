@@ -17,6 +17,8 @@ export default function HomePage() {
       <Link to="/event/tagmember">
         <div className="buttons">
           <Button>🎉이벤트 만들기🎉</Button>
+          <Button>🎉이벤트 만들기🎉</Button>
+          <Button>🎉이벤트 만들기🎉</Button>
         </div>
       </Link>
     </div>
