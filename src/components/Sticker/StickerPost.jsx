@@ -19,6 +19,7 @@ function StickerPost({ eventUid, rollingPaperUid }) {
         .then((res) => {
           // POST 완료하면 sticker 상태 다시 reset하기
           setSticker(undefined);
+          console.log(res);
         })
         .catch((error) => {
           console.log(error);
