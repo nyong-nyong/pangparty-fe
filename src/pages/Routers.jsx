@@ -5,7 +5,6 @@ import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
-import StickerList from "../components/Sticker/StickerList";
 import TagMemberPage from "./CreateEventPage/TagMemberPage";
 import EventDiscription from "./CreateEventPage/EventDiscriptionPage";
 import DdayCalendar from "./CreateEventPage/DdayCalendarPage";
@@ -14,7 +13,6 @@ import SelectImagePage from "./CreateEventPage/SelectImagePage";
 import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
-import CreateEventPage from "./CreateEventPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 

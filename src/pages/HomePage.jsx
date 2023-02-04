@@ -2,6 +2,7 @@
 // import SearchResults from "components/Search/SearchResults";
 // import SearchType from "components/Search/SearchType";
 import { Link } from "react-router-dom";
+import Button from "../components/common/Button";
 
 // 우리 메인 홈화면
 
@@ -14,7 +15,9 @@ export default function HomePage() {
       <SearchResults/> */}
       <Link to="/event/intro">이벤트 소개페이지 바로가기</Link>
       <Link to="/event/tagmember">
-        <button type="button">🎉이벤트 만들기🎉</button>
+        <div className="buttons">
+          <Button>🎉이벤트 만들기🎉</Button>
+        </div>
       </Link>
     </div>
   );
