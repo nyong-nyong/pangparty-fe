@@ -74,6 +74,7 @@ export default function PieceListPage() {
 
   // 롤링페이퍼 완성화면을 컴포넌트로 분리할 것
   // 다솜 + 규연 병합 후에 진행
+  // 병합 후에 recoil에 담긴 정보 피스랑 스티커 겹치지 않게 뿌려줄 것
   return (
     <div id="RP-page">
       <h1>완성된 롤링페이퍼 페이지</h1>
