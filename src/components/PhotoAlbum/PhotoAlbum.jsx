@@ -1,36 +1,67 @@
-// import { useEffect, useState } from "react";
-// import styled from "styled-components";
-// import axios from "axios";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import PhotoUpload from "./PhotoUpload";
+import PhotoCarousel from "./PhotoCarousel";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
-// export default function PhotoAlbum() {
-//   const [dummyPhotos, setDummyPhotos] = useState([]);
+export default function PhotoAlbum() {
+  const eventUid = 300001;
+  const page = 1;
+  const limit = 3000;
 
-//   useEffect(() => {
-//     async function fetchData() {
-//       const request = await axios.get("http://localhost:4000/requests");
-//       setDummyPhotos(request.data);
-//     }
-//     fetchData();
-//   }, []);
+  const [photoList, setPhotoList] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [photoSelected, setPhotoSelected] = useState({});
 
-//   return (
-//     <div>
-//       <h1>PhotoAlbum</h1>
-//       <AlbumFrame>
-//         {dummyPhotos.map((photo) => {
-//           if (photo) {
-//             return (
-//               <div key={photo.uid}>
-//                 <PhotoFrame src={photo.photo_url} />
-//               </div>
-//             );
-//           }
-//           return null;
-//         })}
-//       </AlbumFrame>
-//     </div>
-//   );
-// }
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(
+        requests.events.album.mediaAll(eventUid, page, limit)
+      );
+      setPhotoList(request.data.media);
+    }
+    fetchData();
+  }, []);
+
+  const handleModalClick = (photo) => {
+    setModalOpen(true);
+    setPhotoSelected(photo);
+  };
+
+  return (
+    <div>
+      <h1>PhotoAlbum</h1>
+      <AlbumFrame>
+        {photoList.map((photo) => {
+          if (photo) {
+            return (
+              <button
+                type="button"
+                key={photo.uid}
+                onClick={() => handleModalClick(photo)}
+                onKeyDown={() => handleModalClick(photo)}
+              >
+                <PhotoFrame src={photo.mediaUrl} />
+              </button>
+            );
+          }
+          return null;
+        })}
+      </AlbumFrame>
+      <br />
+      {modalOpen && (
+        <PhotoCarousel
+          mediaUid={photoSelected.uid}
+          setModalOpen={setModalOpen}
+          eventUid={eventUid}
+        />
+      )}
+      <br />
+      <PhotoUpload eventUid={eventUid} />
+    </div>
+  );
+}
 
 // const AlbumFrame = styled.div`
 //   display: flex;
