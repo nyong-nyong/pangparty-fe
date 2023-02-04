@@ -2,14 +2,15 @@
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { eventIntroState } from "../../recoils/createEvent/Atoms";
+import Button from "../../components/common/Button";
 
 function EventDiscription() {
   const [eventIntroInfo, setEventIntroInfo] = useRecoilState(eventIntroState);
 
   const eventIntroHandler = (e) => {
     // let newEventIntro = { ...eventIntroInfo };
-    const newEventIntro = e.target.value
-    setEventIntroInfo(newEventIntro)
+    const newEventIntro = e.target.value;
+    setEventIntroInfo(newEventIntro);
   };
 
   return (
@@ -21,7 +22,7 @@ function EventDiscription() {
         onChange={eventIntroHandler}
       />
       <Link to="/event/tagkwd">
-        <button>다음</button>
+        <Button>다음</Button>
       </Link>
     </div>
   );

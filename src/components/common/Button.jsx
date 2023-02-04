@@ -1,7 +1,8 @@
+/** eslint-disable */
 import classNames from "classnames";
 import "./Button.scss";
 
-function Button({ children, size, color, rest }) {
+function Button({ children, size, color, ...rest }) {
   return (
     <button
       type="button"
@@ -19,7 +20,7 @@ function Button({ children, size, color, rest }) {
 
 Button.defaultProps = {
   size: "large",
-  color: "orange",
+  color: "gray",
 };
 
 export default Button;

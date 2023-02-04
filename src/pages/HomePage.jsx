@@ -13,10 +13,12 @@ export default function HomePage() {
       {/* <SearchBar/>
       <SearchType/>
       <SearchResults/> */}
-      <Link to="/event/intro">이벤트 소개페이지 바로가기</Link>
+      <Link to="/event/intro">
+        <Button>이벤트 소개페이지 바로가기</Button>
+      </Link>
       <Link to="/event/tagmember">
         <div className="buttons">
-          <Button size="large">🎉이벤트 만들기🎉</Button>
+          <Button>🎉이벤트 만들기🎉</Button>
         </div>
       </Link>
     </div>
