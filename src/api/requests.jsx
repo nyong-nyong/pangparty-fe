@@ -66,7 +66,7 @@ const requests = {
     },
 
     /** 롤링페이퍼 */
-    rollingPapger: {
+    rollingPaper: {
       rpBaseUrl: "/rollingpaper",
       stickerBaseUrl: "/stickers",
 

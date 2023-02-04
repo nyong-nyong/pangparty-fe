@@ -14,7 +14,7 @@ function StickerPost({ eventUid, rollingPaperUid }) {
     async function sticker() {
       await axios
         .post(
-          requests.events.rollingPapger.postSticker(eventUid, rollingPaperUid)
+          requests.events.rollingPaper.postSticker(eventUid, rollingPaperUid)
         )
         .then((res) => {
           // POST 완료하면 sticker 상태 다시 reset하기

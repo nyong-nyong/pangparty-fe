@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from "axios";
+import axios from "../api/axios";
 import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -24,9 +24,17 @@ export default function PieceListPage() {
 
   useEffect(() => {
     async function fetchStickerList() {
+      console.log(
+        requests.events.rollingPaper.rpStickerAll(
+          eventUid,
+          rollingPaperUid,
+          topStart,
+          topEnd
+        )
+      );
       await axios
         .get(
-          requests.events.rollingPapger.rpStickerAll(
+          requests.events.rollingPaper.rpStickerAll(
             eventUid,
             rollingPaperUid,
             topStart,
