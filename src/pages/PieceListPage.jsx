@@ -23,19 +23,41 @@ export default function PieceListPage() {
   const topEnd = 100;
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(
-        requests.events.rollingPapger.rpStickerAll(
-          eventUid,
-          rollingPaperUid,
-          topStart,
-          topEnd
+    async function fetchStickerList() {
+      await axios
+        .get(
+          requests.events.rollingPapger.rpStickerAll(
+            eventUid,
+            rollingPaperUid,
+            topStart,
+            topEnd
+          )
         )
-      );
-      setStickerListData(request.data);
+        .then((res) => {
+          setStickerListData(res.data.rollingPaperStickers);
+          console.log(res);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
-    fetchData();
+    fetchStickerList();
   }, []);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const request = await axios.get(
+  //       requests.events.rollingPapger.rpStickerAll(
+  //         eventUid,
+  //         rollingPaperUid,
+  //         topStart,
+  //         topEnd
+  //       )
+  //     );
+  //     setStickerListData(request.data.rollingPapgerStickers);
+  //   }
+  //   fetchData();
+  // }, []);
 
   // 모달 오픈
   const showModal = () => {
