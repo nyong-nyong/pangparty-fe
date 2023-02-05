@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import axios from "../../api/axios";
 // import requests from "../../api/requests";
@@ -11,6 +11,15 @@ export default function SearchHashtagResult({ hashtag }) {
     navigate("/");
     // 해당 이벤트 페이지로 이동
   };
+
+  const [canRender, setCanRender] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCanRender(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // const [isLike, setIsLike] = useState();
 
@@ -52,16 +61,22 @@ export default function SearchHashtagResult({ hashtag }) {
 
   return (
     <li>
-      <div onClick={onClickHashtag}>
-        <span>#</span>
-        <span>{hashtag.name}</span>
-      </div>
-      {/* <div>
+      {canRender ? (
+        <div>
+          <div onClick={onClickHashtag}>
+            <span>#</span>
+            <span>{hashtag.name}</span>
+          </div>
+          {/* <div>
         { isLike ?
           <button onClick={(e) => onClickFollow(e)}>좋아요 취소</button>:
           <button onClick={(e) => onClickFollow(e)}>좋아요</button>
         }
       </div> */}
+        </div>
+      ) : (
+        <span>Loading...</span>
+      )}
     </li>
   );
 }

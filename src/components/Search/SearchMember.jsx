@@ -21,6 +21,15 @@ export default function SearchMemberResult({ member }) {
     // 해당 멤버의 프로필로 이동
   };
 
+  const [canRender, setCanRender] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCanRender(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const onClickFollow = (e) => {
     e.preventDefault();
 
@@ -54,20 +63,26 @@ export default function SearchMemberResult({ member }) {
 
   return (
     <li>
-      <div onClick={onClickProfile}>
-        <img src={member.imgUrl} width="100px" height="100px" />
-      </div>
-      <div onClick={onClickProfile}>
-        <span>{member.id}</span>
-        <span>{member.name}</span>
-      </div>
-      <div>
-        {isFollowed ? (
-          <button onClick={(e) => onClickFollow(e)}>팔로우 취소</button>
-        ) : (
-          <button onClick={(e) => onClickFollow(e)}>팔로우</button>
-        )}
-      </div>
+      {canRender ? (
+        <div>
+          <div onClick={onClickProfile}>
+            <img src={member.imgUrl} width="100px" height="100px" />
+          </div>
+          <div onClick={onClickProfile}>
+            <span>{member.id}</span>
+            <span>{member.name}</span>
+          </div>
+          <div>
+            {isFollowed ? (
+              <button onClick={(e) => onClickFollow(e)}>팔로우 취소</button>
+            ) : (
+              <button onClick={(e) => onClickFollow(e)}>팔로우</button>
+            )}
+          </div>
+        </div>
+      ) : (
+        <span>Loading...</span>
+      )}
     </li>
   );
 }

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useRecoilValue } from "recoil";
+import { useEffect } from "react";
 import {
   searchResultsState,
   searchTypeState,
@@ -24,26 +25,29 @@ export default function SearchResults() {
     case "member":
       return (
         <ul>
-          {searchResults.map((member) => {
-            return <SearchMemberResult key={member.id} member={member} />;
-          })}
+          {searchResults &&
+            searchResults.map((member) => (
+              <SearchMemberResult key={member.id} member={member} />
+            ))}
         </ul>
       );
 
     case "event":
       return (
         <ul>
-          {searchResults.map((event) => {
-            return <SearchEventResult key={event.uid} event={event} />;
-          })}
+          {searchResults &&
+            searchResults.map((event) => (
+              <SearchEventResult key={event.uid} event={event} />
+            ))}
         </ul>
       );
     case "hashtag":
       return (
         <ul>
-          {searchResults.map((hashtag) => {
-            return <SearchHashtagResult key={hashtag.name} hashtag={hashtag} />;
-          })}
+          {searchResults &&
+            searchResults.map((hashtag) => (
+              <SearchHashtagResult key={hashtag.name} hashtag={hashtag} />
+            ))}
         </ul>
       );
 
