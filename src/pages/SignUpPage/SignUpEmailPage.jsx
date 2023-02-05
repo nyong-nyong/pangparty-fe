@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
 export default function SignUpEmail() {
   const [userInfo, setUserInfo] = useState({
@@ -10,6 +12,18 @@ export default function SignUpEmail() {
     introduction: "",
   });
 
+  const [profileImgFile, setProfileImgFile] = useState("");
+  const profileImgRef = useRef();
+
+  const saveProfileImgFile = () => {
+    const profileImg = profileImgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(profileImg);
+    reader.onloadend = () => {
+      setProfileImgFile(reader.result);
+    };
+  };
+
   const signupHandler = (e) => {
     const tg = e.target.id;
     const newInfo = { ...userInfo };
@@ -17,8 +31,32 @@ export default function SignUpEmail() {
     setUserInfo(newInfo);
   };
 
-  const signUpPost = () => {
-    console.log(userInfo);
+  const signUpPost = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    // ""에 key 값 넣기
+    formData.append(
+      "data",
+      new Blob([JSON.stringify(userInfo)], {
+        type: "application/json",
+      })
+    );
+    if (profileImgFile) formData.append("file", profileImgFile);
+
+    await axios
+      .post(requests.member.postSignUp(), {
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -77,12 +115,19 @@ export default function SignUpEmail() {
         <div>
           <p>프로필 사진</p>
           <input
-            id="imgUrl"
             type="file"
-            value={userInfo.imgUrl}
-            onChange={signupHandler}
+            accept={"image/*"}
+            id="profileImgUpload"
+            onChange={saveProfileImgFile}
+            ref={profileImgRef}
           />
         </div>
+        <br />
+        {profileImgFile ? (
+          <img src={profileImgFile} alt="프로필 사진 업로드" />
+        ) : (
+          ""
+        )}
       </div>
       <button type="button" onClick={signUpPost}>
         가입완료 확인버튼
