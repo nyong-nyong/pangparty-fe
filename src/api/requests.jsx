@@ -7,13 +7,53 @@ const requests = {
     searchBaseUrl: "/search",
 
     /** 검색 값 GET 요청(type : member, event, hashtag) */
-    getSearch(type, query, page, limit) {
-      return `${this.searchBaseUrl}?type=${type}&query=${query}&page=${page}&limite=${limit}`;
+    getSearch(type, keyword, page, limit) {
+      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&limit=${limit}`;
+    },
+  },
+
+  following: {
+    followingBaseUrl: "/following",
+
+    /** 팔로우 POST 요청 : body에 해당 {"id": value} 넣어주기 */
+    postFollowing() {
+      return this.followingBaseUrl;
+    },
+
+    /** 팔로우 취소 DEL 요청 : body에 해당 {"id": value} 넣어주기 */
+    delFollowing() {
+      return this.followingBaseUrl;
+    },
+  },
+
+  hashtags: {
+    hashtagsBaseUrl: "/hashtags",
+
+    postLikes(hashtagUid) {
+      return `${this.hashtagsBaseUrl}/${hashtagUid}`;
+    },
+
+    delLikes(hashtagUid) {
+      return `${this.hashtagsBaseUrl}/${hashtagUid}`;
     },
   },
 
   events: {
     postEvent: eventsBaseUrl,
+
+    pang: {
+      likesBaseUrl: "/likes",
+      /** 이벤트 팡파레 울리기 POST 요청 */
+      postPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`;
+      },
+
+      /** 이벤트 팡파레 울리기 DEL 요청 */
+      delPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`;
+      },
+    },
+
     album: {
       albumBaseUrl: "/album",
       commentBaseUrl: "/comments",
