@@ -26,6 +26,18 @@ const requests = {
     },
   },
 
+  hashtags: {
+    hashtagsBaseUrl: "/hashtags",
+
+    postLikes(hashtagUid) {
+      return `${this.hashtagsBaseUrl}/${hashtagUid}`;
+    },
+
+    delLikes(hashtagUid) {
+      return `${this.hashtagsBaseUrl}/${hashtagUid}`;
+    },
+  }
+
   events: {
     postEvent: eventsBaseUrl,
 
