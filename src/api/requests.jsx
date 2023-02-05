@@ -28,6 +28,20 @@ const requests = {
 
   events: {
     postEvent: eventsBaseUrl,
+
+    pang: {
+      likesBaseUrl: "/likes",
+      /** 이벤트 팡파레 울리기 POST 요청 */
+      postPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`
+      },
+
+      /** 이벤트 팡파레 울리기 DEL 요청 */
+      delPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`
+      },
+    },
+
     album: {
       albumBaseUrl: "/album",
       commentBaseUrl: "/comments",
