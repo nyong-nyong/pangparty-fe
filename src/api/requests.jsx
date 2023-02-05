@@ -12,6 +12,9 @@ const requests = {
     },
   },
 
+  // 회원가입
+  signup: "/members",
+
   events: {
     postEvent: eventsBaseUrl,
     album: {
