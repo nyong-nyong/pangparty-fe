@@ -60,22 +60,22 @@ export default function MyPage() {
               {/* 추후 profileInfo 수정 예정 */}
               <Link
                 to="/follows"
-                state={{ following: true, follower: false }}
-                style={{ textDecoration: "none" }}
-              >
-                <div className="followBox">
-                  <p className="followText">팔로잉</p>
-                  <p className="followNum">2</p>
-                </div>
-              </Link>
-              <Link
-                to="/follows"
                 state={{ following: false, follower: true }}
                 style={{ textDecoration: "none" }}
               >
                 <div className="followBox">
                   <p className="followText">팔로워</p>
                   <p className="followNum">3</p>
+                </div>
+              </Link>
+              <Link
+                to="/follows"
+                state={{ following: true, follower: false }}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="followBox">
+                  <p className="followText">팔로잉</p>
+                  <p className="followNum">2</p>
                 </div>
               </Link>
             </div>

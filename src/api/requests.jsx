@@ -16,9 +16,15 @@ const requests = {
   // 팔로잉 팔로워
   following: {
     folliwingBaseUrl: "/following",
-
     getFollowing(memberId, page, limit) {
       return `${this.folliwingBaseUrl}/${memberId}?page=${page}&limit=${limit}`;
+    },
+  },
+
+  follower: {
+    folliwerBaseUrl: "/followers",
+    getFollower(memberId, page, limit) {
+      return `${this.folliwerBaseUrl}/${memberId}?page=${page}&limit=${limit}`;
     },
   },
 
