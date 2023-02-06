@@ -8,6 +8,7 @@ import requests from "../api/requests";
 import MoveablePiece from "../components/Sticker/MoveablePiece";
 import StickerListModal from "../components/Sticker/StickerListModal";
 import StickerPost from "../components/Sticker/StickerPost";
+import Button from "../components/common/Button";
 
 export default function PieceListPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -52,21 +53,6 @@ export default function PieceListPage() {
     fetchStickerList();
   }, []);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const request = await axios.get(
-  //       requests.events.rollingPapger.rpStickerAll(
-  //         eventUid,
-  //         rollingPaperUid,
-  //         topStart,
-  //         topEnd
-  //       )
-  //     );
-  //     setStickerListData(request.data.rollingPapgerStickers);
-  //   }
-  //   fetchData();
-  // }, []);
-
   // 모달 오픈
   const showModal = () => {
     setModalOpen(true);
@@ -78,23 +64,15 @@ export default function PieceListPage() {
   return (
     <div id="RP-page">
       <h1>완성된 롤링페이퍼 페이지</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <button type="button" onClick={showModal}>
-          🧸스티커 붙이기🧸
-        </button>
-        {stickerInfo && (
-          <StickerPost eventUid={eventUid} rollingPaperUid={rollingPaperUid} />
-        )}
-      </div>
+      <Button type="button" onClick={showModal}>
+        🧸스티커 붙이기🧸
+      </Button>
+      {stickerInfo && (
+        <StickerPost eventUid={eventUid} rollingPaperUid={rollingPaperUid} />
+      )}
       <div style={{ width: "344px", height: "520px", background: "orange" }} />
       {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
       {stickerInfo && <MoveablePiece sticker={stickerInfo} />}
-      {/* <Link to="/">🏡 회귀 🏡</Link> */}
     </div>
   );
 }

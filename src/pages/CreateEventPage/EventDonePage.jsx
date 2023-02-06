@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Link } from "react-router-dom";
+import Button from "../../components/common/Button";
 
 function EventDonePage() {
 
@@ -16,7 +17,7 @@ function EventDonePage() {
 
       {/* 리다이렉트시키기!!! 나중에 수정할거임 */}
       <Link to="/event/intro">
-        <button>이벤트 페이지 꾸미기</button>
+        <Button>이벤트 페이지 꾸미기</Button>
       </Link>
     </div>
   );

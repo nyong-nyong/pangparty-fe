@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Button from "../common/Button";
 
 // sticker POST 요청 보내기
 function StickerPost({ eventUid, rollingPaperUid }) {
@@ -30,9 +31,9 @@ function StickerPost({ eventUid, rollingPaperUid }) {
 
   return (
     <div>
-      <button type="submit" onClick={postHandler}>
+      <Button type="submit" onClick={postHandler}>
         완료 ✔️
-      </button>
+      </Button>
     </div>
   );
 }

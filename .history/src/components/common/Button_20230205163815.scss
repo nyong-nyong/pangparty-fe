@@ -1,0 +1,79 @@
+import
+
+$blue: #678cff; // 주석 선언
+$orange: #ff7a5c;
+$gray: #cfcfcf;
+
+// @mixin button-color($color) {
+//   background: $color;
+//   // &:hover {
+//   //   background: lighten($color, 10%);
+//   // }
+//   &:active {
+//     background: darken($color, 10%);
+//   }
+// }
+
+.Button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+
+  /** 사이즈 관리 */
+  &.large {
+    width: 328px;
+    height: 55px;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &.small {
+    width: 68px;
+    height: 32px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  // 색상 관리
+  &.blue {
+    background: $blue;
+    &:hover {
+      background: lighten($blue, 10%);
+    }
+
+    &:active {
+      background: $blue;
+    }
+  }
+
+  &.gray {
+    background: $gray;
+    &:hover {
+      background: lighten($orange, 10%);
+    }
+
+    &:active {
+      background: $orange;
+    }
+  }
+
+  // &.orange {
+  //   @include button-color($orange);
+  // }
+
+  & + & {
+    margin-left: 1rem;
+  }
+}

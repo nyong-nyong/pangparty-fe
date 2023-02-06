@@ -12,6 +12,7 @@ import {
 import "./ConfirmEvent.css";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Button from "../../components/common/Button";
 
 function ConfirmEventPage() {
   const targetTag = useRecoilValue(targetsTagState);
@@ -82,9 +83,9 @@ function ConfirmEventPage() {
         <p className="labels">태그</p>
         {hashTag ? hashTag.name : "타겟 네임 없음"}
       </div>
-      <button onClick={postEvent}>임시 전송버튼</button>
+      <Button onClick={postEvent}>임시 전송버튼</Button>
       <Link to="/event/done">
-        <button onClick={postEvent}>이벤트 확인페이지로 넘어가기</button>
+        <Button onClick={postEvent}>이벤트 확인페이지로 넘어가기</Button>
       </Link>
     </div>
   );

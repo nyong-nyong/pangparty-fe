@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import exit from "../../assets/exit.svg";
 import "./StickerListModal.css";
 
 export default function StickerListModal({ setModalOpen }) {
@@ -62,7 +63,7 @@ export default function StickerListModal({ setModalOpen }) {
     <div>
       <div ref={modalRef} className="modalContainer">
         <button type="button" className="close" onClick={closeModal}>
-          <img alt="exit" src={`${process.env.PUBLIC_URL}/image/exit.png`} />
+          <img alt="exit" src={exit} />
         </button>
         <div className="stickerImg">
           {stickerList.map((sticker) => {

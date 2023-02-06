@@ -6,6 +6,7 @@ import Calendar from "react-calendar";
 import moment from "moment";
 import { dDayState } from "../../recoils/createEvent/Atoms";
 import "../../styles/DdayCalendarPage.css";
+import Button from "../../components/common/Button";
 
 function DdayCalendar() {
   const [value, onChange] = useState(new Date());
@@ -32,13 +33,13 @@ function DdayCalendar() {
           <p className="dDayText">D-day</p>
           <p className="dDayDate">{moment(value).format("YYYY년 MM월 DD일")}</p>
         </div>
-        <button type="button" onClick={dDayHandler}>
+        <Button type="button" onClick={dDayHandler}>
           이 날짜가 맞아용 ㅎㅎ
-        </button>
+        </Button>
       </div>
 
       <Link to="/event/discript">
-        <button>다음</button>
+        <Button>다음</Button>
       </Link>
     </div>
   );

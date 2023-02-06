@@ -63,19 +63,19 @@ export default function PhotoAlbum() {
   );
 }
 
-// const AlbumFrame = styled.div`
-//   display: flex;
-//   width: 320px;
-//   height: fit-contents;
-//   flex-flow: row wrap;
-//   gap: 10px;
-// `;
+const AlbumFrame = styled.div`
+  display: flex;
+  width: 320px;
+  height: fit-contents;
+  flex-flow: row wrap;
+  gap: 10px;
+`;
 
-// const PhotoFrame = styled.img`
-//   display: flex;
-//   width: 100px;
-//   height: 100px;
-//   object-fit: cover;
-//   border-radius: 3px;
-//   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-// `;
+const PhotoFrame = styled.img`
+  display: flex;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+`;

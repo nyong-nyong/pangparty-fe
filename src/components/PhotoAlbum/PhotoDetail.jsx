@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import styled from "styled-components";
 import PhotoCommentList from "./PhotoCommentList";
 import PhotoLikes from "./PhotoLikes";

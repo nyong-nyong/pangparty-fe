@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
+import exit from "../../assets/exit.svg";
 import "./MoveablePiece.css";
 
 export default function StickerClose() {
@@ -19,11 +20,7 @@ export default function StickerClose() {
         onClickClose(e);
       }}
     >
-      <img
-        alt="exit"
-        src={`${process.env.PUBLIC_URL}/image/exit.png`}
-        style={{ width: "10px" }}
-      />
+      <img alt="exit" src={exit} style={{ width: "10px" }} />
     </button>
   );
 }
