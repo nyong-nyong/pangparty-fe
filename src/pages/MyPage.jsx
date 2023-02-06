@@ -84,13 +84,28 @@ export default function MyPage() {
         <button type="button">프로필 수정</button>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">
-            주최한 <br /> 이벤트
+            <Link
+              to="/myevents"
+              state={{ host: true, involving: false, involved: false }}
+            >
+              주최한 <br /> 이벤트
+            </Link>
           </button>
           <button type="button" className="eventBox">
-            참여중인 <br /> 이벤트
+            <Link
+              to="/myevents"
+              state={{ host: false, involving: true, involved: false }}
+            >
+              참여중인 <br /> 이벤트
+            </Link>
           </button>
           <button type="button" className="eventBox">
-            참여한 <br /> 이벤트
+            <Link
+              to="/myevents"
+              state={{ host: false, involving: false, involved: true }}
+            >
+              참여한 <br /> 이벤트
+            </Link>
           </button>
         </div>
       </div>

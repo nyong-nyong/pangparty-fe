@@ -11,6 +11,9 @@ const requests = {
     getProfile() {
       return this.profileBaseUrl;
     },
+    getBadges(memberId) {
+      return `${this.userBaseUrl}/${memberId}/badges`;
+    },
   },
 
   // 팔로잉 팔로워

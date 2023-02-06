@@ -110,3 +110,19 @@
   padding: 0 15px;
   font-family: "Pretendard-Regular";
 }
+
+
+/* 뱃지 */
+.badgeContainer {
+  display: flex;
+  margin: 10px;
+}
+
+.badgeImgContainer {
+  display: inline-block;
+}
+
+.badgeImg {
+  width: 75px;
+  overflow: contain;
+}

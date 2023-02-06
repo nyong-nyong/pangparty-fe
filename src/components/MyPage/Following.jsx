@@ -25,8 +25,25 @@ export default function Following() {
         followingInfo.following.map((infos) => {
           if (infos) {
             return (
-              <div key={infos.id}>
-                <p>{infos.name}</p>
+              <div key={infos.id} className="outline">
+                <div className="followContainer">
+                  <div className="followimgBox">
+                    <img
+                      className="profileImg"
+                      src={infos.imgUrl}
+                      alt="profile"
+                    />
+                  </div>
+                  <div className="rightContainer">
+                    <div className="followInfoBox">
+                      <p>{infos.id}</p>
+                      <p>{infos.name}</p>
+                    </div>
+                    <div className="followButton">
+                      <button type="button">팔로잉</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           }

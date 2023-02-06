@@ -7,6 +7,7 @@ import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
 import MyPage from "./MyPage";
 import FollowPage from "./MyPage/FollowPage";
+import MyEventsPage from "./MyPage/MyEventsPage";
 import TagMemberPage from "./CreateEventPage/TagMemberPage";
 import EventDiscription from "./CreateEventPage/EventDiscriptionPage";
 import DdayCalendar from "./CreateEventPage/DdayCalendarPage";
@@ -46,6 +47,7 @@ export default function Routers() {
       {/* 마이페이지 */}
       <Route path="mypage" element={<MyPage />} />
       <Route path="follows" element={<FollowPage />} />
+      <Route path="myevents" element={<MyEventsPage />} />
     </Routes>
   );
 }
