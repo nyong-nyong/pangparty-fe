@@ -57,7 +57,6 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
 
   return (
     <div>
-      
       <span onClick={handleBtnClick}>{isLiked ? "♥" : "♡"}</span>
       <span>{likeCnt || ""}</span>
     </div>

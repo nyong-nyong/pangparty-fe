@@ -3,12 +3,12 @@
 @mixin outline-btn($color) {
   background: none;
   color: $color;
-  background: none;
+  background: none;z
   border: 1px solid $color;
 }
 
 .HashTag {
-  display: flex;
+  display: flex;ww
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
   cursor: pointer;
   font-weight: 700;
   font-size: 13px;
-  margin: 8px 13px;
+  padding: 8px 13px;
 
   &.gray {
     background-color: $gray-4;

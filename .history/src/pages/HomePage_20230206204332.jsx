@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import Icon from "../components/common/Icon";
 import HashTag from "../components/common/HashTag";
-import Pang from "../components/common/Pang";
 
 // 우리 메인 홈화면
 
@@ -38,7 +37,7 @@ export default function HomePage() {
         <Icon img="pang">팡파레</Icon>
         <Icon img="setting">설정</Icon>
 
-        <Pang />
+        <
       </div>
     </div>
   );

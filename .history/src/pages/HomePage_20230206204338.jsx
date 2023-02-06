@@ -38,7 +38,7 @@ export default function HomePage() {
         <Icon img="pang">팡파레</Icon>
         <Icon img="setting">설정</Icon>
 
-        <Pang />
+        <Pang
       </div>
     </div>
   );

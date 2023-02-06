@@ -106,7 +106,7 @@ const requests = {
 
       /** 이벤트 좋아요 취소(팡파레 취소) DELETE */
       deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+        return `${eventsBaseUrl}/${eventUid}`
       }
     },
   },

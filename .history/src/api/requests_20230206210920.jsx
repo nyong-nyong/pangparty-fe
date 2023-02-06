@@ -93,21 +93,18 @@ const requests = {
 
     /** 이벤트 소개/참여 페이지 */
     intro: {
-      pangBaseUrl: "/likes",
+      pangBaseUrl: "/likes"
       /** 이벤트 소개 페이지 조회 GET 요청 */
       introEventAll(eventUid) {
         return `${eventsBaseUrl}/${eventUid}`;
-      },
-
+      }
+      {{url}}/events/{{eventUid}}/likes
       /** 이벤트 좋아요(팡파레 울리기) POST 요척 */
-      postPang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`
-      },
+      postPang() {
+        return `${eventsBaseUrl}/${eventUid}${this.}`
+      }
 
       /** 이벤트 좋아요 취소(팡파레 취소) DELETE */
-      deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
-      }
     },
   },
 };

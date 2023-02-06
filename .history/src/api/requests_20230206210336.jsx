@@ -90,24 +90,22 @@ const requests = {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}${this.stickerBaseUrl}`;
       },
     },
-
+    // {{url}}/events/{{eventId}}
     /** 이벤트 소개/참여 페이지 */
     intro: {
-      pangBaseUrl: "/likes",
+      rpBaseUrl: "/events",
+
       /** 이벤트 소개 페이지 조회 GET 요청 */
       introEventAll(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}`;
-      },
+        return `${rpBaseUrl}/${eventUid}`;
+      }
 
       /** 이벤트 좋아요(팡파레 울리기) POST 요척 */
-      postPang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`
-      },
+      postPang() {
 
-      /** 이벤트 좋아요 취소(팡파레 취소) DELETE */
-      deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
       }
+
+      /** 이벤트 좋아요 취소(팡파레 취소)  */
     },
   },
 };
