@@ -70,6 +70,20 @@ export default function SignUpEmail() {
     return true;
   };
 
+  const idIsValid = (id) => {
+    if (id.length < 2 || id.length > 15) return false;
+    const idRegExp = /[0-9a-zA-Z]/;
+    if (idRegExp.test(id)) {
+      return true;
+    }
+    return false;
+  };
+
+  const nameIsValid = (name) => {
+    if (name.length < 2 || name.length > 15) return false;
+    return true;
+  };
+
   const checkIsValid = (targetId, targetValue) => {
     if (targetId === "email") {
       const isValidReturn = emailIsValid(targetValue);
@@ -103,17 +117,38 @@ export default function SignUpEmail() {
     if (targetId === "passwordCheck") {
       const isValidReturn = pwCheckIsValid(targetValue);
       const newIsValid = { ...isValid };
-      newIsValid.password = isValidReturn;
+      newIsValid.passwordCheck = isValidReturn;
       setIsValid(newIsValid);
       return;
     }
     if (targetId === "id") {
+      const isValidReturn = idIsValid(targetValue);
+      const newIsValid = { ...isValid };
+      newIsValid.id = isValidReturn;
+      if (isValidReturn) {
+        const checkIdDup = async () => {
+          await axios
+            .get()
+            .then((res) => {
+              const newIsValidWithDup = { ...isValid };
+              newIsValidWithDup.idDup = res.data;
+              setIsValid(newIsValidWithDup);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+        checkIdDup();
+      }
+      setIsValid(newIsValid);
       return;
     }
     if (targetId === "name") {
-      return;
+      const isValidReturn = nameIsValid(targetValue);
+      const newIsValid = { ...isValid };
+      newIsValid.name = isValidReturn;
+      setIsValid(newIsValid);
     }
-    return;
   };
 
   const signupHandler = (e) => {
@@ -123,7 +158,7 @@ export default function SignUpEmail() {
     const newInfo = { ...userInfo };
     newInfo[targetId] = targetValue;
     setUserInfo(newInfo);
-    console.log(targetValue);
+    // console.log(targetValue);
   };
 
   const signUpPost = async (e) => {
@@ -223,38 +258,98 @@ export default function SignUpEmail() {
             <p>비밀번호 형식 오류</p>
           </div>
         )}
-        <div>
-          <p>비밀번호 확인</p>
-          <input
-            id="passwordCheck"
-            type="password"
-            value={userInfo.passwordCheck}
-            onChange={signupHandler}
-            maxLength="20"
-          />
-        </div>
-        <div>
-          <p>ID</p>
-          <input
-            id="id"
-            type="text"
-            value={userInfo.id}
-            placeholder=""
-            onChange={signupHandler}
-            maxLength="15"
-          />
-        </div>
-        <div>
-          <p>Name</p>
-          <input
-            id="name"
-            type="text"
-            value={userInfo.name}
-            placeholder=""
-            onChange={signupHandler}
-            maxLength="15"
-          />
-        </div>
+
+        {isValid.passwordCheck ? (
+          <div>
+            <p>비밀번호 확인</p>
+            <input
+              id="passwordCheck"
+              type="password"
+              value={userInfo.passwordCheck}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+          </div>
+        ) : (
+          <div>
+            <p>비밀번호 확인</p>
+            <input
+              id="passwordCheck"
+              type="password"
+              value={userInfo.passwordCheck}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+            <p>비밀번호가 일치하지 않습니다</p>
+          </div>
+        )}
+
+        {isValid.id && isValid.idDup ? (
+          <div>
+            <p>ID</p>
+            <input
+              id="id"
+              type="text"
+              value={userInfo.id}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+          </div>
+        ) : isValid.id ? (
+          <div>
+            <p>ID</p>
+            <input
+              id="id"
+              type="text"
+              value={userInfo.id}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+            <p>이미 존재하는 ID입니다</p>
+          </div>
+        ) : (
+          <div>
+            <p>ID</p>
+            <input
+              id="id"
+              type="text"
+              value={userInfo.id}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+            <p>유효하지 않은 ID 형식입니다</p>
+          </div>
+        )}
+
+        {isValid.name ? (
+          <div>
+            <p>Name</p>
+            <input
+              id="name"
+              type="text"
+              value={userInfo.name}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+          </div>
+        ) : (
+          <div>
+            <p>Name</p>
+            <input
+              id="name"
+              type="text"
+              value={userInfo.name}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+            <p>이름 형식 오류</p>
+          </div>
+        )}
         <div>
           <p>소개</p>
           <textarea
@@ -277,7 +372,12 @@ export default function SignUpEmail() {
         </div>
         <br />
         {profileImgFile ? (
-          <img src={profileImgFile} alt="프로필 사진 업로드" />
+          <img
+            src={profileImgFile}
+            alt="프로필 사진 업로드"
+            width="100px"
+            height="100px"
+          />
         ) : (
           ""
         )}
