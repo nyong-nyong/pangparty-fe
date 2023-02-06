@@ -12,6 +12,16 @@ const requests = {
     },
   },
 
+  // 회원가입
+  member: {
+    memberBaseUrl: "/members",
+
+    /** 회원가입 POST 요청 */
+    postSignUp() {
+      return `${this.memberBaseUrl}`;
+    },
+  },
+
   events: {
     postEvent: eventsBaseUrl,
     album: {
