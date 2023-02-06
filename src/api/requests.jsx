@@ -3,6 +3,25 @@ const eventsBaseUrl = "/events";
 const requests = {
   fetchStickers: "/stickers",
 
+  // User (임시로 프로필만 받아옵니다)
+  user: {
+    userBaseUrl: "/members",
+    profileBaseUrl: "/members/profile",
+
+    getProfile() {
+      return this.profileBaseUrl;
+    },
+  },
+
+  // 팔로잉 팔로워
+  following: {
+    folliwingBaseUrl: "/following",
+
+    getFollowing(memberId, page, limit) {
+      return `${this.folliwingBaseUrl}/${memberId}?page=${page}&limit=${limit}`;
+    },
+  },
+
   search: {
     searchBaseUrl: "/search",
 
