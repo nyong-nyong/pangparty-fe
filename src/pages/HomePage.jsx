@@ -1,6 +1,6 @@
-// import SearchBar from "components/Search/SearchBar";
-// import SearchResults from "components/Search/SearchResults";
-// import SearchType from "components/Search/SearchType";
+// import SearchBar from "../components/Search/SearchBar";
+// import SearchResults from "../components/Search/SearchResults";
+// import SearchType from "../components/Search/SearchType";
 import { Link } from "react-router-dom";
 
 // 우리 메인 홈화면
