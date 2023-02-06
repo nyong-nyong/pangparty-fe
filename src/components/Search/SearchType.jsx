@@ -16,7 +16,7 @@ export default function SearchType() {
     e.preventDefault();
     setSearchType(type);
     const newSelectedType = { event: false, member: false, hashtag: false };
-    newSelectedType[type] = true;
+    newSelectedType.type = true;
     setSelectedType(newSelectedType);
   };
 
