@@ -1,3 +1,7 @@
+/* eslint-disable prefer-regex-literals */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-case-declarations */
+/* eslint-disable default-case */
 import { useRef, useState } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -7,9 +11,22 @@ export default function SignUpEmail() {
     id: "",
     email: "",
     password: "",
+    passwordCheck: "",
     name: "",
     imgUrl: "",
     introduction: "",
+  });
+
+  const [isValid, setIsValid] = useState({
+    id: true,
+    idDup: true,
+    email: true,
+    emailDup: true,
+    password: true,
+    passwordCheck: true,
+    name: true,
+    imgUrl: true,
+    introduction: true,
   });
 
   const [profileImgFile, setProfileImgFile] = useState("");
@@ -24,11 +41,89 @@ export default function SignUpEmail() {
     };
   };
 
+  const emailRegExp =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+  const emailIsValid = (email) => {
+    if (emailRegExp.test(email)) return true;
+    return false;
+  };
+
+  const pwIsValid = (password) => {
+    if (password.length < 8 || password.length > 20) {
+      return false;
+    }
+    const numberPattern = new RegExp(/[0-9]/);
+    const alphabetPattern = new RegExp(/[a-zA-Z]/);
+    const specialPattern = new RegExp(/[~!@#$%^&*()_+|<>?:{}]/);
+    if (
+      !numberPattern.test(password) ||
+      !alphabetPattern.test(password) ||
+      !specialPattern.test(password)
+    ) {
+      return false;
+    }
+    return true;
+  };
+
+  const pwCheckIsValid = (password) => {
+    if (password !== userInfo.password) return false;
+    return true;
+  };
+
+  const checkIsValid = (targetId, targetValue) => {
+    if (targetId === "email") {
+      const isValidReturn = emailIsValid(targetValue);
+      const newIsValid = { ...isValid };
+      newIsValid.email = isValidReturn;
+      if (isValidReturn) {
+        const checkEmailDup = async () => {
+          await axios
+            .get()
+            .then((res) => {
+              const newIsValidWithDup = { ...isValid };
+              newIsValidWithDup.emailDup = res.data;
+              setIsValid(newIsValidWithDup);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+        checkEmailDup();
+      }
+      setIsValid(newIsValid);
+      return;
+    }
+    if (targetId === "password") {
+      const isValidReturn = pwIsValid(targetValue);
+      const newIsValid = { ...isValid };
+      newIsValid.password = isValidReturn;
+      setIsValid(newIsValid);
+      return;
+    }
+    if (targetId === "passwordCheck") {
+      const isValidReturn = pwCheckIsValid(targetValue);
+      const newIsValid = { ...isValid };
+      newIsValid.password = isValidReturn;
+      setIsValid(newIsValid);
+      return;
+    }
+    if (targetId === "id") {
+      return;
+    }
+    if (targetId === "name") {
+      return;
+    }
+    return;
+  };
+
   const signupHandler = (e) => {
-    const tg = e.target.id;
+    const targetId = e.target.id;
+    const targetValue = e.target.value;
+    checkIsValid(targetId, targetValue);
     const newInfo = { ...userInfo };
-    newInfo[tg] = e.target.value;
+    newInfo[targetId] = targetValue;
     setUserInfo(newInfo);
+    console.log(targetValue);
   };
 
   const signUpPost = async (e) => {
@@ -62,24 +157,80 @@ export default function SignUpEmail() {
   return (
     <div>
       <h4 style={{ textAlign: "center" }}>으아아</h4>
+
       <div style={{ margin: "10px" }}>
+        {isValid.email && isValid.emailDup ? (
+          <div>
+            <p>이메일</p>
+            <input
+              id="email"
+              type="email"
+              value={userInfo.email}
+              onChange={signupHandler}
+              placeholder="example@naver.com"
+              maxLength="320"
+            />
+          </div>
+        ) : isValid.email ? (
+          <div>
+            <p>이메일</p>
+            <input
+              id="email"
+              type="email"
+              value={userInfo.email}
+              onChange={signupHandler}
+              placeholder="example@naver.com"
+              maxLength="320"
+            />
+            <p>이미 존재하는 email 입니다.</p>
+          </div>
+        ) : (
+          <div>
+            <p>이메일</p>
+            <input
+              id="email"
+              type="email"
+              value={userInfo.email}
+              onChange={signupHandler}
+              placeholder="example@naver.com"
+              maxLength="320"
+            />
+            <p>유효하지 않은 email 형식입니다.</p>
+          </div>
+        )}
+
+        {isValid.password ? (
+          <div>
+            <p>비밀번호</p>
+            <input
+              id="password"
+              type="password"
+              value={userInfo.password}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+          </div>
+        ) : (
+          <div>
+            <p>비밀번호</p>
+            <input
+              id="password"
+              type="password"
+              value={userInfo.password}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+            <p>비밀번호 형식 오류</p>
+          </div>
+        )}
         <div>
-          <p>이메일</p>
+          <p>비밀번호 확인</p>
           <input
-            id="email"
-            type="email"
-            value={userInfo.email}
-            onChange={signupHandler}
-            placeholder="example@naver.com"
-          />
-        </div>
-        <div>
-          <p>비밀번호</p>
-          <input
-            id="password"
+            id="passwordCheck"
             type="password"
-            value={userInfo.password}
+            value={userInfo.passwordCheck}
             onChange={signupHandler}
+            maxLength="20"
           />
         </div>
         <div>
@@ -88,8 +239,9 @@ export default function SignUpEmail() {
             id="id"
             type="text"
             value={userInfo.id}
-            placeholder="somtha"
+            placeholder=""
             onChange={signupHandler}
+            maxLength="15"
           />
         </div>
         <div>
@@ -98,8 +250,9 @@ export default function SignUpEmail() {
             id="name"
             type="text"
             value={userInfo.name}
-            placeholder="솜따"
+            placeholder=""
             onChange={signupHandler}
+            maxLength="15"
           />
         </div>
         <div>
