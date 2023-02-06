@@ -6,7 +6,7 @@ function Button({ children, size, color, ...rest }) {
   return (
     <button
       type="button"
-      className={classNames("Button", size, color)}
+      className={classNames("commonButton", size, color)}
       {...rest}
     >
       {children}
@@ -16,7 +16,7 @@ function Button({ children, size, color, ...rest }) {
 
 Button.defaultProps = {
   size: "large",
-  color: "gray-4",
+  color: "gray",
 };
 
 export default Button;
