@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Icon from "./Icon";
 import pangpartyicon from "../../assets/pangpartyicon.png";
 import pangpartyitext from "../../assets/pangpartytext.png";
 
@@ -19,31 +20,28 @@ function NavBar() {
       style={{
         display: "flex",
         width: "100%",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         margin: "15px 0px",
         fontSize: "25px",
       }}
     >
-      <button
-        type="button"
-        name="back"
-        onClick={handleGoBack}
-        style={{ all: "unset" }}
+      <Icon img="prev" onClick={handleGoBack} />
+      <div
+        className="logo"
+        onClick={handleGoHome}
+        aria-hidden="true"
+        style={{
+          display: "flex",
+          flexFlow: "row",
+          alignItems: "center",
+        }}
       >
-        ◀
-      </button>
-      <div className="logo" onClick={handleGoHome} aria-hidden="true">
+        {/* <Icon img="picon" />
+        <Icon img="ptext" /> */}
         <img src={pangpartyicon} alt="icon" />
         <img src={pangpartyitext} alt="text" />
       </div>
-      <button
-        type="button"
-        name="back"
-        onClick={handleGoBack}
-        style={{ all: "unset" }}
-      >
-        ▶
-      </button>
+      <Icon img="next" onClick={handleGoBack} />
     </nav>
   );
 }

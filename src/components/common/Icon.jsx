@@ -4,15 +4,18 @@ import "./Icon.scss";
 function Icon({ isActive, children, img, ...rest }) {
   return (
     <div className="iconContainer" {...rest}>
-      <div className={classNames("Img", img, { isActive })} />
-      {/* <div className="iconButton" type="button" /> */}
-      <p className="iconText">{children}</p>
+      {children ? (
+        // 글자 있을 때(children)
+        <>
+          <div className={classNames("Img", img, { isActive })} />
+          <p className="iconText">{children}</p>
+        </>
+      ) : (
+        // 아이콘만 있을때
+        <div className={classNames("Img", img, { isActive })} />
+      )}
     </div>
   );
 }
-
-Icon.defaultProps = {
-  color: "gray-3",
-};
 
 export default Icon;

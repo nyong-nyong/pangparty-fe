@@ -51,6 +51,21 @@
     &.setting {
       @include icon-activate($setting, $settingActive);
     }
+    &.exit {
+      background-image: url($exit);
+    }
+    &.next {
+      background-image: url($next);
+    }
+    &.prev {
+      background-image: url($prev);
+    }
+    &.ptext {
+      background-image: url($ptext);
+    }
+    &.picon {
+      background-image: url($picon);
+    }
   }
   .iconButton {
     border: none;

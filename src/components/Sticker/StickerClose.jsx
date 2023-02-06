@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
-import exit from "../../assets/exit.png";
+import exit from "../../assets/exit.svg";
 import "./MoveablePiece.css";
 
 export default function StickerClose() {

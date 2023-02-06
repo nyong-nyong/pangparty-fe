@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-import exit from "../../assets/exit.png";
+import exit from "../../assets/exit.svg";
 import "./StickerListModal.css";
 
 export default function StickerListModal({ setModalOpen }) {
