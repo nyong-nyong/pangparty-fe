@@ -3,6 +3,8 @@ const eventsBaseUrl = "/events";
 const requests = {
   fetchStickers: "/stickers",
 
+  login: "/login",
+
   search: {
     searchBaseUrl: "/search",
 

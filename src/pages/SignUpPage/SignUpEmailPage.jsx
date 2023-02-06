@@ -41,9 +41,9 @@ export default function SignUpEmail() {
     };
   };
 
-  const emailRegExp =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
   const emailIsValid = (email) => {
+    const emailRegExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (emailRegExp.test(email)) return true;
     return false;
   };
@@ -183,6 +183,9 @@ export default function SignUpEmail() {
       })
       .then((res) => {
         console.log(res);
+        if (res.status === 201) {
+          // 로그인시켜서 홈으로 보내기
+        }
       })
       .catch((err) => {
         console.log(err);
