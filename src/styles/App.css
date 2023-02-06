@@ -1,10 +1,12 @@
 .appContainer {
   display: block;
   margin: 0 auto;
-  max-width: 360px;
+  min-width: 360px;
+  max-width: 428px;
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
   min-height: 700px;
   border: 1px solid;
+  padding: 10px;
 }
 
 .wrapper {
@@ -25,10 +27,9 @@
   height: 94px;
   left: 0px;
   top: 706px;
-  /* padding: 20px; */
 }
 
-.link {
+a {
   text-decoration: none;
 }
 

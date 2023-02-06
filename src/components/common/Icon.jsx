@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import "./Icon.scss";
 
-function Icon({ children, img, ...rest }) {
+function Icon({ isActive, children, img, ...rest }) {
   return (
-    <div className="iconContainer">
-      <div className={classNames("Img", img)} />
-      <button className="iconButton" type="button" {...rest} />
-      <span className="iconText">{children}</span>
+    <div className="iconContainer" {...rest}>
+      <div className={classNames("Img", img, { isActive })} />
+      {/* <div className="iconButton" type="button" /> */}
+      <p className="iconText">{children}</p>
     </div>
   );
 }

@@ -21,9 +21,11 @@ export default function HomePage() {
         <Button>
           <Link to="/event/tagmember">🎉이벤트 만들기🎉</Link>
         </Button>
-        <Button size="small">작은 버튼</Button>
+        <Button size="small" color="orange-1">
+          작은 버튼
+        </Button>
 
-        <span>아이콘 모음 ...</span>
+        <p>아이콘 모음 ...</p>
         <Icon img="alarm">알람</Icon>
         <Icon img="like">좋아요</Icon>
         <Icon img="pang">팡파레</Icon>
@@ -32,3 +34,22 @@ export default function HomePage() {
     </div>
   );
 }
+
+// const [isActivate, setIsActivate] = useState({
+//   Feed: true,
+//   ReceicedEvent: false,
+//   Badges: false,
+//   EventCalander: false,
+// });
+
+// const activateHandler = (e) => {
+//   const newActivation = {
+//     Feed: false,
+//     ReceicedEvent: false,
+//     Badges: false,
+//     EventCalander: false,
+//   };
+//   const newTarget = e.target.id;
+//   newActivation[newTarget] = true;
+//   setIsActivate(newActivation);
+// };

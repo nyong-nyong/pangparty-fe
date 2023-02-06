@@ -1,16 +1,16 @@
 @import "../../styles/colors.scss";
-@import "../../styles/icons.scss";
+@import "../../styles/iconImg.scss";
 
-@mixin click($img, $imgActive) {
-  background-image: $img;
-  &.iconActive {
-    background-image: $imgActive;
+@mixin icon-activate($img, $imgActive) {
+  background-image: url($img);
+  &.isActive {
+    background-image: url($imgActive);
   }
 }
 
 .iconContainer {
-  width: 48px;
-  height: 48px;
+  width: 55px;
+  height: 55px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -25,31 +25,31 @@
 
     // 아이콘 img 관리
     &.home {
-      background-image: url($home);
+      @include icon-activate($home, $homeActive);
     }
     &.feed {
-      background-image: url($feed);
+      @include icon-activate($feed, $feedActive);
     }
     &.event {
-      background-image: url($event);
+      @include icon-activate($event, $eventActive);
     }
     &.search {
-      background-image: url($search);
+      @include icon-activate($search, $searchActive);
     }
     &.my {
-      background-image: url($my);
+      @include icon-activate($my, $myActive);
     }
     &.alarm {
-      background-image: url($alarm);
+      @include icon-activate($alarm, $alarmActive);
     }
     &.like {
-      background-image: url($like);
+      @include icon-activate($like, $likeActive);
     }
     &.pang {
-      background-image: url($pang);
+      @include icon-activate($pang, $pangActive);
     }
     &.setting {
-      background-image: url($setting);
+      @include icon-activate($setting, $settingActive);
     }
   }
   .iconButton {
@@ -64,5 +64,7 @@
     font-weight: 600;
     font-size: 10px;
     line-height: 12px;
+    color: black;
+    overflow: auto;
   }
 }
