@@ -1,6 +1,6 @@
 /** eslint-disable */
 import classNames from "classnames";
-import "./HashTag.scss";
+import "./Button.scss";
 
 function HashTag({ children, color, ...rest }) {
   return (

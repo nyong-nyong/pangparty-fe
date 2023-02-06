@@ -1,7 +1,7 @@
 @import "../../styles/colors.scss";
 
 @mixin outline-btn($color) {
-  background: none;
+  background: $none;
   color: $color;
   background: none;
   border: 1px solid $color;
@@ -12,11 +12,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 8px 13px;
 
   &.gray {
     background-color: $gray-4;
