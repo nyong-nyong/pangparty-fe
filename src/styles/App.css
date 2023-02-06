@@ -19,15 +19,17 @@
 
 .footer {
   position: sticky;
-  width: 360px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
   height: 94px;
   left: 0px;
   top: 706px;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
-.footerbutton {
-  all: unset;
+.link {
+  text-decoration: none;
 }
 
 @font-face {

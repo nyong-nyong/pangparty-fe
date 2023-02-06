@@ -1,18 +1,68 @@
 @import "../../styles/colors.scss";
+@import "../../styles/icons.scss";
 
-$home: "../../assets/homeIcon.svg";
-
-.Icon {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  
-  // 아이콘 img 관리
-  &.home {
-    background-image: url($home);
-    fill: $orange-1;
+@mixin click($img, $imgActive) {
+  background-image: $img;
+  &.iconActive {
+    background-image: $imgActive;
   }
 }
 
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  .Img {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+
+    // 아이콘 img 관리
+    &.home {
+      background-image: url($home);
+    }
+    &.feed {
+      background-image: url($feed);
+    }
+    &.event {
+      background-image: url($event);
+    }
+    &.search {
+      background-image: url($search);
+    }
+    &.my {
+      background-image: url($my);
+    }
+    &.alarm {
+      background-image: url($alarm);
+    }
+    &.like {
+      background-image: url($like);
+    }
+    &.pang {
+      background-image: url($pang);
+    }
+    &.setting {
+      background-image: url($setting);
+    }
+  }
+  .iconButton {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .iconText {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}

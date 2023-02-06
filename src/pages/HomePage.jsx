@@ -3,6 +3,7 @@
 // import SearchType from "components/Search/SearchType";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
+import Icon from "../components/common/Icon";
 
 // 우리 메인 홈화면
 
@@ -13,13 +14,21 @@ export default function HomePage() {
       {/* <SearchBar/>
       <SearchType/>
       <SearchResults/> */}
-      <Link to="/event/intro">
-        <Button>이벤트 소개페이지 바로가기</Button>
-      </Link>
-      <Link to="/event/tagmember">
-        <Button>🎉이벤트 만들기🎉</Button>
-      </Link>
-      <Button size="small">작은 버튼</Button>
+      <div>
+        <Button>
+          <Link to="/event/intro">이벤트 소개페이지 바로가기</Link>
+        </Button>
+        <Button>
+          <Link to="/event/tagmember">🎉이벤트 만들기🎉</Link>
+        </Button>
+        <Button size="small">작은 버튼</Button>
+
+        <span>아이콘 모음 ...</span>
+        <Icon img="alarm">알람</Icon>
+        <Icon img="like">좋아요</Icon>
+        <Icon img="pang">팡파레</Icon>
+        <Icon img="setting">설정</Icon>
+      </div>
     </div>
   );
 }

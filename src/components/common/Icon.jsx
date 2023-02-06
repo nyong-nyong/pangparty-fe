@@ -1,24 +1,17 @@
 import classNames from "classnames";
 import "./Icon.scss";
 
-function Icon({ children, color, ...rest }) {
+function Icon({ children, img, ...rest }) {
   return (
-    <div>
-      <button type="button">
-        <img
-          src="../../assets/homeIcon.svg"
-          alt=""
-          className={classNames("Icon", color)}
-          {...rest}
-        />
-        {children}
-      </button>
+    <div className="iconContainer">
+      <div className={classNames("Img", img)} />
+      <button className="iconButton" type="button" {...rest} />
+      <span className="iconText">{children}</span>
     </div>
   );
 }
 
 Icon.defaultProps = {
-  img: "home",
   color: "gray-3",
 };
 
