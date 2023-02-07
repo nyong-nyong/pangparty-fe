@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "../../api/axios";
-import requests from "../../api/requests";
+import useUserAction from "../hooks/useUserAction";
 
 export default function LoginPage() {
-  const login = (e) => {
-    e.preventDefault();
-
-    const postLogin = async () => {};
-  };
-
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
   const [isValid, setIsValid] = useState(true);
+  const userAction = useUserAction();
 
   const emailIsValid = (email) => {
     const emailRegExp =
@@ -37,6 +31,11 @@ export default function LoginPage() {
     const newInfo = { ...userInfo };
     newInfo[targetId] = targetValue;
     setUserInfo(newInfo);
+  };
+
+  const login = (e) => {
+    e.preventDefault();
+    return userAction.logIn(userInfo);
   };
 
   return (
