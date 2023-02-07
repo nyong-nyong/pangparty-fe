@@ -80,7 +80,10 @@ export default function PieceListPage() {
   // 병합 후에 recoil에 담긴 정보 피스랑 스티커 겹치지 않게 뿌려줄 것
   return (
     <div>
-      <div className="RpPieceStickerList" style={{ width: "100%" }}>
+      <div
+        className="RpPieceStickerList"
+        style={{ width: "100%", position: "relative" }}
+      >
         <h1>완성된 롤링페이퍼 페이지</h1>
         {/* 롤링페이퍼 조각 리스트 */}
         {pieceListData &&
@@ -95,8 +98,7 @@ export default function PieceListPage() {
           })}
         {/* 사용자들이 붙인 스티커 리스트 */}
         {/* 모달로 구현하기 */}
-        <CompleteStickerList  />
-        
+        <CompleteStickerList />
       </div>
       <div
         className="btnContainer"

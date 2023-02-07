@@ -10,15 +10,15 @@ function CompleteStickerList() {
   const stickerPageStyle = {
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(71, 71, 71, 0.5)",
-    position: "relative",
+    backgroundColor: "transparent",
+    position: "absolute",
     top: "0",
     left: "0",
-    transform: "translate(-50%, -50%)",
+    
   };
 
   return (
-    <div style={stickerPageStyle}>
+    <div className="stickerPageContainer" style={stickerPageStyle}>
       {stickerListData &&
         stickerListData.map((sticker) => {
           if (sticker) {
