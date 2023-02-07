@@ -13,10 +13,13 @@ export default function ReceicedEvent() {
           />
         </div>
         <div className="eventCardRightBox">
-          <p>이벤트명 텍스트</p>
-          <p>@아이디</p>
-          <p>날짜?</p>
+          <h4>마.. 생일축하한다는 예시다 이거...</h4>
+          <h5>@jaerong._</h5>
+          <p>2023.02.07 (다솜이 죽어가는 날)</p>
         </div>
+        <Link to="/gift/intro">
+          <button type="button">기프트팡 인트로</button>
+        </Link>
         <Link to="/gift">
           <button type="button">이벤트 상세보기</button>
         </Link>
