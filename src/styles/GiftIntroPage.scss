@@ -1,12 +1,41 @@
 @import "./colors.scss";
-
 .giftIntroContainer {
-  height: 100vh;
-  z-index: -10;
+  width: 100%;
+  height: 100%;
+  // background-color: $gray-5;
 }
 
-.giftIntroBg {
+.giftHeader {
+  font-size: 21px;
+}
+
+.giftIntroContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  margin-bottom: 20px ;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.moveContainer {
+  display: flex;
+  position: absolute;
   width: 100%;
+  flex-direction: column;
+}
+
+.moveButton {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
 }
 
 .moveContainer {
@@ -17,39 +46,74 @@
 }
 
 .moveText {
-  animation: movement 0.1s infinite;
+  color: $gray-2;
+  text-align: center;
+  animation: movement 0.5s infinite;
 }
 
 .touchImg {
-  animation: vibration 0.2s infinite;
+  animation: vibration 1s infinite;
 }
 
-.tokomon {
-  width: 300px;
-  animation : tokomondeungjang  3s infinite
+// 터치 중일 때 상자 주변으로 등장
+.touchSticker1 {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  z-index: 2000;
+  rotate: (-10deg);
 }
 
-.tokomon1 {
-  width: 150px;
-  animation : tokomondeungjang  2s infinite
+.touchSticker2 {
+  position: absolute;
+  top: 60%;
+  left: 200px;
+  z-index: 2000;
+  rotate: (5deg);
 }
 
-
-@keyframes tokomondeungjang {
-  0% {
-    transform: translateY(600px);
-  }
-  100% {
-    transform: translateY(-1000px);
-  }
+.touchSticker3 {
+  position: absolute;
+  top: 40%;
+  left: 300px;
+  z-index: 2000;
+  rotate: (15deg);
 }
+
+.dayInfoContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+}
+
+.mentContainer {
+  margin-top: 15%;
+  text-align: center;
+  color: $gray-2;
+}
+
+// .tokomon {
+//   width: 300px;
+//   animation : tokomondeungjang  3s infinite
+// }
+
+// @keyframes tokomondeungjang {
+//   0% {
+//     transform: translateY(600px);
+//   }
+//   100% {
+//     transform: translateY(-1000px);
+//   }
+// }
 
 @keyframes movement {
   from {
-    transform: translateY(6px);
+    transform: translateY(5px);
   }
   to {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
   }
 }
 

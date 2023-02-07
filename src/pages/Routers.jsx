@@ -20,6 +20,8 @@ import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
 import GiftIntroPage from "./GiftIntroPage";
+import Recap1Page from "./PangPartyRecapPage/Recap1Page";
+import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -60,6 +62,8 @@ export default function Routers() {
       {/* 팡파티 페이지 */}
       <Route path="gift/intro" element={<GiftIntroPage />} />
       <Route path="gift" element={<PangPartyGiftPage />} />
+      <Route path="gift/recap/1" element={<Recap1Page />} />
+      <Route path="gift/recap/1/detail" element={<Recap1DetailPage />} />
     </Routes>
   );
 }
