@@ -57,11 +57,7 @@ function Footbar() {
           검색
         </Icon>
       </Link>
-      <Link
-        to="/event/tagmember"
-        id="MyPage"
-        onClick={(e) => clickHandler(e, "MyPage")}
-      >
+      <Link to="/mypage" id="MyPage" onClick={(e) => clickHandler(e, "MyPage")}>
         <Icon img="my" isActive={isActive.MyPage}>
           내정보
         </Icon>

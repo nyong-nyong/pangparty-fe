@@ -5,6 +5,8 @@ import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
+// import SingUpIntro from "./SignUpPage/SingUpIntroPage";
+// import SignUpEmail from "./SignUpPage/SignUpEmail";
 import MyPage from "./MyPage";
 import FollowPage from "./MyPage/FollowPage";
 import MyEventsPage from "./MyPage/MyEventsPage";
@@ -16,6 +18,7 @@ import SelectImagePage from "./CreateEventPage/SelectImagePage";
 import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
+import PangPartyGiftPage from "./PangPartyGiftPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -26,8 +29,8 @@ export default function Routers() {
       <Route path="/" element={<Home />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
-        <Route path="intro" element={<SingUpIntro />} />
-        <Route path="email" element={<SignUpEmail />} />
+        {/* <Route path="intro" element={<SingUpIntro />} />
+        <Route path="email" element={<SignUpEmail />} /> */}
       </Route>
       {/* 이벤트 페이지 */}
       <Route path="event">
@@ -53,6 +56,8 @@ export default function Routers() {
       <Route path="mypage" element={<MyPage />} />
       <Route path="follows" element={<FollowPage />} />
       <Route path="myevents" element={<MyEventsPage />} />
+      {/* 팡파티 페이지 */}
+      <Route path="gift" element={<PangPartyGiftPage />} />
     </Routes>
   );
 }

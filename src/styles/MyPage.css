@@ -11,14 +11,14 @@
 }
 
 .username {
-  color: #678CFF;
+  color: #678cff;
   font-weight: bold;
   margin: 1px 0;
 }
 
 .userintro {
   margin-top: 5px;
-  margin-bottom: 0px
+  margin-bottom: 0px;
 }
 
 .profileContainer {
@@ -53,18 +53,18 @@
 
 .followBox {
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
   margin-right: 20px;
 }
 
 .followText {
-  color: black
+  color: black;
 }
 
 .followNum {
   margin-left: 5px;
   font-weight: bold;
-  color: #FF7A5C;
+  color: #ff7a5c;
 }
 
 .eventInfoContainers {
@@ -80,7 +80,7 @@
   height: 98px;
   width: 30%;
   margin: 3px;
-  box-shadow: 3px 3px 3px 3px #E8E8E8;
+  box-shadow: 3px 3px 3px 3px #e8e8e8;
   background-color: transparent;
   font-family: "Pretendard-Regular";
 }
@@ -90,7 +90,7 @@
   justify-content: space-evenly;
   padding: 10px 0;
   border-width: 1.5px 0px;
-  border-color: #E8E8E8;
+  border-color: #e8e8e8;
   border-style: solid none;
 }
 
@@ -98,7 +98,7 @@
   height: 32px;
   border-radius: 20px;
   border: 0;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   padding: 0 15px;
   font-family: "Pretendard-Regular";
 }
@@ -111,6 +111,26 @@
   font-family: "Pretendard-Regular";
 }
 
+/* 받은 이벤트 */
+.eventCardContainer {
+  display: flex;
+  width: 100%;
+  height: 94px;
+  align-items: center;
+  border: 1px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px #e8e8e8;
+}
+
+.eventCardImg {
+  width: 94px;
+  height: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.eventCardRightBox {
+  margin-left: 10px;
+}
 
 /* 뱃지 */
 .badgeContainer {
