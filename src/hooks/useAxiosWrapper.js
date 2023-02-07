@@ -1,11 +1,11 @@
 import { useRecoilState } from "recoil";
-
-import history from "../utils/history";
+import { useNavigate } from "react-router-dom";
 import { authState } from "../recoils/user/Atoms";
 import axios from "../api/axios";
 import requests from "../api/requests";
 
 export default function useAxiosWrapper() {
+  const navigate = useNavigate();
   const [auth, setAuth] = useRecoilState(authState);
 
   const authHeader = (url) => {
@@ -35,7 +35,7 @@ export default function useAxiosWrapper() {
           // if(err.response && [401, 403].includes(err.status) && auth?.token) {
           localStorage.removeItem("user");
           setAuth(null);
-          history.push("/login");
+          navigate("/login");
           console.log(err);
           // }
         });

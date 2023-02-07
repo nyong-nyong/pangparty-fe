@@ -1,14 +1,26 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import useUserAction from "../hooks/useUserAction";
+import { authState } from "../recoils/user/Atoms";
 
+// export default function LoginPage({ history }) {
 export default function LoginPage() {
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
   const [isValid, setIsValid] = useState(true);
+  const auth = useRecoilValue(authState);
   const userAction = useUserAction();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth) {
+      navigate("/");
+      // history.push("/");
+    }
+  }, []);
 
   const emailIsValid = (email) => {
     const emailRegExp =

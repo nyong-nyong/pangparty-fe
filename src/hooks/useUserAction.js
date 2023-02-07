@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import requests from "../api/requests";
 import { authState } from "../recoils/user/Atoms";
-import history from "../utils/history";
 import useAxiosWrapper from "./useAxiosWrapper";
 
 export default function useUserAction() {
   const setAuth = useSetRecoilState(authState);
   const axiosWrapper = useAxiosWrapper();
+  const navigate = useNavigate();
 
   function logIn(userInfo) {
     // eslint-disable-next-line no-shadow
@@ -21,7 +22,7 @@ export default function useUserAction() {
         .then((user) => {
           localStorage.setItem("user", JSON.stringify(user));
           setAuth(user);
-          console.log(user)
+          navigate(-1);
         });
     }
     postLogin(userInfo);
@@ -30,7 +31,7 @@ export default function useUserAction() {
   function logOut() {
     localStorage.removeItem("user");
     setAuth(null);
-    history.push("/login");
+    navigate("/login");
   }
 
   return {
