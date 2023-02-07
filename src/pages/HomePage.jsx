@@ -15,12 +15,12 @@ export default function HomePage() {
       <SearchType/>
       <SearchResults/> */}
       <div>
-        <Button>
-          <Link to="/event/intro">이벤트 소개페이지 바로가기</Link>
-        </Button>
-        <Button>
-          <Link to="/event/tagmember">🎉이벤트 만들기🎉</Link>
-        </Button>
+        <Link to="/event/intro">
+          <Button>이벤트 소개페이지 바로가기</Button>
+        </Link>
+        <Link to="/event/tagmember">
+          <Button>🎉이벤트 만들기🎉</Button>
+        </Link>
         <Button size="small" color="orange-1">
           작은 버튼
         </Button>

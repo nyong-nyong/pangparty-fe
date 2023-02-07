@@ -1,0 +1,11 @@
+@import "../../styles/colors.scss";
+
+.pieceBox {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  background: aqua;
+  box-shadow: 0px 5px 5px red;
+  border-radius: 8px;
+  font-size: 13px;
+}

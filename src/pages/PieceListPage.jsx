@@ -9,6 +9,8 @@ import MoveablePiece from "../components/Sticker/MoveablePiece";
 import StickerListModal from "../components/Sticker/StickerListModal";
 import StickerPost from "../components/Sticker/StickerPost";
 import Button from "../components/common/Button";
+import PieceContainer from "../components/RpTheme/PieceContainer";
+import CompleteStickerList from "../components/Sticker/CompleteStickerList";
 
 export default function PieceListPage() {
   const [pieceListData, setPieceListData] = useState(undefined);
@@ -39,7 +41,7 @@ export default function PieceListPage() {
         )
         .then((res) => {
           setPieceListData(res.data.rollingPaperPieces);
-          console.log(res)
+          // console.log(res)
         })
         .catch((err) => {
           console.log(err);
@@ -77,44 +79,36 @@ export default function PieceListPage() {
   // 다솜 + 규연 병합 후에 진행
   // 병합 후에 recoil에 담긴 정보 피스랑 스티커 겹치지 않게 뿌려줄 것
   return (
-    <div id="RP-page">
-      <h1>완성된 롤링페이퍼 페이지</h1>
-      {pieceListData &&
-        pieceListData.map((piece) => {
-          if (piece) {
-            return (
-              <div key={piece.rollingPaperPieceUid}>
-                <h4>{piece.content}</h4>
-              </div>
-            );
-          }
-        })}
-      {stickerListData &&
-      stickerListData.map((sticker) => {
-        if(sticker) {
-          return (
-            <div
-              key={sticker.angle}
-              style={{
-                left: sticker.leftLoc,
-                top: sticker.topLoc,
-              }}
-            >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
-            </div>
-          );
-        }
-      })}
-      <Link to="/piece">
-        <Button>롤링페이퍼 쓰기 버튼</Button>
-      </Link>
-      <Button type="button" onClick={showModal}>
-        🧸스티커 붙이기🧸
-      </Button>
+    <div>
+      <div className="RpPieceStickerList" style={{ width: "100%" }}>
+        <h1>완성된 롤링페이퍼 페이지</h1>
+        {/* 롤링페이퍼 조각 리스트 */}
+        {pieceListData &&
+          pieceListData.map((piece) => {
+            if (piece) {
+              return (
+                <div key={piece.rollingPaperPieceUid}>
+                  <PieceContainer piece={piece} />
+                </div>
+              );
+            }
+          })}
+        {/* 사용자들이 붙인 스티커 리스트 */}
+        {/* 모달로 구현하기 */}
+        <CompleteStickerList  />
+        
+      </div>
+      <div
+        className="btnContainer"
+        style={{ display: "flex", alignItems: "center", flexFlow: "column" }}
+      >
+        <Link to="/piece">
+          <Button>롤링페이퍼 쓰기 버튼</Button>
+        </Link>
+        <Button type="button" onClick={showModal}>
+          🧸스티커 붙이기🧸
+        </Button>
+      </div>
       {stickerInfo && (
         <StickerPost eventUid={eventUid} rollingPaperUid={rollingPaperUid} />
       )}
