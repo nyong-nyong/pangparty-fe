@@ -102,7 +102,7 @@ export default function PieceListPage() {
             >
               <img
                 src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
+                style={{ width: 200, height: sticker.scale }}
                 alt="img"
               />
             </div>

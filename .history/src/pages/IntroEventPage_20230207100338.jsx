@@ -7,6 +7,10 @@ export default function IntroEventPage() {
     <div>
       <h1>여기는 이벤트 소개 페이지입니다.</h1>
 
+      <Link to="/piece">
+        <Button>✏️롤링페이퍼 쓰기 버튼</Button>
+      </Link>
+
       <Link to="/rollingpaper">
         <Button>✏️롤링페이퍼 조회 (피스리스트)</Button>
       </Link>

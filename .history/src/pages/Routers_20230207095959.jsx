@@ -26,8 +26,8 @@ export default function Routers() {
       <Route path="/" element={<Home />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
-        {/* <Route path="intro" element={<SingUpIntro />} />
-        <Route path="email" element={<SignUpEmail />} /> */}
+        <Route path="intro" element={<SingUpIntro />} />
+        <Route path="email" element={<SignUpEmail />} />
       </Route>
       {/* 이벤트 페이지 */}
       <Route path="event">

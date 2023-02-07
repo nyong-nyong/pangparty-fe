@@ -98,13 +98,11 @@ export default function PieceListPage() {
               style={{
                 left: sticker.leftLoc,
                 top: sticker.topLoc,
+                width: sticker.scale,
+                width: sticker.scale,
               }}
             >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
+              <img src={sticker.stickerUrl} alt="img" />
             </div>
           );
         }

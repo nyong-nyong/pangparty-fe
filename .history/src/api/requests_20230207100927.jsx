@@ -121,7 +121,7 @@ const requests = {
       // 롤링페이퍼 목록 GET 요청
       rpPieceAll(eventUid, rollingPaperUid, page, limit) {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&limit=${limit}`;
-      },
+      }
     },
   },
 };

@@ -23,14 +23,12 @@ export default function PieceListPage() {
   const rollingPaperUid = 777777;
   const topStart = 0;
   const topEnd = 100;
-  const page = 1;
-  const limit = 30;
 
   useEffect(() => {
     async function fetchPieceList() {
       await axios
         .get(
-          requests.events.rollingPaper.rpPieceAll(
+          requests.events.rollingPaper.rePieceAll(
             eventUid,
             rollingPaperUid,
             page,
@@ -39,13 +37,11 @@ export default function PieceListPage() {
         )
         .then((res) => {
           setPieceListData(res.data.rollingPaperPieces);
-          console.log(res)
         })
         .catch((err) => {
           console.log(err);
         });
     }
-    fetchPieceList();
 
     async function fetchStickerList() {
       await axios
@@ -65,6 +61,7 @@ export default function PieceListPage() {
           console.log(e);
         });
     }
+    fetchPieceList();
     fetchStickerList();
   }, []);
 
@@ -89,26 +86,6 @@ export default function PieceListPage() {
             );
           }
         })}
-      {stickerListData &&
-      stickerListData.map((sticker) => {
-        if(sticker) {
-          return (
-            <div
-              key={sticker.angle}
-              style={{
-                left: sticker.leftLoc,
-                top: sticker.topLoc,
-              }}
-            >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
-            </div>
-          );
-        }
-      })}
       <Link to="/piece">
         <Button>롤링페이퍼 쓰기 버튼</Button>
       </Link>

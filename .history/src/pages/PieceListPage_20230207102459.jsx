@@ -79,7 +79,7 @@ export default function PieceListPage() {
   return (
     <div id="RP-page">
       <h1>완성된 롤링페이퍼 페이지</h1>
-      {pieceListData &&
+      {/* {pieceListData &&
         pieceListData.map((piece) => {
           if (piece) {
             return (
@@ -88,27 +88,7 @@ export default function PieceListPage() {
               </div>
             );
           }
-        })}
-      {stickerListData &&
-      stickerListData.map((sticker) => {
-        if(sticker) {
-          return (
-            <div
-              key={sticker.angle}
-              style={{
-                left: sticker.leftLoc,
-                top: sticker.topLoc,
-              }}
-            >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
-            </div>
-          );
-        }
-      })}
+        })} */}
       <Link to="/piece">
         <Button>롤링페이퍼 쓰기 버튼</Button>
       </Link>

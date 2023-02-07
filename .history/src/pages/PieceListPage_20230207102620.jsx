@@ -89,26 +89,7 @@ export default function PieceListPage() {
             );
           }
         })}
-      {stickerListData &&
-      stickerListData.map((sticker) => {
-        if(sticker) {
-          return (
-            <div
-              key={sticker.angle}
-              style={{
-                left: sticker.leftLoc,
-                top: sticker.topLoc,
-              }}
-            >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
-            </div>
-          );
-        }
-      })}
+      {stickerListData && stickerListData.}
       <Link to="/piece">
         <Button>롤링페이퍼 쓰기 버튼</Button>
       </Link>

@@ -92,21 +92,9 @@ export default function PieceListPage() {
       {stickerListData &&
       stickerListData.map((sticker) => {
         if(sticker) {
-          return (
-            <div
-              key={sticker.angle}
-              style={{
-                left: sticker.leftLoc,
-                top: sticker.topLoc,
-              }}
-            >
-              <img
-                src={sticker.stickerUrl}
-                style={{ width: 200, height: 200, angle:sticker.angle }}
-                alt="img"
-              />
-            </div>
-          );
+          return(
+            <div key={}
+          )
         }
       })}
       <Link to="/piece">
