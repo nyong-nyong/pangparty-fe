@@ -90,6 +90,31 @@ const requests = {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}${this.stickerBaseUrl}`;
       },
     },
+
+    /** 이벤트 소개/참여 페이지 */
+    introEvent: {
+      pangBaseUrl: "/likes",
+
+      /** 이벤트 소개페이지 조회 GET 요청*/
+      eventItroAll(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}`;
+      },
+
+      /** 이벤트 생성 */
+      postEvent() {
+        return `${eventsBaseUrl}`;
+      },
+
+      /** 이벤트 좋아요(팡파레 울리기) POST 요청 */
+      postPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+      },
+
+      /** 이벤트 좋아요 취소 DELETE 요청 */
+      deletePang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+      },
+    },
   },
 };
 export default requests;
