@@ -4,7 +4,6 @@ import { useRecoilValue } from "recoil";
 import useUserAction from "../hooks/useUserAction";
 import { authState } from "../recoils/user/Atoms";
 
-// export default function LoginPage({ history }) {
 export default function LoginPage() {
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -18,7 +17,6 @@ export default function LoginPage() {
   useEffect(() => {
     if (auth) {
       navigate("/");
-      // history.push("/");
     }
   }, []);
 
