@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import PhotoAlbum from "../components/PhotoAlbum/PhotoAlbum";
 import Pang from "../components/CreateEvent/Pang";
-import RpCreateButton from "../components/CreateEvent/RpCreateButton";
+import RpCreateButton from "../components/CreateEvent/RPCreateButton";
 
 export default function IntroEventPage() {
   return (
@@ -11,10 +11,9 @@ export default function IntroEventPage() {
       <Pang />
 
       <Button>참여하기</Button>
-
-      <RpCreateButton>
-        <Link to="/piece" />
-      </RpCreateButton>
+      <Link to="/piece">
+        <RpCreateButton
+      </Link>
 
       <PhotoAlbum />
     </div>

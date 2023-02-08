@@ -11,10 +11,9 @@ export default function IntroEventPage() {
       <Pang />
 
       <Button>참여하기</Button>
-
-      <RpCreateButton>
-        <Link to="/piece" />
-      </RpCreateButton>
+      <Link to="/piece">
+        <RpCreateButton />
+      </Link>
 
       <PhotoAlbum />
     </div>
