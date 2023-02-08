@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
@@ -44,7 +45,9 @@ export default function HostEvent() {
                       getDetail(event.uid, e);
                     }}
                   >
-                    상세 페이지 조회해보기
+                    <Link to={`/events/${event.uid}`}>
+                      상세 페이지 조회해보기
+                    </Link>
                   </button>
                 </div>
               </div>

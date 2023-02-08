@@ -16,6 +16,7 @@ import SelectImagePage from "./CreateEventPage/SelectImagePage";
 import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
+import EventDetailPage from "./EventDetailPage";
 import LoginPage from "./LoginPage";
 import SignUpIntro from "./SignUpPage/SignUpIntroPage";
 import SignUpEmail from "./SignUpPage/SignUpEmailPage";
@@ -48,6 +49,9 @@ export default function Routers() {
           <Route path="done" element={<EventDonePage />} />
         </Route>
       </Route>
+      {/* 이벤트 디테일 조회 페이지 */}
+      <Route path="events/:eventId" element={<EventDetailPage />} />
+      {/* 롤링페이퍼 */}
       <Route path="piece" element={<CreatePiece />} />
       <Route path="rollingpaper">
         <Route path="" element={<PieceList />} />

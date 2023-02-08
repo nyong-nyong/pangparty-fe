@@ -1,0 +1,105 @@
+@import "./colors.scss";
+// .detailContainer {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.dDayInfoBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dDayBox {
+  width: 53px;
+  height: 22px;
+  background-color: #d9d9d9;
+  padding: 2px;
+  text-align: center;
+  border-radius: 8px;
+  color: white;
+}
+
+.dDayDate {
+  margin: 0px 10px;
+  color: $orange-1;
+}
+
+.header {
+  margin: 10px 0px;
+  font-size: 21px;
+  font-weight: bolder;
+  justify-content: flex-start;
+}
+
+.banner {
+  background-image: url("../assets/detailBanner.png");
+  width: 360px;
+  position: relative;
+  left: -10px;
+}
+
+.bannerContentBox {
+  position: relative;
+  display: flex;
+  top: 50%;
+  left: 10px;
+  height: 90px;
+  width: 340px;
+}
+
+.bannerContent {
+  display: flex;
+  align-items: center;
+}
+
+.rPinfoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px;
+  width: 328px;
+  height: 167px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px #e8e8e8;
+}
+
+.rpTitle {
+  font-size: 13px;
+  font-weight: bold;
+  color: $orange-1;
+  text-align: center;
+}
+
+.rpContent {
+  font-size: 16px;
+  font-weight: normal;
+  color: $gray-1;
+  text-align: center;
+}
+
+
+.hashtagBox{
+  width: 60px;
+  height: 30px;
+  background-color: #d9d9d9;
+  padding: 2px;
+  text-align: center;
+  border-radius: 8px;
+  color: white;
+  margin: 10px;
+}
+
+.albumImgBox {
+  display: inline;
+  width: 100px;
+  height: 100px;
+  overflow: contain;
+  margin: 10px;
+}
+
+.albumImg {
+  width: 100px;
+  height: 100px;
+  overflow: contain;
+}
