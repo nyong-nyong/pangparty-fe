@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Icon from "../common/Icon";
 
 export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
   const [likeCnt, setLikeCnt] = useState(0);
@@ -57,6 +58,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
 
   return (
     <div>
+      {/* <Icon img="heart" isActive={isLiked} onClick={handleBtnClick} /> */}
       <span onClick={handleBtnClick}>{isLiked ? "♥" : "♡"}</span>
       <span>{likeCnt || ""}</span>
     </div>

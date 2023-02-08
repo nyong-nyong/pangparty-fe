@@ -95,7 +95,7 @@ const requests = {
     introEvent: {
       pangBaseUrl: "/likes",
 
-      /** 이벤트 소개페이지 조회 GET 요청*/
+      /** 이벤트 소개페이지 조회 GET 요청 */
       eventItroAll(eventUid) {
         return `${eventsBaseUrl}/${eventUid}`;
       },

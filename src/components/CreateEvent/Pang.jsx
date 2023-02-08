@@ -1,9 +1,9 @@
 /* eslint-disable */
-
 import { useEffect, useState } from "react";
 import Icon from "../common/Icon";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import "./Pang.scss";
 
 function Pang() {
   const [isPang, setIsPang] = useState(false);
@@ -23,11 +23,50 @@ function Pang() {
     fetchData();
   }, []);
 
+  const pangClickHandler = (e) => {
+    e.preventDefault();
+    console.log(isPang);
+    console.log(pangCnt);
+
+    async function deletePang() {
+      await axios
+        .delete(requests.events.introEvent.deletePang(eventUid))
+        // .then(setPangCnt(pangCnt - 1), setIsPang(!isPang))
+        .then(() => {
+          setPangCnt(pangCnt - 1), setIsPang(!isPang);
+        })
+        .catch((err) => console.log(err));
+    }
+
+    async function postPang() {
+      await axios
+        .delete(requests.events.introEvent.postPang(eventUid))
+        .then(() => {
+          setPangCnt(pangCnt + 1), setIsPang(!isPang);
+        })
+        // .then(setPangCnt(pangCnt + 1), setIsPang(!isPang))
+        .catch((err) => console.log(err));
+    }
+
+    if (isPang) {
+      return deletePang();
+    }
+    return postPang();
+  };
+
   return (
     <div>
-      <Icon img="pang" isActive={isPang}>
-        {pangCnt}
-      </Icon>
+      <div className="pangContainer" onClick={pangClickHandler}>
+        <div className="pangIcon">
+          <Icon img="pang" isActive={isPang} />
+        </div>
+        <div
+          className="pangCnt"
+          style={isPang ? { color: "#FF7A5C" } : { color: "#6B6B6B" }}
+        >
+          {pangCnt}
+        </div>
+      </div>
     </div>
   );
 }

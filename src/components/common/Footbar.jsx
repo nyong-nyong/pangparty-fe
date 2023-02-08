@@ -13,7 +13,6 @@ function Footbar() {
 
   // 페이지 이동시 비활성 시키기
   const clickHandler = (e, id) => {
-    console.log(e.target.id);
     const newActivation = {
       Home: false,
       Feed: false,
@@ -22,8 +21,6 @@ function Footbar() {
       MyPage: false,
     };
     newActivation[id] = true;
-    // console.log(newTarget);
-    // console.log(newActivation);
     setIsActive(newActivation);
   };
 
