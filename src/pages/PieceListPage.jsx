@@ -85,12 +85,13 @@ export default function PieceListPage() {
         {/* 롤링페이퍼 조각 리스트 */}
         <div className="pieceListPageContainer" style={{ display: "flex", flexWrap: "wrap" }}>
           {pieceListData &&
-            pieceListData.map((piece) => {
+            pieceListData.map((piece, index) => {
               if (piece) {
                 return (
                   <PieceContainer
                     key={piece.rollingPaperPieceUid}
                     piece={piece}
+                    index={ index}
                   />
                 );
               }
