@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
@@ -23,7 +24,11 @@ export default function InvolvedEvent() {
         involvedEventInfo.involvedEvents.map((event) => {
           if (event) {
             return (
-              <div key={event.uid} className="eventCardContainer">
+              <Link
+                key={event.uid}
+                to={`/events/${event.uid}`}
+                className="eventCardContainer"
+              >
                 <div className="">
                   <img className="eventCardImg" src={event.imgUrl} alt="" />
                 </div>
@@ -32,7 +37,7 @@ export default function InvolvedEvent() {
                   <p className="eventwriter">@{event.targetId}</p>
                   <p className="eventdDay">디데이:{event.dDay}</p>
                 </div>
-              </div>
+              </Link>
             );
           }
           return null;

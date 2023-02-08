@@ -16,11 +16,6 @@ export default function HostEvent() {
     fetchData();
   }, []);
 
-  const getDetail = (params, e) => {
-    console.log(params);
-    console.log(e);
-  };
-
   return (
     <div>
       {hostEventInfo && (
@@ -30,27 +25,20 @@ export default function HostEvent() {
         hostEventInfo.hostEvents.map((event) => {
           if (event) {
             return (
-              <div key={event.uid} className="eventCardContainer">
-                <div className="">
+              <Link
+                key={event.uid}
+                to={`/events/${event.uid}`}
+                className="eventCardContainer"
+              >
+                <div className="eventCardImgContainer">
                   <img className="eventCardImg" src={event.imgUrl} alt="" />
                 </div>
                 <div className="eventCardRightBox">
                   <p className="eventContent">{event.eventName}</p>
                   <p className="eventwriter">@{event.targetId}</p>
                   <p className="eventdDay">디데이:{event.dDay}</p>
-                  <button
-                    style={{ height: "20px", zIndex: "100000" }}
-                    type="button"
-                    onClick={(e) => {
-                      getDetail(event.uid, e);
-                    }}
-                  >
-                    <Link to={`/events/${event.uid}`}>
-                      상세 페이지 조회해보기
-                    </Link>
-                  </button>
                 </div>
-              </div>
+              </Link>
             );
           }
           return null;
