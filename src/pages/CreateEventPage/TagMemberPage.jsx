@@ -2,6 +2,7 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
 // import SearchBar from "../../components/Search/SearchBar";
 // import SearchResults from "../../components/Search/SearchResults";
@@ -40,9 +41,9 @@ export default function TagMemberPage() {
 
       {/* common으로 나중에 button component 뺄 것!!!!!!!!!!!! */}
       <Link to="/event/calendar">
-        <button>다음</button>
+        <Button>다음</Button>
       </Link>
-      <button>친구 계정이 없어요</button>
+      <Button>친구 계정이 없어요</Button>
     </div>
   );
 }

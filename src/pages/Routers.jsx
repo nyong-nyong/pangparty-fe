@@ -5,8 +5,9 @@ import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
-import SingUpIntro from "./SignUpPage/SingUpIntroPage";
-import SignUpEmail from "./SignUpPage/SignUpEmailPage";
+import MyPage from "./MyPage";
+import FollowPage from "./MyPage/FollowPage";
+import MyEventsPage from "./MyPage/MyEventsPage";
 import TagMemberPage from "./CreateEventPage/TagMemberPage";
 import EventDiscription from "./CreateEventPage/EventDiscriptionPage";
 import DdayCalendar from "./CreateEventPage/DdayCalendarPage";
@@ -51,6 +52,10 @@ export default function Routers() {
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />
+      {/* 마이페이지 */}
+      <Route path="mypage" element={<MyPage />} />
+      <Route path="follows" element={<FollowPage />} />
+      <Route path="myevents" element={<MyEventsPage />} />
     </Routes>
   );
 }

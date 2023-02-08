@@ -1,10 +1,17 @@
 .appContainer {
+  font-family: "Pretendard-Regular";
   display: block;
   margin: 0 auto;
-  max-width: 360px;
+  min-width: 360px;
+  max-width: 428px;
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
   min-height: 700px;
   border: 1px solid;
+  padding: 10px;
+}
+
+button {
+  font-family: "Pretendard-Regular";
 }
 
 .wrapper {
@@ -18,13 +25,17 @@
 }
 
 .footer {
-  margin: 5px 15px;
+  position: sticky;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  height: 94px;
+  left: 0px;
+  top: 706px;
 }
 
-.footerbutton {
-  all: unset;
-  margin: 5px;
-  padding: 1px;
+a {
+  text-decoration: none;
 }
 
 @font-face {

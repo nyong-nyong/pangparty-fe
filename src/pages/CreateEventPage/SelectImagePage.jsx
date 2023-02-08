@@ -2,6 +2,7 @@
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { imgUrlState } from "../../recoils/createEvent/Atoms";
+import Button from "../../components/common/Button";
 
 function SelectImagePage() {
   const [imgUrlInfo, setImgUrlInfo] = useRecoilState(imgUrlState);
@@ -17,7 +18,7 @@ function SelectImagePage() {
       <input type="file" accept="image/*" />
       <input type="text" onChange={eventImgHandler} placeholder="img url을 입력해주세요"/>
       <Link to="/event/naming">
-        <button>다음</button>
+        <Button>다음</Button>
       </Link>
     </div>
   );

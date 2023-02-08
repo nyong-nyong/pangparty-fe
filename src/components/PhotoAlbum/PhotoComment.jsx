@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
