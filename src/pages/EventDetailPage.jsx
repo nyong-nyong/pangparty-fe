@@ -34,25 +34,36 @@ export default function EventDetailPage() {
         <p className="rpTitle">롤링페이퍼</p>
         <hr style={{ width: "80%", color: "#CFCFCF" }} />
         <p className="rpContent">
-          현재 {eventInfo && eventInfo.rollingPaperParticipantCnt}명이{" "}
-          {eventInfo && eventInfo.targetId}님 에게
+          현재{" "}
+          <span style={{ color: "#678cff" }}>
+            {eventInfo && eventInfo.rollingPaperParticipantCnt}
+          </span>
+          명이{" "}
+          <span style={{ color: "#FF7A5C" }}>
+            {eventInfo && eventInfo.targetId}님{" "}
+          </span>
+          에게
           <br />
           롤링페이퍼를 작성했어요!
         </p>
       </div>
       <p>{eventInfo && eventInfo.likeCnt}</p>
       <p>좋아요여부:{eventInfo && eventInfo.isLiked}</p>
-      {eventInfo &&
-        eventInfo.hashtags.map((hashtag) => {
-          if (hashtag) {
-            return (
-              <div key={hashtag.name} className="hashtagBox">
-                <p>{hashtag.name}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
+      <div className="hashtagContainer">
+        <p className="hashtag">#해시태그</p>
+        {eventInfo &&
+          eventInfo.hashtags.map((hashtag) => {
+            if (hashtag) {
+              return (
+                <div key={hashtag.name}>
+                  <p className="hashtag">{hashtag.name}</p>
+                </div>
+              );
+            }
+            return null;
+          })}
+      </div>
+      <p className="albumTitle">@{eventInfo && eventInfo.targetId} 과의 추억</p>
       {eventInfo &&
         eventInfo.eventMedias.map((eventMedia) => {
           if (eventMedia) {
