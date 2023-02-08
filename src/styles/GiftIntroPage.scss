@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   height: 250px;
-  margin-bottom: 20px ;
+  margin-bottom: 20px;
   align-items: center;
   text-align: center;
   position: relative;
@@ -58,7 +58,7 @@
 // 터치 중일 때 상자 주변으로 등장
 .touchSticker1 {
   position: absolute;
-  top: 50%;
+  top: 105%;
   left: 100px;
   z-index: 2000;
   rotate: (-10deg);
@@ -66,7 +66,7 @@
 
 .touchSticker2 {
   position: absolute;
-  top: 60%;
+  top: 70%;
   left: 200px;
   z-index: 2000;
   rotate: (5deg);
@@ -75,9 +75,17 @@
 .touchSticker3 {
   position: absolute;
   top: 40%;
-  left: 300px;
+  left: 270px;
   z-index: 2000;
-  rotate: (15deg);
+  rotate: (5deg);
+}
+
+.touchSticker4 {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 2000;
+  rotate: (20deg);
 }
 
 .dayInfoContainer {
@@ -85,13 +93,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; 
+  text-align: center;
 }
 
 .mentContainer {
-  margin-top: 15%;
+  margin-top: 5%;
   text-align: center;
   color: $gray-2;
+}
+
+.goUpIcon {
+  margin-bottom: 15%;
+  animation: movement 1s 3s;
 }
 
 // .tokomon {

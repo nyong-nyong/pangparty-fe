@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { AnimatePresence } from "framer-motion";
 import Routers from "./pages/Routers";
 import NavBar from "./components/common/Navbar";
 import Footbar from "./components/common/Footbar";
@@ -13,13 +14,15 @@ function App() {
     <div className="appContainer">
       <RecoilRoot>
         <BrowserRouter>
-          <div className="wrapper">
-            <NavBar />
-            <div className="contentWrapper">
-              <Routers />
+          <AnimatePresence>
+            <div className="wrapper">
+              <NavBar />
+              <div className="contentWrapper">
+                <Routers />
+              </div>
+              <Footbar />
             </div>
-            <Footbar />
-          </div>
+          </AnimatePresence>
         </BrowserRouter>
       </RecoilRoot>
     </div>

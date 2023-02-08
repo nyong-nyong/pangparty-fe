@@ -1,12 +1,13 @@
 .appContainer {
   font-family: "Pretendard-Regular";
-  display: flex;
+  display: block;
   min-width: 330px;
-  max-width: 350px;
+  max-width: 340px;
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 600px;
+  /* min-height: 600px; */
   border: 1px solid;
-  padding: 10px;
+  padding: 9px;
+  margin: auto;
 }
 
 button {
@@ -16,7 +17,7 @@ button {
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
 }
 
 .contentWrapper {
@@ -28,9 +29,9 @@ button {
   display: flex;
   flex-flow: row;
   justify-content: space-around;
-  height: 94px;
+  /* height: 100vh; */
   left: 0px;
-  top: 706px;
+  /* top: 100vh; */
 }
 
 a {

@@ -23,16 +23,16 @@
     "react/prop-types": "off",
     "react/destructuring-assignment": [0, "always"],
     "no-else-return": ["error", { "allowElseIf": true }],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        // "devDependencies": false,
-        // "optionalDependencies": false,
-        // "peerDependencies": false,
-        // "bundledDependencies": false,
-        "dependencies": false
-      }
-    ],
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   {
+    //     // "devDependencies": false,
+    //     // "optionalDependencies": false,
+    //     // "peerDependencies": false,
+    //     // "bundledDependencies": false,
+    //     "dependencies": false
+    //   }
+    // ],
     "react/jsx-props-no-spreading": "off"
   }
 }

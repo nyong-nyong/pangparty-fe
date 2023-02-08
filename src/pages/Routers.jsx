@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-
 import Home from "./HomePage";
 import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
@@ -60,6 +59,7 @@ export default function Routers() {
       <Route path="follows" element={<FollowPage />} />
       <Route path="myevents" element={<MyEventsPage />} />
       {/* 팡파티 페이지 */}
+
       <Route path="gift/intro" element={<GiftIntroPage />} />
       <Route path="gift" element={<PangPartyGiftPage />} />
       <Route path="gift/recap/1" element={<Recap1Page />} />
