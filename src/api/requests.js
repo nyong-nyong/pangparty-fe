@@ -14,6 +14,33 @@ const requests = {
     },
   },
 
+  // 프로필
+  profile: {
+    profileBaseUrl: "/members",
+
+    getProfileTop(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/profile`;
+    },
+    getProfileFeed(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/feeds`;
+    },
+    getProfileRecievedEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/recieved-events`;
+    },
+    getProfileBadges(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/badges`;
+    },
+    getProfileHostEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/host-events`;
+    },
+    getProfileInvolvingEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/involving-events`;
+    },
+    getProfileInvolvedEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/involved-events`;
+    },
+  },
+
   following: {
     followingBaseUrl: "/following",
 
@@ -64,6 +91,11 @@ const requests = {
       delPang(eventUid) {
         return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`;
       },
+    },
+
+    /** 이벤트 상세 페이지 조회 */
+    getEventDetail(eventId) {
+      return `${eventsBaseUrl}/${eventId}`;
     },
 
     album: {

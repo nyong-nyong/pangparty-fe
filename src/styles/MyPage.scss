@@ -1,0 +1,232 @@
+/* 전역 css 적용 후 삭제  */
+@import "./colors.scss";
+
+.MyPage {
+  font-family: "Pretendard-Regular";
+}
+
+.userId {
+  font-size: 19px;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.username {
+  color: #678cff;
+  font-weight: normal;
+  margin: 1px 0;
+}
+
+.userintro {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.imgBox {
+  float: left;
+  width: 89px;
+  height: 89px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position: center center; */
+}
+
+.profileBox {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.followContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.followBox {
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 20px;
+}
+
+.followText {
+  color: black;
+}
+
+.followNum {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #ff7a5c;
+}
+
+.profileEditButton {
+  margin-left: 10px;
+  background-color: $orange-2;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+.eventInfoContainers {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eventBox {
+  border: 0;
+  border-radius: 13px;
+  height: 98px;
+  width: 30%;
+  margin: 3px;
+  box-shadow: 3px 3px 3px 3px #e8e8e8;
+  background-color: transparent;
+  font-family: "Pretendard-Regular";
+}
+
+.eventBoxText {
+  color: black;
+  margin-bottom: 0px;
+}
+
+.eventBoxNum {
+  margin-top: 8px;
+  color: $blue-1;
+  font-size: 19px;
+}
+
+.ComponentsChooser {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+  border-width: 2px 0px;
+  border-color: #e8e8e8;
+  border-style: solid none;
+}
+
+.componentBoxActive {
+  height: 32px;
+  border-radius: 20px;
+  border: 0;
+  background-color: #e8e8e8;
+  padding: 0 15px;
+  font-family: "Pretendard-Regular";
+}
+
+.componentBox {
+  height: 32px;
+  border: 0;
+  background-color: transparent;
+  padding: 0 15px;
+  font-family: "Pretendard-Regular";
+}
+/* 피드 */
+.feedCardContainer {
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+  border: 1px;
+  box-shadow: 1px 1px 10px 2px #e8e8e8;
+  border-radius: 20px;
+}
+
+.feedCard {
+  margin: 5%;
+  min-height: 30px;
+}
+
+.feedCardContent {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  font-size: 16px;
+}
+
+.feedwriter {
+  color: $orange-1;
+}
+
+/* 받은 이벤트 */
+.recievedCnt {
+  font-size: 16px;
+  font-weight: bolder;
+  margin: 25px 0px;
+}
+
+.eventCardContainer {
+  margin: 15px auto;
+  display: flex;
+  width: 100%;
+  height: 94px;
+  align-items: center;
+  border: 1px;
+  border-radius: 20px;
+  // box-shadow: 3px 3px 3px 3px #e8e8e8;
+}
+
+.eventCardImg {
+  width: 94px;
+  height: 94px;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.eventCardRightBox {
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.eventContent {
+  color: $gray-1;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.eventwriter {
+  color: $orange-1;
+  font-size: 13px;
+}
+
+.eventdDay {
+  color: $gray-3;
+  font-size: 13px;
+}
+
+/* 뱃지 */
+.badgeContainer {
+  display: flex;
+  margin: 10px;
+}
+
+.badgeImgContainer {
+  display: inline-block;
+}
+
+.badgeImg {
+  width: 75px;
+  overflow: contain;
+}
+
+/* 이벤트 달력 */
+.calanderContainer {
+  margin: 20px 5px;
+  padding: 10px;
+}
+
+.calanderAlert {
+  margin: 25px 0px;
+  text-align: center;
+}

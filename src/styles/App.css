@@ -4,7 +4,7 @@
   min-width: 330px;
   max-width: 340px;
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 600px;
+  min-height: 1000px;
   border: 1px solid;
   padding: 9px;
   margin: auto;
