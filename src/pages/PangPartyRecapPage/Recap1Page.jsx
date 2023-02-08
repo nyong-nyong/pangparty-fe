@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
+import pangRecap from "../../assets/pangRecap.png";
+import "./Recap.css";
 
 export default function Recap1Page() {
   return (
-    <motion.div
-      className="pagetransition"
-      animate={{ x: 100 }}
-      transition={{ ease: "easeOut", duration: 2 }}
-      initial={false}
-    >
-      <h2>Recap1Page</h2>
-    </motion.div>
+    <div>
+      {/* 수정 필요  */}
+      <img className="welcomBgImg" src={pangRecap} alt="" />
+      <div className="recapCard">
+        <h3 className="recapCardTitle">D-DAY</h3>
+      </div>
+    </div>
   );
 }

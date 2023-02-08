@@ -1,8 +1,29 @@
-.pagetransition-enter {
-  transform: translateY(100%);
-  transition: transform 400ms ease-in-out;
+.welcomBgImg {
+  position: absolute;
+  top: -500px;
+  left: 120px;
+  animation: goUpWelcome 2s;
 }
 
-.pagetransition-enter-active {
-  transform: translateY(0);
+.recapCard {
+  position: absolute;
+  top: 150px;
+  left: 120px;
+  padding: 10px;
+  width: 340px;
+  box-shadow: 2px 2px 2px 2px #666;
+}
+
+.recapCardTitle {
+  /* display: flex; */
+  text-align: center;
+}
+
+@keyframes goUpWelcome {
+  from {
+    transform: translateY(500px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 }

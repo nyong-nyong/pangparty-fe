@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CSSTransition } from "react-transition-group";
 import giftPangImg from "../assets/giftPang.png";
 import giftPangOpened from "../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
@@ -41,12 +40,7 @@ export default function GiftIntroPage() {
   };
 
   return (
-    <CSSTransition
-      in={1}
-      timeout={400}
-      classNames="page-transition"
-      unmountOnExit
-    >
+    <div>
       <div className="giftIntroContainer">
         <header className="giftHeader">
           <p style={{ marginBottom: "0px" }}>누구누구님을 위해 완성된</p>
@@ -137,6 +131,6 @@ export default function GiftIntroPage() {
           })()}
         </div>
       </div>
-    </CSSTransition>
+    </div>
   );
 }
