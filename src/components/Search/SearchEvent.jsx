@@ -2,20 +2,39 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import _ from "lodash";
+import {
+  searchHistoryState,
+  searchHistoryIdState,
+} from "../../recoils/search/Atoms";
 import "./SearchEvent.scss";
+
 // import axios from "../../api/axios";
 // import requests from "../../api/requests";
 
 export default function SearchEventResult({ event }) {
+  const navigate = useNavigate();
+  const [canRender, setCanRender] = useState(false);
+  const [searchHistory, setSearchHistory] = useRecoilState(searchHistoryState);
+  const [searchHistoryId, setSearchHistoryId] =
+    useRecoilState(searchHistoryIdState);
+
   const onClickEvent = () => {
-    const navigate = useNavigate();
     navigate("/");
+    const newSearchHistory = _.cloneDeep(searchHistory);
+    if (searchHistory.length === 10) {
+      newSearchHistory.pop();
+    }
+    newSearchHistory.unshift();
+    setSearchHistoryId(searchHistoryId + 1);
+    newSearchHistory.push({ id: searchHistoryId + 1, ...event });
+    setSearchHistory(newSearchHistory);
+
     // 해당 이벤트 페이지로 이동
   };
-
-  const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
