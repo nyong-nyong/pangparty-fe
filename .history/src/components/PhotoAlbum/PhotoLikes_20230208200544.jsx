@@ -8,7 +8,7 @@ import Icon from "../common/Icon";
 const likeContainerStyle = {
   width: "40px",
   height: "30px",
-  // backgroundColor: "aqua",
+  backgroundColor: "aqua",
   display: "flex",
   justifyContnet: "flex-start",
   alignItems: "center",

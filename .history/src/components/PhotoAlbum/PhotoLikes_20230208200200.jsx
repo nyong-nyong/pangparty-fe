@@ -1,14 +1,15 @@
 /* eslint-disable */
 
+import { resetClipboardStubOnView } from "@testing-library/user-event/dist/types/utils";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Icon from "../common/Icon";
 
 const likeContainerStyle = {
-  width: "40px",
+  width: "60px",
   height: "30px",
-  // backgroundColor: "aqua",
+  backgroundColor: "aqua",
   display: "flex",
   justifyContnet: "flex-start",
   alignItems: "center",
@@ -71,7 +72,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
       onClick={handleBtnClick}
       style={likeContainerStyle}
     >
-      <Icon img="like" isActive={isLiked} style={{ position: "relative", left: "-5px" }}/>
+      <Icon img="like" isActive={isLiked} style={{ position: resetClipboardStubOnView, }}/>
       {likeCnt}
     </div>
   );

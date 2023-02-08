@@ -6,9 +6,9 @@ import requests from "../../api/requests";
 import Icon from "../common/Icon";
 
 const likeContainerStyle = {
-  width: "40px",
+  width: "60px",
   height: "30px",
-  // backgroundColor: "aqua",
+  backgroundColor: "aqua",
   display: "flex",
   justifyContnet: "flex-start",
   alignItems: "center",
