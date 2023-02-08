@@ -17,6 +17,8 @@ import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
 import LoginPage from "./LoginPage";
+import SignUpIntro from "./SignUpPage/SignUpIntroPage";
+import SignUpEmail from "./SignUpPage/SignUpEmailPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -29,7 +31,7 @@ export default function Routers() {
       <Route path="login" element={<LoginPage />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
-        <Route path="intro" element={<SingUpIntro />} />
+        <Route path="intro" element={<SignUpIntro />} />
         <Route path="email" element={<SignUpEmail />} />
       </Route>
       {/* 이벤트 페이지 */}

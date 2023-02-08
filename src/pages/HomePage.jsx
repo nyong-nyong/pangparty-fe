@@ -2,9 +2,9 @@
 // import SearchResults from "../components/Search/SearchResults";
 // import SearchType from "../components/Search/SearchType";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import Button from "../components/common/Button";
 import Icon from "../components/common/Icon";
-import { useRecoilValue } from "recoil";
 import { authState } from "../recoils/user/Atoms";
 
 // 우리 메인 홈화면
@@ -32,12 +32,12 @@ export default function HomePage() {
         <p>아이콘 모음 ...</p>
         <Icon img="alarm">알람</Icon>
         <br />
-      {auth ? (
-        <Link to="/login">로그아웃</Link>
-      ) : (
-        <Link to="/login">로그인</Link>
-      )}
-      <Icon img="like">좋아요</Icon>
+        {auth ? (
+          <Link to="/login">로그아웃</Link>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
+        <Icon img="like">좋아요</Icon>
         <Icon img="pang">팡파레</Icon>
         <Icon img="setting">설정</Icon>
       </div>
