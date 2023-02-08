@@ -14,13 +14,15 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
+  padding-left: 55px;
+  padding-right: 55px;
 
   &.Search {
-    border: $blue_1 solid 2px;
+    border: $blue_1 solid 1px;
   }
 
   &.Tag {
-    border: $gray-1 solid 2px;
+    border: $gray-1 solid 1px;
   }
 }
 
@@ -28,10 +30,18 @@
   display: flex;
   height: 48px;
   width: 328px;
-  border-bottom: $gray-5 solid 2px;
+  border-bottom: $gray-5 solid 1.2px;
   align-items: center;
   font-weight: 600;
   position: relative;
+}
+
+.HistoryContext {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
 }
 
 .Type {    

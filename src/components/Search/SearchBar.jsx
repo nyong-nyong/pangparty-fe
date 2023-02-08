@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import { useRecoilState, useRecoilValue } from "recoil";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useDebounce } from "../../hooks/useDebounce";
 import {
@@ -14,11 +14,12 @@ import requests from "../../api/requests";
 import Icon from "../common/Icon";
 import "./SearchBar.scss";
 
-export default function SearchBar() {
+function SearchBar() {
   const searchType = "Search";
   const type = useRecoilValue(searchTypeState);
   const [searchText, setSearchText] = useRecoilState(searchTextState);
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState);
+  const [isSearched, setIsSearched] = useState(false);
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -39,32 +40,63 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
+    setIsSearched(false);
+  }, [searchText]);
+
+  useEffect(() => {
     if (debouncedSearchText) {
-      // console.log(debouncedSearchText)
       fetchSearchText(debouncedSearchText);
     }
   }, [debouncedSearchText, type]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSearched(true);
+  };
+
+  const clearText = () => {
+    setSearchText("");
+  };
+
   return (
-    <form style={{ display: "flex", position: "relative" }}>
+    <form
+      style={{ display: "flex", position: "relative" }}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder="검색어를 입력해주세요"
         className={classNames("SearchBar", searchType)}
         onChange={onChange}
         maxLength="19"
+        value={searchText || ""}
       />
       <Icon
         style={{
           display: "flex",
           position: "absolute",
           top: "3px",
-          right: "10px",
+          left: "10px",
         }}
         img="search"
-        isActive={false}
+        isActive={isSearched}
       />
-      {/* <button>검색</button> */}
+      {searchText ? (
+        <Icon
+          style={{
+            display: "flex",
+            position: "absolute",
+            top: "3px",
+            right: "10px",
+          }}
+          img="search"
+          onClick={clearText}
+        />
+      ) : (
+        ""
+      )}
     </form>
   );
 }
+
+export default React.memo(SearchBar);
