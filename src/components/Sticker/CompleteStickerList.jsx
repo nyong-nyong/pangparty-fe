@@ -14,7 +14,6 @@ function CompleteStickerList() {
     position: "absolute",
     top: "0",
     left: "0",
-    
   };
 
   return (
@@ -23,10 +22,9 @@ function CompleteStickerList() {
         stickerListData.map((sticker) => {
           if (sticker) {
             return (
-              <>
+              <div key={sticker.uid}>
                 {/* , transform:rotate(sticker.angle) */}
                 <img
-                  key={sticker.uid}
                   src={sticker.stickerUrl}
                   style={{
                     width: `${sticker.scale}px`,
@@ -40,7 +38,7 @@ function CompleteStickerList() {
                   alt="sticker"
                   onClick={() => console.log(sticker)}
                 />
-              </>
+              </div>
             );
           }
         })}

@@ -75,29 +75,29 @@ export default function PieceListPage() {
     setModalOpen(true);
   };
 
-  // 롤링페이퍼 완성화면을 컴포넌트로 분리할 것
-  // 다솜 + 규연 병합 후에 진행
-  // 병합 후에 recoil에 담긴 정보 피스랑 스티커 겹치지 않게 뿌려줄 것
   return (
     <div>
       <div
         className="RpPieceStickerList"
-        style={{ width: "100%", position: "relative" }}
+        style={{ width: "100%", height: "100%", position: "relative" }} // 스티커페이지 연결
       >
         <h1>완성된 롤링페이퍼 페이지</h1>
         {/* 롤링페이퍼 조각 리스트 */}
-        {pieceListData &&
-          pieceListData.map((piece) => {
-            if (piece) {
-              return (
-                <div key={piece.rollingPaperPieceUid}>
-                  <PieceContainer piece={piece} />
-                </div>
-              );
-            }
-          })}
+        <div className="pieceListPageContainer" style={{ display: "flex", flexWrap: "wrap" }}>
+          {pieceListData &&
+            pieceListData.map((piece) => {
+              if (piece) {
+                return (
+                  <PieceContainer
+                    key={piece.rollingPaperPieceUid}
+                    piece={piece}
+                  />
+                );
+              }
+            })}
+        </div>
+
         {/* 사용자들이 붙인 스티커 리스트 */}
-        {/* 모달로 구현하기 */}
         <CompleteStickerList />
       </div>
       <div
