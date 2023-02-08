@@ -27,8 +27,7 @@ export default function SearchBar() {
     const request = await axios
       .get(requests.search.getSearch(type, text, 1, 30))
       .then((response) => {
-        console.log(response.data);
-        setSearchResults(response.data.results);
+        setSearchResults(response.data[`${type}s`]);
       })
       .catch((error) => {
         console.log(error);
