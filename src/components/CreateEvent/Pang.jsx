@@ -31,20 +31,14 @@ function Pang() {
     async function deletePang() {
       await axios
         .delete(requests.events.introEvent.deletePang(eventUid))
-        // .then(setPangCnt(pangCnt - 1), setIsPang(!isPang))
-        .then(() => {
-          setPangCnt(pangCnt - 1), setIsPang(!isPang);
-        })
+        .then(setPangCnt(pangCnt - 1), setIsPang(!isPang))
         .catch((err) => console.log(err));
     }
 
     async function postPang() {
       await axios
         .delete(requests.events.introEvent.postPang(eventUid))
-        .then(() => {
-          setPangCnt(pangCnt + 1), setIsPang(!isPang);
-        })
-        // .then(setPangCnt(pangCnt + 1), setIsPang(!isPang))
+        .then(setPangCnt(pangCnt + 1), setIsPang(!isPang))
         .catch((err) => console.log(err));
     }
 

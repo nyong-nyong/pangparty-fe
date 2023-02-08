@@ -5,6 +5,15 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Icon from "../common/Icon";
 
+const likeContainerStyle = {
+  width: "60px",
+  height: "30px",
+  backgroundColor: "aqua",
+  display: "flex",
+  // justifyContnet: "flex-start",
+  alignItems: "center",
+};
+
 export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
   const [likeCnt, setLikeCnt] = useState(0);
   const [isLiked, setIsLiked] = useState(0);
@@ -29,7 +38,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
     async function dislike() {
       await axios
         .delete(requests.events.album.delLikes(eventUid, mediaUid))
-        .then((response) => {
+        .then(() => {
           setLikeCnt(likeCnt - 1);
           setIsLiked(!isLiked);
         })
@@ -41,7 +50,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
     async function like() {
       await axios
         .post(requests.events.album.postLikes(eventUid, mediaUid))
-        .then((response) => {
+        .then(() => {
           setLikeCnt(likeCnt + 1);
           setIsLiked(!isLiked);
         })
@@ -57,10 +66,13 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
   };
 
   return (
-    <div>
-      {/* <Icon img="heart" isActive={isLiked} onClick={handleBtnClick} /> */}
-      <span onClick={handleBtnClick}>{isLiked ? "♥" : "♡"}</span>
-      <span>{likeCnt || ""}</span>
+    <div
+      className="likeContainer"
+      onClick={handleBtnClick}
+      style={likeContainerStyle}
+    >
+      <Icon img="like" isActive={isLiked} />
+      {likeCnt}
     </div>
   );
 }
