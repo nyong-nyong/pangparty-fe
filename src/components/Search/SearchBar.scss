@@ -1,0 +1,64 @@
+@import "../../styles/colors.scss";
+@import "../../styles/iconImg.scss";
+
+.SearchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 298px;
+  height: 38px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  &.Search {
+    border: $blue_1 solid 2px;
+  }
+
+  &.Tag {
+    border: $gray-1 solid 2px;
+  }
+}
+
+.SearchHistoryList {
+  display: flex;
+  height: 48px;
+  width: 328px;
+  border-bottom: $gray-5 solid 2px;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.Type {    
+    height: 24px;
+    width: 24px;
+    margin-left: 15px;
+    margin-right: 30px;
+ 
+
+  &.event {
+    background-image: url($typeEvent);
+  }
+
+  &.member {
+    background-image: url($typeMember);
+  }
+
+  &.hashtag {
+    background-image: url($typeHashtag);
+  }
+}
+
+.DeleteHistory {
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 13px;
+  background-image: url($x);
+  cursor: pointer;
+}

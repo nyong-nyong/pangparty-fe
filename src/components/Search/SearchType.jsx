@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { searchTypeState } from "../../recoils/search/Atoms";
+import "./SearchBar.scss";
 
 export default function SearchType() {
   const [searchType, setSearchType] = useRecoilState(searchTypeState);
@@ -21,10 +22,10 @@ export default function SearchType() {
   };
 
   return (
-    <div>
+    <>
       <button onClick={(e) => handleClick(e, "event")}>이벤트</button>
       <button onClick={(e) => handleClick(e, "member")}>계정</button>
       <button onClick={(e) => handleClick(e, "hashtag")}>해시태그</button>
-    </div>
+    </>
   );
 }

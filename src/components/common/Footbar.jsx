@@ -48,11 +48,7 @@ function Footbar() {
           이벤트 생성
         </Icon>
       </Link>
-      <Link
-        to="/event/tagmember"
-        id="Search"
-        onClick={(e) => clickHandler(e, "Search")}
-      >
+      <Link to="/search" id="Search" onClick={(e) => clickHandler(e, "Search")}>
         <Icon img="search" isActive={isActive.Search}>
           검색
         </Icon>

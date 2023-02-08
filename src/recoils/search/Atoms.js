@@ -15,4 +15,14 @@ const searchTypeState = atom({
   default: "event",
 });
 
-export { searchTextState, searchResultsState, searchTypeState };
+const searchHistoryState = atom({
+  key: "searchHistoryState",
+  default: [],
+});
+
+export {
+  searchTextState,
+  searchResultsState,
+  searchTypeState,
+  searchHistoryState,
+};

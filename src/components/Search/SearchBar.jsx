@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect } from "react";
+import classNames from "classnames";
 import { useDebounce } from "../../hooks/useDebounce";
 import {
   searchTextState,
@@ -10,8 +11,11 @@ import {
 } from "../../recoils/search/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Icon from "../common/Icon";
+import "./SearchBar.scss";
 
 export default function SearchBar() {
+  const searchType = "Search";
   const type = useRecoilValue(searchTypeState);
   const [searchText, setSearchText] = useRecoilState(searchTextState);
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState);
@@ -42,13 +46,25 @@ export default function SearchBar() {
   }, [debouncedSearchText, type]);
 
   return (
-    <form>
+    <form style={{ display: "flex", position: "relative" }}>
       <input
         type="text"
         placeholder="검색어를 입력해주세요"
+        className={classNames("SearchBar", searchType)}
         onChange={onChange}
+        maxLength="19"
       />
-      <button>검색</button>
+      <Icon
+        style={{
+          display: "flex",
+          position: "absolute",
+          top: "3px",
+          right: "10px",
+        }}
+        img="search"
+        isActive={false}
+      />
+      {/* <button>검색</button> */}
     </form>
   );
 }
