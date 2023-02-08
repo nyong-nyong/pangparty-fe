@@ -1,5 +1,11 @@
 @import "../styles/colors.scss";
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .appContainer {
   font-family: "Pretendard-Regular";
   display: block;
