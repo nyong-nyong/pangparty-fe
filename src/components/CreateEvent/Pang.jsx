@@ -7,7 +7,6 @@ import requests from "../../api/requests";
 import "./Pang.scss";
 
 function Pang({ eventUid }) {
-  // const eventUid = 777777;
   const [isPang, setIsPang] = useState(false);
   const [pangCnt, setPangCnt] = useState(0);
 
