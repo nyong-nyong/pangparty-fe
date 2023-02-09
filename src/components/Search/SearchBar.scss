@@ -110,16 +110,19 @@
   width: 24px;
   margin-right: 10px;
 
+  &.event {
+    background-image: url($typeEvent);
+  }
 
-&.event {
-  background-image: url($typeEvent);
+  &.member {
+    background-image: url($typeMember);
+  }
+
+  &.hashtag {
+    background-image: url($typeHashtag);
+  }
 }
 
-&.member {
-  background-image: url($typeMember);
-}
-
-&.hashtag {
-  background-image: url($typeHashtag);
-}
+.HashtagTitle {
+  color: $blue_1;
 }
