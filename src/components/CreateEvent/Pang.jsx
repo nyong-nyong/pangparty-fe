@@ -1,15 +1,15 @@
 /* eslint-disable */
+// import { useEffect, useState } from "react";
 import { useEffect, useState } from "react";
 import Icon from "../common/Icon";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./Pang.scss";
 
-function Pang() {
+function Pang({ eventUid }) {
+  // const eventUid = 777777;
   const [isPang, setIsPang] = useState(false);
   const [pangCnt, setPangCnt] = useState(0);
-
-  const eventUid = 777777;
 
   // 이벤트 소개페이지 정보 GET
   useEffect(() => {
@@ -25,8 +25,6 @@ function Pang() {
 
   const pangClickHandler = (e) => {
     e.preventDefault();
-    console.log(isPang);
-    console.log(pangCnt);
 
     async function deletePang() {
       await axios
