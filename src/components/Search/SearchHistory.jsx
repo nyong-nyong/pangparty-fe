@@ -36,7 +36,8 @@ export default function SearchHistory() {
                 className={classNames("HistoryContext")}
                 onClick={() => clickSearchHistory(item)}
               >
-                {item.eventName}
+                {item.eventName && item.eventName}
+                {item.name && item.name}
               </div>
               <div
                 className={classNames("DeleteHistory")}

@@ -42,7 +42,7 @@ export default function SearchResults() {
         <ul>
           {searchResults &&
             searchResults.map((hashtag) => (
-              <SearchHashtagResult key={hashtag.name} hashtag={hashtag} />
+              <SearchHashtagResult key={hashtag.hashtagUid} hashtag={hashtag} />
             ))}
         </ul>
       );

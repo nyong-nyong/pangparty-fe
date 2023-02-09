@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import {
   searchTextState,
   searchResultsState,
   searchTypeState,
+  lastSearchState,
 } from "../../recoils/search/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -17,10 +18,11 @@ import "./SearchBar.scss";
 
 function SearchBar() {
   const searchType = "Search";
-  const type = useRecoilValue(searchTypeState);
+  const [type, setType] = useRecoilState(searchTypeState);
   const [searchText, setSearchText] = useRecoilState(searchTextState);
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState);
   const [isSearched, setIsSearched] = useState(false);
+  const [lastSearch, setLastSearch] = useRecoilState(lastSearchState);
   const navigate = useNavigate();
 
   const onChange = (e) => {
@@ -30,7 +32,7 @@ function SearchBar() {
   const debouncedSearchText = useDebounce(searchText, 1000);
 
   const fetchSearchText = async (text) => {
-    console.log(type);
+    // console.log(type);
     const request = await axios
       .get(requests.search.getSearch(type, text, 1, 30))
       .then((response) => {

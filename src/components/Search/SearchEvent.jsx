@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -25,7 +26,7 @@ export default function SearchEventResult({ event }) {
   const onClickEvent = () => {
     navigate("/");
     const newSearchHistory = _.cloneDeep(searchHistory);
-    console.log(newSearchHistory);
+    // console.log(newSearchHistory);
     if (searchHistory.length === 10) {
       newSearchHistory.pop();
     }
