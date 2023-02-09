@@ -11,7 +11,7 @@ function HashTag({ children, color, ...rest }) {
 }
 
 HashTag.defaultProps = {
-  color: "orange",
+  color: "gray",
 };
 
 export default HashTag;

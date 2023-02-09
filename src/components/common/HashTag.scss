@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 15px;
+  padding: 8px 13px;
   cursor: pointer;
 
   &.gray {
@@ -27,5 +28,9 @@
 
   &.blue {
     @include outline-btn($blue-1);
+  }
+
+  & + & {
+    margin: 10px;
   }
 }
