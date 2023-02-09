@@ -8,8 +8,11 @@
   border: 1px solid;
   padding: 9px;
   margin: auto;
+  top: -100px;
 }
-button {
+
+button, 
+p {
   font-family: "Pretendard-Regular";
 }
 

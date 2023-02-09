@@ -7,6 +7,7 @@ import Button from "../components/common/Button";
 import PhotoAlbum from "../components/PhotoAlbum/PhotoAlbum";
 import Pang from "../components/CreateEvent/Pang";
 import RpCreateButton from "../components/CreateEvent/RpCreateButton";
+import ShareButton from "../components/CreateEvent/ShareButton";
 
 export default function IntroEventPage() {
   const eventUid = 777777;
@@ -29,6 +30,9 @@ export default function IntroEventPage() {
           <Link to="/piece">
             <RpCreateButton />
           </Link>
+          <div style={{ width: "50px", height: "50px" }}>
+            <ShareButton />
+          </div>
         </div>
       </div>
 
