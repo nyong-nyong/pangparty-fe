@@ -81,7 +81,7 @@ export default function SearchMemberResult({ member }) {
           </div>
         </div>
       ) : (
-        <span>Loading...</span>
+        <div />
       )}
     </li>
   );

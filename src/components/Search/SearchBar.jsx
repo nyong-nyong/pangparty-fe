@@ -3,6 +3,7 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
 import {
   searchTextState,
@@ -20,6 +21,7 @@ function SearchBar() {
   const [searchText, setSearchText] = useRecoilState(searchTextState);
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState);
   const [isSearched, setIsSearched] = useState(false);
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -52,6 +54,7 @@ function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSearched(true);
+    navigate(`${searchText}`);
   };
 
   const clearText = () => {

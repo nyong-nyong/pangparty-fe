@@ -2,13 +2,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "../../api/axios";
-// import requests from "../../api/requests";
+import classNames from "classnames";
 
 export default function SearchHashtagResult({ hashtag }) {
+  const navigate = useNavigate();
   const onClickHashtag = () => {
-    const navigate = useNavigate();
-    navigate("/");
+    navigate(`hashtag/${hashtag.name}`);
     // 해당 이벤트 페이지로 이동
   };
 
@@ -21,61 +20,19 @@ export default function SearchHashtagResult({ hashtag }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // const [isLike, setIsLike] = useState();
-
-  // useEffect(() => {
-  //   setIsLike(hashtag.isLike);
-  //   // console.log(hashtag.isLike)
-  // }, [hashtag]);
-
-  // const onClickLike = (e) => {
-  //   e.prhashtagDefault();
-
-  //   async function unlike() {
-  //     await axios
-  //       .delete(requests.hashtags.postLikes(hashtag.uid))
-  //       .then((res) => {
-  //         setIsLike(!isLike)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   async function like() {
-  //     await axios
-  //       .post(requests.hashtags.postLikes(hashtag.uid))
-  //       .then((res) => {
-  //         setIsLike(!isLike)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   if(isLike) return unLike();
-  //   return like();
-  // }
-
   return (
     <li>
       {canRender ? (
-        <div>
-          <div onClick={onClickHashtag}>
-            <span>#</span>
-            <span>{hashtag.name}</span>
-          </div>
-          {/* <div>
-        { isLike ?
-          <button onClick={(e) => onClickFollow(e)}>좋아요 취소</button>:
-          <button onClick={(e) => onClickFollow(e)}>좋아요</button>
-        }
-      </div> */}
+        <div
+          style={{ border: "none", cursor: "pointer" }}
+          onClick={onClickHashtag}
+          className={classNames("SearchHistoryList")}
+        >
+          <div className={classNames("Type", "hashtag")} />
+          <div className={classNames("HistoryContext")}>{hashtag.name}</div>
         </div>
       ) : (
-        <span>Loading...</span>
+        <> </>
       )}
     </li>
   );

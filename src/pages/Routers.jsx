@@ -20,6 +20,7 @@ import LoginPage from "./LoginPage";
 import SignUpIntro from "./SignUpPage/SignUpIntroPage";
 import SignUpEmail from "./SignUpPage/SignUpEmailPage";
 import SearchMainPage from "./SearchPage/SearchMainPage";
+import SearchResultPage from "./SearchPage/SearchResultPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -52,6 +53,7 @@ export default function Routers() {
       {/* 검색 페이지 */}
       <Route path="search">
         <Route path="" element={<SearchMainPage />} />
+        <Route path=":value" element={<SearchResultPage />} />
       </Route>
       {/* 롤링페이퍼 페이지 */}
       <Route path="piece" element={<CreatePiece />} />

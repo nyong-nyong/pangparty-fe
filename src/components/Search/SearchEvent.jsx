@@ -25,12 +25,13 @@ export default function SearchEventResult({ event }) {
   const onClickEvent = () => {
     navigate("/");
     const newSearchHistory = _.cloneDeep(searchHistory);
+    console.log(newSearchHistory);
     if (searchHistory.length === 10) {
       newSearchHistory.pop();
     }
     newSearchHistory.unshift();
     setSearchHistoryId(searchHistoryId + 1);
-    newSearchHistory.push({ id: searchHistoryId + 1, ...event });
+    newSearchHistory.push({ type: "event", id: searchHistoryId + 1, ...event });
     setSearchHistory(newSearchHistory);
 
     // 해당 이벤트 페이지로 이동
@@ -58,7 +59,9 @@ export default function SearchEventResult({ event }) {
           </div>
           <div onClick={onClickEvent} className="EventContents">
             <div className="EventHeader">
-              <div className="EventTitle">{event.eventName}</div>
+              {event.eventName && (
+                <div className="EventTitle">{event.eventName}</div>
+              )}
               <div className="EventDday">D-{getDday(event.dDay)}</div>
             </div>
             <div className="EventTag">@{event.targetId}</div>
