@@ -20,9 +20,21 @@ const searchHistoryState = atom({
   default: [],
 });
 
+const searchHistoryIdState = atom({
+  key: "searchHistoryIdState",
+  default: 0,
+});
+
+const lastSearchState = atom({
+  key: "lastSearchState",
+  default: "",
+});
+
 export {
   searchTextState,
   searchResultsState,
   searchTypeState,
   searchHistoryState,
+  searchHistoryIdState,
+  lastSearchState,
 };
