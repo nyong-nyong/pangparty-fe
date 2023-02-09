@@ -1,0 +1,35 @@
+.createContainer {
+  display: flex;
+  flex-direction: column;
+  width: 328px;
+  margin: 0px 5px;
+}
+
+.createTitle {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.eventDescriptionBox {
+  width: 305px;
+  height: 305px;
+  padding: 10px;
+  margin: auto;
+  border: 1.5px solid #d9d9d9;
+  border-radius: 8px;
+
+}
+
+.eventDescriptionArea {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  resize: none;
+  display: flex;
+  border: none;
+  font: inherit;
+}
+
+.eventDescriptionArea:focus {
+  outline: none;
+}

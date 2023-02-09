@@ -50,7 +50,19 @@
     }
   }
 
-  &.gray-4 {
+  &.orange-3 {
+    background: $orange-3;
+    color: $orange-1;
+    &:hover {
+      background: $orange-2;
+    }
+
+    &:active {
+      background: lighten($orange-2, 10%);
+    }
+  }
+
+  &.gray {
     background: $gray-4;
     &:hover {
       background: $orange-1;

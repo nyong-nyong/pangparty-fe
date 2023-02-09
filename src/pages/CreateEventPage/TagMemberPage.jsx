@@ -7,6 +7,7 @@ import { targetsTagState } from "../../recoils/createEvent/Atoms";
 // import SearchBar from "../../components/Search/SearchBar";
 // import SearchResults from "../../components/Search/SearchResults";
 // import { searchTypeState } from "../../recoils/search/Atoms";
+import "../../styles/CreateEvent.scss";
 
 export default function TagMemberPage() {
   const [targetsInfo, setTargetsInfo] = useRecoilState(targetsTagState);
@@ -30,9 +31,20 @@ export default function TagMemberPage() {
 
   return (
     <div>
-      <h4>축하해줄 친구를 태그해볼까요?</h4>
-
-      <input type="text" onChange={targetTagHandler} />
+      <div className="createContainer">
+        <p className="createTitle">축하해줄 친구를 태그해볼까요?</p>
+        {/* 임시 버튼입니다 */}
+        <input
+          type="text"
+          onChange={targetTagHandler}
+          style={{
+            height: "55px",
+            borderRadius: "15px",
+            border: "1.5px solid #D9D9D9",
+            marginBottom: "60px",
+          }}
+        />
+      </div>
 
       {/* search bar 영역 추후 병합 예정 */}
       {/* <SearchBar />
@@ -43,7 +55,7 @@ export default function TagMemberPage() {
       <Link to="/event/calendar">
         <Button>다음</Button>
       </Link>
-      <Button>친구 계정이 없어요</Button>
+      <Button color="orange-3">친구 계정이 없어요</Button>
     </div>
   );
 }

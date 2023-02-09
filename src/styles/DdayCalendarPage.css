@@ -73,17 +73,21 @@ abbr[title] {
 
 /* 오늘 */
 .react-calendar__tile--now {
-  background: #6f48eb33;
-  border-radius: 6px;
-  font-weight: bold;
-  color: #6f48eb33;
+  background-image: url("../assets/todayDot.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: black;
 }
+
+/* 오늘 클릭시 */
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #6f48eb33;
-  border-radius: 6px;
-  font-weight: bold;
-  color: #6f48eb;
+  background-image: url("../assets/dayActive.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
 }
 
 /* 범위 설정시 수정 */
@@ -119,8 +123,13 @@ abbr[title] {
   align-items: center;
   font-family: "Pretendard-Regular";
   color: #678cff;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 600;
 }
 
 .dDayText {
+  font-size: 13px;
+  font-weight: 600;
   color: #111;
 }

@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { eventIntroState } from "../../recoils/createEvent/Atoms";
 import Button from "../../components/common/Button";
+import "../../styles/CreateEvent.scss";
 
 function EventDiscription() {
   const [eventIntroInfo, setEventIntroInfo] = useRecoilState(eventIntroState);
@@ -13,16 +14,29 @@ function EventDiscription() {
     setEventIntroInfo(newEventIntro);
   };
 
+  const alertNoContent = (e) => {
+    alert("내용을 입력해주세요!");
+  };
+
   return (
     <div>
-      <h1>축하일을 간략히 설명해주세요!</h1>
-      <textarea
-        placeholder="설명을 입력해주세용~?"
-        style={{ width: "350px", height: "300px" }}
-        onChange={eventIntroHandler}
-      />
+      <div className="createContainer">
+        <p className="createTitle">축하일을 간략히 설명해주세요!</p>
+        <div className="eventDescriptionBox">
+          <textarea
+            className="eventDescriptionArea"
+            placeholder="설명을 입력해주세요."
+            onChange={eventIntroHandler}
+          />
+        </div>
+      </div>
+      {!eventIntroInfo && <Button onClick={alertNoContent}>다음</Button>}
       <Link to="/event/tagkwd">
-        <Button>다음</Button>
+        {eventIntroInfo && (
+          <Button color="orange" onClick={eventIntroHandler}>
+            다음
+          </Button>
+        )}
       </Link>
     </div>
   );
