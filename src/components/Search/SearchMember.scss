@@ -1,0 +1,35 @@
+@import "../../styles/colors.scss";
+@import "../../styles/iconImg.scss";
+
+.SearchMember {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 5px 10px 5px;
+  padding: 12px 0px 12px 0px;
+  width: 328px;
+  height: 66px;
+}
+
+.MemberThumbnail {
+  width: 66px;
+  height: 66px;
+  border-radius: 66px;
+  margin-right: 16px;
+}
+
+.ProfileContent {
+  flex-flow: column wrap;
+  gap: 9px;
+}
+
+.ProfileID {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ProfileName {
+  font-size: 13px;
+  font-weight: 600;
+  color: $blue_1;
+}

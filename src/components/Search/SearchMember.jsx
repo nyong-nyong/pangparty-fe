@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import "./SearchMember.scss";
 
 export default function SearchMemberResult({ member }) {
   const [isFollowed, setIsFollowed] = useState();
@@ -64,21 +65,26 @@ export default function SearchMemberResult({ member }) {
   return (
     <li>
       {canRender ? (
-        <div>
+        <div className="SearchMember">
           <div onClick={onClickProfile}>
-            <img src={member.imgUrl} width="100px" height="100px" />
+            <img
+              className="MemberThumbnail"
+              src={member.imgUrl}
+              width="100px"
+              height="100px"
+            />
           </div>
-          <div onClick={onClickProfile}>
-            <span>{member.id}</span>
-            <span>{member.name}</span>
+          <div onClick={onClickProfile} className="ProfileContent">
+            <div>{member.id}</div>
+            <div>{member.name}</div>
           </div>
-          <div>
+          {/* <div>
             {isFollowed ? (
               <button onClick={(e) => onClickFollow(e)}>팔로우 취소</button>
             ) : (
               <button onClick={(e) => onClickFollow(e)}>팔로우</button>
             )}
-          </div>
+          </div> */}
         </div>
       ) : (
         <div />
