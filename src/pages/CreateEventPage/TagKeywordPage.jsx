@@ -10,12 +10,12 @@ import { useEffect, useState } from "react";
 
 function TagKeywordPage() {
   // 페이지 내부에서 추가되는 해쉬태그를 저장할 배열
-  const [hashTags, setHashTags] = useState({
-    // name: null
+  const [typingHashTag, setTypingHashTag] = useState({
+    // uid: null
     name: ""
   });
   // atom으로 저장할 곳
-  const [hashTagInfo, setHashTagInfo] = useRecoilState(hashTagState);
+  const [hashTagsInfo, setHashTagsInfo] = useRecoilState(hashTagState);
   // 당일 hashtag 생성용 임의 값
   const [dayInfo, setDayInfo] = useState({
     year: null,
@@ -32,13 +32,22 @@ function TagKeywordPage() {
       const year = dDay.getFullYear();
       const month = dDay.getMonth() + 1;
       const date = dDay.getDate();
+      // 디데이 정보 페이지에 저장
       setDayInfo({
         year: year,
         month: month,
         date: date
       });
-      const renderHashTags = [...hashTagInfo, { name: `${month}월${month}일` }];
-      setHashTagInfo(renderHashTags);
+      // 해쉬태그 자동 등록
+      if(hashTagsInfo) {
+        if (hashTagsInfo.find(v => v.name === `${month}월${month}일`) === undefined){
+          const renderHashTags = [...hashTagsInfo, { name: `${month}월${month}일` }];
+          setHashTagsInfo(renderHashTags);
+          setTypingHashTag({ name: "" });
+        }
+      }
+      // const renderHashTags = [...hashTagsInfo, { name: `${month}월${month}일` }];
+      // setHashTagsInfo(renderHashTags);
       // setHashTags({ name: null });
     }
   }, [dDay]);
@@ -49,7 +58,7 @@ function TagKeywordPage() {
       // 임의로 uid 지정
       name: e.target.value
     };
-    setHashTags(newhashTag);
+    setTypingHashTag(newhashTag);
   };
 
   /*
@@ -58,15 +67,16 @@ function TagKeywordPage() {
   unique함을 유지하기 위함.
   */
   const saveHashTag = (e) => {
-    if(hashTagInfo) {
-      if (hashTagInfo.find(v => v.name === hashTags.name) === false){
-        const newHashTags = [...hashTagInfo, hashTags];
-        setHashTagInfo(newHashTags);
-        setHashTags({ name: null });
+    if(hashTagsInfo) {
+      if (hashTagsInfo.find(v => v.name === typingHashTag.name) === undefined){
+        const newHashTags = [...hashTagsInfo, typingHashTag];
+        setHashTagsInfo(newHashTags);
+        setTypingHashTag({ name: "" });
       } else {
         alert('이미 등록된 해쉬태그입니다!')
+        setTypingHashTag({ name: "" });
       }
-    }
+    } 
   };
 
   return (
@@ -79,10 +89,10 @@ function TagKeywordPage() {
             className="tagInput"
             type="text"
             onChange={hashTagHandler}
-            value={hashTags.name}
+            value={typingHashTag.name}
           />
           <button className="tagBtn">추가</button>
-          {hashTags.name !== null && (
+          {typingHashTag.name !== null && (
             <button className="tagBtn" onClick={saveHashTag}>
               추가
             </button>
@@ -90,8 +100,8 @@ function TagKeywordPage() {
         </label>
         <div className="createdTags">
           <HashTag children="#해시태그"></HashTag>
-          {hashTagInfo.length > 0 &&
-            hashTagInfo.map((hashTag) => {
+          {hashTagsInfo.length > 0 &&
+            hashTagsInfo.map((hashTag) => {
               if (hashTag) {
                 return (
                   <HashTag
@@ -107,8 +117,8 @@ function TagKeywordPage() {
           방법 1) 이 페이지에서 Date() 형식을 변환해서 String 값으로 출력
           방법 2) 애시당초 new Date() 값을 저장할때 변환해서 String 값으로 저장 
           이 글을 읽고 위쪽으로 올라가보시오 */}
-          {hashTagInfo.length !== 0 ? (
-            <p>{hashTagInfo[0].name}</p>
+          {hashTagsInfo.length !== 0 ? (
+            <p>{hashTagsInfo[0].name}</p>
           ) : (
             <p>없음</p>
           )}
