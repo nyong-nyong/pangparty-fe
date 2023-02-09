@@ -41,6 +41,7 @@ export default function PhotoAlbum() {
                 key={photo.uid}
                 onClick={() => handleModalClick(photo)}
                 onKeyDown={() => handleModalClick(photo)}
+                style={{ backgroundColor: "transparent", border: "none" }}
               >
                 <PhotoFrame src={photo.mediaUrl} />
               </button>
@@ -65,7 +66,7 @@ export default function PhotoAlbum() {
 
 const AlbumFrame = styled.div`
   display: flex;
-  width: 320px;
+  width: 360px;
   height: fit-contents;
   flex-flow: row wrap;
   gap: 10px;

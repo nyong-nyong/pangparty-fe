@@ -1,8 +1,11 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../api/axios";
 import requests from "../api/requests";
 import "../styles/EventDetailPage.scss";
+import PhotoAlbum from "../components/PhotoAlbum/PhotoAlbum";
+import Button from "../components/common/Button";
 
 export default function EventDetailPage() {
   const [eventInfo, setEventInfo] = useState(undefined);
@@ -12,9 +15,13 @@ export default function EventDetailPage() {
   useEffect(() => {
     const id = params.eventId;
     async function fetchData() {
-      const request = await axios.get(requests.events.getEventDetail(id));
+      const request = await axios.get(
+        requests.events.introEvent.eventItroAll(id)
+      );
+      // console.log(request.data);
       setEventInfo(request.data);
     }
+    // console.log(eventInfo);
     fetchData();
   }, []);
 
@@ -36,7 +43,7 @@ export default function EventDetailPage() {
         <p className="rpContent">
           현재{" "}
           <span style={{ color: "#678cff" }}>
-            {eventInfo && eventInfo.rollingPaperParticipantCnt}
+            {/* {eventInfo && eventInfo.rollingPaperParticipantCnt} */}
           </span>
           명이{" "}
           <span style={{ color: "#FF7A5C" }}>
@@ -49,7 +56,7 @@ export default function EventDetailPage() {
       </div>
       <p>{eventInfo && eventInfo.likeCnt}</p>
       <p>좋아요여부:{eventInfo && eventInfo.isLiked}</p>
-      <div className="hashtagContainer">
+      {/* <div className="hashtagContainer">
         <p className="hashtag">#해시태그</p>
         {eventInfo &&
           eventInfo.hashtags.map((hashtag) => {
@@ -60,11 +67,10 @@ export default function EventDetailPage() {
                 </div>
               );
             }
-            return null;
           })}
-      </div>
+      </div> */}
       <p className="albumTitle">@{eventInfo && eventInfo.targetId} 과의 추억</p>
-      {eventInfo &&
+      {/* {eventInfo &&
         eventInfo.eventMedias.map((eventMedia) => {
           if (eventMedia) {
             return (
@@ -74,7 +80,13 @@ export default function EventDetailPage() {
             );
           }
           return null;
-        })}
+        })} */}
+      <PhotoAlbum />
+      <Button
+      // onClick={participateHandler}
+      >
+        참여하기
+      </Button>
     </div>
   );
 }
