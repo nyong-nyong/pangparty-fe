@@ -4,15 +4,29 @@ const requests = {
   fetchStickers: "/stickers",
 
   // User (임시로 프로필만 받아옵니다)
-  user: {
-    userBaseUrl: "/members",
-    profileBaseUrl: "/members/profile",
+  profile: {
+    profileBaseUrl: "/members",
 
-    getProfile() {
-      return this.profileBaseUrl;
+    getProfileTop(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/profile`;
     },
-    getBadges(memberId) {
-      return `${this.userBaseUrl}/${memberId}/badges`;
+    getProfileFeed(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/feeds`;
+    },
+    getProfileRecievedEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/recieved-events`;
+    },
+    getProfileBadges(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/badges`;
+    },
+    getProfileHostEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/host-events`;
+    },
+    getProfileInvolvingEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/involving-events`;
+    },
+    getProfileInvolvedEvents(memberId) {
+      return `${this.profileBaseUrl}/${memberId}/involved-events`;
     },
   },
 

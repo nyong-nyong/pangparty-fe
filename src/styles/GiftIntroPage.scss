@@ -1,0 +1,143 @@
+@import "./colors.scss";
+.giftIntroContainer {
+  width: 100%;
+  height: 100%;
+  // background-color: $gray-5;
+}
+
+.giftHeader {
+  font-size: 21px;
+}
+
+.giftIntroContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  margin-bottom: 20px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.moveContainer {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  flex-direction: column;
+}
+
+.moveButton {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.moveContainer {
+  width: 40%;
+  // background-color: aquamarine;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.moveText {
+  color: $gray-2;
+  text-align: center;
+  animation: movement 0.5s infinite;
+}
+
+.touchImg {
+  animation: vibration 1s infinite;
+}
+
+// 터치 중일 때 상자 주변으로 등장
+.touchSticker1 {
+  position: absolute;
+  top: 105%;
+  left: 100px;
+  z-index: 2000;
+  rotate: (-10deg);
+}
+
+.touchSticker2 {
+  position: absolute;
+  top: 70%;
+  left: 200px;
+  z-index: 2000;
+  rotate: (5deg);
+}
+
+.touchSticker3 {
+  position: absolute;
+  top: 40%;
+  left: 270px;
+  z-index: 2000;
+  rotate: (5deg);
+}
+
+.touchSticker4 {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 2000;
+  rotate: (20deg);
+}
+
+.dayInfoContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mentContainer {
+  margin-top: 5%;
+  text-align: center;
+  color: $gray-2;
+}
+
+.goUpIcon {
+  margin-bottom: 15%;
+  animation: movement 1s 3s;
+}
+
+// .tokomon {
+//   width: 300px;
+//   animation : tokomondeungjang  3s infinite
+// }
+
+// @keyframes tokomondeungjang {
+//   0% {
+//     transform: translateY(600px);
+//   }
+//   100% {
+//     transform: translateY(-1000px);
+//   }
+// }
+
+@keyframes movement {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes vibration {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
