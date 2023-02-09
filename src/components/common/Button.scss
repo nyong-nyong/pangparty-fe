@@ -8,6 +8,7 @@
   border: none;
   cursor: pointer;
   color: #ffffff;
+  margin: 5px;
 
   /** 사이즈 관리 */
   &.large {
@@ -49,7 +50,7 @@
     }
   }
 
-  &.gray {
+  &.gray-4 {
     background: $gray-4;
     &:hover {
       background: $orange-1;

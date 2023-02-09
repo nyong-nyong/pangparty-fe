@@ -1,10 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-
 import Home from "./HomePage";
 import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
+import LoginPage from "./LoginPage";
+// import SingUpIntro from "./SignUpPage/SingUpIntroPage";
+// import SignUpEmail from "./SignUpPage/SignUpEmail";
+import MyPage from "./MyPage";
+import FollowPage from "./MyPage/FollowPage";
+import MyEventsPage from "./MyPage/MyEventsPage";
 import TagMemberPage from "./CreateEventPage/TagMemberPage";
 import EventDiscription from "./CreateEventPage/EventDiscriptionPage";
 import DdayCalendar from "./CreateEventPage/DdayCalendarPage";
@@ -13,6 +18,11 @@ import SelectImagePage from "./CreateEventPage/SelectImagePage";
 import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
+import PangPartyGiftPage from "./PangPartyGiftPage";
+import GiftIntroPage from "./GiftIntroPage";
+import Recap1Page from "./PangPartyRecapPage/Recap1Page";
+import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
+import EventDetailPage from "./EventDetailPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -21,6 +31,8 @@ export default function Routers() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      {/* 로그인 페이지 */}
+      <Route path="login" element={<LoginPage />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
         {/* <Route path="intro" element={<SingUpIntro />} />
@@ -40,12 +52,25 @@ export default function Routers() {
           <Route path="done" element={<EventDonePage />} />
         </Route>
       </Route>
+      {/* 이벤트 디테일 조회 페이지 */}
+      <Route path="events/:eventId" element={<EventDetailPage />} />
+      {/* 롤링페이퍼 */}
       <Route path="piece" element={<CreatePiece />} />
       <Route path="rollingpaper">
         <Route path="" element={<PieceList />} />
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />
+      {/* 마이페이지 */}
+      <Route path="mypage" element={<MyPage />} />
+      <Route path="follows" element={<FollowPage />} />
+      <Route path="myevents" element={<MyEventsPage />} />
+      {/* 팡파티 페이지 */}
+
+      <Route path="gift/intro" element={<GiftIntroPage />} />
+      <Route path="gift" element={<PangPartyGiftPage />} />
+      <Route path="gift/recap/1" element={<Recap1Page />} />
+      <Route path="gift/recap/1/detail" element={<Recap1DetailPage />} />
     </Routes>
   );
 }

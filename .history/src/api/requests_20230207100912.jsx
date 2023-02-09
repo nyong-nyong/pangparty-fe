@@ -3,6 +3,34 @@ const eventsBaseUrl = "/events";
 const requests = {
   fetchStickers: "/stickers",
 
+  // User (임시로 프로필만 받아옵니다)
+  user: {
+    userBaseUrl: "/members",
+    profileBaseUrl: "/members/profile",
+
+    getProfile() {
+      return this.profileBaseUrl;
+    },
+    getBadges(memberId) {
+      return `${this.userBaseUrl}/${memberId}/badges`;
+    },
+  },
+
+  // 팔로잉 팔로워
+  following: {
+    folliwingBaseUrl: "/following",
+    getFollowing(memberId, page, limit) {
+      return `${this.folliwingBaseUrl}/${memberId}?page=${page}&limit=${limit}`;
+    },
+  },
+
+  follower: {
+    folliwerBaseUrl: "/followers",
+    getFollower(memberId, page, limit) {
+      return `${this.folliwerBaseUrl}/${memberId}?page=${page}&limit=${limit}`;
+    },
+  },
+
   search: {
     searchBaseUrl: "/search",
 
@@ -89,31 +117,11 @@ const requests = {
       postSticker(eventUid, rollingPaperUid) {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}${this.stickerBaseUrl}`;
       },
-    },
 
-    /** 이벤트 소개/참여 페이지 */
-    introEvent: {
-      pangBaseUrl: "/likes",
-
-      /** 이벤트 소개페이지 조회 GET 요청 */
-      eventItroAll(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}`;
-      },
-
-      /** 이벤트 생성 */
-      postEvent() {
-        return `${eventsBaseUrl}`;
-      },
-
-      /** 이벤트 좋아요(팡파레 울리기) POST 요청 */
-      postPang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
-      },
-
-      /** 이벤트 좋아요 취소 DELETE 요청 */
-      deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
-      },
+      // 롤링페이퍼 목록 GET 요청
+      rpPieceAll(eventUid, rollingPaperUid, page, limit) {
+        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages={}`;
+      }
     },
   },
 };
