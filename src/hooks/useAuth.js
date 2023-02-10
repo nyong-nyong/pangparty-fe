@@ -46,6 +46,7 @@ export default function useAuth() {
       if (!authenticated) {
         return navigate("/login");
       }
+      // console.log(authenticated);
       setUser(user);
       setAuthenticated(authenticated);
     }

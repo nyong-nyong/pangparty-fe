@@ -2,13 +2,12 @@ import { atom } from "recoil";
 
 const authState = atom({
   key: "authState",
-  default: null,
-  // default: JSON.parse(localStorage.getItem("user")),
+  default: false,
 });
 
-const usersState = atom({
+const userState = atom({
   key: "usersState",
   default: null,
 });
 
-export { authState, usersState };
+export { authState, userState };
