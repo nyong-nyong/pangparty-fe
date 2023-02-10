@@ -23,6 +23,9 @@ import GiftIntroPage from "./GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
 import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 import EventDetailPage from "./EventDetailPage";
+import SearchMainPage from "./SearchPage/SearchMainPage";
+import SearchResultPage from "./SearchPage/SearchResultPage";
+import HashtagPage from "./SearchPage/HashtagPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -52,6 +55,13 @@ export default function Routers() {
           <Route path="done" element={<EventDonePage />} />
         </Route>
       </Route>
+      {/* 검색 페이지 */}
+      <Route path="search">
+        <Route path="" element={<SearchMainPage />} />
+        <Route path=":value" element={<SearchResultPage />} />
+        <Route path="hashtag" element={<HashtagPage />} />
+      </Route>
+      {/* 롤링페이퍼 페이지 */}
       {/* 이벤트 디테일 조회 페이지 */}
       <Route path="events/:eventId" element={<EventDetailPage />} />
       {/* 롤링페이퍼 */}

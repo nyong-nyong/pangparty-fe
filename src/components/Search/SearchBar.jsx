@@ -1,20 +1,29 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
-import { useRecoilState, useRecoilValue } from "recoil";
-import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import React, { useState, useEffect } from "react";
+import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
 import {
   searchTextState,
   searchResultsState,
   searchTypeState,
+  lastSearchState,
 } from "../../recoils/search/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Icon from "../common/Icon";
+import "./SearchBar.scss";
 
-export default function SearchBar() {
-  const type = useRecoilValue(searchTypeState);
+function SearchBar() {
+  const searchType = "Search";
+  const [type, setType] = useRecoilState(searchTypeState);
   const [searchText, setSearchText] = useRecoilState(searchTextState);
   const [searchResults, setSearchResults] = useRecoilState(searchResultsState);
+  const [isSearched, setIsSearched] = useState(false);
+  const [lastSearch, setLastSearch] = useRecoilState(lastSearchState);
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -23,7 +32,7 @@ export default function SearchBar() {
   const debouncedSearchText = useDebounce(searchText, 1000);
 
   const fetchSearchText = async (text) => {
-    console.log(type);
+    // console.log(type);
     const request = await axios
       .get(requests.search.getSearch(type, text, 1, 30))
       .then((response) => {
@@ -35,20 +44,64 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
+    setIsSearched(false);
+  }, [searchText]);
+
+  useEffect(() => {
     if (debouncedSearchText) {
-      // console.log(debouncedSearchText)
       fetchSearchText(debouncedSearchText);
     }
   }, [debouncedSearchText, type]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSearched(true);
+    navigate(`${searchText}`);
+  };
+
+  const clearText = () => {
+    setSearchText("");
+  };
+
   return (
-    <form>
+    <form
+      style={{ display: "flex", position: "relative" }}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder="검색어를 입력해주세요"
+        className={classNames("SearchBar", searchType)}
         onChange={onChange}
+        maxLength="19"
+        value={searchText || ""}
       />
-      <button>검색</button>
+      <Icon
+        style={{
+          display: "flex",
+          position: "absolute",
+          top: "3px",
+          left: "10px",
+        }}
+        img="search"
+        isActive={isSearched}
+      />
+      {searchText ? (
+        <Icon
+          style={{
+            display: "flex",
+            position: "absolute",
+            top: "3px",
+            right: "10px",
+          }}
+          img="search"
+          onClick={clearText}
+        />
+      ) : (
+        ""
+      )}
     </form>
   );
 }
+
+export default React.memo(SearchBar);

@@ -1,0 +1,102 @@
+@import "../styles/colors.scss";
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@import "./colors.scss";
+
+.appContainer {
+  font-family: "Pretendard-Regular";
+  display: block;
+  min-width: 330px;
+  max-width: 340px;
+
+  /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
+  min-height: 600px;
+  border: 1px solid;
+  padding: 9px;
+  margin: auto;
+  top: -100px;
+  overflow: hidden;
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25%;
+    // overflow: hidden;
+  }
+
+  .contentWrapper {
+    flex: 1;
+  }
+}
+
+button,
+p {
+  font-family: "Pretendard-Regular";
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 8%;
+  display: flex;
+  min-width: 330px;
+  max-width: 340px;
+  width: 100%;
+  justify-content: space-around;
+  flex-flow: row;
+  background-color: white;
+  padding-top: 3%;
+  box-shadow: $box-shadow;
+
+  /* display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  height: 100vh;
+  left: 0px; */
+  /* top: 100vh; */
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KyoboHandwriting2020A";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KOTRAHOPE";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+input:focus { outline: none; }
+
+input {
+  font-family: "Pretendard-Regular";
+}
+
+input::placeholder {
+  color: $gray-4;
+  font-family: "Pretendard-Regular";
+}
