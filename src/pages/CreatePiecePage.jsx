@@ -50,9 +50,11 @@ export default function CreatePiecePage() {
       textAlign,
     };
 
-    // 주소 수정하기
+    // rp uid값 추후 수정 필요합니다.
     await axios
-      .post(requests.events.postEvent, {
+      .post(requests.events.rollingPaper.postPiece(params.eventId, 777777), {
+        // 서버 test용
+        // .post(requests.events.rollingPaper.postPiece(7, 1), {
         data: postInfo,
         headers: {
           "Content-Type": "application/json",

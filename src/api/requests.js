@@ -154,6 +154,11 @@ const requests = {
       rpPieceAll(eventUid, rollingPaperUid, page, limit) {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&limit=${limit}`;
       },
+
+      // 롤링페이퍼 피스 생성 POST 요청
+      postPiece(eventUid, rollingPaperUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces`;
+      },
     },
 
     /** 이벤트 소개/참여 페이지 */
