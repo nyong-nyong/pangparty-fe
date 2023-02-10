@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { textAlignState } from "../../recoils/createPiece/Atoms";
 
 export default function ThemeAlign() {
-  const setTextAlignInfo = useRecoilState(textAlignState);
+  const setTextAlignInfo = useSetRecoilState(textAlignState);
 
   // 정렬 변경 함수
   const alignChangeHandler = (e) => {

@@ -1,14 +1,14 @@
-import { useRecoilState } from "recoil";
-import { textColorState } from "../../recoils/createPiece/Atoms";
+import { useSetRecoilState } from "recoil";
+import { fontFamilyState } from "../../recoils/createPiece/Atoms";
 
 export default function ThemeFont() {
-  const setTextColorInfo = useRecoilState(textColorState);
+  const setFontInfo = useSetRecoilState(fontFamilyState);
 
   // 글씨체 변경 함수
   const fontChangeHandler = (e) => {
     e.preventDefault();
     const newPieceInfo = e.target.value;
-    setTextColorInfo(newPieceInfo);
+    setFontInfo(newPieceInfo);
   };
 
   return (

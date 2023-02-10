@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { bgColorState } from "../../recoils/createPiece/Atoms";
 
 function BgColorChange() {
-  const setBgColorInfo = useRecoilState(bgColorState);
+  const setBgColorInfo = useSetRecoilState(bgColorState);
 
   const colorChange = (e) => {
     e.preventDefault();

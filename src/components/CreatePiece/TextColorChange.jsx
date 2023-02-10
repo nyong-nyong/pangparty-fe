@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { textColorState } from "../../recoils/createPiece/Atoms";
 
 function TextColorChange() {
-  const setTextColorInfo = useRecoilState(textColorState);
+  const setTextColorInfo = useSetRecoilState(textColorState);
 
   const colorChange = (e) => {
     e.preventDefault();
