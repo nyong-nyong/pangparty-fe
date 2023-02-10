@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import "./pieceListContianer.scss";
 
+// 피스 리스트 내에 랜덤으로 뿌려줄 컨테이너
 function PieceContainer({ piece, index }) {
   const styledRandom = () => {
     const hashKey = (13 / (index + 1) + 0.2) % 1;

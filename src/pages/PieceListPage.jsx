@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { stickerState, stickerListState } from "../components/Sticker/Atom";
 import axios from "../api/axios";
@@ -9,7 +9,7 @@ import MoveablePiece from "../components/Sticker/MoveablePiece";
 import StickerListModal from "../components/Sticker/StickerListModal";
 import StickerPost from "../components/Sticker/StickerPost";
 import Button from "../components/common/Button";
-import PieceContainer from "../components/RpTheme/PieceContainer";
+import PieceContainer from "../components/CreatePiece/PieceContainer";
 import CompleteStickerList from "../components/Sticker/CompleteStickerList";
 import styled from "styled-components";
 
@@ -19,6 +19,8 @@ export default function PieceListPage() {
   const [stickerListData, setStickerListData] =
     useRecoilState(stickerListState);
   const stickerInfo = useRecoilValue(stickerState);
+
+  const params = useParams();
 
   // axios로 Data 가져오기 (추후 컴포넌트로 분리시 같이 데리고가기)
   // fetch한 스티커리스트는 recoil에 담았음
@@ -107,7 +109,7 @@ export default function PieceListPage() {
 
         {/* 하단 버튼 */}
         <RpButtonsContainer>
-          <Link to="/piece">
+          <Link to={`/events/${params.eventId}/newpiece`}>
             <Button color="orange-1">롤링페이퍼 쓰기 버튼</Button>
           </Link>
           <Button color="orange-3" type="button" onClick={showModal}>
@@ -147,5 +149,4 @@ const RpContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   // overflow: hidden;
-
 `;

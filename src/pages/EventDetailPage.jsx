@@ -37,7 +37,9 @@ export default function EventDetailPage() {
       <RpCreateContainer>
         <IntroRpHeader eventInfo={eventInfo} />
         <RpButtonContainer>
-          <Link to="/rollingpaper">{isPart && <RpCreateButton />}</Link>
+          <Link to={`/events/${params.eventId}/rollingpaper`}>
+            {isPart && <RpCreateButton />}
+          </Link>
         </RpButtonContainer>
       </RpCreateContainer>
       <IntroHashTag eventInfo={eventInfo} />

@@ -41,7 +41,7 @@ export default function Routers() {
         {/* <Route path="intro" element={<SingUpIntro />} />
         <Route path="email" element={<SignUpEmail />} /> */}
       </Route>
-      {/* 이벤트 페이지 */}
+      {/* 이벤트 생성 페이지 */}
       <Route path="event">
         <Route path="intro" element={<IntroEvent />} />
         <Route>
@@ -55,19 +55,22 @@ export default function Routers() {
           <Route path="done" element={<EventDonePage />} />
         </Route>
       </Route>
+      {/* 이벤트 조회 페이지 */}
+      <Route path="events">
+        <Route>
+          {/* 이벤트 디테일 조회 페이지 */}
+          <Route path=":eventId" element={<EventDetailPage />} />
+          {/* 롤링페이퍼 페이지 조회 페이지 */}
+          <Route path=":eventId/rollingpaper" element={<PieceList />} />
+          {/* 롤링페이퍼 생성 페이지 */}
+          <Route path=":eventId/newpiece" element={<CreatePiece />} />
+        </Route>
+      </Route>
       {/* 검색 페이지 */}
       <Route path="search">
         <Route path="" element={<SearchMainPage />} />
         <Route path=":value" element={<SearchResultPage />} />
         <Route path="hashtag" element={<HashtagPage />} />
-      </Route>
-      {/* 롤링페이퍼 페이지 */}
-      {/* 이벤트 디테일 조회 페이지 */}
-      <Route path="events/:eventId" element={<EventDetailPage />} />
-      {/* 롤링페이퍼 */}
-      <Route path="piece" element={<CreatePiece />} />
-      <Route path="rollingpaper">
-        <Route path="" element={<PieceList />} />
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />
