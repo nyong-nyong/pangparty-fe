@@ -19,8 +19,8 @@ function App() {
               <div className="contentWrapper">
                 <Routers />
               </div>
-              <Footbar />
             </div>
+            <Footbar />
           </BrowserRouter>
         </CookiesProvider>
       </RecoilRoot>

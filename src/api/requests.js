@@ -84,24 +84,6 @@ const requests = {
   events: {
     postEvent: eventsBaseUrl,
 
-    pang: {
-      likesBaseUrl: "/likes",
-      /** 이벤트 팡파레 울리기 POST 요청 */
-      postPang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`;
-      },
-
-      /** 이벤트 팡파레 울리기 DEL 요청 */
-      delPang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.likesBaseUrl}`;
-      },
-    },
-
-    /** 이벤트 상세 페이지 조회 */
-    getEventDetail(eventId) {
-      return `${eventsBaseUrl}/${eventId}`;
-    },
-
     album: {
       albumBaseUrl: "/album",
       commentBaseUrl: "/comments",
@@ -173,6 +155,36 @@ const requests = {
         return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&limit=${limit}`;
       },
     },
+
+    /** 이벤트 소개/참여 페이지 */
+    introEvent: {
+      pangBaseUrl: "/likes",
+
+      /** 이벤트 소개페이지 조회 GET 요청 */
+      eventItroAll(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}`;
+      },
+
+      /** 이벤트 생성 */
+      postEvent() {
+        return `${eventsBaseUrl}`;
+      },
+
+      /** 이벤트 좋아요(팡파레 울리기) POST 요청 */
+      postPang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+      },
+
+      /** 이벤트 좋아요 취소 DELETE 요청 */
+      deletePang(eventUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+      },
+    },
+
+    /** 이벤트 상세 페이지 조회 */
+    // getEventDetail(eventId) {
+    //   return `${eventsBaseUrl}/${eventId}`;
+    // },
   },
 };
 export default requests;

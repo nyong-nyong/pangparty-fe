@@ -6,43 +6,59 @@ ul {
   padding: 0;
 }
 
+@import "./colors.scss";
+
 .appContainer {
   font-family: "Pretendard-Regular";
   display: block;
   min-width: 330px;
   max-width: 340px;
-  min-width: 330px;
-  max-width: 340px;
+
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
   min-height: 600px;
   border: 1px solid;
   padding: 9px;
   margin: auto;
   top: -100px;
+  overflow: hidden;
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25%;
+    // overflow: hidden;
+  }
+
+  .contentWrapper {
+    flex: 1;
+  }
 }
 
-button, 
+button,
 p {
   font-family: "Pretendard-Regular";
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-}
-
-.contentWrapper {
-  flex: 1;
-}
-
 .footer {
-  position: sticky;
+  position: fixed;
+  bottom: 0;
+  height: 8%;
   display: flex;
+  min-width: 330px;
+  max-width: 340px;
+  width: 100%;
+  justify-content: space-around;
+  flex-flow: row;
+  background-color: white;
+  padding-top: 3%;
+  box-shadow: $box-shadow;
+
+  /* display: flex;
   flex-flow: row;
   justify-content: space-around;
-  /* height: 100vh; */
-  left: 0px;
+  height: 100vh;
+  left: 0px; */
   /* top: 100vh; */
 }
 
