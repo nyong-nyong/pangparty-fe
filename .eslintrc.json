@@ -36,14 +36,14 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [
       "error",
-      { "extensions": [".ts", ".tsx"] }
+      { "extensions": [".js", ".jsx"] }
     ],
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "ts": "never",
-        "tsx": "never"
+        "js": "never",
+        "jsx": "never"
       }
     ]
   },

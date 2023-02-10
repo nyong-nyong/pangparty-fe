@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 .appContainer {
   font-family: "Pretendard-Regular";
   display: block;
@@ -10,6 +12,17 @@
   padding: 9px;
   margin: auto;
   top: -100px;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25%;
+    // overflow: scroll;
+  }
+
+  .contentWrapper {
+    flex: 1;
+  }
 }
 
 button,
@@ -17,26 +30,19 @@ p {
   font-family: "Pretendard-Regular";
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-}
-
-.contentWrapper {
-  flex: 1;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
-  height: 15%;
+  height: 8%;
   display: flex;
   min-width: 330px;
   max-width: 340px;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-around;
   flex-flow: row;
   background-color: white;
+  padding-top: 3%;
+  box-shadow: $box-shadow;
 
   /* display: flex;
   flex-flow: row;
