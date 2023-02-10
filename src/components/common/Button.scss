@@ -39,8 +39,19 @@
     }
   }
 
-  &.orange-3 {
+  &.orange-1 {
     background: $orange-1;
+    &:hover {
+      background: $orange-2;
+    }
+
+    &:active {
+      background: lighten($orange-2, 10%);
+    }
+  }
+  &.orange-3 {
+    background: $orange-3;
+    color: $orange-1;
     &:hover {
       background: $orange-2;
     }

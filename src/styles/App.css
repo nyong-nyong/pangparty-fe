@@ -3,8 +3,7 @@
   display: block;
   min-width: 330px;
   max-width: 340px;
-  min-width: 330px;
-  max-width: 340px;
+
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
   min-height: 600px;
   border: 1px solid;
@@ -13,7 +12,7 @@
   top: -100px;
 }
 
-button, 
+button,
 p {
   font-family: "Pretendard-Regular";
 }
@@ -29,12 +28,23 @@ p {
 }
 
 .footer {
-  position: sticky;
+  position: fixed;
+  left: 0;
+  /* right: 0; */
+  bottom: 0;
+  height: 15%;
   display: flex;
+  min-width: 330px;
+  max-width: 340px;
+  justify-content: center;
+  flex-flow: row;
+  background-color: white;
+
+  /* display: flex;
   flex-flow: row;
   justify-content: space-around;
-  /* height: 100vh; */
-  left: 0px;
+  height: 100vh;
+  left: 0px; */
   /* top: 100vh; */
 }
 
