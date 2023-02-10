@@ -18,13 +18,19 @@ export default function useUserAction() {
   const navigate = useNavigate();
 
   const onSilentRefresh = async (token) => {
-    await axios.post(requests.refreshToken, token)
+    await axios.post(requests.refreshToken, token, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+    { withCredentials: true })
     .then((res) => {
-      setCookie("refreshToken", res.refreshToken);
+      setCookie("refreshToken", res.data.refreshToken);
       setAuth(true);
-      setUser(res.id);
-      axios.defaults.headers.common["Authorization"] = res.accessToken;
-      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
+      setUser(res.data.id);
+      axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+      axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
+      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 3590000);
     })
     .catch((err) => {
       removeCookie("refreshToken");
@@ -52,10 +58,12 @@ export default function useUserAction() {
           setCookie("refreshToken", res.refreshToken);
           // httpOnly option 넣기 -> but 브라우저에서 접근 불가능. 백엔드 완성되면 넣자.
           setAuth(true);
-          setUser(res.id);
-          axios.defaults.headers.common["Authorization"] = res.accessToken;
+          setUser(res.data.id);
+          axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+          axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
+          console.log(axios.defaults.headers.common);
           navigate(-1);
-          setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
+          setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
         })
         .catch((err) => {
           removeCookie("refreshToken");
