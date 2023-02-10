@@ -1,23 +1,50 @@
 /* eslint-disable */
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { eventNameState } from "../../recoils/createEvent/Atoms";
 import Button from "../../components/common/Button";
 
 function EventNamingPage() {
+  const [typingEventName, setTypingEventName] = useState("");
   const [eventNameInfo, setEventNameInfo] = useRecoilState(eventNameState);
 
   const eventNameHandler = (e) => {
     const newEventName = e.target.value;
-    setEventNameInfo(newEventName);
+    setTypingEventName(newEventName);
+  };
+
+  const titleHandler = (e) => {
+    if (!typingEventName) {
+      e.preventDefault();
+      alert("이벤트명을 입력해주세요!");
+    } else {
+      setEventNameInfo(typingEventName);
+      setTypingEventName("");
+    }
   };
 
   return (
     <div>
-      <h1>마지막으로, 이벤트명을 정해주세요</h1>
-      <input onChange={eventNameHandler} />
+      <div className="createContainer">
+        <p className="createTitle">
+          마지막으로, <br />
+          이벤트명을 정해주세요
+        </p>
+        <input
+          type="text"
+          className="inputBox"
+          value={typingEventName}
+          onChange={eventNameHandler}
+        />
+      </div>
       <Link to="/event/confirm">
-        <Button>다음</Button>
+        {!typingEventName && <Button onClick={titleHandler}>다음</Button>}
+        {typingEventName && (
+          <Button onClick={titleHandler} color="orange">
+            다음
+          </Button>
+        )}
       </Link>
     </div>
   );
