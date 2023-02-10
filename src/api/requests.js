@@ -65,6 +65,10 @@ const requests = {
     delLikes(hashtagUid) {
       return `${this.hashtagsBaseUrl}/${hashtagUid}`;
     },
+
+    getResults(hashtagUid) {
+      return `${this.hashtagsBaseUrl}/${hashtagUid}/events`;
+    },
   },
 
   // 회원가입

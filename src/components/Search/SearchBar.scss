@@ -1,0 +1,128 @@
+@import "../../styles/colors.scss";
+@import "../../styles/iconImg.scss";
+
+.SearchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 298px;
+  height: 38px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding-left: 55px;
+  padding-right: 55px;
+
+  &.Search {
+    border: $blue_1 solid 1px;
+  }
+
+  &.Tag {
+    border: $gray-1 solid 1px;
+  }
+}
+
+.SearchHistoryList {
+  display: flex;
+  height: 48px;
+  width: 328px;
+  border-bottom: $gray-5 solid 1.2px;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.HistoryContext {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.Type {    
+    height: 24px;
+    width: 24px;
+    margin-left: 15px;
+    margin-right: 30px;
+ 
+
+  &.event {
+    background-image: url($typeEvent);
+  }
+
+  &.member {
+    background-image: url($typeMember);
+  }
+
+  &.hashtag {
+    background-image: url($typeHashtag);
+  }
+}
+
+.DeleteHistory {
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 13px;
+  background-image: url($x);
+  cursor: pointer;
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  width: 310px;
+  height: 38px;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border-top: 1.5px $gray-5 solid;
+  border-bottom: 1.5px $gray-5 solid;
+}
+
+.TypeButton {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  width: fit-content;
+  align-items: center;
+  border-radius: 28px;
+  padding: 6px 15px 6px 15px;
+  font-size: 13px;
+  cursor: pointer;
+
+  &.Clicked {
+    background-color: $gray-5;
+  }
+
+}
+
+.TypeIcon {    
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+
+  &.event {
+    background-image: url($typeEvent);
+  }
+
+  &.member {
+    background-image: url($typeMember);
+  }
+
+  &.hashtag {
+    background-image: url($typeHashtag);
+  }
+}
+
+.HashtagTitle {
+  color: $blue_1;
+}

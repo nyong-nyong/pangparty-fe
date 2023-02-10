@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
+import SearchBar from "../../components/Search/SearchBar";
 // import SearchBar from "../../components/Search/SearchBar";
 // import SearchResults from "../../components/Search/SearchResults";
 // import { searchTypeState } from "../../recoils/search/Atoms";
@@ -32,7 +33,7 @@ export default function TagMemberPage() {
     <div>
       <h4>축하해줄 친구를 태그해볼까요?</h4>
 
-      <input type="text" onChange={targetTagHandler} />
+      <SearchBar />
 
       {/* search bar 영역 추후 병합 예정 */}
       {/* <SearchBar />

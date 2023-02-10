@@ -1,19 +1,42 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
+import _ from "lodash";
+import {
+  searchHistoryState,
+  searchHistoryIdState,
+} from "../../recoils/search/Atoms";
+import "./SearchEvent.scss";
+
 // import axios from "../../api/axios";
 // import requests from "../../api/requests";
 
 export default function SearchEventResult({ event }) {
+  const navigate = useNavigate();
+  const [canRender, setCanRender] = useState(false);
+  const [searchHistory, setSearchHistory] = useRecoilState(searchHistoryState);
+  const [searchHistoryId, setSearchHistoryId] =
+    useRecoilState(searchHistoryIdState);
+
   const onClickEvent = () => {
-    const navigate = useNavigate();
     navigate("/");
+    const newSearchHistory = _.cloneDeep(searchHistory);
+    // console.log(newSearchHistory);
+    if (searchHistory.length === 10) {
+      newSearchHistory.pop();
+    }
+    newSearchHistory.unshift();
+    setSearchHistoryId(searchHistoryId + 1);
+    newSearchHistory.push({ type: "event", id: searchHistoryId + 1, ...event });
+    setSearchHistory(newSearchHistory);
+
     // 해당 이벤트 페이지로 이동
   };
-
-  const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,66 +45,33 @@ export default function SearchEventResult({ event }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // const [isPang, setIsPang] = useState();
+  const getDday = (date) => {
+    const dDay = new Date(date);
+    const today = new Date();
+    return Math.floor((dDay - today) / (1000 * 60 * 60 * 24));
+  };
 
-  // useEffect(() => {
-  //   setIsPang(event.isPang);
-  //   // console.log(event.isPang)
-  // }, [event]);
-
-  // const onClickFollow = (e) => {
-  //   e.preventDefault();
-
-  //   async function unPang() {
-  //     await axios.delete(requests.events.pang.postPang(event.uid))
-  //       .then((res) => {
-  //         setIsPang(!isPang)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   async function pang() {
-  //     await axios
-  //       .post(requests.events.pang.delPang(event.uid))
-  //       .then((res) => {
-  //         setIsPang(!isPang)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   if(isPang) return unPang();
-  //   return pang();
-  // }
   return (
     <li>
       {canRender ? (
-        <div>
+        <div className={classNames("SearchEvent")}>
           <div onClick={onClickEvent}>
-            <img src={event.imgUrl} width="100px" height="100px" />
+            <img src={event.imgUrl} className="EventThumbnail" />
           </div>
-          <div onClick={onClickEvent}>
-            <span>{event.eventName}</span>
-            <br />
-            <span>{event.introduction}</span>
-            <br />
-            <span>@{event.targets ? event.targets[0].id : ""}</span>
+          <div onClick={onClickEvent} className="EventContents">
+            <div className="EventHeader">
+              {event.eventName && (
+                <div className="EventTitle">{event.eventName}</div>
+              )}
+              <div className="EventDday">D-{getDday(event.dDay)}</div>
+            </div>
+            <div className="EventTag">@{event.targetId}</div>
+            <div className="EventDate">{event.dDay}</div>
             <br />
           </div>
-          {/* <div>
-        { isPang ?
-          <button onClick={(e) => onClickFollow(e)}>팔로우 취소</button>:
-          <button onClick={(e) => onClickFollow(e)}>팔로우</button>
-        }
-      </div> */}
         </div>
       ) : (
-        <span>Loading...</span>
+        ""
       )}
     </li>
   );

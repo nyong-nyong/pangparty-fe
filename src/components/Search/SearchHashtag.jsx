@@ -1,15 +1,38 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "../../api/axios";
-// import requests from "../../api/requests";
+import classNames from "classnames";
+import { useRecoilState } from "recoil";
+import _ from "lodash";
+import {
+  searchHistoryState,
+  searchHistoryIdState,
+} from "../../recoils/search/Atoms";
 
 export default function SearchHashtagResult({ hashtag }) {
+  const navigate = useNavigate();
+  const [searchHistory, setSearchHistory] = useRecoilState(searchHistoryState);
+  const [searchHistoryId, setSearchHistoryId] =
+    useRecoilState(searchHistoryIdState);
+
   const onClickHashtag = () => {
-    const navigate = useNavigate();
-    navigate("/");
+    navigate(`hashtag/${hashtag.name}`);
     // 해당 이벤트 페이지로 이동
+    const newSearchHistory = _.cloneDeep(searchHistory);
+    // console.log(newSearchHistory);
+    if (searchHistory.length === 10) {
+      newSearchHistory.pop();
+    }
+    newSearchHistory.unshift();
+    setSearchHistoryId(searchHistoryId + 1);
+    newSearchHistory.push({
+      type: "hashtag",
+      id: searchHistoryId + 1,
+      ...hashtag,
+    });
+    setSearchHistory(newSearchHistory);
   };
 
   const [canRender, setCanRender] = useState(false);
@@ -21,61 +44,19 @@ export default function SearchHashtagResult({ hashtag }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // const [isLike, setIsLike] = useState();
-
-  // useEffect(() => {
-  //   setIsLike(hashtag.isLike);
-  //   // console.log(hashtag.isLike)
-  // }, [hashtag]);
-
-  // const onClickLike = (e) => {
-  //   e.prhashtagDefault();
-
-  //   async function unlike() {
-  //     await axios
-  //       .delete(requests.hashtags.postLikes(hashtag.uid))
-  //       .then((res) => {
-  //         setIsLike(!isLike)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   async function like() {
-  //     await axios
-  //       .post(requests.hashtags.postLikes(hashtag.uid))
-  //       .then((res) => {
-  //         setIsLike(!isLike)
-  //         console.log(res)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   if(isLike) return unLike();
-  //   return like();
-  // }
-
   return (
     <li>
       {canRender ? (
-        <div>
-          <div onClick={onClickHashtag}>
-            <span>#</span>
-            <span>{hashtag.name}</span>
-          </div>
-          {/* <div>
-        { isLike ?
-          <button onClick={(e) => onClickFollow(e)}>좋아요 취소</button>:
-          <button onClick={(e) => onClickFollow(e)}>좋아요</button>
-        }
-      </div> */}
+        <div
+          style={{ border: "none", cursor: "pointer" }}
+          onClick={onClickHashtag}
+          className={classNames("SearchHistoryList")}
+        >
+          <div className={classNames("Type", "hashtag")} />
+          <div className={classNames("HistoryContext")}>{hashtag.name}</div>
         </div>
       ) : (
-        <span>Loading...</span>
+        <> </>
       )}
     </li>
   );
