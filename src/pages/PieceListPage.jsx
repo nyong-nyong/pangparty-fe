@@ -78,61 +78,74 @@ export default function PieceListPage() {
 
   return (
     <div>
-      <div
-        className="RpPieceStickerList"
-        style={{ width: "100%", height: "100%", position: "relative" }} // 스티커페이지 연결
-      >
-        {/* 롤링페이퍼 조각 리스트 */}
+      <RpContainer>
         <div
-          className="pieceListPageContainer"
-          style={{ display: "flex", flexWrap: "wrap" }}
+          className="RpPieceStickerList"
+          style={{ width: "100%", height: "100%", position: "relative" }} // 스티커페이지 연결
         >
-          {pieceListData &&
-            pieceListData.map((piece, index) => {
-              if (piece) {
-                return (
-                  <PieceContainer
-                    key={piece.rollingPaperPieceUid}
-                    piece={piece}
-                    index={index}
-                  />
-                );
-              }
-            })}
+          {/* 롤링페이퍼 조각 리스트 */}
+          <div
+            className="pieceListPageContainer"
+            style={{ display: "flex", flexWrap: "wrap" }}
+          >
+            {pieceListData &&
+              pieceListData.map((piece, index) => {
+                if (piece) {
+                  return (
+                    <PieceContainer
+                      key={piece.rollingPaperPieceUid}
+                      piece={piece}
+                      index={index}
+                    />
+                  );
+                }
+              })}
+          </div>
+          {/* 사용자들이 붙인 스티커 리스트 */}
+          <CompleteStickerList />
         </div>
-        {/* 사용자들이 붙인 스티커 리스트 */}
-        <CompleteStickerList />
-      </div>
 
-      {/* 하단 버튼 */}
-      <RpButtonsContainer>
-        <div
-          className="btnContainer"
-          style={{ display: "flex", alignItems: "center", flexFlow: "column" }}
-        >
+        {/* 하단 버튼 */}
+        <RpButtonsContainer>
           <Link to="/piece">
             <Button color="orange-1">롤링페이퍼 쓰기 버튼</Button>
           </Link>
           <Button color="orange-3" type="button" onClick={showModal}>
             🧸스티커 붙이기🧸
           </Button>
-        </div>
-      </RpButtonsContainer>
-      {stickerInfo && (
-        <StickerPost eventUid={eventUid} rollingPaperUid={rollingPaperUid} />
-      )}
-      {/* <div style={{ width: "344px", height: "520px", background: "orange" }} /> */}
-      {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
-      {stickerInfo && <MoveablePiece sticker={stickerInfo} />}
+          {stickerInfo && (
+            <StickerPost
+              eventUid={eventUid}
+              rollingPaperUid={rollingPaperUid}
+            />
+          )}
+        </RpButtonsContainer>
+        {/* <div style={{ width: "344px", height: "520px", background: "orange" }} /> */}
+        {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
+        {stickerInfo && <MoveablePiece sticker={stickerInfo} />}
+      </RpContainer>
     </div>
   );
 }
 
 const RpButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+
   flexflow: column;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 30%;
+  height: 27%;
+`;
+
+const RpContainer = styled.div`
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  // overflow: hidden;
+
 `;

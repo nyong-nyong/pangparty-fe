@@ -12,12 +12,14 @@
   padding: 9px;
   margin: auto;
   top: -100px;
+  overflow: hidden;
 
   .wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 25%;
-    // overflow: scroll;
+    // overflow: hidden;
   }
 
   .contentWrapper {
