@@ -17,13 +17,25 @@ const requests = {
     },
   },
 
+  feed: {
+    feedBaseUrl: "/feed",
+
+    /** 피드 내용 GET 요청 */
+    // 페이지네이션 물어보기
+    getFeed() {
+      return `${this.feedBaseUrl}`;
+    },
+  },
+
   posts: {
     postsBaseUrl: "/posts",
 
-    getAllPosts() {},
+    /** 게시믈 POST 요청  */
     postPost() {
       return `${this.postsBaseUrl}`;
     },
+
+    /** 게시물 상세 정보 GET 요청  */
     getPostDetail() {},
   },
 
