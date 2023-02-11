@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Button from "../components/common/Button";
 import giftPangImg from "../assets/giftPang.png";
 import giftPangOpened from "../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
@@ -8,7 +9,7 @@ import touch1 from "../assets/touch1.png";
 import touch2 from "../assets/touch2.png";
 import touch3 from "../assets/touch3.png";
 import touch4 from "../assets/touch4.png";
-import goUpIcon from "../assets/goUpIcon.png";
+// import goUpIcon from "../assets/goUpIcon.png";
 import "../styles/GiftIntroPage.scss";
 
 export default function GiftIntroPage() {
@@ -30,12 +31,7 @@ export default function GiftIntroPage() {
     setTouchCount(newCount);
   };
 
-  const nextPage = (e) => {
-    console.log(e.changedTouches[0].screenX);
-    const userMovement = e.changedTouches[0].screenX;
-    if (userMovement > 390) {
-      navigate("/gift/recap/1");
-    }
+  const nextPage = () => {
     navigate("/gift/recap/1");
   };
 
@@ -118,14 +114,11 @@ export default function GiftIntroPage() {
             return (
               <div>
                 <p style={{ marginBottom: "10%" }}>
-                  위로 올려 선물을 수령해주세요
+                  선물 받기 버튼을 눌러주세요!
                 </p>
-                <img
-                  className="goUpIcon"
-                  src={goUpIcon}
-                  onTouchEnd={nextPage}
-                  alt=""
-                />
+                <Button color="orange-1" onClick={nextPage}>
+                  선물 받기
+                </Button>
               </div>
             );
           })()}
