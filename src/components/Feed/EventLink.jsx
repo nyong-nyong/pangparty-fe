@@ -7,6 +7,7 @@ import EventLinkResults from "./EventLinkResults";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./Feed.scss";
+import Icon from "../common/Icon";
 
 export default function EventLink({ eventUid, setEventUid }) {
   const searchType = "Event";
@@ -18,6 +19,11 @@ export default function EventLink({ eventUid, setEventUid }) {
   const onChange = (e) => {
     setSearchText(e.target.value);
     setModalOpen(true);
+  };
+
+  const modalClose = (e) => {
+    e.preventDefault();
+    setModalOpen(false);
   };
 
   const debouncedSearchText = useDebounce(searchText, 1000);
@@ -42,31 +48,35 @@ export default function EventLink({ eventUid, setEventUid }) {
   const clearText = () => {
     setSearchText("");
     setModalOpen(false);
-    setClickedEvent("");
   };
 
   return (
-    <div className="linkContainer">
+    <div>
       {modalOpen && (
-        <div>
+        <div className="resultsContainer">
           <EventLinkResults
             setClickedEvent={setClickedEvent}
             searchResults={searchResults}
+            setModalOpen={setModalOpen}
           />
+          <button onClick={clearText}>X</button>
         </div>
       )}
-      {clickedEvent.uid ? (
-        <div>{clickedEvent.eventName}</div>
-      ) : (
-        <input
-          type="text"
-          placeholder="검색어를 입력해주세요"
-          className={classNames("SearchBar", searchType)}
-          onChange={onChange}
-          maxLength="19"
-          value={searchText || ""}
-        />
-      )}
+      <div className="linkContainer">
+        <Icon img="link" />
+        {clickedEvent.uid ? (
+          <div>{clickedEvent.eventName}</div>
+        ) : (
+          <input
+            type="text"
+            placeholder="검색어를 입력해주세요"
+            className="EventSearchBar"
+            onChange={onChange}
+            maxLength="19"
+            value={searchText || ""}
+          />
+        )}
+      </div>
     </div>
   );
 }

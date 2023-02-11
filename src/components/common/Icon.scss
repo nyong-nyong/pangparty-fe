@@ -72,6 +72,9 @@
     &.add{
       background-image: url($add);
     }
+    &.link{
+      background-image: url($link);
+    }
   }
   .iconButton {
     border: none;

@@ -1,6 +1,67 @@
+@import "../../styles/colors.scss";
+
+.postContainer {
+  display: flex;
+  flex-flow: wrap column;
+}
+
+.postTitle {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  font: inherit;
+  padding-bottom: 15px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1.5px solid $gray-3;
+}
+.postTitle::placeholder {
+  color: $gray-3;
+}
+
+.postContent {
+  display: flex;
+  width: calc(90% - 30px);
+  height: 200px;
+  margin: auto;
+  resize: none;
+  font: inherit;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1.5px solid #D9D9D9;
+}
+.postContent:focus {
+  outline: none;
+}
+.postContent::placeholder {
+  color: $gray-3;
+}
+
 .linkContainer {
-  width: 328px;
-  height: 55px;
+  display: flex;
+  flex-flow: wrap row;
+  width: 90%;
+  height: 90%;
+  margin: auto;
   border: 1.5px solid #D9D9D9;
   border-radius: 8px;
+  padding: 0px;
+}
+
+.EventSearchBar {
+  border: none;
+  font-size: 16px;
+}
+
+.EventSearchBar::placeholder {
+  color: $orange-2;
+}
+
+.resultsContainer {
+  display: flex;
+  flex-flow: wrap column;
+  width: 90%;
+  margin: auto;
 }

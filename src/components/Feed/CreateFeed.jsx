@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -45,14 +46,15 @@ export default function CreateFeed() {
   };
 
   return (
-    <div>
+    <div className="postContainer">
       {/* 상단 component에서 handleSubmit 가능하게 */}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
         <h4>제목</h4>
         <input
           type="text"
           value={title}
           placeholder="제목을 입력해주세요"
+          className="postTitle"
           onChange={handleTitleChange}
           maxLength="20"
         />
@@ -61,11 +63,12 @@ export default function CreateFeed() {
           type="text"
           value={content}
           placeholder="내용을 입력해주세요"
+          className="postContent"
           onChange={handleContentChange}
         />
         <h4>이벤트 링크하기</h4>
         <EventLink eventUid={eventUid} setEventUid={setEventUid} />
-        <button></button>
+        <button>제출</button>
       </form>
     </div>
   );
