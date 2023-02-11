@@ -6,6 +6,12 @@ ul {
   padding: 0;
 }
 
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 @import "./colors.scss";
 
 .appContainer {
@@ -36,6 +42,7 @@ ul {
 }
 
 button,
+input,
 p {
   font-family: "Pretendard-Regular";
 }
@@ -90,7 +97,9 @@ a {
   font-style: normal;
 }
 
-input:focus { outline: none; }
+input:focus {
+  outline: none;
+}
 
 input {
   font-family: "Pretendard-Regular";
