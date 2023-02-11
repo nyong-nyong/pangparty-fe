@@ -9,14 +9,8 @@ import "../../styles/CreateEvent.scss";
 export default function TagMemberPage() {
   const [targetsInfo, setTargetsInfo] = useRecoilState(targetsTagState);
 
-
   const targetTagHandler = (e) => {
-    const newTargetTag = {
-      id: 123,
-      name: e.target.value,
-      imgUrl:
-        "https://www.rover.com/blog/wp-content/uploads/2015/06/happy-dog-burrito2.jpg",
-    };
+    const newTargetTag = e.target.value;
     setTargetsInfo(newTargetTag);
   };
 
@@ -34,7 +28,7 @@ export default function TagMemberPage() {
           type="text"
           className="inputBox"
           onChange={targetTagHandler}
-          style={{}}
+          value={targetsInfo}
         />
       </div>
 

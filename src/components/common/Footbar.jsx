@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../recoils/user/Atoms";
 import Icon from "./Icon";
 
 function Footbar() {
+  const userID = useRecoilValue(userState);
   const [isActive, setIsActive] = useState({
     Home: true,
     Feed: false,
@@ -50,7 +53,12 @@ function Footbar() {
           검색
         </Icon>
       </Link>
-      <Link to="/mypage" id="MyPage" onClick={(e) => clickHandler(e, "MyPage")}>
+      {/* {userID ? <p>하이</p> : <p>djqt</p>} */}
+      <Link
+        to={userID ? `/mypage/${userID}` : "mypage/pang3333"}
+        id="MyPage"
+        onClick={(e) => clickHandler(e, "MyPage")}
+      >
         <Icon img="my" isActive={isActive.MyPage}>
           내정보
         </Icon>

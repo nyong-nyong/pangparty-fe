@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+// import { useRecoilValue } from "recoil";
+// import { userState } from "../recoils/user/Atoms";
 import Feed from "../components/MyPage/Feed";
 import ReceicedEvent from "../components/MyPage/ReceivedEvent";
 import Badges from "../components/MyPage/Badges";
@@ -17,11 +19,16 @@ export default function MyPage() {
     EventCalander: false,
   });
 
+  // const userID = useRecoilValue(userState);
+  const userID = useParams();
+
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(
-        requests.profile.getProfileTop("dasom02")
+        requests.profile.getProfileTop(`${userID}`)
+        // requests.profile.getProfileTop("pang3333")
       );
+      console.log(request.data);
       setProfileInfo(request.data);
     }
     fetchData();

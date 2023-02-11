@@ -30,7 +30,7 @@ export default function useUserAction() {
       setUser(res.data.id);
       axios.defaults.headers.common["Authorization"] = res.data.accessToken;
       axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
-      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 3590000);
+      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 359000000);
     })
     .catch((err) => {
       removeCookie("refreshToken");
@@ -63,7 +63,7 @@ export default function useUserAction() {
           axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
           console.log(axios.defaults.headers.common);
           navigate(-1);
-          setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
+          // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
         })
         .catch((err) => {
           removeCookie("refreshToken");

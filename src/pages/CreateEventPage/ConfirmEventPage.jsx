@@ -7,7 +7,7 @@ import {
   eventIntroState,
   hashTagState,
   imgUrlState,
-  eventNameState,
+  eventNameState
 } from "../../recoils/createEvent/Atoms";
 // import "./ConfirmEvent.css";
 import axios from "../../api/axios";
@@ -25,48 +25,33 @@ function ConfirmEventPage() {
 
   // 디데이 가공
 
-  const fullyear = dDay ? dDay.getFullYear().toString() + "년 " : "디데이 없음";
-  const month = dDay ? (dDay.getMonth() + 1).toString() + "월 " : "";
-  const date = dDay ? dDay.getDate().toString() + "일" : "";
-  const fullDDay = fullyear + month + date;
+  const fullyear = dDay ? dDay.getFullYear().toString() : "디데이 없음";
+  const month = dDay ? (dDay.getMonth() + 1).toString() : "";
+  const date = dDay ? dDay.getDate().toString() : "";
+  const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
+  const fullDDayPost = fullyear + "-" + month + "-" + date;
 
   const postEvent = async () => {
     const postInfo = {
-      // event 오픈 한 사람 정보
-      host: {
-        id: "",
-        name: "",
-        // host 프로필 사진
-        imgUrl: "",
-      },
-      // 이벤트 정보
+      targetId: targetTag,
       eventName: eventName,
+      dDay: fullDDayPost,
       introduction: eventIntro,
-      // 이벤트 배너 이미지
       imgUrl: imgUrl,
-      targets: [targetTag],
-      hashtags: [hashTag],
-      dDay: dDay,
-      startTime: null,
-      endTime: dDay,
-      partyTime: dDay,
-      isPrivate: 0,
-      hasRollingPaper: 1,
-      hasAlbum: 1,
-      hasPlaylist: 0,
-      hasFunding: 0,
+      hashtags: [hashTag]
     };
 
-    console.log(requests.events.postEvent);
+    // console.log(requests.events.postEvent);
     await axios
-      .post(requests.events.postEvent, {
-        data: postInfo,
+      .post(requests.events.postEvent, postInfo, {
         headers: {
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       })
       .then((response) => {
         console.log(response);
+        // const eventUid = response.body.eventUid;
+        // 렌더링 시키기
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +68,7 @@ function ConfirmEventPage() {
         <div className="confirmInfos">
           <p className="labels">주인공</p>
           <p className="confirmContent">
-            {targetTag ? targetTag.name : "타겟 네임 없음"}
+            {targetTag ? targetTag : "타겟 네임 없음"}
           </p>
           <p className="labels">이벤트명</p>
           <p className="confirmContent">

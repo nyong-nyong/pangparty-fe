@@ -21,7 +21,6 @@ import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
 import GiftIntroPage from "./GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
-import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 import EventDetailPage from "./EventDetailPage";
 import SearchMainPage from "./SearchPage/SearchMainPage";
 import SearchResultPage from "./SearchPage/SearchResultPage";
@@ -75,7 +74,7 @@ export default function Routers() {
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />
       {/* 마이페이지 */}
-      <Route path="mypage" element={<MyPage />} />
+      <Route path="mypage/:memberId" element={<MyPage />} />
       <Route path="follows" element={<FollowPage />} />
       <Route path="myevents" element={<MyEventsPage />} />
       {/* 팡파티 페이지 */}
