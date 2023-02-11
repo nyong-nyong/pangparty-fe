@@ -4,9 +4,10 @@ import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Button from "../common/Button";
+import styled from "styled-components";
 
 // sticker POST 요청 보내기
-function StickerPost({ eventUid, rollingPaperUid }) {
+export default function StickerPost({ eventUid, rollingPaperUid }) {
   const [sticker, setSticker] = useRecoilState(stickerState);
 
   const postHandler = (e) => {
@@ -30,12 +31,18 @@ function StickerPost({ eventUid, rollingPaperUid }) {
   };
 
   return (
-    <div>
-      <Button type="submit" onClick={postHandler}>
-        완료 ✔️
-      </Button>
-    </div>
+    <>
+      <StickerCompleteBtn>
+        <Button type="submit" onClick={postHandler}>
+          완료 ✔️
+        </Button>
+      </StickerCompleteBtn>
+    </>
   );
 }
 
-export default StickerPost;
+const StickerCompleteBtn = styled.div`
+  position: fixed;
+  bottom: 0;
+  height: 35%;
+`;

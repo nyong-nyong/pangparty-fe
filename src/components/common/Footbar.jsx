@@ -13,7 +13,6 @@ function Footbar() {
 
   // 페이지 이동시 비활성 시키기
   const clickHandler = (e, id) => {
-    console.log(e.target.id);
     const newActivation = {
       Home: false,
       Feed: false,
@@ -22,8 +21,6 @@ function Footbar() {
       MyPage: false,
     };
     newActivation[id] = true;
-    // console.log(newTarget);
-    // console.log(newActivation);
     setIsActive(newActivation);
   };
 
@@ -48,11 +45,7 @@ function Footbar() {
           이벤트 생성
         </Icon>
       </Link>
-      <Link
-        to="/event/tagmember"
-        id="Search"
-        onClick={(e) => clickHandler(e, "Search")}
-      >
+      <Link to="/search" id="Search" onClick={(e) => clickHandler(e, "Search")}>
         <Icon img="search" isActive={isActive.Search}>
           검색
         </Icon>

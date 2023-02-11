@@ -1,28 +1,50 @@
 /* eslint-disable */
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { eventIntroState } from "../../recoils/createEvent/Atoms";
 import Button from "../../components/common/Button";
+import "../../styles/CreateEvent.scss";
 
 function EventDiscription() {
+  const [typingIntro, setTypingIntro] = useState("");
   const [eventIntroInfo, setEventIntroInfo] = useRecoilState(eventIntroState);
 
   const eventIntroHandler = (e) => {
     // let newEventIntro = { ...eventIntroInfo };
     const newEventIntro = e.target.value;
-    setEventIntroInfo(newEventIntro);
+    setTypingIntro(newEventIntro);
+  };
+
+  const alertNoContent = (e) => {
+    alert("내용을 입력해주세요!");
+  };
+
+  const eventIntroSave = () => {
+    setEventIntroInfo(typingIntro);
+    setTypingIntro("");
   };
 
   return (
     <div>
-      <h1>축하일을 간략히 설명해주세요!</h1>
-      <textarea
-        placeholder="설명을 입력해주세용~?"
-        style={{ width: "350px", height: "300px" }}
-        onChange={eventIntroHandler}
-      />
+      <div className="createContainer">
+        <p className="createTitle">축하일을 간략히 설명해주세요!</p>
+        <div className="eventDescriptionBox">
+          <textarea
+            className="eventDescriptionArea"
+            placeholder="설명을 입력해주세요."
+            onChange={eventIntroHandler}
+            value={typingIntro}
+          />
+        </div>
+      </div>
+      {!typingIntro && <Button onClick={alertNoContent}>다음</Button>}
       <Link to="/event/tagkwd">
-        <Button>다음</Button>
+        {typingIntro && (
+          <Button color="orange" onClick={eventIntroSave}>
+            다음
+          </Button>
+        )}
       </Link>
     </div>
   );

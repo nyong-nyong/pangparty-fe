@@ -8,7 +8,9 @@ export default function Badges() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.user.getBadges(10001));
+      const request = await axios.get(
+        requests.profile.getProfileBadges("dasom02")
+      );
       setBadgeList(request.data);
     }
     fetchData();
@@ -17,7 +19,7 @@ export default function Badges() {
   return (
     <div className="badgeContainer">
       {badgeList &&
-        badgeList.results.map((badge) => {
+        badgeList.badges.map((badge) => {
           if (badge) {
             return (
               // 디자인 MyPage.css 적용

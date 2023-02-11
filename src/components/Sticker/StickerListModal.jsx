@@ -60,7 +60,7 @@ export default function StickerListModal({ setModalOpen }) {
   if (!stickerList) return <div>...loading</div>;
 
   return (
-    <div>
+    <div className="modalWrapper">
       <div ref={modalRef} className="modalContainer">
         <button type="button" className="close" onClick={closeModal}>
           <img alt="exit" src={exit} />

@@ -1,0 +1,135 @@
+@import "./colors.scss";
+
+// common
+.createContainer {
+  display: flex;
+  flex-direction: column;
+  width: 328px;
+  margin: 0px 5px;
+}
+
+.createTitle {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.inputBox {
+  height: 55px;
+  border-radius: 15px;
+  border: 1.5px solid #d9d9d9;
+  margin-bottom: 60px;
+  font-family: "Pretendard-Regular";
+}
+
+.eventDescriptionBox {
+  width: 305px;
+  height: 305px;
+  padding: 10px;
+  margin: auto;
+  border: 1.5px solid #d9d9d9;
+  border-radius: 8px;
+}
+
+.eventDescriptionArea {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  resize: none;
+  display: flex;
+  border: none;
+  font: inherit;
+}
+
+.eventDescriptionArea:focus {
+  outline: none;
+}
+
+// TagKeywordPage
+.tagLabel {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.tagInput {
+  // position: relative;
+  width: 99%;
+  height: 55px;
+  border-radius: 15px;
+  border: 1.5px solid #d9d9d9;
+}
+
+.tagBtn {
+  position: absolute;
+  padding: 5px 10px;
+  top: 15px;
+  right: 10px;
+  border: none;
+  border-radius: 13px;
+  background-color: $orange-2;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.createdTags {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+// Img
+.imgpreview {
+  width: 300px;
+  overflow: cover;
+}
+
+.defaultImgsContainer {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.imgUploadForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 150px;
+  height: 88px;
+  margin: 5px;
+}
+
+.defaultImg {
+  width: 150px;
+  margin: 5px;
+}
+
+// confirm page
+
+.bannerContainer {
+  width: 80%;
+}
+
+.banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.confirmContainer {
+  font-family: "Pretendard-Regular";
+  margin-left: 20px;
+}
+
+.confirmInfos {
+  margin-bottom: 40px;
+}
+
+.labels {
+  color: #ff957d;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.confirmContent {
+  font-size: 16px;
+  font-weight: 600;
+}

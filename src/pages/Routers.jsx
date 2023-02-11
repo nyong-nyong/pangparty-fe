@@ -4,6 +4,7 @@ import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
+import LoginPage from "./LoginPage";
 // import SingUpIntro from "./SignUpPage/SingUpIntroPage";
 // import SignUpEmail from "./SignUpPage/SignUpEmail";
 import MyPage from "./MyPage";
@@ -20,6 +21,11 @@ import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
 import GiftIntroPage from "./GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
+import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
+import EventDetailPage from "./EventDetailPage";
+import SearchMainPage from "./SearchPage/SearchMainPage";
+import SearchResultPage from "./SearchPage/SearchResultPage";
+import HashtagPage from "./SearchPage/HashtagPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -28,12 +34,14 @@ export default function Routers() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      {/* 로그인 페이지 */}
+      <Route path="login" element={<LoginPage />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
         {/* <Route path="intro" element={<SingUpIntro />} />
         <Route path="email" element={<SignUpEmail />} /> */}
       </Route>
-      {/* 이벤트 페이지 */}
+      {/* 이벤트 생성 페이지 */}
       <Route path="event">
         <Route path="intro" element={<IntroEvent />} />
         <Route>
@@ -47,9 +55,22 @@ export default function Routers() {
           <Route path="done" element={<EventDonePage />} />
         </Route>
       </Route>
-      <Route path="piece" element={<CreatePiece />} />
-      <Route path="rollingpaper">
-        <Route path="" element={<PieceList />} />
+      {/* 이벤트 조회 페이지 */}
+      <Route path="events">
+        <Route>
+          {/* 이벤트 디테일 조회 페이지 */}
+          <Route path=":eventId" element={<EventDetailPage />} />
+          {/* 롤링페이퍼 페이지 조회 페이지 */}
+          <Route path=":eventId/rollingpaper" element={<PieceList />} />
+          {/* 롤링페이퍼 생성 페이지 */}
+          <Route path=":eventId/newpiece" element={<CreatePiece />} />
+        </Route>
+      </Route>
+      {/* 검색 페이지 */}
+      <Route path="search">
+        <Route path="" element={<SearchMainPage />} />
+        <Route path=":value" element={<SearchResultPage />} />
+        <Route path="hashtag" element={<HashtagPage />} />
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />

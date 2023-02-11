@@ -1,0 +1,18 @@
+@import "../../styles/colors.scss";
+@import "../../styles/iconImg.scss";
+
+.addBtnContainer {
+  width: 50px;
+  height: 50px;
+}
+
+.addBtnImg {
+  background-image: url($add);
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

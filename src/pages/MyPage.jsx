@@ -6,7 +6,7 @@ import Badges from "../components/MyPage/Badges";
 import EventCalander from "../components/MyPage/EventCalander";
 import axios from "../api/axios";
 import requests from "../api/requests";
-import "../styles/MyPage.css";
+import "../styles/MyPage.scss";
 
 export default function MyPage() {
   const [profileInfo, setProfileInfo] = useState(undefined);
@@ -19,7 +19,9 @@ export default function MyPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.user.getProfile());
+      const request = await axios.get(
+        requests.profile.getProfileTop("dasom02")
+      );
       setProfileInfo(request.data);
     }
     fetchData();
@@ -51,7 +53,7 @@ export default function MyPage() {
             />
           </div>
           <div className="profileBox">
-            <p className="userId">{profileInfo && profileInfo.id}</p>
+            <p className="userId">{profileInfo && profileInfo.memberId}</p>
             <p className="username">{profileInfo && profileInfo.name}</p>
             <p className="userintro">
               {profileInfo && profileInfo.introduction}
@@ -65,7 +67,9 @@ export default function MyPage() {
               >
                 <div className="followBox">
                   <p className="followText">팔로워</p>
-                  <p className="followNum">3</p>
+                  <p className="followNum">
+                    {profileInfo && profileInfo.followerCnt}
+                  </p>
                 </div>
               </Link>
               <Link
@@ -75,20 +79,29 @@ export default function MyPage() {
               >
                 <div className="followBox">
                   <p className="followText">팔로잉</p>
-                  <p className="followNum">2</p>
+                  <p className="followNum">
+                    {profileInfo && profileInfo.followingCnt}
+                  </p>
                 </div>
               </Link>
             </div>
           </div>
         </div>
-        <button type="button">프로필 수정</button>
+        <button className="profileEditButton" type="button">
+          프로필 수정
+        </button>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">
             <Link
               to="/myevents"
               state={{ host: true, involving: false, involved: false }}
             >
-              주최한 <br /> 이벤트
+              <p className="eventBoxText">
+                주최한 <br /> 이벤트
+              </p>
+              <p className="eventBoxNum">
+                {profileInfo && profileInfo.hostEventCnt}
+              </p>
             </Link>
           </button>
           <button type="button" className="eventBox">
@@ -96,7 +109,12 @@ export default function MyPage() {
               to="/myevents"
               state={{ host: false, involving: true, involved: false }}
             >
-              참여중인 <br /> 이벤트
+              <p className="eventBoxText">
+                참여중인 <br /> 이벤트
+              </p>
+              <p className="eventBoxNum">
+                {profileInfo && profileInfo.involvingEventCnt}
+              </p>
             </Link>
           </button>
           <button type="button" className="eventBox">
@@ -104,7 +122,12 @@ export default function MyPage() {
               to="/myevents"
               state={{ host: false, involving: false, involved: true }}
             >
-              참여한 <br /> 이벤트
+              <p className="eventBoxText">
+                참여한 <br /> 이벤트
+              </p>
+              <p className="eventBoxNum">
+                {profileInfo && profileInfo.involvedEventCnt}
+              </p>
             </Link>
           </button>
         </div>

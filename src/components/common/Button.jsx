@@ -6,7 +6,7 @@ function Button({ children, size, color, ...rest }) {
   return (
     <button
       type="button"
-      className={classNames("Button", size, color)}
+      className={classNames("commonButton", size, color)}
       {...rest}
     >
       {children}

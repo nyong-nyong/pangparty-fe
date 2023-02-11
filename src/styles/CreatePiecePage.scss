@@ -1,0 +1,102 @@
+@import "../styles/colors.scss";
+
+// 상단 container
+.createPieceContainer {
+  display: flex;
+  flex-direction: column;
+  // width: 328px;
+  margin: 10px auto;
+}
+
+/* PieceContent */
+// 피스 배경색 영역
+.pieceContainer {
+  display: flex;
+  width: 320px;
+  height: 315px;
+  border-radius: 8px;
+  flex-direction: column;
+  margin: 0px auto;
+  justify-content: center;
+}
+
+// 작성되는 textarea
+.pieceContent {
+  margin: 5% auto;
+  width: 80%;
+  height: 90%;
+  resize: none;
+  background-color: transparent;
+  border: none;
+}
+
+.from {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 90%;
+  background-color: transparent;
+  padding-left: 50%;
+  margin-bottom: 5%;
+}
+
+.writerName {
+  // display: inline;
+  width: 90px;
+  background-color: transparent;
+  border: none;
+}
+
+/* RPTheme */
+
+.buttonContainer {
+  display: flex;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.changeButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  margin: 10px;
+  font-weight: 700;
+}
+
+.changeButton-active {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  margin: 10px;
+  font-weight: 700;
+  background-color: #ffa48f;
+  color: white;
+}
+
+// 폰트 (정렬도 함께 사용)
+.buttonContainer {
+  display: flex;
+}
+
+.fontBtn {
+  font-family: "Pretendard";
+  margin: 5px 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: $gray-5;
+}
+
+.fontBtn-active {
+  font-family: "Pretendard";
+  margin: 5px 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: $blue-3;
+}
+
+// 색상 변경
