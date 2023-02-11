@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import {
   memberIdState,
@@ -14,7 +14,8 @@ import RpThemeChange from "../components/CreatePiece/RpThemeChange";
 import PieceContent from "../components/CreatePiece/PieceContent";
 import axios from "../api/axios";
 import requests from "../api/requests";
-import "../components/CreatePiece/CreatePiece.css";
+import "../styles/CreatePiecePage.scss";
+import Button from "../components/common/Button";
 
 // 롤링페이퍼 작성하는 페이지
 
@@ -49,7 +50,6 @@ export default function CreatePiecePage() {
       textColor,
       textAlign,
     };
-
     // rp uid값 추후 수정 필요합니다.
     await axios
       .post(requests.events.rollingPaper.postPiece(params.eventId, 777777), {
@@ -62,6 +62,8 @@ export default function CreatePiecePage() {
       })
       .then((response) => {
         console.log(response);
+        // 배포 후 주소 수정 필요합니다.
+        window.location.href = `http://localhost:3000/events/${params.eventId}/rollingpaper`;
       })
       .catch((error) => {
         console.log(error);
@@ -69,13 +71,18 @@ export default function CreatePiecePage() {
   };
 
   return (
-    <div className="createPieceContainer">
-      <PieceContent />
-      <RpThemeChange />
-      <button type="submit" onClick={postEvent}>
-        작성완료
-      </button>
-      <Link to={`/events/${params.eventId}/rollingpaper`}>피스리스트로</Link>
+    <div>
+      <div className="createPieceContainer">
+        <PieceContent />
+        <RpThemeChange />
+      </div>
+      {content && writerName ? (
+        <Button color="orange-1" type="submit" onClick={postEvent}>
+          작성완료
+        </Button>
+      ) : (
+        <Button type="submit">작성완료</Button>
+      )}
     </div>
   );
 }

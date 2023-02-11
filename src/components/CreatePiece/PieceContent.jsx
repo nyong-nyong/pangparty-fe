@@ -31,11 +31,6 @@ export default function PieceContent() {
     }
   };
 
-  const testt = () => {
-    console.log(contentInfo);
-    console.log(writerInfo);
-  };
-
   return (
     <div
       className="pieceContainer"
@@ -54,29 +49,23 @@ export default function PieceContent() {
           textAlign: `${textAlign}`,
         }}
       />
-      <div
-        className="from"
-        style={{
-          width: "100px",
-          color: `#${textColor}`,
-          fontFamily: `${fontFamily}`,
-        }}
-      >
-        <p className="fromTag">From.</p>
+      <div className="from">
+        <p
+          className="fromTag"
+          style={{ fontFamily: `${fontFamily}`, color: `#${textColor}` }}
+        >
+          From.
+        </p>
         <input
           type="text"
           className="writerName"
           placeholder=""
           defaultValue={writerInfo}
           style={{
-            display: "inline-block",
             fontFamily: `${fontFamily}`,
             color: `#${textColor}`,
           }}
         />
-        <button type="button" onClick={testt}>
-          test
-        </button>
       </div>
     </div>
   );

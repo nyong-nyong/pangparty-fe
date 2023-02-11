@@ -1,8 +1,9 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { textAlignState } from "../../recoils/createPiece/Atoms";
 
 export default function ThemeAlign() {
   const setTextAlignInfo = useSetRecoilState(textAlignState);
+  const activeAlign = useRecoilValue(textAlignState);
 
   // 정렬 변경 함수
   const alignChangeHandler = (e) => {
@@ -14,7 +15,7 @@ export default function ThemeAlign() {
     <div className="buttonContainer">
       <button
         type="button"
-        className="changeButton"
+        className={activeAlign === "left" ? "fontBtn-active" : "fontBtn"}
         value="left"
         onClick={alignChangeHandler}
       >
@@ -22,7 +23,7 @@ export default function ThemeAlign() {
       </button>
       <button
         type="button"
-        className="changeButton"
+        className={activeAlign === "center" ? "fontBtn-active" : "fontBtn"}
         value="center"
         onClick={alignChangeHandler}
       >
@@ -30,7 +31,7 @@ export default function ThemeAlign() {
       </button>
       <button
         type="button"
-        className="changeButton"
+        className={activeAlign === "right" ? "fontBtn-active" : "fontBtn"}
         value="right"
         onClick={alignChangeHandler}
       >

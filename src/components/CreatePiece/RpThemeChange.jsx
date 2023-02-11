@@ -20,6 +20,7 @@ function RpThemeChange() {
       color: false,
     };
     newThemeChange[e.target.value] = true;
+    console.log(e.target.className);
     setThemeChange(newThemeChange);
   };
 
@@ -28,7 +29,7 @@ function RpThemeChange() {
       <div className="buttonContainer">
         <button
           type="button"
-          className="changeButton"
+          className={themeChange.font ? "changeButton-active" : "changeButton"}
           id="fontChangeButton"
           value="font"
           onClick={themeChangeHandler}
@@ -37,7 +38,7 @@ function RpThemeChange() {
         </button>
         <button
           type="button"
-          className="changeButton"
+          className={themeChange.align ? "changeButton-active" : "changeButton"}
           id="alignChangeButton"
           value="align"
           onClick={themeChangeHandler}
@@ -46,7 +47,7 @@ function RpThemeChange() {
         </button>
         <button
           type="button"
-          className="changeButton"
+          className={themeChange.color ? "changeButton-active" : "changeButton"}
           id="colorChangeButton"
           value="color"
           onClick={themeChangeHandler}
