@@ -48,6 +48,7 @@ export default function LoginPage() {
     setUserInfo(newInfo);
   };
 
+  // 홈으로 보내기(추가할 것)
   const login = (e) => {
     e.preventDefault();
     return userAction.logIn(userInfo);

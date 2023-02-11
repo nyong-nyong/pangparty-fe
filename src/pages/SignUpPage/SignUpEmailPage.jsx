@@ -3,10 +3,13 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 
 export default function SignUpEmail() {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     id: "",
     email: "",
@@ -184,7 +187,8 @@ export default function SignUpEmail() {
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          // 로그인시켜서 홈으로 보내기
+          // 로그인으로 이동
+          navigate("/login");
         }
       })
       .catch((err) => {
@@ -194,7 +198,7 @@ export default function SignUpEmail() {
 
   return (
     <div>
-      <h4 style={{ textAlign: "center" }}>으아아</h4>
+      <h4 style={{ textAlign: "center" }}>회원가입</h4>
 
       <div style={{ margin: "10px" }}>
         {isValid.email && isValid.emailDup ? (
