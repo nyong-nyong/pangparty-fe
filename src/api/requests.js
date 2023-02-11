@@ -17,6 +17,16 @@ const requests = {
     },
   },
 
+  posts: {
+    postsBaseUrl: "/posts",
+
+    getAllPosts() {},
+    postPost() {
+      return `${this.postsBaseUrl}`;
+    },
+    getPostDetail() {},
+  },
+
   // 프로필
   profile: {
     profileBaseUrl: "/members",
