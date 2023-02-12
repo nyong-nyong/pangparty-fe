@@ -1,8 +1,18 @@
+import recapDdayText from "../../assets/recapDdayText.png";
+import recap1 from "../../assets/recap1.png";
+
 export default function RecapPang() {
   return (
-    <div>
-      <h3>D-day</h3>
-      <p>몇명이 좋아요</p>
+    <div className="carouselDiv">
+      <div className="carouselContentBlock">
+        <img className="ddayTextImg" src={recapDdayText} alt="" />
+        <img className="recapImg" src={recap1} alt="" />
+        <p className="recapAboutText">
+          nn명이 오늘을 축하하며
+          <br />
+          팡파레를 울렸어요
+        </p>
+      </div>
     </div>
   );
 }

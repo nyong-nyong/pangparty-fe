@@ -59,11 +59,13 @@ export default function useUserAction() {
           // httpOnly option 넣기 -> but 브라우저에서 접근 불가능. 백엔드 완성되면 넣자.
           setAuth(true);
           setUser(res.data.id);
-          axios.defaults.headers.common["Authorization"] = res.data.accessToken;
           axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
+          axios.defaults.headers.common["Authorization"] = res.data.accessToken;
           console.log(axios.defaults.headers.common);
-          navigate(-1);
           // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
+        })
+        .then((res) => {
+          navigate(-1);
         })
         .catch((err) => {
           removeCookie("refreshToken");

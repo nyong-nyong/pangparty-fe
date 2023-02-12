@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import RecapPang from "./RecapPang";
 import RecapRp from "./RecapRp";
 import RecapPhoto from "./RecapPhoto";
+import "../../styles/Recap.scss";
 
 export default function RecapCarousel() {
   const settings = {
@@ -14,18 +15,11 @@ export default function RecapCarousel() {
 
   return (
     <div>
-      <h2> Single Item</h2>
       <div className="carouselContainer">
         <Slider {...settings}>
-          <div className="carouselDiv">
-            <RecapPang />
-          </div>
-          <div className="carouselDiv">
-            <RecapRp />
-          </div>
-          <div className="carouselDiv">
-            <RecapPhoto />
-          </div>
+          <RecapPang />
+          <RecapRp />
+          <RecapPhoto />
           <p>다음으로..</p>
         </Slider>
       </div>

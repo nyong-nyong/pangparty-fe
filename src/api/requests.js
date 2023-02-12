@@ -154,8 +154,8 @@ const requests = {
       },
 
       // 롤링페이퍼 목록 GET 요청
-      rpPieceAll(eventUid, rollingPaperUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&limit=${limit}`;
+      rpPieceAll(eventUid, rollingPaperUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces?page=${page}&size=${size}`;
       },
 
       // 롤링페이퍼 피스 생성 POST 요청

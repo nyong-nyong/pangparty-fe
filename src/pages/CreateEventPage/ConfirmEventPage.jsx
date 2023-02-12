@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import {
   targetsTagState,
@@ -29,16 +29,21 @@ function ConfirmEventPage() {
   const month = dDay ? (dDay.getMonth() + 1).toString() : "";
   const date = dDay ? dDay.getDate().toString() : "";
   const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
-  const fullDDayPost = fullyear + "-" + month + "-" + date;
+  const fullDDayPost = `${fullyear}-${month >= 10 ? month : "0" + month}-${
+    date >= 10 ? date : "0" + date
+  }`;
+
+  const navigate = useNavigate();
 
   const postEvent = async () => {
     const postInfo = {
       targetId: targetTag,
       eventName: eventName,
-      dDay: fullDDayPost,
+      dday: fullDDayPost,
       introduction: eventIntro,
-      imgUrl: imgUrl,
-      hashtags: [hashTag]
+      // 이미지 POST EVENT 별도로 진행
+      // imgUrl: imgUrl,
+      hashtags: hashTag
     };
 
     // console.log(requests.events.postEvent);
@@ -50,8 +55,9 @@ function ConfirmEventPage() {
       })
       .then((response) => {
         console.log(response);
-        // const eventUid = response.body.eventUid;
+        const eventUid = response.data.eventUid;
         // 렌더링 시키기
+        navigate(`/events/${eventUid}`)
       })
       .catch((error) => {
         console.log(error);

@@ -29,6 +29,7 @@ export default function EventDetailPage() {
       // console.log(request.data.isParticipant);
     }
     fetchData();
+    // const rpUid = response.data.rollingPaperUid;
   }, []);
 
   return (
@@ -37,7 +38,12 @@ export default function EventDetailPage() {
       <RpCreateContainer>
         <IntroRpHeader eventInfo={eventInfo} />
         <RpButtonContainer>
-          <Link to={`/events/${params.eventId}/rollingpaper`}>
+          <Link
+            to={`/events/${params.eventId}/rollingpaper`}
+            state={
+              eventInfo ? { rollingPaperUid: eventInfo.rollingPaperUid } : null
+            }
+          >
             {isPart && <RpCreateButton />}
           </Link>
         </RpButtonContainer>
