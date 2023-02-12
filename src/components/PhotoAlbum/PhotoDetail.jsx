@@ -1,18 +1,44 @@
 /* eslint-disable */
 
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 import styled from "styled-components";
 import PhotoCommentList from "./PhotoCommentList";
 import PhotoLikes from "./PhotoLikes";
+import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
 
 export default function PhotoDetail({ photo, setModalOpen, eventUid }) {
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
+
   const clickHandle = () => {
     setModalOpen(false);
   };
+
+  const handleDeleteBtn = (e) => {
+    console.log(photo)
+    
+    async function photoDelete(mediaUid) {
+      await axios
+        .delete(requests.events.album.delMedia(eventUid, mediaUid))
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+    }
+    photoDelete(photo.uid);
+    setModalOpen(false);
+  }
 
   return (
     <div>
       <span onClick={clickHandle}>X</span>
       <span>{photo.uid}</span>
+      {(photo.memberId === user && user) ? <button onClick={handleDeleteBtn}>삭제</button> : null}
+      {user ? <span>{user}</span> : null}
       <img src={photo.mediaUrl} width="300px" height="200px" />
       <PhotoLikes
         mediaUid={photo.uid}
