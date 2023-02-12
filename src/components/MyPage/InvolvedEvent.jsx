@@ -2,19 +2,26 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
 export default function InvolvedEvent() {
   const [involvedEventInfo, setInvolvedEventInfo] = useState(undefined);
 
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
   useEffect(() => {
+    setUser(auth.user);
     async function fetchData() {
+      if (!user) return;
       const request = await axios.get(
-        requests.profile.getProfileInvolvedEvents("dasom02")
+        requests.profile.getProfileInvolvedEvents(`${user}`)
       );
       setInvolvedEventInfo(request.data);
     }
     fetchData();
-  }, []);
+  }, [user]);
+
   return (
     <div>
       {involvedEventInfo && (
@@ -25,8 +32,8 @@ export default function InvolvedEvent() {
           if (event) {
             return (
               <Link
-                key={event.uid}
-                to={`/events/${event.uid}`}
+                key={event.eventUid}
+                to={`/events/${event.eventUid}`}
                 className="eventCardContainer"
               >
                 <div className="">

@@ -12,8 +12,8 @@ const requests = {
     searchBaseUrl: "/search",
 
     /** 검색 값 GET 요청(type : member, event, hashtag) */
-    getSearch(type, keyword, page, limit) {
-      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&limit=${limit}`;
+    getSearch(type, keyword, page, size) {
+      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&size=${size}`;
     },
   },
 
@@ -28,7 +28,7 @@ const requests = {
       return `${this.profileBaseUrl}/${memberId}/feeds`;
     },
     getProfileRecievedEvents(memberId) {
-      return `${this.profileBaseUrl}/${memberId}/recieved-events`;
+      return `${this.profileBaseUrl}/${memberId}/received-events`;
     },
     getProfileBadges(memberId) {
       return `${this.profileBaseUrl}/${memberId}/badges`;
@@ -93,8 +93,8 @@ const requests = {
       likesBaseUrl: "/likes",
 
       /** 앨범 미디어 전체 GET 요청 */
-      mediaAll(eventUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}?page=${page}&limit=${limit}`;
+      mediaAll(eventUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범에 미디어 추가 POST 요청 */
@@ -108,8 +108,8 @@ const requests = {
       },
 
       /** 앨범 미디어 댓글 리스트 GET 요청 */
-      getMediaComment(eventUid, mediaUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.commentBaseUrl}?page=${page}&limit=${limit}`;
+      getMediaComment(eventUid, mediaUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.commentBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범 미디어 댓글 추가 POST 요청 */
@@ -123,8 +123,8 @@ const requests = {
       },
 
       /** 앨범 미디어 좋아요 목록 GET 요청 */
-      getMediaLikes(eventUid, mediaUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.likesBaseUrl}?page=${page}&limit=${limit}`;
+      getMediaLikes(eventUid, mediaUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.likesBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범 미디어 좋아요 추가 POST 요청 */
@@ -166,7 +166,7 @@ const requests = {
 
     /** 이벤트 소개/참여 페이지 */
     introEvent: {
-      pangBaseUrl: "/likes",
+      pangBaseUrl: "/like",
 
       /** 이벤트 소개페이지 조회 GET 요청 */
       eventItroAll(eventUid) {
@@ -185,7 +185,7 @@ const requests = {
 
       /** 이벤트 좋아요 취소 DELETE 요청 */
       deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+        return `${eventsBaseUrl}/${eventUid}/dislike`;
       },
     },
 

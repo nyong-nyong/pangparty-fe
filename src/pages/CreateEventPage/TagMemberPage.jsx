@@ -20,6 +20,10 @@ export default function TagMemberPage() {
     setUser(auth.user);
   }, [])
 
+  const prevent = (e) => {
+    e.preventDefault();
+    alert("축하 대상을 지정해주세요!")
+  }
 
   const targetTagHandler = (e) => {
     const newTargetTag = e.target.value;
@@ -48,9 +52,9 @@ export default function TagMemberPage() {
 
       {/* common으로 나중에 button component 뺄 것!!!!!!!!!!!! */}
       <Link to="/event/calendar">
-      {!isInput && <Button>다음</Button>}
+      {!isInput && <Button onClick={prevent}>다음</Button>}
         {isInput && (
-          <Button color="orange-1" onClick={targetTagHandler}>
+          <Button color="orange-1">
             다음
           </Button>
         )}

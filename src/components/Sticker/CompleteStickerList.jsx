@@ -9,40 +9,44 @@ function CompleteStickerList() {
 
   const stickerPageStyle = {
     width: "100%",
-    height: "100%",
+    height: "800px",
     backgroundColor: "transparent",
     position: "absolute",
     top: "0",
-    left: "0",
+    left: "0"
+    // overflow: "scroll",
   };
 
   return (
-    <div className="stickerPageContainer" style={stickerPageStyle}>
-      {stickerListData &&
-        stickerListData.map((sticker) => {
-          if (sticker) {
-            return (
-              <div key={sticker.uid}>
-                {/* , transform:rotate(sticker.angle) */}
-                <img
-                  src={sticker.stickerUrl}
-                  style={{
-                    width: `${sticker.scale}px`,
-                    height: `${sticker.scale}px`,
-                    transform: `rotate(${sticker.angle}deg)`,
-                    position: "relative",
-                    top: `${sticker.topLoc}px`,
-                    left: `${sticker.leftLoc}px`,
-                    zIndex: sticker.zIndex,
-                  }}
-                  alt="sticker"
-                  onClick={() => console.log(sticker)}
-                />
-              </div>
-            );
-          }
-        })}
-    </div>
+    <>
+      <div className="stickerPageContainer" style={stickerPageStyle}>
+        {stickerListData &&
+          stickerListData.map((sticker, idx) => {
+            if (sticker) {
+              return (
+                <>
+                  {/* , transform:rotate(sticker.angle) */}
+                  <img
+                    key={idx}
+                    src={sticker.stickerUrl}
+                    style={{
+                      width: `${sticker.scale * 100}px`,
+                      height: `${sticker.scale * 100}px`,
+                      transform: `rotate(${sticker.angle}deg)`,
+                      position: "relative",
+                      top: `${sticker.topLoc}px`,
+                      left: `${sticker.leftLoc}px`
+                      // zIndex: sticker.zIndex,
+                    }}
+                    alt="sticker"
+                    onClick={() => console.log(sticker)}
+                  />
+                </>
+              );
+            }
+          })}
+      </div>
+    </>
   );
 }
 

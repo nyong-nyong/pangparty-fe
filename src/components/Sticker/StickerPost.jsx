@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 // sticker POST 요청 보내기
 export default function StickerPost({ eventUid, rpUid }) {
-  const [sticker, setSticker] = useRecoilState(stickerState);
+  const [stickerInfo, setSticker] = useRecoilState(stickerState);
 
   const auth = useAuth();
   const [user, setUser] = useState("");
@@ -27,7 +27,7 @@ export default function StickerPost({ eventUid, rpUid }) {
 
     const stickerValue = document.querySelector(".moveable");
     const stickerCssAllList = stickerValue.style.cssText.split(";");
-    // console.log(stickerCssAllList)
+    console.log(stickerCssAllList)
 
     const lefLoc = stickerCssAllList[3].slice(7, -2);
     const topLoc = stickerCssAllList[3].slice(6, -2);
@@ -37,13 +37,13 @@ export default function StickerPost({ eventUid, rpUid }) {
 
     //position: absolute; width: 100px; height: 100px; left: 89px; top: -2px; transform: rotate(0deg) scaleX(1) scaleY(1) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     const saveInfo = {
-      memberId: user, // "example",
-      stickerUid: sticker.uid, // 1,
-      leftLoc: lefLoc, // 0,
-      topLoc: topLoc, // 0,
+      // memberId: user, // "example",
+      stickerUid: stickerInfo.uid, // 1,
+      leftLoc: parseInt(lefLoc), // 0,
+      topLoc: parseInt(topLoc), // 0,
       zIndex: "100", // "1000",
-      angle: angle, // 0.0,
-      scale: scale // 0.00
+      angle: parseFloat(angle), // 0.0,
+      scale: parseFloat(scale) // 0.00
     };
 
     async function sticker() {
