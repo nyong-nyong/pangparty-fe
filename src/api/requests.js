@@ -12,8 +12,8 @@ const requests = {
     searchBaseUrl: "/search",
 
     /** 검색 값 GET 요청(type : member, event, hashtag) */
-    getSearch(type, keyword, page, limit) {
-      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&limit=${limit}`;
+    getSearch(type, keyword, page, size) {
+      return `${this.searchBaseUrl}/${type}?keyword=${keyword}&page=${page}&size=${size}`;
     },
   },
 
@@ -115,13 +115,18 @@ const requests = {
       likesBaseUrl: "/likes",
 
       /** 앨범 미디어 전체 GET 요청 */
-      mediaAll(eventUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}?page=${page}&limit=${limit}`;
+      mediaAll(eventUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범에 미디어 추가 POST 요청 */
       postMedia(eventUid) {
         return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}`;
+      },
+
+      /** 앨범에 미디어 삭제 DEL 요청 */
+      delMedia(eventUid, mediaUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}`;
       },
 
       /** 앨범 미디어 상세 정보 GET 요청 */
@@ -130,8 +135,8 @@ const requests = {
       },
 
       /** 앨범 미디어 댓글 리스트 GET 요청 */
-      getMediaComment(eventUid, mediaUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.commentBaseUrl}?page=${page}&limit=${limit}`;
+      getMediaComment(eventUid, mediaUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.commentBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범 미디어 댓글 추가 POST 요청 */
@@ -145,8 +150,8 @@ const requests = {
       },
 
       /** 앨범 미디어 좋아요 목록 GET 요청 */
-      getMediaLikes(eventUid, mediaUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.likesBaseUrl}?page=${page}&limit=${limit}`;
+      getMediaLikes(eventUid, mediaUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}${this.likesBaseUrl}?page=${page}&size=${size}`;
       },
 
       /** 앨범 미디어 좋아요 추가 POST 요청 */
@@ -176,8 +181,8 @@ const requests = {
       },
 
       // 롤링페이퍼 목록 GET 요청
-      rpPieceAll(eventUid, rollingPaperUid, page, limit) {
-        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&limit=${limit}`;
+      rpPieceAll(eventUid, rollingPaperUid, page, size) {
+        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&size=${size}`;
       },
 
       // 롤링페이퍼 피스 생성 POST 요청
