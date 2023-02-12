@@ -7,6 +7,7 @@ import EventLink from "./EventLink";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./Feed.scss";
+import Button from "../common/Button";
 
 export default function CreateFeed() {
   const [title, setTitle] = useState("");
@@ -68,7 +69,7 @@ export default function CreateFeed() {
         />
         <h4>이벤트 링크하기</h4>
         <EventLink eventUid={eventUid} setEventUid={setEventUid} />
-        <button>제출</button>
+        <Button color="orange-1">글작성 완료</Button>
       </form>
     </div>
   );

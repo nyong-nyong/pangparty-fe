@@ -4,7 +4,11 @@ import "./Feed.scss";
 import "../Search/SearchEvent.scss";
 import classNames from "classnames";
 
-export default function EventLinkResults({ setClickedEvent, searchResults, setModalOpen }) {
+export default function EventLinkResults({
+  setClickedEvent,
+  searchResults,
+  setModalOpen,
+}) {
   const handleClick = (e, event) => {
     e.preventDefault();
     console.log(event);
