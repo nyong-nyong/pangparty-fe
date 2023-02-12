@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
-// import { userState } from "../recoils/user/Atoms";
+import { userState } from "../../recoils/user/Atoms";
+import useAuth from "../../hooks/useAuth";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -12,25 +13,34 @@ import styled from "styled-components";
 export default function StickerPost({ eventUid, rpUid }) {
   const [sticker, setSticker] = useRecoilState(stickerState);
 
-  // const auth = useAuth();
-  // const [user, setUser] = useState("");
+  const auth = useAuth();
+  const [user, setUser] = useState("");
 
-  const postStickerInfo = {
-    memberId: user, // "example",
-    stickerUid: sticker.uid, // 1,
-    leftLoc: int, // 0,
-    topLoc: int, // 0,
-    zIndex: string, // "1000",
-    angle: float, // 0.0,
-    scale: float // 0.00
-  };
+  const [postStickerInfo, setpostStickerInfo] = useState({});
 
-  // useEffect(() => {
-  //   setUser(auth.user);
-  // }, [user]);
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
 
   const postHandler = (e) => {
     e.preventDefault();
+
+    const stickerValue = document.querySelector(".moveable");
+    console.log(stickerValue.style.cssText);
+    console.log(stickerValue);
+
+    // const topLoc = stickerValue.style.top  px제거 -> INt변환
+
+    const saveInfo = {
+      memberId: user, // "example",
+      stickerUid: sticker.uid, // 1,
+      leftLoc: stickerValue.left, // 0,
+      topLoc: stickerValue.top, // 0,
+      zIndex: "100", // "1000",
+      angle: 0.0, // 0.0,
+      scale: 0.0 // 0.00  
+    }
+
 
     async function sticker() {
       await axios
