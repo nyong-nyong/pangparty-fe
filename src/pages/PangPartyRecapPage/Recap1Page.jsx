@@ -1,14 +1,14 @@
-import pangRecap from "../../assets/pangRecap.png";
-import "./Recap.css";
+// import "./Recap.css";
+import RecapCarousel from "../../components/Recap/RecapCarousel";
+import "../../styles/Recap.scss";
 
 export default function Recap1Page() {
   return (
     <div>
-      {/* 수정 필요  */}
-      <img className="welcomBgImg" src={pangRecap} alt="" />
-      <div className="recapCard">
-        <h3 className="recapCardTitle">D-DAY</h3>
+      <div className="recapTop">
+        <h3>축하드립니다</h3>
       </div>
+      <RecapCarousel />
     </div>
   );
 }
