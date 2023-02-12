@@ -9,7 +9,7 @@ import axios from "../api/axios";
 import requests from "../api/requests";
 import { authState, userState } from "../recoils/user/Atoms";
 
-const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
+// const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
 
 export default function useUserAction() {
   const [cookies, setCookie, removeCookie] = useCookies(["refreshToken"]);
@@ -17,28 +17,28 @@ export default function useUserAction() {
   const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();
 
-  const onSilentRefresh = async (token) => {
-    await axios.post(requests.refreshToken, token, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-    { withCredentials: true })
-    .then((res) => {
-      setCookie("refreshToken", res.data.refreshToken);
-      setAuth(true);
-      setUser(res.data.id);
-      axios.defaults.headers.common["Authorization"] = res.data.accessToken;
-      axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
-      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 3590000);
-    })
-    .catch((err) => {
-      removeCookie("refreshToken");
-      setAuth(false);
-      setUser(null);
-      navigate("/login");
-    })
-  }
+  // const onSilentRefresh = async (token) => {
+  //   await axios.post(requests.refreshToken, token, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   },
+  //   { withCredentials: true })
+  //   .then((res) => {
+  //     setCookie("refreshToken", res.data.refreshToken);
+  //     setAuth(true);
+  //     setUser(res.data.id);
+  //     axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+  //     axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
+  //     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 3590000);
+  //   })
+  //   .catch((err) => {
+  //     removeCookie("refreshToken");
+  //     setAuth(false);
+  //     setUser(null);
+  //     navigate("/login");
+  //   })
+  // }
 
   function logIn(userInfo) {
     // eslint-disable-next-line no-shadow
@@ -55,18 +55,18 @@ export default function useUserAction() {
           { withCredentials: true }
         )
         .then((res) => {
-          setCookie("refreshToken", res.refreshToken);
+          setCookie("Token", res.data.accessToken);
           // httpOnly option 넣기 -> but 브라우저에서 접근 불가능. 백엔드 완성되면 넣자.
           setAuth(true);
           setUser(res.data.id);
           axios.defaults.headers.common["Authorization"] = res.data.accessToken;
-          axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
-          console.log(axios.defaults.headers.common);
+          // axios.defaults.headers.common["Token"] = res.data.refreshToken;
+          // console.log(axios.defaults.headers.common);
           navigate(-1);
-          setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
+          // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
         })
         .catch((err) => {
-          removeCookie("refreshToken");
+          removeCookie("Token");
           setAuth(false);
           setUser(null);
           navigate("/login");
@@ -76,7 +76,7 @@ export default function useUserAction() {
   }
 
   function logOut() {
-    removeCookie("refreshToken");
+    removeCookie("Token");
     setAuth(false);
     setUser(null);
     delete axios.defaults.common["Authorization"];
@@ -86,7 +86,7 @@ export default function useUserAction() {
   return {
     logIn,
     logOut,
-    onSilentRefresh,
+    // onSilentRefresh,
   };
 }
 
