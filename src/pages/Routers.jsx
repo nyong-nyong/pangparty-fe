@@ -5,8 +5,8 @@ import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
-// import SingUpIntro from "./SignUpPage/SingUpIntroPage";
-// import SignUpEmail from "./SignUpPage/SignUpEmail";
+import SingUpIntro from "./SignUpPage/SignUpIntroPage";
+import SignUpEmail from "./SignUpPage/SignUpEmailPage";
 import MyPage from "./MyPage";
 import FollowPage from "./MyPage/FollowPage";
 import MyEventsPage from "./MyPage/MyEventsPage";
@@ -41,8 +41,8 @@ export default function Routers() {
       <Route path="login" element={<LoginPage />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
-        {/* <Route path="intro" element={<SingUpIntro />} />
-        <Route path="email" element={<SignUpEmail />} /> */}
+        <Route path="intro" element={<SingUpIntro />} />
+        <Route path="email" element={<SignUpEmail />} />
       </Route>
       {/* 피드 페이지 */}
       <Route path="feed">

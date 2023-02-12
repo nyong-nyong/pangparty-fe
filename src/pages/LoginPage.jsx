@@ -3,6 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import useUserAction from "../hooks/useUserAction";
 import { authState } from "../recoils/user/Atoms";
+import logo from "../assets/pangpartyIcon.svg";
+import Button from "../components/common/Button";
+import "../styles/LoginPage.scss";
+import naver from "../assets/loginNaver.svg";
+import google from "../assets/loginGoogle.svg";
 
 export default function LoginPage() {
   const [userInfo, setUserInfo] = useState({
@@ -43,51 +48,63 @@ export default function LoginPage() {
     setUserInfo(newInfo);
   };
 
+  // 홈으로 보내기(추가할 것)
   const login = (e) => {
     e.preventDefault();
     return userAction.logIn(userInfo);
   };
 
   return (
-    <div>
-      <h1>로그인</h1>
+    <div className="loginWrapper">
+      <div className="mainLogo">
+        <img src={logo} alt="logo" />
+      </div>
       <form onSubmit={(e) => login(e)}>
-        {isValid ? (
-          <div>
+        <div className="loginInputContainer">
+          {isValid ? (
             <input
               id="email"
               type="email"
               onChange={loginHandler}
               placeholder="이메일"
             />
-          </div>
-        ) : (
-          <div>
-            <input
-              id="email"
-              type="email"
-              onChange={loginHandler}
-              placeholder="이메일"
-            />
-            <p>유효하지 않은 email 값입니다.</p>
-          </div>
-        )}
-        <input
-          id="password"
-          type="password"
-          onChange={loginHandler}
-          placeholder="비밀번호"
-        />
-        <button type="submit">로그인하기</button>
+          ) : (
+            <>
+              <input
+                id="email"
+                type="email"
+                onChange={loginHandler}
+                placeholder="이메일"
+              />
+              <p>유효하지 않은 email 값입니다.</p>
+            </>
+          )}
+          <input
+            id="password"
+            type="password"
+            onChange={loginHandler}
+            placeholder="비밀번호"
+          />
+          <Button color="orange-1" type="submit">
+            로그인하기
+          </Button>
+        </div>
       </form>
-      <button type="button">아이디 찾기</button>
-      <button type="button">비밀번호 찾기</button>
-
-      <button type="button">네이버</button>
-      <button type="button">구글</button>
-      <Link to="/signup/intro">
-        <button type="button">회원가입</button>
-      </Link>
+      <div className="loginFindingForm">
+        <button type="button">아이디 찾기</button>
+        <button type="button">비밀번호 찾기</button>
+      </div>
+      <div className="loginSnSLogo">
+        <img src={naver} alt="naver" />
+        <img src={google} alt="naver" />
+      </div>
+      <div className="loginPageSignup">
+        <Link to="/signup/email">
+          <Button color="blue-1" type="button">
+            회원가입
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

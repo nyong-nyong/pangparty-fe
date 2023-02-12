@@ -1,0 +1,100 @@
+@import "../../styles/colors.scss";
+
+.siginUpWrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 5px;
+  gap: 0px;
+
+  .signUpTitle {
+    display: flex;
+    flex-flow: column;
+
+    p {
+      font-size: 50px;
+      font-weight: 900;
+      margin: 0px;
+    }
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    margin: 20px 0px;
+
+    width: 324px;
+    height: 55px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1.5px solid $gray-4;
+
+    input {
+      border: none;
+      font-size: 16px;
+      width: 180px;
+    }
+
+    p {
+      color: $gray-1;
+      // margin-right: 5px;
+      // margin-left: 5px;
+      width: 90px;
+      font-size: 13px;
+    }
+
+    img {
+      margin-right: 15px;
+      margin-left: 10px;
+    }
+  }
+
+  .errorMsg {
+    color: $orange-1;
+    margin-left: 5px;
+  }
+}
+
+.loginProfileContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: 200px;
+  width: 100%;
+  gap: 5px;
+
+  .profileImg {
+    img {
+      border: 1.5px solid $gray-4;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 150px;
+    }
+  }
+
+  p {
+    font-size: 13px;
+    color: $gray-1;
+  }
+
+  textarea {
+    border: 1.5px solid $gray-4;
+    border-radius: 15px;
+    width: 150px;
+
+    height: 120px;
+    align-items: center;
+    margin-right: 5px;
+    padding: 10px;
+  }
+}
