@@ -69,7 +69,9 @@ export default function CreateFeed() {
         />
         <h4>이벤트 링크하기</h4>
         <EventLink eventUid={eventUid} setEventUid={setEventUid} />
-        <Button color="orange-1">글작성 완료</Button>
+        <Button color="orange-1" type="submit">
+          글작성 완료
+        </Button>
       </form>
     </div>
   );

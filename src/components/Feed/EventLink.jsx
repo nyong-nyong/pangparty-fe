@@ -51,15 +51,17 @@ export default function EventLink({ eventUid, setEventUid }) {
   };
 
   return (
-    <div>
+    <div className="eventLinkWrapper">
       {modalOpen && (
         <div className="resultsContainer">
+          <div className="linkModalexit">
+            <Icon img="exit" onClick={clearText} />
+          </div>
           <EventLinkResults
             setClickedEvent={setClickedEvent}
             searchResults={searchResults}
             setModalOpen={setModalOpen}
           />
-          <button onClick={clearText}>X</button>
         </div>
       )}
       <div className="linkContainer">

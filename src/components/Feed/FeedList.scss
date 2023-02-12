@@ -6,6 +6,11 @@
   flex-flow: column;
   justify-content: center;
 
+  a {
+    text-decoration: none;
+    color: $gray-1;
+  }
+
   p {
     margin: 0;
   }
