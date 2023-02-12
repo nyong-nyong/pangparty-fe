@@ -10,6 +10,7 @@ import requests from "../../api/requests";
 import Button from "../../components/common/Button";
 import "./SignUpEmailPage.scss";
 // import ok from "../../assets/myActive.svg";
+import profile from "../../assets/profile.svg";
 
 export default function SignUpEmail() {
   const navigate = useNavigate();
@@ -383,22 +384,17 @@ export default function SignUpEmail() {
           <input
             type="file"
             accept={"image/*"}
-            id="profileImgUpload"
+            // id="profileImgUpload"
             onChange={saveProfileImgFile}
             ref={profileImgRef}
           />
+          {/* <br /> */}
+          {profileImgFile ? (
+            <img src={profileImgFile} alt="프로필 사진 업로드" />
+          ) : (
+            <img src={profile} alt="기본 프로필 이미지" />
+          )}
         </div>
-        <br />
-        {profileImgFile ? (
-          <img
-            src={profileImgFile}
-            alt="프로필 사진 업로드"
-            width="100px"
-            height="100px"
-          />
-        ) : (
-          ""
-        )}
         <div className="profileIntro">
           <p>소개</p>
           <textarea
