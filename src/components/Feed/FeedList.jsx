@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import "./FeedList.scss";
 
 export default function FeedList() {
   const [feedList, setFeedList] = useState([]);
@@ -25,6 +26,7 @@ export default function FeedList() {
     }
     getFeed();
   }, []);
+
   // localhost
   // const page = 1;
   // const limit = 3;
@@ -34,14 +36,14 @@ export default function FeedList() {
   //       .get(requests.feed.getFeed(page, limit))
   //       .then((response) => {
   //         setFeedList(response.data.posts);
-  //         // console.log(response.data);
+  //         console.log(response.data);
   //       })
   //       .catch((e) => {
   //         console.err(e);
   //       });
   //   }
   //   getFeed();
-  // });
+  // }, []);
 
   const handleClickPost = (e, post) => {
     e.preventDefault();
@@ -50,13 +52,15 @@ export default function FeedList() {
   };
 
   return (
-    <div>
+    <div className="feedWrapper">
       {feedList ? (
         feedList.map((post) => {
           return (
             <div key={post.uid} onClick={(e) => handleClickPost(e, post)}>
               <div className="postContainer">
-                <p>{post.id}</p>
+                <div className="postMember">
+                  <p>@{post.id}</p>
+                </div>
                 <p>{post.content}</p>
               </div>
             </div>
