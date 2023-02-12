@@ -34,7 +34,7 @@ function Footbar() {
           홈
         </Icon>
       </Link>
-      <Link to="/" id="Feed" onClick={(e) => clickHandler(e, "Feed")}>
+      <Link to="/feed" id="Feed" onClick={(e) => clickHandler(e, "Feed")}>
         <Icon img="feed" isActive={isActive.Feed}>
           피드
         </Icon>

@@ -17,6 +17,31 @@ const requests = {
     },
   },
 
+  feed: {
+    feedBaseUrl: "/feed",
+
+    /** 피드 내용 GET 요청 */
+    // 페이지네이션 물어보기
+    // getFeed() {
+    // localHost로 바꾸기
+    getFeed(page, limit) {
+      return `${this.feedBaseUrl}?page=${page}&limit=${limit}`;
+      // return `${this.feedBaseUrl}`;
+    },
+  },
+
+  posts: {
+    postsBaseUrl: "/posts",
+
+    /** 게시믈 POST 요청  */
+    postPost() {
+      return `${this.postsBaseUrl}`;
+    },
+
+    /** 게시물 상세 정보 GET 요청  */
+    getPostDetail() {},
+  },
+
   // 프로필
   profile: {
     profileBaseUrl: "/members",

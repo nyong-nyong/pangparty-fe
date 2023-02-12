@@ -1,0 +1,61 @@
+@import "./colors.scss";
+@import "./iconImg.scss";
+
+.loginWrapper {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 100%;
+
+  .mainLogo {
+    padding: 40px 20px 80px 20px;
+
+    img {
+      width: 170px;
+    }
+  }
+
+  .loginInputContainer {
+    input {
+      margin: 5px;
+      width: 314px;
+      height: 55px;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 15px;
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 10px;
+      border: 1.5px solid $gray-4;
+    }
+  }
+
+  .loginFindingForm {
+    margin: 20px;
+    button {
+      border: none;
+      background-color: transparent;
+      color: $gray-2;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+  .loginSnSLogo {
+    justify-content: space-evenly;
+    margin-top: 30px;
+    // margin: 10px;
+    img {
+      width: 40px;
+      padding: 2px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+
+  .loginPageSignup {
+    position: absolute;
+    bottom: 10%;
+  }
+}
