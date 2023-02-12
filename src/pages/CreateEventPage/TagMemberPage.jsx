@@ -5,12 +5,14 @@ import { useRecoilState } from "recoil";
 import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
 import "../../styles/CreateEvent.scss";
+// import MemeberSearch from "./MemberSearch";
 
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
 export default function TagMemberPage() {
   const [targetsInfo, setTargetsInfo] = useRecoilState(targetsTagState);
+  const [isInput, setIsInput] = useState(false);
   const auth = useAuth();
   const [user, setUser] = useState("");
 
@@ -21,6 +23,7 @@ export default function TagMemberPage() {
 
   const targetTagHandler = (e) => {
     const newTargetTag = e.target.value;
+    setIsInput(true);
     setTargetsInfo(newTargetTag);
   };
 
@@ -40,11 +43,17 @@ export default function TagMemberPage() {
           onChange={targetTagHandler}
           value={targetsInfo}
         />
+        {/* <MemeberSearch /> */}
       </div>
 
       {/* common으로 나중에 button component 뺄 것!!!!!!!!!!!! */}
       <Link to="/event/calendar">
-        <Button>다음</Button>
+      {!isInput && <Button>다음</Button>}
+        {isInput && (
+          <Button color="orange-1" onClick={targetTagHandler}>
+            다음
+          </Button>
+        )}
       </Link>
     </div>
   );

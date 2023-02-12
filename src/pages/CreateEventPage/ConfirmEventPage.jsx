@@ -117,10 +117,7 @@ function ConfirmEventPage() {
           </div>
         </div>
       </div>
-      <Button onClick={postEvent}>완성하기</Button>
-      <Link to="/event/done">
-        <Button onClick={postEvent}>이벤트 확인페이지로 넘어가기</Button>
-      </Link>
+      <Button color="orange-1" onClick={postEvent}>완성하기</Button>
     </div>
   );
 }

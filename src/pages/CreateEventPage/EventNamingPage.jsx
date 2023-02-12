@@ -41,7 +41,7 @@ function EventNamingPage() {
       <Link to="/event/confirm">
         {!typingEventName && <Button onClick={titleHandler}>다음</Button>}
         {typingEventName && (
-          <Button onClick={titleHandler} color="orange">
+          <Button onClick={titleHandler} color="orange-1">
             다음
           </Button>
         )}
