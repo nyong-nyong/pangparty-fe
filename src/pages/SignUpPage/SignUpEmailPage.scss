@@ -66,26 +66,31 @@
   padding: 5px;
   height: 200px;
   width: 100%;
+  gap: 5px;
+
+  .profileImg {
+    img {
+      border: 1.5px solid $gray-4;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 150px;
+    }
+  }
 
   p {
     font-size: 13px;
     color: $gray-1;
   }
 
-  img {
-    border: 1.5px solid $gray-4;
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-  }
-
-  input {
-    margin-bottom: 10px;
-  }
-
   textarea {
     border: 1.5px solid $gray-4;
     border-radius: 15px;
+    width: 150px;
 
     height: 120px;
     align-items: center;
