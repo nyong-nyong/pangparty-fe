@@ -1,12 +1,20 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable prefer-regex-literals */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import Button from "../../components/common/Button";
+import "./SignUpEmailPage.scss";
+// import ok from "../../assets/myActive.svg";
+import profile from "../../assets/profile.svg";
 
 export default function SignUpEmail() {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     id: "",
     email: "",
@@ -184,7 +192,8 @@ export default function SignUpEmail() {
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          // 로그인시켜서 홈으로 보내기
+          // 로그인으로 이동
+          navigate("/login");
         }
       })
       .catch((err) => {
@@ -193,167 +202,200 @@ export default function SignUpEmail() {
   };
 
   return (
-    <div>
-      <h4 style={{ textAlign: "center" }}>으아아</h4>
-
-      <div style={{ margin: "10px" }}>
-        {isValid.email && isValid.emailDup ? (
-          <div>
-            <p>이메일</p>
-            <input
-              id="email"
-              type="email"
-              value={userInfo.email}
-              onChange={signupHandler}
-              placeholder="example@naver.com"
-              maxLength="320"
-            />
-          </div>
-        ) : isValid.email ? (
-          <div>
-            <p>이메일</p>
-            <input
-              id="email"
-              type="email"
-              value={userInfo.email}
-              onChange={signupHandler}
-              placeholder="example@naver.com"
-              maxLength="320"
-            />
-            <p>이미 존재하는 email 입니다.</p>
-          </div>
-        ) : (
-          <div>
-            <p>이메일</p>
-            <input
-              id="email"
-              type="email"
-              value={userInfo.email}
-              onChange={signupHandler}
-              placeholder="example@naver.com"
-              maxLength="320"
-            />
-            <p>유효하지 않은 email 형식입니다.</p>
-          </div>
-        )}
-
-        {isValid.password ? (
-          <div>
-            <p>비밀번호</p>
-            <input
-              id="password"
-              type="password"
-              value={userInfo.password}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-          </div>
-        ) : (
-          <div>
-            <p>비밀번호</p>
-            <input
-              id="password"
-              type="password"
-              value={userInfo.password}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-            <p>비밀번호 형식 오류</p>
-          </div>
-        )}
-
-        {isValid.passwordCheck ? (
-          <div>
-            <p>비밀번호 확인</p>
-            <input
-              id="passwordCheck"
-              type="password"
-              value={userInfo.passwordCheck}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-          </div>
-        ) : (
-          <div>
-            <p>비밀번호 확인</p>
-            <input
-              id="passwordCheck"
-              type="password"
-              value={userInfo.passwordCheck}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-            <p>비밀번호가 일치하지 않습니다</p>
-          </div>
-        )}
-
-        {isValid.id && isValid.idDup ? (
-          <div>
-            <p>ID</p>
-            <input
-              id="id"
-              type="text"
-              value={userInfo.id}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-          </div>
-        ) : isValid.id ? (
-          <div>
-            <p>ID</p>
-            <input
-              id="id"
-              type="text"
-              value={userInfo.id}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-            <p>이미 존재하는 ID입니다</p>
-          </div>
-        ) : (
-          <div>
-            <p>ID</p>
-            <input
-              id="id"
-              type="text"
-              value={userInfo.id}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-            <p>유효하지 않은 ID 형식입니다</p>
-          </div>
-        )}
-
-        {isValid.name ? (
-          <div>
-            <p>Name</p>
-            <input
-              id="name"
-              type="text"
-              value={userInfo.name}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-          </div>
-        ) : (
-          <div>
-            <p>Name</p>
-            <input
-              id="name"
-              type="text"
-              value={userInfo.name}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-            <p>이름 형식 오류</p>
-          </div>
-        )}
+    <div className="siginUpWrapper">
+      <div className="signUpTitle">
+        <p style={{ color: "#678cff" }}>Let's</p>
+        <p style={{ color: "#FF7A5C" }}>Start!</p>
+      </div>
+      {isValid.email && isValid.emailDup ? (
+        <div className="inputContainer">
+          <p>이메일</p>
+          <input
+            id="email"
+            type="email"
+            value={userInfo.email}
+            onChange={signupHandler}
+            label="이메일"
+            placeholder="example@naver.com"
+            maxLength="320"
+          />
+        </div>
+      ) : isValid.email ? (
         <div>
+          <div className="inputContainer">
+            <p>이메일</p>
+            <input
+              id="email"
+              type="email"
+              value={userInfo.email}
+              onChange={signupHandler}
+              placeholder="example@naver.com"
+              maxLength="320"
+            />
+          </div>
+          <p className="errorMsg">이미 존재하는 email 입니다.</p>
+        </div>
+      ) : (
+        <div>
+          <div className="inputContainer">
+            <p>이메일</p>
+            <input
+              id="email"
+              type="email"
+              value={userInfo.email}
+              onChange={signupHandler}
+              placeholder="example@naver.com"
+              maxLength="320"
+            />
+          </div>
+          <p className="errorMsg">유효하지 않은 email 형식입니다.</p>
+        </div>
+      )}
+
+      {isValid.password ? (
+        <div className="inputContainer">
+          <p>비밀번호</p>
+          <input
+            id="password"
+            type="password"
+            value={userInfo.password}
+            onChange={signupHandler}
+            maxLength="20"
+          />
+        </div>
+      ) : (
+        <div>
+          <div className="inputContainer">
+            <p>비밀번호</p>
+            <input
+              id="password"
+              type="password"
+              value={userInfo.password}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+          </div>
+          <p className="errorMsg">비밀번호 형식 오류</p>
+        </div>
+      )}
+
+      {isValid.passwordCheck ? (
+        <div className="inputContainer">
+          <p>비밀번호 확인</p>
+          <input
+            id="passwordCheck"
+            type="password"
+            value={userInfo.passwordCheck}
+            onChange={signupHandler}
+            maxLength="20"
+          />
+        </div>
+      ) : (
+        <div>
+          <div className="inputContainer">
+            <p>비밀번호 확인</p>
+            <input
+              id="passwordCheck"
+              type="password"
+              value={userInfo.passwordCheck}
+              onChange={signupHandler}
+              maxLength="20"
+            />
+          </div>
+          <p className="errorMsg">비밀번호가 일치하지 않습니다</p>
+        </div>
+      )}
+
+      {isValid.id && isValid.idDup ? (
+        <div className="inputContainer">
+          <p>ID</p>
+          <input
+            id="id"
+            type="text"
+            value={userInfo.id}
+            placeholder=""
+            onChange={signupHandler}
+            maxLength="15"
+          />
+        </div>
+      ) : isValid.id ? (
+        <div>
+          <div className="inputContainer">
+            <p>ID</p>
+            <input
+              id="id"
+              type="text"
+              value={userInfo.id}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+          </div>
+          <p className="errorMsg">이미 존재하는 ID입니다</p>
+        </div>
+      ) : (
+        <div>
+          <div className="inputContainer">
+            <p>ID</p>
+            <input
+              id="id"
+              type="text"
+              value={userInfo.id}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+          </div>
+          <p className="errorMsg">유효하지 않은 ID 형식입니다</p>
+        </div>
+      )}
+
+      {isValid.name ? (
+        <div className="inputContainer">
+          <p>Name</p>
+          <input
+            id="name"
+            type="text"
+            value={userInfo.name}
+            placeholder=""
+            onChange={signupHandler}
+            maxLength="15"
+          />
+        </div>
+      ) : (
+        <div>
+          <div className="inputContainer">
+            <p>Name</p>
+            <input
+              id="name"
+              type="text"
+              value={userInfo.name}
+              placeholder=""
+              onChange={signupHandler}
+              maxLength="15"
+            />
+          </div>
+          <p className="errorMsg">이름 형식 오류</p>
+        </div>
+      )}
+      <div className="loginProfileContainer">
+        <div className="profileImg">
+          <p>프로필 사진</p>
+          <input
+            type="file"
+            accept={"image/*"}
+            // id="profileImgUpload"
+            onChange={saveProfileImgFile}
+            ref={profileImgRef}
+          />
+          {/* <br /> */}
+          {profileImgFile ? (
+            <img src={profileImgFile} alt="프로필 사진 업로드" />
+          ) : (
+            <img src={profile} alt="기본 프로필 이미지" />
+          )}
+        </div>
+        <div className="profileIntro">
           <p>소개</p>
           <textarea
             id="introduction"
@@ -363,31 +405,10 @@ export default function SignUpEmail() {
             placeholder="프로필에 표시될 소개 문구를 작성해주세요."
           />
         </div>
-        <div>
-          <p>프로필 사진</p>
-          <input
-            type="file"
-            accept={"image/*"}
-            id="profileImgUpload"
-            onChange={saveProfileImgFile}
-            ref={profileImgRef}
-          />
-        </div>
-        <br />
-        {profileImgFile ? (
-          <img
-            src={profileImgFile}
-            alt="프로필 사진 업로드"
-            width="100px"
-            height="100px"
-          />
-        ) : (
-          ""
-        )}
       </div>
-      <button type="button" onClick={signUpPost}>
+      <Button color="blue-1" type="button" onClick={signUpPost}>
         가입완료 확인버튼
-      </button>
+      </Button>
     </div>
   );
 }
