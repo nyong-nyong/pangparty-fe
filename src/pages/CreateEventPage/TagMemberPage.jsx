@@ -6,8 +6,18 @@ import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
 import "../../styles/CreateEvent.scss";
 
+import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
+
 export default function TagMemberPage() {
   const [targetsInfo, setTargetsInfo] = useRecoilState(targetsTagState);
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setUser(auth.user);
+  }, [])
+
 
   const targetTagHandler = (e) => {
     const newTargetTag = e.target.value;

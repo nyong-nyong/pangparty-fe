@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
@@ -24,5 +25,6 @@ export default function useAuth() {
     setAuthenticated(getAuth);
   }, [getAuth, getUser]);
 
+  // console.log({user, authenticated});
   return { user, authenticated };
 }

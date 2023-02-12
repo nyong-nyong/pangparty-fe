@@ -15,6 +15,10 @@ import requests from "../../api/requests";
 import Button from "../../components/common/Button";
 import HashTag from "../../components/common/HashTag";
 
+// 한별
+import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
+
 function ConfirmEventPage() {
   const targetTag = useRecoilValue(targetsTagState);
   const dDay = useRecoilValue(dDayState);
@@ -22,6 +26,13 @@ function ConfirmEventPage() {
   const hashTag = useRecoilValue(hashTagState);
   const imgUrl = useRecoilValue(imgUrlState);
   const eventName = useRecoilValue(eventNameState);
+
+  // 한별
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [])
 
   // 디데이 가공
 

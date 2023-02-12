@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import {
   // memberIdState,
@@ -40,6 +40,8 @@ export default function CreatePiecePage() {
 
   const params = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const rpUid = location.state.rollingPaperUid;
 
   // api post
   const postEvent = async () => {
@@ -54,18 +56,22 @@ export default function CreatePiecePage() {
     };
     // rp uid값 추후 수정 필요합니다.
     await axios
-      .post(requests.events.rollingPaper.postPiece(params.eventId, 777777), {
+      .post(
+        requests.events.rollingPaper.postPiece(params.eventId, rpUid),
         // 서버 test용
         // .post(requests.events.rollingPaper.postPiece(7, 1), {
-        data: postInfo,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+        postInfo,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         // 배포 후 주소 수정 필요합니다.
-        navigate(`events/${params.eventId}/rollingpaper`);
+        // navigate(`events/${params.eventId}/rollingpaper`);
+        navigate(-1);
       })
       .catch((error) => {
         console.log(error);

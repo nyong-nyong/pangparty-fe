@@ -22,7 +22,7 @@ export default function PieceListPage() {
 
   const params = useParams();
   const location = useLocation();
-	const rpUid = location.state.rollingPaperUid;
+  const rpUid = location.state.rollingPaperUid;
 
   // axios로 Data 가져오기 (추후 컴포넌트로 분리시 같이 데리고가기)
   // fetch한 스티커리스트는 recoil에 담았음
@@ -30,7 +30,7 @@ export default function PieceListPage() {
   const rollingPaperUid = rpUid;
   const topStart = 1;
   const topEnd = 100;
-  const page = 1;
+  const page = 0;
   const size = 30;
 
   useEffect(() => {
@@ -66,8 +66,8 @@ export default function PieceListPage() {
           )
         )
         .then((res) => {
+          console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
-          // console.log(res);
         })
         .catch((e) => {
           console.log(e);
@@ -112,7 +112,10 @@ export default function PieceListPage() {
 
         {/* 하단 버튼 */}
         <RpButtonsContainer>
-          <Link to={`/events/${params.eventId}/newpiece`}>
+          <Link
+            to={`/events/${params.eventId}/newpiece`}
+            state={rpUid ? { rollingPaperUid: rpUid } : null}
+          >
             <Button color="orange-1">롤링페이퍼 쓰기 버튼</Button>
           </Link>
           <Button color="orange-3" type="button" onClick={showModal}>
@@ -121,7 +124,7 @@ export default function PieceListPage() {
           {stickerInfo && (
             <StickerPost
               eventUid={eventUid}
-              rollingPaperUid={rollingPaperUid}
+              rpUid={rpUid}
             />
           )}
         </RpButtonsContainer>

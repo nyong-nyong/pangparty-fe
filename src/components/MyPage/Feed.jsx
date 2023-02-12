@@ -2,19 +2,25 @@ import { useState, useEffect } from "react";
 import Icon from "../common/Icon";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
 export default function Feed() {
   const [feedInfo, setFeedInfo] = useState(undefined);
 
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
   useEffect(() => {
+    setUser(auth.user);
     async function fetchData() {
+      if (!user) return;
       const request = await axios.get(
-        requests.profile.getProfileFeed("dasom02")
+        requests.profile.getProfileFeed(`${user}`)
       );
       setFeedInfo(request.data);
     }
     fetchData();
-  }, []);
+  }, [user]);
   return (
     <div>
       {feedInfo &&

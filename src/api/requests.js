@@ -22,7 +22,7 @@ const requests = {
     profileBaseUrl: "/members",
 
     getProfileTop(memberId) {
-      return `${this.profileBaseUrl}/${memberId}/profile`;
+      return `${this.profileBaseUrl}/profile/${memberId}`;
     },
     getProfileFeed(memberId) {
       return `${this.profileBaseUrl}/${memberId}/feeds`;

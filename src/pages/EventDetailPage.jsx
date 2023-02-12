@@ -11,10 +11,13 @@ import IntroRpHeader from "../components/CreateEvent/IntroRpHeader";
 import IntroHashTag from "../components/CreateEvent/IntroHashTag";
 import RpCreateButton from "../components/CreateEvent/RpCreateButton";
 import styled from "styled-components";
+import useAuth from "../hooks/useAuth";
 
 export default function EventDetailPage() {
   const [eventInfo, setEventInfo] = useState(undefined);
   const [isPart, setIsPart] = useState(false);
+  const auth = useAuth();
+  const [user, setUser] = useState("");
 
   const params = useParams();
 
@@ -28,6 +31,8 @@ export default function EventDetailPage() {
       setIsPart(request.data.isParticipant);
       // console.log(request.data.isParticipant);
     }
+    setUser(auth.user);
+    console.log(user);
     fetchData();
     // const rpUid = response.data.rollingPaperUid;
   }, []);

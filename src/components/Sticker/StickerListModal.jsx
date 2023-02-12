@@ -24,6 +24,7 @@ export default function StickerListModal({ setModalOpen }) {
       await axios
         .get(requests.fetchStickers)
         .then((response) => {
+          console.log(response.data);
           setStickerList(response.data.stickers);
         })
         .catch((e) => {
@@ -71,7 +72,7 @@ export default function StickerListModal({ setModalOpen }) {
               return (
                 <div key={sticker.uid} aria-hidden="true">
                   <img
-                    src={sticker.url}
+                    src={sticker.stickerUrl}
                     alt="스티커"
                     aria-hidden="true"
                     width="100px"
