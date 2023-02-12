@@ -98,11 +98,13 @@ export default function LoginPage() {
         <img src={naver} alt="naver" />
         <img src={google} alt="naver" />
       </div>
-      <Link to="/signup/intro">
-        <Button color="blue-1" type="button">
-          회원가입
-        </Button>
-      </Link>
+      <div className="loginPageSignup">
+        <Link to="/signup/email">
+          <Button color="blue-1" type="button">
+            회원가입
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }
