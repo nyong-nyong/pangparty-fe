@@ -16,12 +16,16 @@ export default function PhotoDetail({ photo, setModalOpen, eventUid }) {
     setUser(auth.user);
   }, [user]);
 
+  // useEffect(() => {
+  //   console.log("확인", photo);
+  // }, [photo]);
+
   const clickHandle = () => {
     setModalOpen(false);
   };
 
   const handleDeleteBtn = (e) => {
-    console.log(photo)
+    location.reload();
     
     async function photoDelete(mediaUid) {
       await axios
@@ -39,11 +43,12 @@ export default function PhotoDetail({ photo, setModalOpen, eventUid }) {
       <span>{photo.uid}</span>
       {(photo.memberId === user && user) ? <button onClick={handleDeleteBtn}>삭제</button> : null}
       {user ? <span>{user}</span> : null}
-      <img src={photo.mediaUrl} width="300px" height="200px" />
+      <img src={photo.mediaUrl} width="300px" height="300px" />
       <PhotoLikes
         mediaUid={photo.uid}
         eventUid={eventUid}
-        isLikedProps={photo.isLiked}
+        isLikedProps={photo.liked}
+        likeCnt={photo.likeCount}
       />
       <PhotoCommentList mediaUid={photo.uid} eventUid={eventUid} />
     </div>

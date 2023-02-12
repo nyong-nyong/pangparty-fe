@@ -12,24 +12,27 @@ export default function PhotoCommentList({ mediaUid, eventUid }) {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(
-        requests.events.album.getMediaComment(eventUid, mediaUid, 1, 30)
-      );
-      console.log(
-        requests.events.album.getMediaComment(eventUid, mediaUid, 1, 30)
-      );
-      console.log(request);
-      setCommentList(request.data.comments);
-      setCommentLength(request.data.total);
+      const request = await axios
+        .get(requests.events.album.getMediaComment(eventUid, mediaUid, 0, 30))
+        .then((res) => {
+          console.log(
+            requests.events.album.getMediaComment(eventUid, mediaUid, 0, 30)
+          );
+          setCommentList(res.data.media);
+          setCommentLength(res.data.itemCnt);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
     fetchData();
-  }, []);
+  }, [mediaUid]);
 
   return (
     <div>
       {/* <CommentFrame> */}
       {commentLength !== undefined && (
-        <span>총 {commentLength}개의 댓글이 있습니다.\n</span>
+        <span>총 {commentLength}개의 댓글이 있습니다.</span>
       )}
       {commentList &&
         commentList.map((comment) => {

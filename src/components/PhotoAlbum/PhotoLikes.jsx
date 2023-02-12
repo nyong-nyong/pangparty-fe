@@ -14,23 +14,28 @@ const likeContainerStyle = {
   alignItems: "center",
 };
 
-export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
-  const [likeCnt, setLikeCnt] = useState(0);
-  const [isLiked, setIsLiked] = useState(0);
+export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt }) {
+  const [tmpLikeCnt, setTmpLikeCnt] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     setIsLiked(isLikedProps);
-  }, [isLikedProps]);
+    setTmpLikeCnt(likeCnt);
+  }, [mediaUid]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(
-        requests.events.album.getMediaLikes(eventUid, mediaUid, 1, 30)
-      );
-      setLikeCnt(request.data.total);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   setTmpLikeCnt(likeCnt);
+  // }, [likeCnt])
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const request = await axios.get(
+  //       requests.events.album.getMediaLikes(eventUid, mediaUid, 1, 30)
+  //     );
+  //     setTmpLikeCnt(request.data.total);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const handleBtnClick = (e) => {
     e.preventDefault();
@@ -39,7 +44,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
       await axios
         .delete(requests.events.album.delLikes(eventUid, mediaUid))
         .then(() => {
-          setLikeCnt(likeCnt - 1);
+          setTmpLikeCnt(tmpLikeCnt - 1);
           setIsLiked(!isLiked);
         })
         .catch((error) => {
@@ -51,7 +56,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
       await axios
         .post(requests.events.album.postLikes(eventUid, mediaUid))
         .then(() => {
-          setLikeCnt(likeCnt + 1);
+          setTmpLikeCnt(tmpLikeCnt + 1);
           setIsLiked(!isLiked);
         })
         .catch((error) => {
@@ -72,7 +77,7 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps }) {
       style={likeContainerStyle}
     >
       <Icon img="like" isActive={isLiked} style={{ position: "relative", left: "-5px" }}/>
-      {likeCnt}
+      {tmpLikeCnt}
     </div>
   );
 }

@@ -69,6 +69,8 @@ export default function PhotoAlbum({ isPart, eventUid }) {
           mediaUid={photoSelected.uid}
           setModalOpen={setModalOpen}
           eventUid={eventUid}
+          photoList={photoList}
+          setPhotoList={setPhotoList}
         />
       )}
     </div>
