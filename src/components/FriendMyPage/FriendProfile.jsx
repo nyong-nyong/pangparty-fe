@@ -1,59 +1,66 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { useRecoilValue } from "recoil";
-// import { userState } from "../recoils/user/Atoms";
-import Feed from "../components/MyPage/Feed";
-import ReceicedEvent from "../components/MyPage/ReceivedEvent";
-import Badges from "../components/MyPage/Badges";
-import EventCalander from "../components/MyPage/EventCalander";
-import axios from "../api/axios";
-import requests from "../api/requests";
-import "../styles/MyPage.scss";
-import useAuth from "../hooks/useAuth";
-import useUserAction from "../hooks/useUserAction";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
+import Feed from "../MyPage/Feed";
+import ReceicedEvent from "../MyPage/ReceivedEvent";
+import Badges from "../MyPage/Badges";
+import Button from "../common/Button";
 
-export default function MyPage() {
+export default function FriendProfile(props) {
   const [profileInfo, setProfileInfo] = useState(undefined);
+  const [isFollowing, setIsFollowing] = useState("");
   const [isActivate, setIsActivate] = useState({
     Feed: true,
     ReceicedEvent: false,
     Badges: false,
     EventCalander: false,
   });
-
-  // const userID = useRecoilValue(userState);
-  const auth = useAuth();
-  const [user, setUser] = useState("");
-  const userAction = useUserAction();
-  const logOut = (e) => {
-    e.preventDefault();
-    userAction.logOut();
-  };
+  const friendId = props.memberId;
 
   useEffect(() => {
-    setUser(auth.user);
     async function fetchData() {
-      if (!user) return;
       const request = await axios.get(
-        requests.profile.getProfileTop(`${user}`)
-        // requests.profile.getProfileTop("pang3333")
+        requests.profile.getProfileTop(`${friendId}`)
       );
-      console.log(request.data);
       setProfileInfo(request.data);
+      setIsFollowing(request.data.following);
     }
     fetchData();
-  }, [user]);
+  }, []);
 
   const activateHandler = (e) => {
     const newActivation = {
       Feed: false,
       ReceicedEvent: false,
       Badges: false,
-      EventCalander: false,
     };
     const newTarget = e.target.id;
     newActivation[newTarget] = true;
+    console.log(profileInfo);
     setIsActivate(newActivation);
+  };
+
+  const postFollow = async () => {
+    const followeeId = profileInfo.id;
+
+    if (profileInfo.following === true) {
+      setIsFollowing(false);
+      await axios.delete(requests.following.delFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } else {
+      setIsFollowing(true);
+      await axios.post(requests.following.postFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+    // 반영 위한 새로고침
+    window.location.reload();
   };
 
   return (
@@ -132,9 +139,13 @@ export default function MyPage() {
             </div>
           </div>
         </div>
-        <button className="profileEditButton" type="button" onClick={logOut}>
-          로그아웃
-        </button>
+        <Button
+          size="small"
+          color={isFollowing ? "gray-4" : "orange-1"}
+          onClick={postFollow}
+        >
+          Follow
+        </Button>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">
             <Link
@@ -205,22 +216,11 @@ export default function MyPage() {
         >
           뱃지
         </button>
-        <button
-          type="button"
-          id="EventCalander"
-          className={
-            isActivate.EventCalander ? "componentBoxActive" : "componentBox"
-          }
-          onClick={activateHandler}
-        >
-          이벤트 달력
-        </button>
       </div>
       <div>
         {isActivate.Feed && <Feed />}
         {isActivate.ReceicedEvent && <ReceicedEvent />}
         {isActivate.Badges && <Badges />}
-        {isActivate.EventCalander && <EventCalander />}
       </div>
     </div>
   );

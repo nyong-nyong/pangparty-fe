@@ -59,9 +59,18 @@ function Footbar() {
         id="MyPage"
         onClick={(e) => clickHandler(e, "MyPage")}
       >
-        <Icon img="my" isActive={isActive.MyPage}>
+        {userID ? (
+          <Icon img="my" isActive={isActive.MyPage}>
+            내정보
+          </Icon>
+        ) : (
+          <Icon img="setting" isActive={isActive.MyPage}>
+            로그인
+          </Icon>
+        )}
+        {/* <Icon img="my" isActive={isActive.MyPage}>
           내정보
-        </Icon>
+        </Icon> */}
       </Link>
     </footer>
   );
