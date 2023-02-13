@@ -30,7 +30,7 @@ export default function StickerPost({ eventUid, rpUid }) {
     console.log(stickerCssAllList)
 
     const lefLoc = stickerCssAllList[3].slice(7, -2);
-    const topLoc = stickerCssAllList[3].slice(6, -2);
+    const topLoc = stickerCssAllList[4].slice(6, -2);
     const angleAndScaleInfo = stickerCssAllList[5].split(" ");
     const angle = angleAndScaleInfo[2].slice(7, -4);
     const scale = angleAndScaleInfo[3].slice(7, -1);
