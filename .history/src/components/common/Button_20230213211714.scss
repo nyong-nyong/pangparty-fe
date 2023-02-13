@@ -86,13 +86,12 @@
 
   &.blue-3 {
     background: $blue-3;
-    color: white;
     &:hover {
-      background: $blue-2;
+      background: $orange-1;
     }
 
     &:active {
-      background: $blue-2;
+      background: $orange-1;
     }
   }
 

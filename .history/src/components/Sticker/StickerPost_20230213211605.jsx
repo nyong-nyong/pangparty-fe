@@ -69,7 +69,7 @@ export default function StickerPost({ eventUid, rpUid }) {
   return (
     <>
       <StickerCompleteBtn>
-        <Button color="blue-1" type="submit" onClick={postHandler}>
+        <Button color="blue" type="submit" onClick={postHandler}>
           완료 ✔️
         </Button>
       </StickerCompleteBtn>

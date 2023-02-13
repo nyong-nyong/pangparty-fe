@@ -85,14 +85,13 @@
   }
 
   &.blue-3 {
-    background: $blue-3;
-    color: white;
+    background: $gray-4;
     &:hover {
-      background: $blue-2;
+      background: $orange-1;
     }
 
     &:active {
-      background: $blue-2;
+      background: $orange-1;
     }
   }
 

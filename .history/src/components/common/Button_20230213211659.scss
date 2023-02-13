@@ -85,15 +85,7 @@
   }
 
   &.blue-3 {
-    background: $blue-3;
-    color: white;
-    &:hover {
-      background: $blue-2;
-    }
-
-    &:active {
-      background: $blue-2;
-    }
+    
   }
 
   & + & {
