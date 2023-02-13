@@ -56,7 +56,7 @@ export default function StickerListModal({ setModalOpen }) {
     e.preventDefault();
     setStickerInfo(sticker);
     setModalOpen(false);
-    // console.log(sticker.stickerUrl);
+    console.log(sticker.stickerUrl);
   };
 
   if (!stickerList) return <div>...loading</div>;

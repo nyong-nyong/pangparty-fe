@@ -1,0 +1,30 @@
+@import "../../styles/colors.scss";
+
+/* 모달창을 화면 중앙. 최상단에 노출 */
+.modalContainer {
+  /*모달창크기*/
+  width: 320px;
+  /*최상단위치*/
+  z-index: 300;
+  /*중앙배치*/ /*top,bottom,left,right는브라우저기준으로작동한다.*/ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*translate는본인의크기기준으로작동한다.*/
+  transform: translate(-50%, -50%);
+  /*모달창디자인*/
+  background-color: rgba(71, 71, 71, 0.9);
+  border-radius: 8px;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  right: 3%;
+  top: 3%;
+}

@@ -5,7 +5,7 @@ import { stickerState } from "./Atom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import exit from "../../assets/exit.svg";
-import "./StickerListModal.scss";
+import "./StickerListModal.css";
 
 export default function StickerListModal({ setModalOpen }) {
   const [stickerList, setStickerList] = useState([]);
@@ -56,7 +56,7 @@ export default function StickerListModal({ setModalOpen }) {
     e.preventDefault();
     setStickerInfo(sticker);
     setModalOpen(false);
-    // console.log(sticker.stickerUrl);
+    console.log(sticker.stickerUrl);
   };
 
   if (!stickerList) return <div>...loading</div>;
