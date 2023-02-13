@@ -66,11 +66,11 @@ export default function PhotoAlbum({ isPart, eventUid }) {
       <br />
       {modalOpen && (
         <PhotoCarousel
-          mediaUid={photoSelected.uid}
+          idx={photoList.indexOf(photoSelected)}
+          // mediaUid={photoSelected.uid}
           setModalOpen={setModalOpen}
           eventUid={eventUid}
           photoList={photoList}
-          setPhotoList={setPhotoList}
         />
       )}
     </div>

@@ -8,7 +8,8 @@ import PhotoLikes from "./PhotoLikes";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
-export default function PhotoDetail({ photo, setModalOpen, eventUid }) {
+export default function PhotoDetail({ item, setModalOpen, eventUid }) {
+  const [photo, setPhoto] = useState({});
   const auth = useAuth();
   const [user, setUser] = useState("");
 
@@ -31,11 +32,28 @@ export default function PhotoDetail({ photo, setModalOpen, eventUid }) {
       await axios
         .delete(requests.events.album.delMedia(eventUid, mediaUid))
         .then((res) => console.log(res))
-        .catch((err) => console.log(err))
+        .catch((err) => console.error(err))
     }
     photoDelete(photo.uid);
     setModalOpen(false);
   }
+
+  useEffect(() => {
+    // console.log("사진 정보 : ", photo);
+    async function fetchData() {
+      if(!item.uid) return;
+      await axios.get(
+        requests.events.album.getMediaDetail(eventUid, item.uid)
+      )
+      .then((res) => {
+        setPhoto(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    }
+    fetchData();
+  }, [item])
 
   return (
     <div>

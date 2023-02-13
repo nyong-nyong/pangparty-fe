@@ -26,7 +26,7 @@ export default function FeedList() {
   const handleClickPost = (e, post) => {
     e.preventDefault();
     console.log(post.uid);
-    // navigate(`/${post.uid}`);
+    navigate(`/${post.uid}`);
   };
 
   return (

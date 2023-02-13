@@ -13,7 +13,7 @@ export default function PhotoComment({
 }) {
   const auth = useAuth();
   const [user, setUser] = useState("");
-  const [timeConvert, setTimeConvert] = useState();
+  const [timeConvert, setTimeConvert] = useState("");
 
   useEffect(() => {
     const createTime = new Date(comment.createTime);
@@ -34,9 +34,9 @@ export default function PhotoComment({
     setUser(auth.user);
   }, [user]);
 
-  useEffect(() => {
-    console.log(commentList)
-  }, [commentList])
+  // useEffect(() => {
+  //   console.log(commentList)
+  // }, [commentList])
 
   const deleteBtnClick = (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ export default function PhotoComment({
           const newCommentList = commentList.filter(
             (c) => c.uid !== comment.uid
           );
-          console.log(response);
+          // console.log(response);
           setCommentList(newCommentList);
         })
         .catch((error) => {
@@ -63,7 +63,7 @@ export default function PhotoComment({
   return (
     <div>
       {comment.memberId} : {comment.content}
-      {timeConvert}
+      {timeConvert ? timeConvert : null}
       <span onClick={deleteBtnClick}>
         {user && comment.memberId === user ? "X" : ""}
       </span>

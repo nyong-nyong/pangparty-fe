@@ -12,12 +12,12 @@ export default function PhotoCommentList({ mediaUid, eventUid }) {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios
+      await axios
         .get(requests.events.album.getMediaComment(eventUid, mediaUid, 0, 30))
         .then((res) => {
-          console.log(
-            requests.events.album.getMediaComment(eventUid, mediaUid, 0, 30)
-          );
+          // console.log(
+          //   requests.events.album.getMediaComment(eventUid, mediaUid, 0, 30)
+          // );
           setCommentList(res.data.media);
           setCommentLength(res.data.itemCnt);
         })

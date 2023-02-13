@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 // import SearchBar from "../components/Search/SearchBar";
 // import SearchResults from "../components/Search/SearchResults";
 // import SearchType from "../components/Search/SearchType";
