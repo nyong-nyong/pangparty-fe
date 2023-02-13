@@ -16,7 +16,6 @@ export default function SearchMainPage() {
 
   return (
     <div>
-      <h4>검색</h4>
       <SearchBar />
       {searchText ? (
         <div>

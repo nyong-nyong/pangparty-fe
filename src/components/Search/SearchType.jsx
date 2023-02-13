@@ -44,7 +44,7 @@ export default function SearchType() {
         className={classNames("TypeButton", selectedType.hashtag && "Clicked")}
         onClick={(e) => handleClick(e, "hashtag")}
       >
-        <div className={classNames("TypeIcon", "hashtag")} />
+        <div className={classNames("TypeIcon", "hashtagIcon")} />
         <span>해시태그</span>
       </div>
     </div>
