@@ -51,6 +51,9 @@
     &.setting {
       @include icon-activate($setting, $settingActive);
     }
+    &.login {
+      background-image: url($login);
+    }
     &.exit {
       background-image: url($exit);
     }

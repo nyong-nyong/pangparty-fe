@@ -29,6 +29,7 @@ import HashtagPage from "./SearchPage/HashtagPage";
 import FeedPage from "./Feed/FeedPage";
 import CreateFeedPage from "./Feed/CreateFeedPage";
 import FeedDetail from "../components/Feed/FeedDetail";
+import FriendMyPage from "./FriendMyPage";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -93,6 +94,9 @@ export default function Routers() {
       <Route path="gift/intro" element={<GiftIntroPage />} />
       <Route path="gift" element={<PangPartyGiftPage />} />
       <Route path="gift/recap/1" element={<Recap1Page />} />
+
+      {/* 친구 마이페이지 */}
+      <Route path="friend/:memberId" element={<FriendMyPage />} />
     </Routes>
   );
 }

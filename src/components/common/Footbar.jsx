@@ -29,48 +29,51 @@ export default function Footbar() {
   };
 
   return (
-    <FootbarContainer>
-      <footer className="footer">
-        <Link to="/" onClick={(e) => clickHandler(e, "Home")}>
-          <Icon img="home" isActive={isActive.Home}>
-            홈
-          </Icon>
-        </Link>
-        <Link to="/feed" id="Feed" onClick={(e) => clickHandler(e, "Feed")}>
-          <Icon img="feed" isActive={isActive.Feed}>
-            피드
-          </Icon>
-        </Link>
-        <Link
-          to="/event/tagmember"
-          id="Event"
-          onClick={(e) => clickHandler(e, "Event")}
-        >
-          <Icon img="event" isActive={isActive.Event}>
-            이벤트 생성
-          </Icon>
-        </Link>
-        <Link
-          to="/search"
-          id="Search"
-          onClick={(e) => clickHandler(e, "Search")}
-        >
-          <Icon img="search" isActive={isActive.Search}>
-            검색
-          </Icon>
-        </Link>
-        {/* {userID ? <p>하이</p> : <p>djqt</p>} */}
-        <Link
-          to={userID ? `/mypage/${userID}` : "mypage/pang3333"}
-          id="MyPage"
-          onClick={(e) => clickHandler(e, "MyPage")}
-        >
+    <footer className="footer">
+      <Link to="/" onClick={(e) => clickHandler(e, "Home")}>
+        <Icon img="home" isActive={isActive.Home}>
+          홈
+        </Icon>
+      </Link>
+      <Link to="/feed" id="Feed" onClick={(e) => clickHandler(e, "Feed")}>
+        <Icon img="feed" isActive={isActive.Feed}>
+          피드
+        </Icon>
+      </Link>
+      <Link
+        to="/event/tagmember"
+        id="Event"
+        onClick={(e) => clickHandler(e, "Event")}
+      >
+        <Icon img="event" isActive={isActive.Event}>
+          이벤트 생성
+        </Icon>
+      </Link>
+      <Link to="/search" id="Search" onClick={(e) => clickHandler(e, "Search")}>
+        <Icon img="search" isActive={isActive.Search}>
+          검색
+        </Icon>
+      </Link>
+      {/* {userID ? <p>하이</p> : <p>djqt</p>} */}
+      <Link
+        to={userID ? `/mypage/${userID}` : "mypage/pang3333"}
+        id="MyPage"
+        onClick={(e) => clickHandler(e, "MyPage")}
+      >
+        {userID ? (
           <Icon img="my" isActive={isActive.MyPage}>
             내정보
           </Icon>
-        </Link>
-      </footer>
-    </FootbarContainer>
+        ) : (
+          <Icon img="setting" isActive={isActive.MyPage}>
+            로그인
+          </Icon>
+        )}
+        {/* <Icon img="my" isActive={isActive.MyPage}>
+          내정보
+        </Icon> */}
+      </Link>
+    </footer>
   );
 }
 
