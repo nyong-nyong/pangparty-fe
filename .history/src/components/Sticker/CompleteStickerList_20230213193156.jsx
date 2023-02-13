@@ -14,7 +14,7 @@ function CompleteStickerList() {
     position: "absolute",
     top: "0px",
     left: "0px",
-    overflow: "hidden",
+    // overflow: "scroll",
   };
 
   return (
@@ -30,14 +30,13 @@ function CompleteStickerList() {
                     key={idx}
                     src={sticker.stickerUrl}
                     style={{
-                      width: `${sticker.scale * 50}px`,
-                      height: `${sticker.scale * 50}px`,
+                      width: `${sticker.scale * 100}px`,
+                      height: `${sticker.scale * 100}px`,
                       transform: `rotate(${sticker.angle}deg)`,
                       position: "relative",
-                      top: `${sticker.topLoc - 7}px`,
-                      left: `${sticker.leftLoc + 64}px`,
+                      top: `${sticker.topLoc}px`,
+                      left: `${sticker.leftLoc}px`
                       // zIndex: sticker.zIndex,
-                      position: "absolute",
                     }}
                     alt="sticker"
                     onClick={() => console.log(sticker)}

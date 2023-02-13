@@ -28,7 +28,7 @@
 .moveable {
   position: relative;
   width: 50px;
-  height: 50px;
+  height: 100px;
   text-align: center;
   margin: 0px auto;
 }

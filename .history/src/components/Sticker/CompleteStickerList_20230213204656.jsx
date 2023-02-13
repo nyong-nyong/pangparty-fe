@@ -9,12 +9,12 @@ function CompleteStickerList() {
 
   const stickerPageStyle = {
     width: "100%",
-    height: "800px",
-    // backgroundColor: "aqua",
+    height: "500px",
+    backgroundColor: "aqua",
     position: "absolute",
     top: "0px",
     left: "0px",
-    overflow: "hidden",
+    // overflow: "scroll",
   };
 
   return (
@@ -34,10 +34,9 @@ function CompleteStickerList() {
                       height: `${sticker.scale * 50}px`,
                       transform: `rotate(${sticker.angle}deg)`,
                       position: "relative",
-                      top: `${sticker.topLoc - 7}px`,
-                      left: `${sticker.leftLoc + 64}px`,
+                      top: `${sticker.topLoc - 50}px`,
+                      left: `${sticker.leftLoc - 50}px`
                       // zIndex: sticker.zIndex,
-                      position: "absolute",
                     }}
                     alt="sticker"
                     onClick={() => console.log(sticker)}

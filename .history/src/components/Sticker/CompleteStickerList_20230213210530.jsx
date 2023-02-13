@@ -34,8 +34,8 @@ function CompleteStickerList() {
                       height: `${sticker.scale * 50}px`,
                       transform: `rotate(${sticker.angle}deg)`,
                       position: "relative",
-                      top: `${sticker.topLoc - 7}px`,
-                      left: `${sticker.leftLoc + 64}px`,
+                      top: `${sticker.topLoc + 5}px`,
+                      left: `${sticker.leftLoc + 73}px`,
                       // zIndex: sticker.zIndex,
                       position: "absolute",
                     }}

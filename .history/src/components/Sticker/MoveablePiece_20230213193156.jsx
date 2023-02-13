@@ -20,8 +20,8 @@ const customAble = {
 class MoveablePiece extends React.Component {
   frame = new Frame({
     position: "absolute",
-    width: "50px",
-    height: "50px",
+    width: "100px",
+    height: "100px",
     left: "0px",
     top: "0px",
     transform: {
@@ -74,8 +74,8 @@ class MoveablePiece extends React.Component {
                 <img
                   src={sticker.stickerUrl}
                   position="relative"
-                  width="50px"
-                  height="50px;"
+                  width="100px"
+                  height="100px;"
                 />
               )}
             </span>
@@ -99,7 +99,7 @@ class MoveablePiece extends React.Component {
   }
   setLabel(clientX, clientY, text) {
     this.label.style.cssText = `display: block; 
-      transform: translate(${clientX}px, ${clientY}px) 
+      transform: translate(${clientX}px, ${clientY - 10}px) 
       translate(-100%, -100%)
       translateZ(-100px);`;
     this.label.innerHTML = text;

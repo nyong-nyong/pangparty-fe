@@ -99,7 +99,7 @@ class MoveablePiece extends React.Component {
   }
   setLabel(clientX, clientY, text) {
     this.label.style.cssText = `display: block; 
-      transform: translate(${clientX}px, ${clientY}px) 
+      transform: translate(${clientX}px, ${clientY - 10}px) 
       translate(-100%, -100%)
       translateZ(-100px);`;
     this.label.innerHTML = text;

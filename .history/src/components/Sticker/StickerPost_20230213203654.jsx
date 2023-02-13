@@ -53,10 +53,10 @@ export default function StickerPost({ eventUid, rpUid }) {
           saveInfo
         )
         .then((res) => {
-          console.log(saveInfo);
+          console.log(saveInfoProps);
           // POST 완료하면 sticker 상태 다시 reset하기
           setSticker(undefined);
-          location.reload();
+          // location.reload();
           // console.log(res);
         })
         .catch((error) => {
