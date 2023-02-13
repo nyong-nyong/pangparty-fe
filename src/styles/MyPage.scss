@@ -209,16 +209,30 @@
 /* 뱃지 */
 .badgeContainer {
   display: flex;
+  flex-flow: row wrap;
   margin: 10px;
+  gap: 25px;
+  padding: 12px;
 }
 
 .badgeImgContainer {
-  display: inline-block;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
 .badgeImg {
   width: 75px;
+  height: 75px;
   overflow: contain;
+}
+
+.badgeName {
+  display: flex;
+  width: 80x;
+  word-break: normal;
+  text-align: center;
+  font-size: 13px;
 }
 
 /* 이벤트 달력 */

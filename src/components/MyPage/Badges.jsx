@@ -25,14 +25,22 @@ export default function Badges() {
   return (
     <div className="badgeContainer">
       {badgeList &&
-        badgeList.badges.map((badge) => {
+        badgeList.memberBadges.map((badge) => {
           if (badge) {
             return (
               // 디자인 MyPage.css 적용
               <div key={badge.badgeUid}>
                 <div className="badgeImgContainer">
-                  <img className="badgeImg" src={badge.imgUrl} alt="badge" />
-                  <p>{badge.badgeName}</p>
+                  <img
+                    className="badgeImg"
+                    src={
+                      badge.hadBadge
+                        ? `${process.env.PUBLIC_URL}${badge.trueImgUrl}`
+                        : `${process.env.PUBLIC_URL}${badge.falseImgUrl}`
+                    }
+                    alt="badge"
+                  />
+                  <div className="badgeName">{badge.badgeName}</div>
                 </div>
               </div>
             );
