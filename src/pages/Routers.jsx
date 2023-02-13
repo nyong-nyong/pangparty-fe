@@ -81,7 +81,7 @@ export default function Routers() {
       <Route path="search">
         <Route path="" element={<SearchMainPage />} />
         <Route path=":value" element={<SearchResultPage />} />
-        <Route path="hashtag" element={<HashtagPage />} />
+        <Route path="hashtag/:hashtagUid" element={<HashtagPage />} />
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />

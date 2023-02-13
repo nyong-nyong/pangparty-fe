@@ -3,7 +3,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import SearchEventResult from "./SearchEvent";
 
-export default function HashtagResults({ hashtagUid }) {
+export default function HashtagResult({ hashtagUid }) {
   const [results, setResults] = useState(undefined);
 
   const fetchData = async (uid) => {
