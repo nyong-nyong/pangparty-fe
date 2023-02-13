@@ -52,7 +52,7 @@ export default function SearchHashtagResult({ hashtag }) {
           onClick={onClickHashtag}
           className={classNames("SearchHistoryList")}
         >
-          <div className={classNames("Type", "hashtag")} />
+          <div className={classNames("Type", "hashtagIcon")} />
           <div className={classNames("HistoryContext")}>{hashtag.name}</div>
         </div>
       ) : (

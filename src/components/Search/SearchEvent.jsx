@@ -24,7 +24,7 @@ export default function SearchEventResult({ event }) {
     useRecoilState(searchHistoryIdState);
 
   const onClickEvent = () => {
-    navigate("/");
+    navigate(`/events/${event.eventUid}`);
     const newSearchHistory = _.cloneDeep(searchHistory);
     // console.log(newSearchHistory);
     if (searchHistory.length === 10) {
@@ -48,7 +48,9 @@ export default function SearchEventResult({ event }) {
   const getDday = (date) => {
     const dDay = new Date(date);
     const today = new Date();
-    return Math.floor((dDay - today) / (1000 * 60 * 60 * 24));
+    const answer = Math.floor((dDay - today) / (1000 * 60 * 60 * 24));
+    if (answer >= 0) return `D-${answer}`;
+    return "완료";
   };
 
   return (
@@ -63,7 +65,9 @@ export default function SearchEventResult({ event }) {
               {event.eventName && (
                 <div className="EventTitle">{event.eventName}</div>
               )}
-              <div className="EventDday">D-{getDday(event.dDay)}</div>
+              {event.dday ? (
+                <div className="EventDday">{getDday(event.dday)}</div>
+              ) : null}
             </div>
             <div className="EventTag">@{event.targetId}</div>
             <div className="EventDate">{event.dDay}</div>

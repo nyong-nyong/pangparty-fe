@@ -13,7 +13,7 @@ export default function FeedList() {
   const navigate = useNavigate();
 
   // localhost
-  const page = 1;
+  const page = 0;
   const limit = 3;
   useEffect(() => {
     async function getFeed() {

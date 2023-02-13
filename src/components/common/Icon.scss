@@ -78,6 +78,9 @@
     &.link{
       background-image: url($link);
     }
+    &.clear{
+      background-image: url($clear);
+    }
   }
   .iconButton {
     border: none;
