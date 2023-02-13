@@ -41,20 +41,25 @@ export default function Badges() {
                 // 디자인 MyPage.css 적용
                 <div key={badge.uid}>
                   <div className="badgeImgContainer">
-                    <img
-                      className="badgeImg"
-                      src={
-                        badge.hasBadge ? badge.trueImgUrl : badge.falseImgUrl
-                      }
-                      alt="badge"
-                    />
+                    <div className="badgeimgBox">
+                      <img
+                        className="badgeImg"
+                        src={
+                          badge.hasBadge ? badge.trueImgUrl : badge.falseImgUrl
+                        }
+                        alt="badge"
+                      />
+                    </div>
                     <p className="badgeName">{badge.badgeName}</p>
-                    {isOpened ? (
-                      <div className="rightContainer">
-                        <p>{badge.hasBadge ? badge.badgeCondition : null}</p>
-                      </div>
-                    ) : null}
+                    <p className="badgeAcquireDay">
+                      {badge.hasBadge && badge.acquireTime.substr(0, 10)}
+                    </p>
                   </div>
+                  {isOpened ? (
+                    <div className="rightContainer">
+                      <p>{badge.hasBadge ? badge.badgeCondition : null}</p>
+                    </div>
+                  ) : null}
                 </div>
               );
             }
