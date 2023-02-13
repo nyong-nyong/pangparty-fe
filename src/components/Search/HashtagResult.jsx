@@ -19,7 +19,7 @@ export default function HashtagResult({ hashtagUid }) {
 
   useEffect(() => {
     fetchData(hashtagUid);
-  }, []);
+  }, [hashtagUid]);
 
   return (
     <ul>

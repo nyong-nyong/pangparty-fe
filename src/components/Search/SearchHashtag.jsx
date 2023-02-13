@@ -18,7 +18,7 @@ export default function SearchHashtagResult({ hashtag }) {
     useRecoilState(searchHistoryIdState);
 
   const onClickHashtag = () => {
-    navigate(`/hashtag/${hashtag.hashtagUid}`);
+    navigate(`/search/hashtag/${hashtag.name}`);
     // 해당 이벤트 페이지로 이동
     const newSearchHistory = _.cloneDeep(searchHistory);
     // console.log(newSearchHistory);

@@ -21,7 +21,6 @@ import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
 import GiftIntroPage from "./GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
-// import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 import EventDetailPage from "./EventDetailPage";
 import SearchMainPage from "./SearchPage/SearchMainPage";
 import SearchResultPage from "./SearchPage/SearchResultPage";
@@ -81,7 +80,7 @@ export default function Routers() {
       <Route path="search">
         <Route path="" element={<SearchMainPage />} />
         <Route path=":value" element={<SearchResultPage />} />
-        <Route path="hashtag/:hashtagUid" element={<HashtagPage />} />
+        <Route path="hashtag/:name" element={<HashtagPage />} />
       </Route>
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />

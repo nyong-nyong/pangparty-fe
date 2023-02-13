@@ -13,7 +13,7 @@ export default function SearchHistory() {
   const clickSearchHistory = (item) => {
     if (item.type === "event") navigate(`/events/${item.eventUid}`);
     if (item.type === "member") navigate(`/friend/${item.id}`);
-    if (item.type === "hashtag") navigate(`/hashtag/${item.hashtagUid}`);
+    if (item.type === "hashtag") navigate(`/search/hashtag/${item.name}`);
   };
 
   const deleteHistory = (e, id) => {
