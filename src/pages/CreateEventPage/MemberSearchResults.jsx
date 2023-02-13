@@ -3,16 +3,21 @@
 // import "./Feed.scss";
 // import "../Search/SearchEvent.scss";
 // import classNames from "classnames";
+import { useSetRecoilState } from "recoil";
+import { targetsTagState } from "../../recoils/createEvent/Atoms";
 
 export default function EventLinkResults({
   setClickedMember,
   searchResults,
   setModalOpen,
+  setIsInput,
 }) {
+  const setTargetsInfo = useSetRecoilState(targetsTagState);
   const handleClick = (e, member) => {
     e.preventDefault();
-    console.log(member);
     setModalOpen(false);
+    setTargetsInfo(member.id);
+    setIsInput(true);
     return setClickedMember(member);
   };
 
@@ -21,7 +26,7 @@ export default function EventLinkResults({
       {searchResults
         ? searchResults.map((member) => {
             return (
-              <div key={member.id} onClick={handleClick}>
+              <div key={member.id} onClick={(e) => handleClick(e, member)}>
                 {member.id}
               </div>
             );
