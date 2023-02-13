@@ -1,0 +1,44 @@
+@import "./colors.scss";
+@import "./iconImg.scss";
+
+.homepageCarousel {
+  width: calc(100% + 18px);
+  margin: 0px 0px 0px -9px;
+}
+
+.homeEventContainer {
+  display: flex;
+  flex-flow: wrap column;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+}
+
+.todayIssue {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.checkIcon {
+  display: flex;
+  width: 19px;
+  height: 19px;
+  // background-image: url($check);
+}
+
+.homeEventHeader {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 16px;
+  font-weight: 600;
+  color: $orange-1;
+  align-items: center;
+  margin-left: 7px;
+  gap: 10px;
+}
+
+.homeEventSectionContainer {
+  margin-bottom: 30px;
+}

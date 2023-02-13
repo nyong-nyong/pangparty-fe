@@ -4,17 +4,19 @@ import banner2 from "../../assets/eventDefaultBanner2.png";
 
 export default function HomeCarousel() {
   const settings = {
+    autoplay: true,
     dots: false,
     infinite: true,
     fade: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
     <div>
-      <div className="carouselContainer">
+      <div className="homepageCarousel">
         <Slider {...settings}>
           <img src={banner1} alt="" />
           <img src={banner2} alt="" />

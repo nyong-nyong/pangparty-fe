@@ -124,6 +124,9 @@ const requests = {
 
   events: {
     postEvent: eventsBaseUrl,
+    getEvent(type) {
+      return `${eventsBaseUrl}?type=${type}`;
+    },
 
     album: {
       albumBaseUrl: "/album",
