@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { stickerState } from "./Atom";
@@ -24,7 +25,7 @@ export default function StickerListModal({ setModalOpen }) {
       await axios
         .get(requests.fetchStickers)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setStickerList(response.data.stickers);
         })
         .catch((e) => {
@@ -55,7 +56,7 @@ export default function StickerListModal({ setModalOpen }) {
     e.preventDefault();
     setStickerInfo(sticker);
     setModalOpen(false);
-    // console.log(e);
+    console.log(sticker.stickerUrl);
   };
 
   if (!stickerList) return <div>...loading</div>;
@@ -72,7 +73,7 @@ export default function StickerListModal({ setModalOpen }) {
               return (
                 <div key={sticker.uid} aria-hidden="true">
                   <img
-                    src={sticker.stickerUrl}
+                    src={`${process.env.PUBLIC_URL}{sticker.stickerUrl}`}
                     alt="스티커"
                     aria-hidden="true"
                     width="100px"
