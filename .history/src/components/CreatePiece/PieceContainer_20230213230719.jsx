@@ -11,17 +11,12 @@ function PieceContainer({ piece, index }) {
     return {
       transform: `rotate(${rotate}deg) translateX(${x}px) translateY(${y}px)`,
       // background: "orange",
-      // GET으로 받아와서 background랑 글씨체, 정렬 받아오기
-      backgroundColor: `#${piece.bgColor}`,
-      color: `#${piece.textColor}`,
-      fontFamily: `${piece.fontFamily}`,
-      textAlign: `${piece.textAlign}`,
+      // GET으로 받아와서 background
     };
   };
   return (
     <div className={classNames("pieceListContianer")} style={styledRandom()}>
-      <div className="pieceContentContainer">{piece.content}</div>
-      <div className="pieceWriterNameContainer">{piece.writerName}</div>
+      {piece.content}
     </div>
   );
 }

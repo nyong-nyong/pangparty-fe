@@ -13,9 +13,6 @@ function PieceContainer({ piece, index }) {
       // background: "orange",
       // GET으로 받아와서 background랑 글씨체, 정렬 받아오기
       backgroundColor: `#${piece.bgColor}`,
-      color: `#${piece.textColor}`,
-      fontFamily: `${piece.fontFamily}`,
-      textAlign: `${piece.textAlign}`,
     };
   };
   return (

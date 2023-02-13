@@ -15,7 +15,7 @@ function PieceContainer({ piece, index }) {
       backgroundColor: `#${piece.bgColor}`,
       color: `#${piece.textColor}`,
       fontFamily: `${piece.fontFamily}`,
-      textAlign: `${piece.textAlign}`,
+      textAlign: `${}`
     };
   };
   return (

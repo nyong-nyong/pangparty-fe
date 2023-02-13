@@ -17,21 +17,13 @@
   // background: $orange-2; //추후수정해주세요
   box-shadow: $box-shadow;
   border-radius: 3px;
+  font-size: 13px;
   margin: 3px;
   padding: 5px;
-  
-  // z-index: 10000;
-  
+
+  z-index: 10000;
+
   .pieceContentContainer {
-    @include ellipsis(4, 1.3em);
-    font-size: 13px;
-  }
-  
-  .pieceWriterNameContainer {
-    @include ellipsis(1, 1em);
-    text-align: right;
-    margin-top: 1.3em;
-    font-size: 11px;
-    font-weight: 900;
+    @mi
   }
 }

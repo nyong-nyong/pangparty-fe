@@ -34,7 +34,6 @@ export default function PieceListPage() {
   const size = 30;
 
   useEffect(() => {
-    // 롤페 피스 목록 GET
     async function fetchPieceList() {
       await axios
         .get(
@@ -68,7 +67,7 @@ export default function PieceListPage() {
           )
         )
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
         })
         .catch((e) => {

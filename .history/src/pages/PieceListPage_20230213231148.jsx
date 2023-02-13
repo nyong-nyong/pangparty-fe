@@ -68,7 +68,7 @@ export default function PieceListPage() {
           )
         )
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
         })
         .catch((e) => {
