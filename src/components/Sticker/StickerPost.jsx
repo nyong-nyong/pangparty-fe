@@ -16,7 +16,7 @@ export default function StickerPost({ eventUid, rpUid }) {
   const auth = useAuth();
   const [user, setUser] = useState("");
 
-  const [postStickerInfo, setpostStickerInfo] = useState({});
+  // const [postStickerInfo, setpostStickerInfo] = useState({});
 
   useEffect(() => {
     setUser(auth.user);

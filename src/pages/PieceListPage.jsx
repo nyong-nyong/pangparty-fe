@@ -86,7 +86,7 @@ export default function PieceListPage() {
       <RpContainer>
         <div
           className="RpPieceStickerList"
-          style={{ width: "100%", height: "100%", position: "relative" }} // 스티커페이지 연결
+          style={{ width: "100%", height: "800px", position: "relative" }} // 스티커페이지 연결
         >
           {/* 롤링페이퍼 조각 리스트 */}
           <div
@@ -98,7 +98,7 @@ export default function PieceListPage() {
                 if (piece) {
                   return (
                     <PieceContainer
-                      key={piece.rollingPaperPieceUid}
+                      key={piece.uid}
                       piece={piece}
                       index={index}
                     />
@@ -121,12 +121,7 @@ export default function PieceListPage() {
           <Button color="orange-3" type="button" onClick={showModal}>
             🧸스티커 붙이기🧸
           </Button>
-          {stickerInfo && (
-            <StickerPost
-              eventUid={eventUid}
-              rpUid={rpUid}
-            />
-          )}
+          {stickerInfo && <StickerPost eventUid={eventUid} rpUid={rpUid} />}
         </RpButtonsContainer>
         {/* <div style={{ width: "344px", height: "520px", background: "orange" }} /> */}
         {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}

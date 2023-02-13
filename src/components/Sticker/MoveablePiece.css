@@ -11,8 +11,12 @@
 
 .container {
   position: absolute;
-  top: calc(30% - 50px);
-  left: calc(50% - 50px);
+  top: calc(20% - 50px);
+  left: calc(40% - 50px);
+  /* top: 100px;
+  left: 200px; */
+  /* top: 0PX;
+  left: 0PX; */
   transform: translate(-50%, -50%);
   z-index: 999;
   -webkit-transform: translate(-50%, -50%);
@@ -30,7 +34,7 @@
 }
 
 .stickerClose {
-  position: relative;
+  /* position: fixed; */
   border: none;
   background-color: red;
   border-radius: 10rem;

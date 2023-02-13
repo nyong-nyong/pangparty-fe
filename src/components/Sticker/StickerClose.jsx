@@ -20,7 +20,7 @@ export default function StickerClose() {
         onClickClose(e);
       }}
     >
-      <img alt="exit" src={exit} style={{ width: "10px" }} />
+      <img alt="exit" src={exit} style={{ width: "10px", position: "relative" }} />
     </button>
   );
 }

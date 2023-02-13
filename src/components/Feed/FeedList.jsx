@@ -24,7 +24,7 @@ export default function FeedList() {
           console.log(response.data);
         })
         .catch((e) => {
-          console.err(e);
+          console.log(e);
         });
     }
     getFeed();

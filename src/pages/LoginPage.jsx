@@ -76,7 +76,7 @@ export default function LoginPage() {
                 onChange={loginHandler}
                 placeholder="이메일"
               />
-              <p>유효하지 않은 email 값입니다.</p>
+              <p className="errorMsg">유효하지 않은 email 값입니다.</p>
             </>
           )}
           <input

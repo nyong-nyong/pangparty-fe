@@ -30,6 +30,11 @@
       padding-left: 10px;
       border: 1.5px solid $gray-4;
     }
+
+    .errorMsg {
+      color: $orange-1;
+      margin: 0px 0px 10px 10px;
+    }
   }
 
   .loginFindingForm {

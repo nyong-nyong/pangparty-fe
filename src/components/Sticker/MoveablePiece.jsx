@@ -94,13 +94,6 @@ class MoveablePiece extends React.Component {
       target: document.querySelector(".moveable"),
     });
   }
-
-  // 삭제함
-  clickScalable = () => {
-    this.setState({
-      scalable: true,
-    });
-  };
   setTransform(target) {
     target.style.cssText = this.frame.toCSS();
   }

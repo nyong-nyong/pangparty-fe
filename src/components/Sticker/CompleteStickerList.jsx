@@ -10,10 +10,10 @@ function CompleteStickerList() {
   const stickerPageStyle = {
     width: "100%",
     height: "800px",
-    backgroundColor: "transparent",
+    backgroundColor: "aqua",
     position: "absolute",
-    top: "0",
-    left: "0"
+    top: "0px",
+    left: "0px"
     // overflow: "scroll",
   };
 

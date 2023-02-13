@@ -1,10 +1,10 @@
-.pieceListContainer {
+/* .pieceListContainer {
   display: flex;
   flex-flow: row wrap;
   width: 98%;
   background-color: antiquewhite;
   padding-left: 10px;
-}
+} */
 
 .piece {
   overflow: scroll;
