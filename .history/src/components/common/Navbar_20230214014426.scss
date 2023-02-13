@@ -1,0 +1,20 @@
+@import "../../styles/colors.scss";
+
+.alarmPopoverContainer {
+  background-color: $gray-4;
+  box-shadow: $box-shadow;
+  border-radius: 15px;
+  padding: 0px;
+  width: 150px;
+  height: 86px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+}

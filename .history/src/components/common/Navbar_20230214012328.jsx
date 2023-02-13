@@ -5,7 +5,6 @@ import { Popover } from "react-tiny-popover";
 import Icon from "./Icon";
 import pangpartyicon from "../../assets/pangpartyicon.png";
 import pangpartyitext from "../../assets/pangpartytext.png";
-import "./Navbar.scss";
 
 export default function NavBar() {
   const [isAlarm, setIsAlarm] = useState(false);
@@ -27,7 +26,7 @@ export default function NavBar() {
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
-        marginBottom: "5px",
+        margin: "15px 0px",
         fontSize: "25px",
       }}
     >
@@ -42,27 +41,26 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
+        {/* <Icon img="picon" />
+        <Icon img="ptext" /> */}
         <img src={pangpartyicon} alt="icon" />
         <img src={pangpartyitext} alt="text" />
       </div>
-      <Popover
+      {/* <Popover
         isOpen={isAlarm}
         onClickOutside={() => setIsAlarm(!isAlarm)}
-        positions={["bottom"]}
         content={() => (
-          <div className="alarmPopoverContainer">
+          <div>
             <p>알림센터</p>
           </div>
         )}
-      >
-        <div>
-          <Icon
-            img="alarm"
-            isActive={isAlarm}
-            onClick={() => setIsAlarm(!isAlarm)}
-          />
-        </div>
-      </Popover>
+      > */}
+        <Icon
+          img="alarm"
+          isActive={isAlarm}
+          onClick={() => setIsAlarm(!isAlarm)}
+        />
+      {/* </Popover> */}
     </nav>
   );
 }

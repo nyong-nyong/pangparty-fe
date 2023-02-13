@@ -27,7 +27,7 @@ export default function NavBar() {
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
-        marginBottom: "5px",
+        margin-b: "5px",
         fontSize: "25px",
       }}
     >

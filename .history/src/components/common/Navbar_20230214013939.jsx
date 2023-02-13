@@ -27,7 +27,7 @@ export default function NavBar() {
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
-        marginBottom: "5px",
+        margin: "15px 0px",
         fontSize: "25px",
       }}
     >
@@ -49,11 +49,12 @@ export default function NavBar() {
         isOpen={isAlarm}
         onClickOutside={() => setIsAlarm(!isAlarm)}
         positions={["bottom"]}
-        content={() => (
+        content={
           <div className="alarmPopoverContainer">
             <p>알림센터</p>
           </div>
-        )}
+        }
+        style={{ backgrounColor: "aqua" }}
       >
         <div>
           <Icon
