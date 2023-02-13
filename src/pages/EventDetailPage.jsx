@@ -55,7 +55,7 @@ export default function EventDetailPage() {
       </RpCreateContainer>
       <IntroHashTag eventInfo={eventInfo} />
       <p className="albumTitle">@{eventInfo && eventInfo.targetId} 과의 추억</p>
-      <PhotoAlbum isPart={isPart} />
+      <PhotoAlbum isPart={isPart} eventUid={params.eventId} />
       {!isPart && <Button onClick={setIsPart(true)}>참여하기</Button>}
     </div>
   );

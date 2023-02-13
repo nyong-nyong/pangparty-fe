@@ -1,18 +1,26 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import PhotoUpload from "./PhotoUpload";
 import PhotoCarousel from "./PhotoCarousel";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
-export default function PhotoAlbum({ isPart }) {
-  const eventUid = 300001;
-  const page = 1;
-  const limit = 3000;
+export default function PhotoAlbum({ isPart, eventUid }) {
+  const page = 0;
+  const limit = 30;
 
   const [photoList, setPhotoList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [photoSelected, setPhotoSelected] = useState({});
+
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,6 +28,7 @@ export default function PhotoAlbum({ isPart }) {
         requests.events.album.mediaAll(eventUid, page, limit)
       );
       setPhotoList(request.data.media);
+      console.log(request.data.media);
     }
     fetchData();
   }, []);
@@ -47,7 +56,7 @@ export default function PhotoAlbum({ isPart }) {
                 onKeyDown={() => handleModalClick(photo)}
                 style={{ backgroundColor: "transparent", border: "none" }}
               >
-                <PhotoFrame src={photo.mediaUrl} />
+                <PhotoFrame src={photo.thumbnailUrl} />
               </button>
             );
           }
@@ -57,9 +66,11 @@ export default function PhotoAlbum({ isPart }) {
       <br />
       {modalOpen && (
         <PhotoCarousel
-          mediaUid={photoSelected.uid}
+          idx={photoList.indexOf(photoSelected)}
+          // mediaUid={photoSelected.uid}
           setModalOpen={setModalOpen}
           eventUid={eventUid}
+          photoList={photoList}
         />
       )}
     </div>

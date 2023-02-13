@@ -1,5 +1,9 @@
 @import "../styles/colors.scss";
 
+body {
+  background-color: $blue-3;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -17,12 +21,12 @@ input {
 .appContainer {
   font-family: "Pretendard-Regular";
   display: block;
+  background-color: white;
   min-width: 330px;
   max-width: 340px;
 
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
   min-height: 600px;
-  border: 1px solid;
   padding: 9px;
   margin: auto;
   top: -100px;

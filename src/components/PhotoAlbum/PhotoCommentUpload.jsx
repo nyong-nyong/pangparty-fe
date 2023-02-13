@@ -1,8 +1,9 @@
 /* eslint-disable */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
 export default function PhotoCommentUpload({
   mediaUid,
@@ -10,32 +11,39 @@ export default function PhotoCommentUpload({
   setCommentList,
   eventUid,
 }) {
-  const myId = "example";
   const [commentContent, setCommentContent] = useState("");
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
+
 
   const createBtnClick = (e) => {
     e.preventDefault();
     const newComment = {
       uid: null,
       eventUid,
-      memberId: myId,
+      memberId: user,
       mediaUid,
       content: commentContent,
     };
     async function createComment() {
       await axios
-        .post(requests.events.album.postComment(eventUid, mediaUid), {
-          body: {
-            eventUid,
-            mediaUid,
-            content: commentContent,
+        .post(requests.events.album.postComment(eventUid, mediaUid), 
+        {
+          "content": commentContent,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
         })
-        .then((response) => {
-          // newComment.uid = response.에서 넣기
-          newComment.uid = 123456;
+        .then((res) => {
+          newComment.uid = res.data.uid;
           setCommentList([...commentList, newComment]);
-          console.log(response);
+          console.log(res);
         })
         .catch((error) => {
           console.log(e.target);

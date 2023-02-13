@@ -24,16 +24,18 @@ export default function PhotoUpload({ eventUid }) {
 
     if (photo) {
       const formData = new FormData();
-      formData.append("requests", photo);
+      formData.append("file", photo);
 
       for (const data of formData) console.log(data);
       console.log(requests.events.album.postMedia(eventUid));
       await axios
-        .post(requests.events.album.postMedia(eventUid), formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
+        .post(requests.events.album.postMedia(eventUid),
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
         .then((response) => {
           console.log(response);
         })

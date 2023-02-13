@@ -9,7 +9,7 @@ import axios from "../api/axios";
 import requests from "../api/requests";
 import { authState, userState } from "../recoils/user/Atoms";
 
-const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
+// const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
 
 export default function useUserAction() {
   const [cookies, setCookie, removeCookie] = useCookies(["refreshToken"]);
@@ -17,28 +17,28 @@ export default function useUserAction() {
   const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();
 
-  const onSilentRefresh = async (token) => {
-    await axios.post(requests.refreshToken, token, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-    { withCredentials: true })
-    .then((res) => {
-      setCookie("Token", res.data.accessToken);
-      setAuth(true);
-      setUser(res.data.id);
-      axios.defaults.headers.common["Authorization"] = res.data.accessToken;
-      axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
-      setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 359000000);
-    })
-    .catch((err) => {
-      removeCookie("Token");
-      setAuth(false);
-      setUser(null);
-      navigate("/login");
-    })
-  }
+  // const onSilentRefresh = async (token) => {
+  //   await axios.post(requests.refreshToken, token, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   },
+  //   { withCredentials: true })
+  //   .then((res) => {
+  //     setCookie("refreshToken", res.data.refreshToken);
+  //     setAuth(true);
+  //     setUser(res.data.id);
+  //     axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+  //     axios.defaults.headers.common["RefreshToken"] = res.data.refreshToken;
+  //     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 3590000);
+  //   })
+  //   .catch((err) => {
+  //     removeCookie("refreshToken");
+  //     setAuth(false);
+  //     setUser(null);
+  //     navigate("/login");
+  //   })
+  // }
 
   function logIn(userInfo) {
     // eslint-disable-next-line no-shadow
@@ -61,11 +61,10 @@ export default function useUserAction() {
           setUser(res.data.id);
           // axios.defaults.headers.common["Token"] = res.data.refreshToken;
           axios.defaults.headers.common["Authorization"] = res.data.accessToken;
-          console.log(axios.defaults.headers.common);
-          // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
-        })
-        .then((res) => {
+          // axios.defaults.headers.common["Token"] = res.data.refreshToken;
+          // console.log(axios.defaults.headers.common);
           navigate(-1);
+          // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
         })
         .catch((err) => {
           removeCookie("Token");
@@ -88,7 +87,7 @@ export default function useUserAction() {
   return {
     logIn,
     logOut,
-    onSilentRefresh,
+    // onSilentRefresh,
   };
 }
 

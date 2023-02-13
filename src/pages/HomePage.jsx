@@ -1,10 +1,11 @@
+/* eslint-disable react/button-has-type */
 // import SearchBar from "../components/Search/SearchBar";
 // import SearchResults from "../components/Search/SearchResults";
 // import SearchType from "../components/Search/SearchType";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { authState } from "../recoils/user/Atoms";
 import useUserAction from "../hooks/useUserAction";
+import { authState } from "../recoils/user/Atoms";
 import HomeCarousel from "../components/HomePage/HomeCarousel";
 // 우리 메인 홈화면
 

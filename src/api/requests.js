@@ -127,6 +127,11 @@ const requests = {
         return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}`;
       },
 
+      /** 앨범에 미디어 삭제 DEL 요청 */
+      delMedia(eventUid, mediaUid) {
+        return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}`;
+      },
+
       /** 앨범 미디어 상세 정보 GET 요청 */
       getMediaDetail(eventUid, mediaUid) {
         return `${eventsBaseUrl}/${eventUid}${this.albumBaseUrl}/${mediaUid}`;
