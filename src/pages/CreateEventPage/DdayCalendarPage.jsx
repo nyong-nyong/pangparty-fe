@@ -54,7 +54,7 @@ function DdayCalendar() {
       <Link to="/event/discript">
         {!isInput && <Button onClick={dDayHandler}>다음</Button>}
         {isInput && (
-          <Button color="orange" onClick={dDayHandler}>
+          <Button color="orange-1" onClick={dDayHandler}>
             다음
           </Button>
         )}

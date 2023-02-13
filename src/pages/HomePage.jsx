@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import useUserAction from "../hooks/useUserAction";
 import { authState } from "../recoils/user/Atoms";
-
+import useUserAction from "../hooks/useUserAction";
+import HomeCarousel from "../components/HomePage/HomeCarousel";
 // 우리 메인 홈화면
 
 export default function HomePage() {
   const auth = useRecoilValue(authState);
   const userAction = useUserAction();
-
   const logOut = (e) => {
     e.preventDefault();
     userAction.logOut();
@@ -20,13 +20,26 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>여기가 Home 입니다.</h1>
-      <br />
-      {auth ? (
-        <button onClick={logOut}>로그아웃</button>
-      ) : (
-        <Link to="/login">로그인</Link>
-      )}
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "20px",
+          fontWeight: "600",
+          color: "#FF7A5C",
+        }}
+      >
+        Welcome To Pang!Party!
+      </p>
+      <HomeCarousel />
+      <div className="tempContainer">
+        {auth ? (
+          <button type="button" onClick={logOut}>
+            로그아웃
+          </button>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { stickerState, stickerListState } from "../components/Sticker/Atom";
 import axios from "../api/axios";
@@ -21,15 +21,17 @@ export default function PieceListPage() {
   const stickerInfo = useRecoilValue(stickerState);
 
   const params = useParams();
+  const location = useLocation();
+  const rpUid = location.state.rollingPaperUid;
 
   // axios로 Data 가져오기 (추후 컴포넌트로 분리시 같이 데리고가기)
   // fetch한 스티커리스트는 recoil에 담았음
-  const eventUid = 300001;
-  const rollingPaperUid = 777777;
-  const topStart = 0;
+  const eventUid = params.eventId;
+  const rollingPaperUid = rpUid;
+  const topStart = 1;
   const topEnd = 100;
-  const page = 1;
-  const limit = 30;
+  const page = 0;
+  const size = 30;
 
   useEffect(() => {
     async function fetchPieceList() {
@@ -39,7 +41,7 @@ export default function PieceListPage() {
             eventUid,
             rollingPaperUid,
             page,
-            limit
+            size
           )
         )
         .then((res) => {
@@ -51,6 +53,7 @@ export default function PieceListPage() {
         });
     }
     fetchPieceList();
+    // console.log(rpUid);
 
     async function fetchStickerList() {
       await axios
@@ -63,8 +66,8 @@ export default function PieceListPage() {
           )
         )
         .then((res) => {
+          console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
-          // console.log(res);
         })
         .catch((e) => {
           console.log(e);
@@ -109,7 +112,10 @@ export default function PieceListPage() {
 
         {/* 하단 버튼 */}
         <RpButtonsContainer>
-          <Link to={`/events/${params.eventId}/newpiece`}>
+          <Link
+            to={`/events/${params.eventId}/newpiece`}
+            state={rpUid ? { rollingPaperUid: rpUid } : null}
+          >
             <Button color="orange-1">롤링페이퍼 쓰기 버튼</Button>
           </Link>
           <Button color="orange-3" type="button" onClick={showModal}>
@@ -118,7 +124,7 @@ export default function PieceListPage() {
           {stickerInfo && (
             <StickerPost
               eventUid={eventUid}
-              rollingPaperUid={rollingPaperUid}
+              rpUid={rpUid}
             />
           )}
         </RpButtonsContainer>

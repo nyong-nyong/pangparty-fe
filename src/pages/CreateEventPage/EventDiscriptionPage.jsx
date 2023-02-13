@@ -41,7 +41,7 @@ function EventDiscription() {
       {!typingIntro && <Button onClick={alertNoContent}>다음</Button>}
       <Link to="/event/tagkwd">
         {typingIntro && (
-          <Button color="orange" onClick={eventIntroSave}>
+          <Button color="orange-1" onClick={eventIntroSave}>
             다음
           </Button>
         )}

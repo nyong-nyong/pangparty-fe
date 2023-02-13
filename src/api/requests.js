@@ -22,8 +22,11 @@ const requests = {
 
     /** 피드 내용 GET 요청 */
     // 페이지네이션 물어보기
-    getFeed() {
-      return `${this.feedBaseUrl}`;
+    // getFeed() {
+    // localHost로 바꾸기
+    getFeed(page, limit) {
+      return `${this.feedBaseUrl}?page=${page}&limit=${limit}`;
+      // return `${this.feedBaseUrl}`;
     },
   },
 
@@ -44,13 +47,13 @@ const requests = {
     profileBaseUrl: "/members",
 
     getProfileTop(memberId) {
-      return `${this.profileBaseUrl}/${memberId}/profile`;
+      return `${this.profileBaseUrl}/profile/${memberId}`;
     },
     getProfileFeed(memberId) {
       return `${this.profileBaseUrl}/${memberId}/feeds`;
     },
     getProfileRecievedEvents(memberId) {
-      return `${this.profileBaseUrl}/${memberId}/recieved-events`;
+      return `${this.profileBaseUrl}/${memberId}/received-events`;
     },
     getProfileBadges(memberId) {
       return `${this.profileBaseUrl}/${memberId}/badges`;
@@ -182,7 +185,7 @@ const requests = {
 
       // 롤링페이퍼 목록 GET 요청
       rpPieceAll(eventUid, rollingPaperUid, page, size) {
-        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces/?pages=${page}&size=${size}`;
+        return `${eventsBaseUrl}/${eventUid}${this.rpBaseUrl}/${rollingPaperUid}/pieces?page=${page}&size=${size}`;
       },
 
       // 롤링페이퍼 피스 생성 POST 요청
@@ -193,7 +196,7 @@ const requests = {
 
     /** 이벤트 소개/참여 페이지 */
     introEvent: {
-      pangBaseUrl: "/likes",
+      pangBaseUrl: "/like",
 
       /** 이벤트 소개페이지 조회 GET 요청 */
       eventItroAll(eventUid) {
@@ -212,7 +215,7 @@ const requests = {
 
       /** 이벤트 좋아요 취소 DELETE 요청 */
       deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}${this.pangBaseUrl}`;
+        return `${eventsBaseUrl}/${eventUid}/dislike`;
       },
     },
 

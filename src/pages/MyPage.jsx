@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// import { useRecoilValue } from "recoil";
+// import { userState } from "../recoils/user/Atoms";
 import Feed from "../components/MyPage/Feed";
 import ReceicedEvent from "../components/MyPage/ReceivedEvent";
 import Badges from "../components/MyPage/Badges";
@@ -7,6 +9,7 @@ import EventCalander from "../components/MyPage/EventCalander";
 import axios from "../api/axios";
 import requests from "../api/requests";
 import "../styles/MyPage.scss";
+import useAuth from "../hooks/useAuth";
 
 export default function MyPage() {
   const [profileInfo, setProfileInfo] = useState(undefined);
@@ -17,15 +20,23 @@ export default function MyPage() {
     EventCalander: false,
   });
 
+  // const userID = useRecoilValue(userState);
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
   useEffect(() => {
+    setUser(auth.user);
     async function fetchData() {
+      if (!user) return;
       const request = await axios.get(
-        requests.profile.getProfileTop("dasom02")
+        requests.profile.getProfileTop(`${user}`)
+        // requests.profile.getProfileTop("pang3333")
       );
+      console.log(request.data);
       setProfileInfo(request.data);
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   const activateHandler = (e) => {
     const newActivation = {

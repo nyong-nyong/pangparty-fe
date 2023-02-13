@@ -59,6 +59,7 @@ export default function useUserAction() {
           // httpOnly option 넣기 -> but 브라우저에서 접근 불가능. 백엔드 완성되면 넣자.
           setAuth(true);
           setUser(res.data.id);
+          // axios.defaults.headers.common["Token"] = res.data.refreshToken;
           axios.defaults.headers.common["Authorization"] = res.data.accessToken;
           // axios.defaults.headers.common["Token"] = res.data.refreshToken;
           // console.log(axios.defaults.headers.common);

@@ -27,7 +27,7 @@ export default function PhotoUpload({ eventUid }) {
       formData.append("file", photo);
 
       for (const data of formData) console.log(data);
-
+      console.log(requests.events.album.postMedia(eventUid));
       await axios
         .post(requests.events.album.postMedia(eventUid),
           formData,

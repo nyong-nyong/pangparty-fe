@@ -119,7 +119,7 @@ function TagKeywordPage() {
         </div>
       </div>
       <Link to="/event/selecting">
-        <Button>다음</Button>
+        <Button color="orange-1">다음</Button>
       </Link>
     </div>
   );

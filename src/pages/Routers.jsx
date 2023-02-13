@@ -5,8 +5,8 @@ import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
-// import SingUpIntro from "./SignUpPage/SingUpIntroPage";
-// import SignUpEmail from "./SignUpPage/SignUpEmail";
+import SingUpIntro from "./SignUpPage/SignUpIntroPage";
+import SignUpEmail from "./SignUpPage/SignUpEmailPage";
 import MyPage from "./MyPage";
 import FollowPage from "./MyPage/FollowPage";
 import MyEventsPage from "./MyPage/MyEventsPage";
@@ -21,12 +21,14 @@ import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
 import GiftIntroPage from "./GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
+// import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 import EventDetailPage from "./EventDetailPage";
 import SearchMainPage from "./SearchPage/SearchMainPage";
 import SearchResultPage from "./SearchPage/SearchResultPage";
 import HashtagPage from "./SearchPage/HashtagPage";
 import FeedPage from "./Feed/FeedPage";
 import CreateFeedPage from "./Feed/CreateFeedPage";
+import FeedDetail from "../components/Feed/FeedDetail";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -39,13 +41,14 @@ export default function Routers() {
       <Route path="login" element={<LoginPage />} />
       {/* 회원가입 페이지 */}
       <Route path="signup">
-        {/* <Route path="intro" element={<SingUpIntro />} />
-        <Route path="email" element={<SignUpEmail />} /> */}
+        <Route path="intro" element={<SingUpIntro />} />
+        <Route path="email" element={<SignUpEmail />} />
       </Route>
       {/* 피드 페이지 */}
       <Route path="feed">
         <Route path="" element={<FeedPage />} />
         <Route path="create" element={<CreateFeedPage />} />
+        <Route path=":postId" element={<FeedDetail />} />
       </Route>
 
       {/* 이벤트 페이지 */}
@@ -82,7 +85,7 @@ export default function Routers() {
       {/* 에러페이지 */}
       <Route path="*" element={<NotFoundPage />} />
       {/* 마이페이지 */}
-      <Route path="mypage" element={<MyPage />} />
+      <Route path="mypage/:memberId" element={<MyPage />} />
       <Route path="follows" element={<FollowPage />} />
       <Route path="myevents" element={<MyEventsPage />} />
       {/* 팡파티 페이지 */}

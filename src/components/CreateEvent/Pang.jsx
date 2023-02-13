@@ -34,7 +34,7 @@ function Pang({ eventUid }) {
 
     async function postPang() {
       await axios
-        .delete(requests.events.introEvent.postPang(eventUid))
+        .post(requests.events.introEvent.postPang(eventUid))
         .then(setPangCnt(pangCnt + 1), setIsPang(!isPang))
         .catch((err) => console.log(err));
     }

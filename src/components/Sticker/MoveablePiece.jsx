@@ -72,7 +72,7 @@ class MoveablePiece extends React.Component {
             <span>
               {sticker && (
                 <img
-                  src={sticker.url}
+                  src={sticker.stickerUrl}
                   position="relative"
                   width="100px"
                   height="100px;"

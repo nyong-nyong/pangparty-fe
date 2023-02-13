@@ -25,5 +25,6 @@ export default function useAuth() {
     setAuthenticated(getAuth);
   }, [getAuth, getUser]);
 
+  // console.log({user, authenticated});
   return { user, authenticated };
 }

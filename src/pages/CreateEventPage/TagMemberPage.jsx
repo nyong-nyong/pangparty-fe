@@ -5,18 +5,29 @@ import { useRecoilState } from "recoil";
 import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
 import "../../styles/CreateEvent.scss";
+// import MemeberSearch from "./MemberSearch";
+
+import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
 
 export default function TagMemberPage() {
   const [targetsInfo, setTargetsInfo] = useRecoilState(targetsTagState);
+  const [isInput, setIsInput] = useState(false);
+  const auth = useAuth();
+  const [user, setUser] = useState("");
 
+  useEffect(() => {
+    setUser(auth.user);
+  }, [])
+
+  const prevent = (e) => {
+    e.preventDefault();
+    alert("축하 대상을 지정해주세요!")
+  }
 
   const targetTagHandler = (e) => {
-    const newTargetTag = {
-      id: 123,
-      name: e.target.value,
-      imgUrl:
-        "https://www.rover.com/blog/wp-content/uploads/2015/06/happy-dog-burrito2.jpg",
-    };
+    const newTargetTag = e.target.value;
+    setIsInput(true);
     setTargetsInfo(newTargetTag);
   };
 
@@ -34,13 +45,19 @@ export default function TagMemberPage() {
           type="text"
           className="inputBox"
           onChange={targetTagHandler}
-          style={{}}
+          value={targetsInfo}
         />
+        {/* <MemeberSearch /> */}
       </div>
 
       {/* common으로 나중에 button component 뺄 것!!!!!!!!!!!! */}
       <Link to="/event/calendar">
-        <Button>다음</Button>
+      {!isInput && <Button onClick={prevent}>다음</Button>}
+        {isInput && (
+          <Button color="orange-1">
+            다음
+          </Button>
+        )}
       </Link>
     </div>
   );

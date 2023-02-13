@@ -2,19 +2,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
 export default function HostEvent() {
   const [hostEventInfo, setHostEventInfo] = useState(undefined);
 
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+
   useEffect(() => {
+    setUser(auth.user);
     async function fetchData() {
+      if (!user) return;
       const request = await axios.get(
-        requests.profile.getProfileHostEvents("dasom02")
+        requests.profile.getProfileHostEvents(`${user}`)
       );
       setHostEventInfo(request.data);
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
     <div>
@@ -26,8 +32,8 @@ export default function HostEvent() {
           if (event) {
             return (
               <Link
-                key={event.uid}
-                to={`/events/${event.uid}`}
+                key={event.eventUid}
+                to={`/events/${event.eventUid}`}
                 className="eventCardContainer"
               >
                 <div className="eventCardImgContainer">

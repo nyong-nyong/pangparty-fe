@@ -3,7 +3,7 @@ import { atom } from "recoil";
 // 축하 당할 사람 정보
 const targetsTagState = atom({
   key: "targetsTagState",
-  default: [],
+  default: "",
 });
 
 // 디데이 날짜 정보
