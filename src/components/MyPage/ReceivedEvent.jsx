@@ -12,6 +12,16 @@ export default function ReceicedEvent(props) {
   const auth = useAuth();
   const [user, setUser] = useState("");
 
+  // 지난 이벤트를 확인하기 위한 당일 날짜 조회
+  const originToday = new Date();
+  const fullyear = originToday.getFullYear().toString();
+  const month = (originToday.getMonth() + 1).toString();
+  const date = originToday.getDate().toString();
+  const testCount =
+    parseInt(fullyear, 10) * 365 +
+    parseInt(month, 10) * 30 +
+    parseInt(date, 10);
+
   useEffect(() => {
     setUser(auth.user);
     async function fetchData() {
@@ -48,14 +58,19 @@ export default function ReceicedEvent(props) {
                     <p className="eventdDay">디데이:{event.dday}</p>
                   </div>
                 </Link>
-                <button type="button" className="pangBtn">
-                  <Link
-                    to={`/gift/${event.eventUid}`}
-                    state={{ userName, dDay: event.dday }}
-                  >
-                    <img src={pangImg} className="pangImg" alt="" />
-                  </Link>
-                </button>
+                {parseInt(event.dday.substr(0, 4), 10) * 365 +
+                  parseInt(event.dday.slice(5, -1), 10) * 30 +
+                  parseInt(event.dday.substr(8, 9), 10) <=
+                testCount ? (
+                  <button type="button" className="pangBtn">
+                    <Link
+                      to={`/gift/${event.eventUid}`}
+                      state={{ userName, dDay: event.dday }}
+                    >
+                      <img src={pangImg} className="pangImg" alt="" />
+                    </Link>
+                  </button>
+                ) : null}
               </div>
             );
           }
