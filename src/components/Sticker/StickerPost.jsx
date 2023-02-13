@@ -23,11 +23,11 @@ export default function StickerPost({ eventUid, rpUid }) {
   }, [user]);
 
   const postHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const stickerValue = document.querySelector(".moveable");
     const stickerCssAllList = stickerValue.style.cssText.split(";");
-    console.log(stickerCssAllList)
+    console.log(stickerCssAllList);
 
     const lefLoc = stickerCssAllList[3].slice(7, -2);
     const topLoc = stickerCssAllList[4].slice(6, -2);
@@ -43,25 +43,27 @@ export default function StickerPost({ eventUid, rpUid }) {
       topLoc: parseInt(topLoc), // 0,
       zIndex: "100", // "1000",
       angle: parseFloat(angle), // 0.0,
-      scale: parseFloat(scale) // 0.00
+      scale: parseFloat(scale), // 0.00
     };
 
-    async function sticker() {
+    async function sticker(saveInfoProps) {
       await axios
         .post(
           requests.events.rollingPaper.postSticker(eventUid, rpUid),
-          saveInfo
+          saveInfoProps
         )
         .then((res) => {
+          console.log(saveInfoProps);
           // POST 완료하면 sticker 상태 다시 reset하기
           setSticker(undefined);
-          console.log(res);
+          // location.reload();
+          // console.log(res);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    sticker();
+    return sticker(saveInfo);
   };
 
   return (

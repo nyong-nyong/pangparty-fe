@@ -29,7 +29,7 @@ export default function PieceListPage() {
   const eventUid = params.eventId;
   const rollingPaperUid = rpUid;
   const topStart = 1;
-  const topEnd = 100;
+  const topEnd = 800;
   const page = 0;
   const size = 30;
 
