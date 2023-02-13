@@ -19,7 +19,7 @@ import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
-import GiftIntroPage from "./GiftIntroPage";
+// import GiftIntroPage from "../components/Gift/GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
 // import Recap1DetailPage from "./PangPartyRecapPage/Recap1DetailPage";
 import EventDetailPage from "./EventDetailPage";
@@ -91,9 +91,9 @@ export default function Routers() {
       <Route path="myevents" element={<MyEventsPage />} />
       {/* 팡파티 페이지 */}
 
-      <Route path="gift/intro" element={<GiftIntroPage />} />
-      <Route path="gift" element={<PangPartyGiftPage />} />
-      <Route path="gift/recap/1" element={<Recap1Page />} />
+      {/* <Route path="gift/intro" element={<GiftIntroPage />} /> */}
+      <Route path="gift/:eventId" element={<PangPartyGiftPage />} />
+      <Route path="gift/:eventId/recap" element={<Recap1Page />} />
 
       {/* 친구 마이페이지 */}
       <Route path="friend/:memberId" element={<FriendMyPage />} />
