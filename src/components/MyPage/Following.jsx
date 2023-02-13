@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Button from "../common/Button";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 // import { userState } from "../../recoils/user/Atoms";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/MyPage.scss";
-import Button from "../common/Button";
 
 export default function Following({ followsInfo, setFollowsInfos }) {
   const page = 0;

@@ -5,9 +5,11 @@ import requests from "../../api/requests";
 import Feed from "../MyPage/Feed";
 import ReceicedEvent from "../MyPage/ReceivedEvent";
 import Badges from "../MyPage/Badges";
+import Button from "../common/Button";
 
 export default function FriendProfile(props) {
   const [profileInfo, setProfileInfo] = useState(undefined);
+  const [isFollowing, setIsFollowing] = useState("");
   const [isActivate, setIsActivate] = useState({
     Feed: true,
     ReceicedEvent: false,
@@ -22,6 +24,7 @@ export default function FriendProfile(props) {
         requests.profile.getProfileTop(`${friendId}`)
       );
       setProfileInfo(request.data);
+      setIsFollowing(request.data.following);
     }
     fetchData();
   }, []);
@@ -34,23 +37,30 @@ export default function FriendProfile(props) {
     };
     const newTarget = e.target.id;
     newActivation[newTarget] = true;
+    console.log(profileInfo);
     setIsActivate(newActivation);
   };
 
   const postFollow = async () => {
     const followeeId = profileInfo.id;
-    await axios
-      .post(requests.following.postFollowing(followeeId), {
+
+    if (profileInfo.following === true) {
+      setIsFollowing(false);
+      await axios.delete(requests.following.delFollowing(followeeId), {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
       });
+    } else {
+      setIsFollowing(true);
+      await axios.post(requests.following.postFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+    // 반영 위한 새로고침
+    window.location.reload();
   };
 
   return (
@@ -129,13 +139,13 @@ export default function FriendProfile(props) {
             </div>
           </div>
         </div>
-        <button
-          className="profileEditButton"
-          type="button"
+        <Button
+          size="small"
+          color={isFollowing ? "gray-4" : "orange-1"}
           onClick={postFollow}
         >
           Follow
-        </button>
+        </Button>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">
             <Link
