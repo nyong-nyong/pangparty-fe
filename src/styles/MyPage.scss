@@ -229,18 +229,34 @@
 }
 
 /* 뱃지 */
+.profilebottomContainer {
+  // width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+
+}
+
 .badgeContainer {
   display: flex;
-  margin: 10px;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .badgeImgContainer {
   display: inline-block;
+  width: 300px;
 }
 
 .badgeImg {
   width: 75px;
   overflow: contain;
+}
+
+.badgeName {
+  font-family: "Pretendard";
+  font-size: 13px;
 }
 
 /* 이벤트 달력 */
