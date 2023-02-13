@@ -49,8 +49,8 @@ const requests = {
     getProfileTop(memberId) {
       return `${this.profileBaseUrl}/profile/${memberId}`;
     },
-    getProfileFeed(memberId) {
-      return `${this.profileBaseUrl}/${memberId}/feeds`;
+    getProfileFeed(memberId, page, size) {
+      return `${this.profileBaseUrl}/${memberId}/feed?page=${page}&size=${size}`;
     },
     getProfileRecievedEvents(memberId) {
       return `${this.profileBaseUrl}/${memberId}/received-events`;
