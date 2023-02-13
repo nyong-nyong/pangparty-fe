@@ -12,9 +12,15 @@
     flex-flow: column;
 
     p {
-      font-size: 50px;
-      font-weight: 900;
+      font-size: 21px;
+      font-weight: 600;
       margin: 0px;
+    }
+
+    span {
+      font-size: 13px;
+      font-weight: 500;
+      color: $gray-2;
     }
   }
 
