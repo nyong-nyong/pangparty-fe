@@ -70,7 +70,7 @@ export default function MyPage() {
             />
           </div>
           <div className="profileBox">
-            <p className="userId">{profileInfo && profileInfo.memberId}</p>
+            <p className="userId">{profileInfo && profileInfo.id}</p>
             <p className="username">{profileInfo && profileInfo.name}</p>
             <p className="userintro">
               {profileInfo && profileInfo.introduction}
@@ -79,25 +79,53 @@ export default function MyPage() {
               {/* 추후 profileInfo 수정 예정 */}
               <Link
                 to="/follows"
-                state={{ following: false, follower: true }}
+                state={
+                  profileInfo
+                    ? {
+                        following: false,
+                        follower: true,
+                        followingCount: profileInfo.followingCount,
+                        followerCount: profileInfo.followerCount,
+                      }
+                    : {
+                        following: false,
+                        follower: true,
+                        followingCount: 0,
+                        followerCount: 0,
+                      }
+                }
                 style={{ textDecoration: "none" }}
               >
                 <div className="followBox">
                   <p className="followText">팔로워</p>
                   <p className="followNum">
-                    {profileInfo && profileInfo.followerCnt}
+                    {profileInfo ? profileInfo.followerCount : 0}
                   </p>
                 </div>
               </Link>
               <Link
                 to="/follows"
-                state={{ following: true, follower: false }}
+                state={
+                  profileInfo
+                    ? {
+                        following: true,
+                        follower: false,
+                        followingCount: profileInfo.followingCount,
+                        followerCount: profileInfo.followerCount,
+                      }
+                    : {
+                        following: true,
+                        follower: false,
+                        followingCount: 0,
+                        followerCount: 0,
+                      }
+                }
                 style={{ textDecoration: "none" }}
               >
                 <div className="followBox">
                   <p className="followText">팔로잉</p>
                   <p className="followNum">
-                    {profileInfo && profileInfo.followingCnt}
+                    {profileInfo ? profileInfo.followingCount : 0}
                   </p>
                 </div>
               </Link>
@@ -117,7 +145,7 @@ export default function MyPage() {
                 주최한 <br /> 이벤트
               </p>
               <p className="eventBoxNum">
-                {profileInfo && profileInfo.hostEventCnt}
+                {profileInfo && profileInfo.hostEventCount}
               </p>
             </Link>
           </button>
@@ -130,7 +158,7 @@ export default function MyPage() {
                 참여중인 <br /> 이벤트
               </p>
               <p className="eventBoxNum">
-                {profileInfo && profileInfo.involvingEventCnt}
+                {profileInfo && profileInfo.involvingEventCount}
               </p>
             </Link>
           </button>
@@ -143,7 +171,7 @@ export default function MyPage() {
                 참여한 <br /> 이벤트
               </p>
               <p className="eventBoxNum">
-                {profileInfo && profileInfo.involvedEventCnt}
+                {profileInfo && profileInfo.involvedEventCount}
               </p>
             </Link>
           </button>

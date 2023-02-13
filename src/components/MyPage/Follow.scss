@@ -1,8 +1,37 @@
 @import "../../styles/colors.scss";
 
+
 .header {
   display: flex;
-  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.followTab {
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+  background-color: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.headerFollowText {
+  color: $orange-1;
+  margin-right: 5px;
+}
+
+.underline {
+  margin: 4px auto;
+  text-align: center;
+  width: 40%;
+  border-bottom: 2px solid $orange-1;
+}
+
+.Nounderline {
+  margin: 4px auto;
+  text-align: center;
+  width: 40%;
+  border-bottom: 2px solid white;
 }
 
 .outline {
