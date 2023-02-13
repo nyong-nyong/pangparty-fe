@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 // import { userState } from "../../recoils/user/Atoms";
@@ -6,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import "../../styles/MyPage.scss";
 import Button from "../common/Button";
 
-export default function Follower() {
+export default function Follower({ followsInfo, setFollowsInfos }) {
   const page = 0;
   const size = 30;
   const [followerInfo, setFollowerInfos] = useState(undefined);
@@ -27,6 +28,47 @@ export default function Follower() {
     fetchData();
   }, [user]);
 
+  const postFollow = async (e) => {
+    const followeeId = e.target.value;
+    await axios
+      .post(requests.following.postFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setFollowsInfos({
+          followerCount: followsInfo.followerCount,
+          followingCount: followsInfo.followingCount + 1,
+        });
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const delFollow = async (e) => {
+    // console.log(e.target.value);
+    const followeeId = e.target.value;
+    await axios
+      .delete(requests.following.delFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setFollowsInfos({
+          followerCount: followsInfo.followerCount,
+          followingCount: followsInfo.followingCount - 1,
+        });
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <p>팔로워</p>
@@ -44,19 +86,31 @@ export default function Follower() {
                     />
                   </div>
                   <div className="followInfoBox">
-                    <p className="followId">{infos.id}</p>
-                    <p className="followName">{infos.name}</p>
+                    <Link to={`../friend/${infos.id}`}>
+                      <p className="followId">{infos.id}</p>
+                      <p className="followName">{infos.name}</p>
+                    </Link>
                   </div>
                 </div>
 
                 <div className="rightContainer">
                   <div className="buttonContainer">
                     {infos.following ? (
-                      <Button color="gray-4" size="small">
+                      <Button
+                        color="gray-4"
+                        size="small"
+                        value={infos.id}
+                        onClick={delFollow}
+                      >
                         unfollow
                       </Button>
                     ) : (
-                      <Button color="orange-1" size="small">
+                      <Button
+                        color="orange-1"
+                        size="small"
+                        value={infos.id}
+                        onClick={postFollow}
+                      >
                         follow
                       </Button>
                     )}

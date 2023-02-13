@@ -5,7 +5,6 @@ import requests from "../../api/requests";
 import Feed from "../MyPage/Feed";
 import ReceicedEvent from "../MyPage/ReceivedEvent";
 import Badges from "../MyPage/Badges";
-import EventCalander from "../MyPage/EventCalander";
 
 export default function FriendProfile(props) {
   const [profileInfo, setProfileInfo] = useState(undefined);
@@ -32,11 +31,26 @@ export default function FriendProfile(props) {
       Feed: false,
       ReceicedEvent: false,
       Badges: false,
-      EventCalander: false,
     };
     const newTarget = e.target.id;
     newActivation[newTarget] = true;
     setIsActivate(newActivation);
+  };
+
+  const postFollow = async () => {
+    const followeeId = profileInfo.id;
+    await axios
+      .post(requests.following.postFollowing(followeeId), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -115,7 +129,11 @@ export default function FriendProfile(props) {
             </div>
           </div>
         </div>
-        <button className="profileEditButton" type="button">
+        <button
+          className="profileEditButton"
+          type="button"
+          onClick={postFollow}
+        >
           Follow
         </button>
         <div className="eventInfoContainers">
@@ -188,22 +206,11 @@ export default function FriendProfile(props) {
         >
           뱃지
         </button>
-        <button
-          type="button"
-          id="EventCalander"
-          className={
-            isActivate.EventCalander ? "componentBoxActive" : "componentBox"
-          }
-          onClick={activateHandler}
-        >
-          이벤트 달력
-        </button>
       </div>
       <div>
         {isActivate.Feed && <Feed />}
         {isActivate.ReceicedEvent && <ReceicedEvent />}
         {isActivate.Badges && <Badges />}
-        {isActivate.EventCalander && <EventCalander />}
       </div>
     </div>
   );

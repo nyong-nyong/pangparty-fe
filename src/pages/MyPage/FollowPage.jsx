@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Following from "../../components/MyPage/Following";
 import Follower from "../../components/MyPage/Follower";
@@ -13,10 +13,20 @@ export default function FollowPage() {
     followingTab: location.state.following,
     followerTab: location.state.follower,
   });
-  const followsInfo = {
-    followingCount: location.state.followingCount,
-    followerCount: location.state.followerCount,
-  };
+  
+  // 한별 수정
+  const [followsInfo, setFollowsInfos] = useState({});
+  // const followsInfo = {
+  //   followingCount: location.state.followingCount,
+  //   followerCount: location.state.followerCount,
+  // };
+  useEffect(() => {
+    setFollowsInfos({
+      followingCount: location.state.followingCount,
+      followerCount: location.state.followerCount,
+    });
+  }, [])
+
 
   const tabHandler = (e) => {
     const newTab = {
@@ -46,7 +56,8 @@ export default function FollowPage() {
           >
             팔로워
           </span>
-          <span className="headerFollowNum">{followsInfo.followerCount}명</span>
+          {/* 한별 수정 */}
+          {followsInfo.followerCount ? <span className="headerFollowNum">{followsInfo.followerCount}명</span> : null}
           {tabState.followerTab ? (
             <p className="underline"> </p>
           ) : (
@@ -67,7 +78,9 @@ export default function FollowPage() {
             팔로잉
           </span>
           <span className="headerFollowNum">
-            {followsInfo.followingCount}명
+            {/* 한별 수정 */}
+          {followsInfo.followingCount ? <span className="headerFollowNum">{followsInfo.followingCount}명</span> : null}
+            {/* {followsInfo.followingCount}명 */}
           </span>
           {tabState.followingTab ? (
             <p className="underline"> </p>
@@ -76,8 +89,8 @@ export default function FollowPage() {
           )}
         </button>
       </header>
-      {tabState.followerTab ? <Follower /> : null}
-      {tabState.followingTab ? <Following /> : null}
+      {tabState.followerTab ? <Follower followsInfo={followsInfo} setFollowsInfos={setFollowsInfos}/> : null}
+      {tabState.followingTab ? <Following followsInfo={followsInfo} setFollowsInfos={setFollowsInfos}/> : null}
     </div>
   );
 }

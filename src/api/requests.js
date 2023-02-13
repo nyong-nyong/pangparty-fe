@@ -73,13 +73,13 @@ const requests = {
     followingBaseUrl: "/following",
 
     /** 팔로우 POST 요청 : body에 해당 {"id": value} 넣어주기 */
-    postFollowing() {
-      return this.followingBaseUrl;
+    postFollowing(followeeId) {
+      return `${this.followingBaseUrl}/${followeeId}`;
     },
 
     /** 팔로우 취소 DEL 요청 : body에 해당 {"id": value} 넣어주기 */
-    delFollowing() {
-      return this.followingBaseUrl;
+    delFollowing(followeeId) {
+      return `${this.followingBaseUrl}/${followeeId}`;
     },
   },
 
