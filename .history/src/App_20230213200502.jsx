@@ -20,7 +20,7 @@ function App() {
                 <Routers />
               </div>
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div >
               <Footbar />
             </div>
           </BrowserRouter>

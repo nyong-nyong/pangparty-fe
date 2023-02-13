@@ -20,9 +20,8 @@ function App() {
                 <Routers />
               </div>
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <Footbar />
-            </div>
+            <div>
+            <Footbar />
           </BrowserRouter>
         </CookiesProvider>
       </RecoilRoot>
