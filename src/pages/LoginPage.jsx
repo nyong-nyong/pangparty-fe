@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -26,10 +27,11 @@ export default function LoginPage() {
   }, []);
 
   const emailIsValid = (email) => {
-    const emailRegExp =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    if (emailRegExp.test(email)) return true;
-    return false;
+    // const emailRegExp =
+    //   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    // if (emailRegExp.test(email)) return true;
+    // return false;
+    return true;
   };
 
   const checkIsValid = (targetId, targetValue) => {
@@ -51,7 +53,8 @@ export default function LoginPage() {
   // 홈으로 보내기(추가할 것)
   const login = (e) => {
     e.preventDefault();
-    return userAction.logIn(userInfo);
+    userAction.logIn(userInfo);
+    navigate("/");
   };
 
   return (
