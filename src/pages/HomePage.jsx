@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import useUserAction from "../hooks/useUserAction";
 import { authState } from "../recoils/user/Atoms";
-import useUserAction from "../hooks/useUserAction";
 import HomeCarousel from "../components/HomePage/HomeCarousel";
 // 우리 메인 홈화면
 
