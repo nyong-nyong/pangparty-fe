@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
-import styled from "styled-components";
+// import styled from "styled-components";
 import { userState } from "../../recoils/user/Atoms";
 import Icon from "./Icon";
 
@@ -77,7 +77,7 @@ export default function Footbar() {
   );
 }
 
-const FootbarContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+// const FootbarContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+// `;

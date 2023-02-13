@@ -1,7 +1,7 @@
 @import "./colors.scss";
 
 .recapTop {
-  height: 60px;
+  height: 70px;
   //   background-color: aqua;
 }
 
@@ -16,6 +16,11 @@
   text-align: center;
   font-size: 13px;
   font-weight: 500;
+}
+
+.btnContainer {
+  margin-top: 60px;
+  // width: 100px;
 }
 
 // carousel
@@ -151,7 +156,7 @@
 
 .slick-dots {
   position: absolute;
-  bottom: -35px;
+  bottom: -50px;
 
   display: block;
 
@@ -216,14 +221,14 @@
   text-align: center;
 
   opacity: 0.25;
-  color: black;
+  color: $orange-3;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
-  color: black;
+  color: $orange-1;
 }
 
 @keyframes moving {

@@ -124,6 +124,10 @@ const requests = {
 
   events: {
     postEvent: eventsBaseUrl,
+    /** export(pangparty) page GET 요청 */
+    getPangExport(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/export`;
+    },
 
     album: {
       albumBaseUrl: "/album",

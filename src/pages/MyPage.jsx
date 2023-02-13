@@ -218,7 +218,9 @@ export default function MyPage() {
       </div>
       <div>
         {isActivate.Feed && <Feed />}
-        {isActivate.ReceicedEvent && <ReceicedEvent />}
+        {isActivate.ReceicedEvent && (
+          <ReceicedEvent userName={profileInfo ? profileInfo.name : null} />
+        )}
         {isActivate.Badges && <Badges />}
         {isActivate.EventCalander && <EventCalander />}
       </div>

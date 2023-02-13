@@ -206,6 +206,19 @@
   font-size: 13px;
 }
 
+.pangBtn {
+  background-color: $orange-3;
+  border: none;
+  width: 50px;
+  margin-right: 8px;
+  border-radius: 50px;
+}
+
+.pangImg {
+  width: 40px;
+  // height: 40px;
+}
+
 /* 뱃지 */
 .badgeContainer {
   display: flex;
