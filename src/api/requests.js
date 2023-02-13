@@ -83,6 +83,19 @@ const requests = {
     },
   },
 
+  // mypage follow 정보 조회
+  myfollow: {
+    myfollowerBaseUrl: "/followers",
+    myfollowingBaseUrl: "/following",
+
+    getMyFollowers(memberId, page, size) {
+      return `${this.myfollowerBaseUrl}/${memberId}?page=${page}&size=${size}`;
+    },
+    getMyFollowings(memberId, page, size) {
+      return `${this.myfollowingBaseUrl}/${memberId}?page=${page}&size=${size}`;
+    },
+  },
+
   hashtags: {
     hashtagsBaseUrl: "/hashtags",
 

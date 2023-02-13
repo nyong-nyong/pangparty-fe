@@ -10,6 +10,7 @@ import axios from "../api/axios";
 import requests from "../api/requests";
 import "../styles/MyPage.scss";
 import useAuth from "../hooks/useAuth";
+import useUserAction from "../hooks/useUserAction";
 
 export default function MyPage() {
   const [profileInfo, setProfileInfo] = useState(undefined);
@@ -23,6 +24,11 @@ export default function MyPage() {
   // const userID = useRecoilValue(userState);
   const auth = useAuth();
   const [user, setUser] = useState("");
+  const userAction = useUserAction();
+  const logOut = (e) => {
+    e.preventDefault();
+    userAction.logOut();
+  };
 
   useEffect(() => {
     setUser(auth.user);
@@ -98,8 +104,8 @@ export default function MyPage() {
             </div>
           </div>
         </div>
-        <button className="profileEditButton" type="button">
-          프로필 수정
+        <button className="profileEditButton" type="button" onClick={logOut}>
+          로그아웃
         </button>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">

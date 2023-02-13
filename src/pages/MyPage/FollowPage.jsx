@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Following from "../../components/MyPage/Following";
 import Follower from "../../components/MyPage/Follower";
-import "../../components/MyPage/Follow.css";
+import "../../components/MyPage/Follow.scss";
 
 export default function FollowPage() {
   // MyPage에서 클릭한 지점 저장
