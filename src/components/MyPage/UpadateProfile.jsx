@@ -6,6 +6,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import iconImg from "../../assets/updateProfile.svg";
+// import photoImg from "../../assets/recap4.png";
 import Button from "../common/Button";
 import "./UpdateProfile.scss";
 // import useUserAction from "../../hooks/useUserAction";
@@ -131,7 +132,7 @@ export default function UpadateProfile(props) {
           </div>
         </div>
         <form onSubmit={submitPhotoFile}>
-          {/* <PhotoUploadLabel htmlFor="profileImgUpload">업로드</PhotoUploadLabel> */}
+          <PhotoUploadLabel htmlFor="profileImgUpload">업로드</PhotoUploadLabel>
           <input
             type="file"
             accept={"image/*"}
@@ -150,48 +151,21 @@ export default function UpadateProfile(props) {
           수정 완료
         </Button>
       </div>
-
-      <div className="profileEditContainer">
-        <input
-          id="editName"
-          type="text"
-          onChange={profileChangeHandler}
-          value={profileInfo && profileInfo.name}
-        />
-        <textarea
-          id="editIntroduction"
-          type="text"
-          onChange={profileChangeHandler}
-          value={profileInfo && profileInfo.introduction}
-        />
-        <button onClick={submitEditProfile}>프로필 수정 버튼</button>
-
-        <form onSubmit={submitPhotoFile}>
-          <PhotoUploadLabel htmlFor="profileImgUpload">
-            +추가하기
-          </PhotoUploadLabel>
-          <input
-            type="file"
-            accept={"image/*"}
-            id="profileImgUpload"
-            onChange={savePhotoFile}
-            ref={photoRef}
-            style={{ display: "none" }}
-          />
-          <button type="submit">전송</button>
-          <br />
-          {/* <img src={photoFile} alt="업로드된 사진" /> */}
-        </form>
-      </div>
     </div>
   );
 }
 
 const PhotoUploadLabel = styled.label`
-  margin: 5px 0 20px 0;
+  margin: 10px 15px;
+  padding: 10px 5px 5px 5px;
+  width: 50px;
+  height: 20px;
+  text-align: center;
   font-weight: bold;
   font-size: 13px;
-  color: #0095f6;
+  color: black;
   display: inline-block;
   cursor: pointer;
+  background-color: #aabfff;
+  border-radius: 20px;
 `;
