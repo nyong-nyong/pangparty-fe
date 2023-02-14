@@ -1,10 +1,15 @@
+import { motion } from "framer-motion";
 import recapDdayText from "../../assets/recapDdayText.png";
 import recap1 from "../../assets/recap1.png";
 
 export default function RecapPang(props) {
   const { pangNum } = props;
   return (
-    <div className="carouselDiv">
+    <motion.div
+      className="carouselDiv"
+      initial={{ scale: 0 }}
+      animate={{ scale: 1, rotateZ: 360 }}
+    >
       <div className="carouselContentBlock">
         <img className="ddayTextImg" src={recapDdayText} alt="" />
         <img className="recapImg" src={recap1} alt="" />
@@ -14,6 +19,6 @@ export default function RecapPang(props) {
           팡파레를 울렸어요
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

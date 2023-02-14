@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Confetti from "../Recap/Confetti";
 import Button from "../common/Button";
-import giftPangImg from "../../assets/giftPang.png";
+// import giftPangImg from "../../assets/giftPang.png";
 import giftPangOpened from "../../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
 import touch1 from "../../assets/touch1.png";
@@ -21,12 +22,12 @@ export default function GiftIntro(props) {
   // Touch 정보 저장
   const [touchCount, setTouchCount] = useState(1);
 
-  const countTouch = (e) => {
-    if (touchCount <= 20) e.preventDefault();
-    const newCount = touchCount + 1;
-    // console.log(touchCount);
-    setTouchCount(newCount);
-  };
+  // const countTouch = (e) => {
+  //   if (touchCount <= 20) e.preventDefault();
+  //   const newCount = touchCount + 1;
+  //   // console.log(touchCount);
+  //   setTouchCount(newCount);
+  // };
 
   return (
     <div>
@@ -41,14 +42,15 @@ export default function GiftIntro(props) {
           {touchCount < 20 && (
             <div className="moveContainer">
               <p className="moveText">TOUCH!</p>
-              <button className="moveButton" type="button" onClick={countTouch}>
+              <Confetti touchCount={touchCount} setTouchCount={setTouchCount} />
+              {/* <button className="moveButton" type="button" onClick={countTouch}>
                 <img
                   className="touchImg"
                   style={{ width: 200 + touchCount * 3 }}
                   src={giftPangImg}
                   alt="pangimage"
                 />
-              </button>
+              </button> */}
             </div>
           )}
           {(() => {

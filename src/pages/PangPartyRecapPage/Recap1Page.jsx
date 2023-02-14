@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import RecapCarousel from "../../components/Recap/RecapCarousel";
+import RecapScroll from "../../components/Recap/RecapScroll";
 import { userState } from "../../recoils/user/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -47,6 +48,7 @@ export default function Recap1Page() {
         </p>
       </div>
       <RecapCarousel eventInfo={eventInfo} eventUid={eventUid} />
+      <RecapScroll eventInfo={eventInfo} eventUid={eventUid} />
     </div>
   );
 }
