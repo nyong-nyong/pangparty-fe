@@ -7,6 +7,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import "./PhotoModal.scss";
+import PhotoPreview from "./PhotoPreview";
 
 export default function PhotoAlbum({ isPart, eventUid }) {
   const page = 0;
@@ -16,6 +17,8 @@ export default function PhotoAlbum({ isPart, eventUid }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [photoSelected, setPhotoSelected] = useState({});
+  const [uploadPhoto, setUploadPhoto] = useState({});
+  const [photoFile, setPhotoFile] = useState("");
 
   const auth = useAuth();
   const [user, setUser] = useState("");
@@ -45,10 +48,22 @@ export default function PhotoAlbum({ isPart, eventUid }) {
       <AlbumFrame>
         {isPart && (
           <AddContainer>
-            <PhotoUpload eventUid={eventUid} />
+            <PhotoUpload
+              setUploadModalOpen={setUploadModalOpen}
+              setUploadPhoto={setUploadPhoto}
+              setPhotoFile={setPhotoFile}
+            />
           </AddContainer>
         )}
-        <div className={uploadModalOpen ? "openModal photoModal" : "photoModal"}>
+        <div
+          className={uploadModalOpen ? "openModal photoModal" : "photoModal"}
+        >
+          <PhotoPreview
+            eventUid={eventUid}
+            uploadPhoto={uploadPhoto}
+            photoFile={photoFile}
+            setUploadModalOpen={setUploadModalOpen}
+          />
         </div>
         {photoList.map((photo) => {
           if (photo) {

@@ -52,6 +52,13 @@
   z-index: 900;
 }
 
+.columnCenter {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  gap: 12px;
+}
+
 .trashBtn {
   position: absolute;
   top: 15px;
@@ -63,6 +70,22 @@
   padding: 0px;
   background-color: transparent;
   background-image: url("../../assets/trash.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  background-image: url("../../assets/x.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
