@@ -5,6 +5,7 @@ import Icon from "../common/Icon";
 import "./FeedList.scss";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import useAuth from "../../hooks/useAuth";
 
 // FeedList에서 feed 객체를 recoil로부터 받아옴(한 개의 게시물)
 // 피드(게시물) 상세페이지
@@ -18,11 +19,18 @@ export default function Feed({ feed }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCnt, setLikeCnt] = useState(0);
 
+  // 한별
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, []);
+
   useEffect(() => {
     // 좋아요 갯수 T/F 받아오기
 
     async function fetchData() {
-      if (!feed.uid) return;
+      if (!feed) return;
       const request = await axios
         .get(requests.posts.getPostDetail(`${feed.uid}`))
         .then((response) => {
@@ -69,13 +77,13 @@ export default function Feed({ feed }) {
         <img src={profile} alt="프로필기본사진" />
         {/* )} */}
         <div className="titleAndMember">
-          <p className="feedTitle">{feed.title}</p>
-          <p className="feedId">@{feed.memberId}</p>
+          <p className="feedTitle">{feed?.title}</p>
+          <p className="feedId">@{feed?.memberId}</p>
         </div>
       </div>
       <div className="feedContent">
-        <p>{feed.content}</p>
-        <p className="feedTime">{timeForToday(feed.createTime)}</p>
+        <p>{feed?.content}</p>
+        <p className="feedTime">{timeForToday(feed?.createTime)}</p>
       </div>
       <div>
         {/* CSS 추후 수정 및 추가 예정 */}
