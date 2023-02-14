@@ -1,25 +1,22 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Button from "../components/common/Button";
-import giftPangImg from "../assets/giftPang.png";
-import giftPangOpened from "../assets/giftPangOpened.png";
+import Button from "../common/Button";
+import giftPangImg from "../../assets/giftPang.png";
+import giftPangOpened from "../../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
-import touch1 from "../assets/touch1.png";
-import touch2 from "../assets/touch2.png";
-import touch3 from "../assets/touch3.png";
-import touch4 from "../assets/touch4.png";
+import touch1 from "../../assets/touch1.png";
+import touch2 from "../../assets/touch2.png";
+import touch3 from "../../assets/touch3.png";
+import touch4 from "../../assets/touch4.png";
 // import goUpIcon from "../assets/goUpIcon.png";
-import "../styles/GiftIntroPage.scss";
+import "../../styles/GiftIntroPage.scss";
 
-export default function GiftIntroPage() {
-  // 유저 정보 받아오기
+export default function GiftIntro(props) {
+  const { userName, dDay, eventId } = props;
+  // 유저 정보, 디데이 받아오기
 
-  // 오늘 날짜
-  const todayInfo = new Date();
-  // const today = todayInfo.getFullYear();
-
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Touch 정보 저장
   const [touchCount, setTouchCount] = useState(1);
@@ -27,19 +24,15 @@ export default function GiftIntroPage() {
   const countTouch = (e) => {
     if (touchCount <= 20) e.preventDefault();
     const newCount = touchCount + 1;
-    console.log(touchCount);
+    // console.log(touchCount);
     setTouchCount(newCount);
-  };
-
-  const nextPage = () => {
-    navigate("/gift/recap/1");
   };
 
   return (
     <div>
       <div className="giftIntroContainer">
         <header className="giftHeader">
-          <p style={{ marginBottom: "0px" }}>누구누구님을 위해 완성된</p>
+          <p style={{ marginBottom: "0px" }}>{userName}님을 위해 완성된</p>
           <p style={{ marginTop: "4px", fontWeight: "bolder" }}>
             축하 선물을 열어보세요.
           </p>
@@ -97,7 +90,7 @@ export default function GiftIntroPage() {
         <div className="dayInfoContainer">
           <p style={{ fontSize: "13px", marginBottom: "0px" }}>오늘은 D-DAY</p>
           <p style={{ fontSize: "19px", marginTop: "0px", color: "#FF7A5C" }}>
-            {todayInfo.toLocaleDateString()}
+            {dDay}
           </p>
         </div>
 
@@ -116,9 +109,9 @@ export default function GiftIntroPage() {
                 <p style={{ marginBottom: "10%" }}>
                   선물 받기 버튼을 눌러주세요!
                 </p>
-                <Button color="orange-1" onClick={nextPage}>
-                  선물 받기
-                </Button>
+                <Link to={`/gift/${eventId}/recap`}>
+                  <Button color="orange-1">선물 받기</Button>
+                </Link>
               </div>
             );
           })()}

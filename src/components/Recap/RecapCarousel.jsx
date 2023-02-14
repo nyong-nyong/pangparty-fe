@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import RecapPang from "./RecapPang";
 import RecapRp from "./RecapRp";
 import RecapPhoto from "./RecapPhoto";
+import RecapGoDetail from "./RecapGoDetail";
 import "../../styles/Recap.scss";
+import Button from "../common/Button";
 
-export default function RecapCarousel() {
+export default function RecapCarousel(props) {
+  const { eventInfo, eventUid } = props;
   const settings = {
     dots: true,
     infinite: false,
@@ -17,11 +21,19 @@ export default function RecapCarousel() {
     <div>
       <div className="carouselContainer">
         <Slider {...settings}>
-          <RecapPang />
-          <RecapRp />
-          <RecapPhoto />
-          <p>다음으로..</p>
+          <RecapPang pangNum={eventInfo.eventExports[0].eventLikeCnt} />
+          <RecapRp
+            writerNum={eventInfo.eventExports[0].rollingPaperParticipantCnt}
+            rpNum={eventInfo.eventExports[0].rollingPaperCnt}
+          />
+          <RecapPhoto albumNum={eventInfo.eventExports[0].albumMediaCnt} />
+          <RecapGoDetail />
         </Slider>
+        <div className="btnContainer">
+          <Link to={`/events/${eventUid}`}>
+            <Button color="orange-1">선물 확인하러 가기</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

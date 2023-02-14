@@ -1,0 +1,36 @@
+@import "../../styles/colors.scss";
+
+@mixin ellipsis($line-cnt, $line-height) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line-cnt; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: $line-height;
+  height: $line-height * $line-cnt;
+}
+
+.pieceListContianer {
+  width: 94px;
+  height: 94px;
+  // background: $orange-2; //추후수정해주세요
+  box-shadow: $box-shadow;
+  border-radius: 3px;
+  margin: 3px;
+  padding: 5px;
+  
+  z-index: 10000;
+  
+  .pieceContentContainer {
+    @include ellipsis(4, 1.3em);
+    font-size: 13px;
+    font-size: 13px;
+  }
+
+  .pieceWriterNameContainer {
+    @include ellipsis(1, 1em);
+    text-align: right;
+    margin-top: 1.3em;
+  }
+}
