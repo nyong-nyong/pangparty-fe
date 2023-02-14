@@ -27,7 +27,7 @@ import SearchResultPage from "./SearchPage/SearchResultPage";
 import HashtagPage from "./SearchPage/HashtagPage";
 import FeedPage from "./Feed/FeedPage";
 import CreateFeedPage from "./Feed/CreateFeedPage";
-import FeedDetail from "../components/Feed/FeedDetail";
+import FeedDetail from "./Feed/FeedDetailPage";
 import FriendMyPage from "./FriendMyPage";
 import UpdateProfilePage from "./MyPage/UpdateProfilePage";
 
@@ -49,7 +49,7 @@ export default function Routers() {
       <Route path="feed">
         <Route path="" element={<FeedPage />} />
         <Route path="create" element={<CreateFeedPage />} />
-        <Route path=":postId" element={<FeedDetail />} />
+        <Route path=":feedId" element={<FeedDetail />} />
       </Route>
 
       {/* 이벤트 페이지 */}
