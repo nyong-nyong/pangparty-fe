@@ -150,6 +150,15 @@
   min-height: 30px;
 }
 
+.feedEventCard {
+  width: 80%;
+  margin: 5%;
+}
+
+.feedEventCardImg {
+  width: 100px;
+}
+
 .feedCardContent {
   width: 100%;
   display: flex;
@@ -206,25 +215,64 @@
   font-size: 13px;
 }
 
+.pangBtn {
+  background-color: $orange-3;
+  border: none;
+  width: 50px;
+  margin-right: 8px;
+  border-radius: 50px;
+}
+
+.pangImg {
+  width: 40px;
+  // height: 40px;
+}
+
 /* 뱃지 */
+.profilebottomContainer {
+  // width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  font-family: "Pretendard";
+}
+
 .badgeContainer {
   display: flex;
-  flex-flow: row wrap;
-  margin: 10px;
-  gap: 25px;
-  padding: 12px;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .badgeImgContainer {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  display: inline-block;
+  width: 100px;
+}
+
+.badgeimgBox {
+  margin: 0 auto;
 }
 
 .badgeImg {
   width: 75px;
   height: 75px;
   overflow: contain;
+  margin: 0 auto;
+}
+
+.badgeName {
+  font-family: "Pretendard";
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.badgeAcquireDay {
+  font-family: "Pretendard";
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: $orange-1;
 }
 
 .badgeName {

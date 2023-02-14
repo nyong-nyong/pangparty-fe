@@ -1,0 +1,18 @@
+@import "../../styles/colors.scss";
+
+.pieceListContianer {
+  width: 94px;
+  height: 94px;
+  // background: $orange-2; //추후수정해주세요
+  box-shadow: $box-shadow;
+  border-radius: 3px;
+  font-size: 13px;
+  margin: 3px;
+  padding: 5px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // white-space: nowrap;
+
+  z-index: 10000;
+}

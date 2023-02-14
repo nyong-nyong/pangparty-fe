@@ -34,6 +34,7 @@ export default function PieceListPage() {
   const size = 30;
 
   useEffect(() => {
+    // 롤페 피스 목록 GET
     async function fetchPieceList() {
       await axios
         .get(
@@ -55,6 +56,7 @@ export default function PieceListPage() {
     fetchPieceList();
     // console.log(rpUid);
 
+    // 롤페 스티커 목록 GET
     async function fetchStickerList() {
       await axios
         .get(
@@ -66,7 +68,7 @@ export default function PieceListPage() {
           )
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
         })
         .catch((e) => {
@@ -86,7 +88,7 @@ export default function PieceListPage() {
       <RpContainer>
         <div
           className="RpPieceStickerList"
-          style={{ width: "100%", height: "800px", position: "relative" }} // 스티커페이지 연결
+          style={{ width: "100%", height: "800px", paddingLeff: "5px", position: "relative" }} // 스티커페이지 연결
         >
           {/* 롤링페이퍼 조각 리스트 */}
           <div

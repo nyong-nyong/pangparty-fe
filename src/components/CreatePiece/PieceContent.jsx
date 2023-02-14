@@ -43,12 +43,14 @@ export default function PieceContent() {
         className="pieceContent"
         placeholder="내용을 입력해주세요"
         defaultValue={contentInfo}
+        maxLength="150"
         style={{
           fontFamily: `${fontFamily}`,
           color: `#${textColor}`,
           textAlign: `${textAlign}`,
         }}
       />
+      <p>{contentInfo.length}/150</p>
       <div className="from">
         <p
           className="fromTag"
