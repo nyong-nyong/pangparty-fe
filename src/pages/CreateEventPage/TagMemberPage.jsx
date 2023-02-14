@@ -15,7 +15,6 @@ export default function TagMemberPage() {
   const [isInput, setIsInput] = useState(false);
   const auth = useAuth();
   const [user, setUser] = useState("");
-  const [clickedMember, setClickedMember] = useState({});
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -31,7 +30,6 @@ export default function TagMemberPage() {
     e.preventDefault();
     setIsInput(false);
     setTargetsInfo("");
-    setClickedMember("");
     setSearchText("");
   };
 
@@ -48,21 +46,10 @@ export default function TagMemberPage() {
         /> */}
         <MemeberSearch
           setIsInput={setIsInput}
-          clickedMember={clickedMember}
-          setClickedMember={setClickedMember}
           searchText={searchText}
           setSearchText={setSearchText}
+          setTargetsInfo={setTargetsInfo}
         />
-        {isInput ? (
-          <Icon
-            style={{
-              display: "flex",
-              // position: "absolute",
-            }}
-            img="clear"
-            onClick={clearText}
-          />
-        ) : null}
       </div>
 
       {/* common으로 나중에 button component 뺄 것!!!!!!!!!!!! */}

@@ -12,7 +12,12 @@ function IntroHeader({ params, eventInfo }) {
         <div className="PangBtn">
           <Pang eventUid={params.eventId} />
         </div>
-        <div className="banner">
+        <div
+          className="banner"
+          style={{
+            backgroundImage: eventInfo ? `url(${eventInfo.imgUrl}` : null,
+          }}
+        >
           <div className="bannerContentBox">
             <p className="bannerContent">
               {eventInfo && eventInfo.introduction}

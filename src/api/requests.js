@@ -138,6 +138,10 @@ const requests = {
       return `${eventsBaseUrl}/${eventUid}/export`;
     },
 
+    postHeaderImg(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/header`;
+    },
+
     album: {
       albumBaseUrl: "/album",
       commentBaseUrl: "/comments",

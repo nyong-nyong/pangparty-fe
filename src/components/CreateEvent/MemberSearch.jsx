@@ -12,15 +12,16 @@ import "./MemberSearch.scss";
 
 export default function EventLink({
   setIsInput,
-  clickedMember,
-  setClickedMember,
+  // clickedMember,
+  // setClickedMember,
   searchText,
   setSearchText,
+  setTargetsInfo,
 }) {
   const searchType = "Member";
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  // const [clickedMember, setClickedMember] = useState({});
+  const [clickedMember, setClickedMember] = useState({});
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -52,8 +53,11 @@ export default function EventLink({
   }, [debouncedSearchText]);
 
   const clearText = (e) => {
+    e.preventDefault();
+    setIsInput(false);
+    setTargetsInfo("");
+    setClickedMember("");
     setSearchText("");
-    setModalOpen(false);
   };
 
   const keyUP = (e) => {
@@ -95,7 +99,6 @@ export default function EventLink({
             setIsInput={setIsInput}
             setSearchText={setSearchText}
           />
-          <button onClick={clearText}>X</button>
         </div>
       )}
     </div>
