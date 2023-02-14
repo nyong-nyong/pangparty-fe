@@ -78,6 +78,12 @@
     &.link{
       background-image: url($link);
     }
+    &.clear{
+      background-image: url($clear);
+    }
+    &.todayIssue{
+      background-image: url($todayIssue);
+    }
   }
   .iconButton {
     border: none;

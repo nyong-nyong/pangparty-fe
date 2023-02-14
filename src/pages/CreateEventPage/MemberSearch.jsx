@@ -9,12 +9,17 @@ import requests from "../../api/requests";
 // import "./Feed.scss";
 import Icon from "../../components/common/Icon";
 
-export default function EventLink() {
+export default function EventLink({
+  setIsInput,
+  clickedMember,
+  setClickedMember,
+  searchText,
+  setSearchText,
+}) {
   const searchType = "Member";
-  const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [clickedMember, setClickedMember] = useState({});
+  // const [clickedMember, setClickedMember] = useState({});
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -58,6 +63,7 @@ export default function EventLink() {
             setClickedMember={setClickedMember}
             searchResults={searchResults}
             setModalOpen={setModalOpen}
+            setIsInput={setIsInput}
           />
           <button onClick={clearText}>X</button>
         </div>

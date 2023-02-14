@@ -34,7 +34,7 @@ function SearchBar() {
   const fetchSearchText = async (text) => {
     // console.log(type);
     const request = await axios
-      .get(requests.search.getSearch(type, text, 1, 30))
+      .get(requests.search.getSearch(type, text, 0, 30))
       .then((response) => {
         setSearchResults(response.data[`${type}s`]);
       })
@@ -56,11 +56,12 @@ function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSearched(true);
-    navigate(`${searchText}`);
+    navigate(`/search/${searchText}`);
   };
 
   const clearText = () => {
     setSearchText("");
+    navigate("/search");
   };
 
   return (
@@ -94,7 +95,7 @@ function SearchBar() {
             top: "3px",
             right: "10px",
           }}
-          img="search"
+          img="clear"
           onClick={clearText}
         />
       ) : (

@@ -1,25 +1,55 @@
 // import { useRecoilValue } from "recoil";
 // import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import HashtagTitle from "../../components/Search/HashtagTitle";
-import HashtagResults from "../../components/Search/HashtagResults";
+// import HashtagResult from "../../components/Search/HashtagResult";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
+import SearchEventResult from "../../components/Search/SearchEvent";
 
 export default function HashtagPage() {
-  const hashtag = {
-    hashtagUid: 200031,
-    name: "2월19일",
-    createTime: "2023-01-31 14:58:32",
-    likes: 7,
-    isLiked: false,
-  };
+  const params = useParams();
+  const [name, setName] = useState("");
+  const [hashtagResult, setHashtagResult] = useState([]);
+
+  useEffect(() => {
+    setName(params.name);
+  }, [params]);
+
+  useEffect(() => {
+    const fetchData = async (inputName) => {
+      if (!inputName) return;
+      console.log(inputName);
+      await axios
+        .get(
+          `${requests.search.getSearch(
+            "event",
+            "",
+            0,
+            30
+          )}&hashtagName=${inputName}`
+        )
+        .then((res) => {
+          setHashtagResult(res.data.events);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+    fetchData(name);
+  }, [name]);
 
   return (
     <div>
-      <h4>검색</h4>
-      {hashtag ? (
-        <div>
-          <HashtagTitle hashtag={hashtag} />
-          <HashtagResults hashtagUid={hashtag.hashtagUid} />
-        </div>
+      {name ? <HashtagTitle hashtag={name} /> : null}
+      {hashtagResult ? (
+        <ul>
+          {hashtagResult.map((result) => {
+            if (!result) return null;
+            return <SearchEventResult key={result.uid} event={result} />;
+          })}
+        </ul>
       ) : (
         <div />
       )}

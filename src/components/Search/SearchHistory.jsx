@@ -11,9 +11,9 @@ export default function SearchHistory() {
   const navigate = useNavigate();
 
   const clickSearchHistory = (item) => {
-    if (item.type === "event") navigate(`/events/${item.uid}`);
-    if (item.type === "member") navigate(`/`);
-    if (item.type === "hashtag") navigate(`/`);
+    if (item.type === "event") navigate(`/events/${item.eventUid}`);
+    if (item.type === "member") navigate(`/friend/${item.id}`);
+    if (item.type === "hashtag") navigate(`/search/hashtag/${item.name}`);
   };
 
   const deleteHistory = (e, id) => {
@@ -29,15 +29,20 @@ export default function SearchHistory() {
           return (
             <div className={classNames("SearchHistoryList")} key={item.id}>
               <div
-                className={classNames("Type", item.type)}
+                className={
+                  item.type === "hashtag"
+                    ? classNames("Type", "hashtagIcon")
+                    : classNames("Type", item.type)
+                }
                 onClick={() => clickSearchHistory(item)}
               />
               <div
                 className={classNames("HistoryContext")}
                 onClick={() => clickSearchHistory(item)}
               >
-                {item.eventName && item.eventName}
-                {item.name && item.name}
+                {item.type === "event" && item.eventName}
+                {item.type === "member" && item.id}
+                {item.type === "hashtag" && item.name}
               </div>
               <div
                 className={classNames("DeleteHistory")}

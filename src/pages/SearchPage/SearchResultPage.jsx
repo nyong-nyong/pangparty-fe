@@ -15,7 +15,6 @@ export default function SearchResultPage() {
 
   return (
     <div>
-      <h4>검색</h4>
       <SearchBar />
       <SearchType />
       {searchText ? (

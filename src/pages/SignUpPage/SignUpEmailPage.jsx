@@ -97,21 +97,21 @@ export default function SignUpEmail() {
       const isValidReturn = emailIsValid(targetValue);
       const newIsValid = { ...isValid };
       newIsValid.email = isValidReturn;
-      if (isValidReturn) {
-        const checkEmailDup = async () => {
-          await axios
-            .get()
-            .then((res) => {
-              const newIsValidWithDup = { ...isValid };
-              newIsValidWithDup.emailDup = res.data;
-              setIsValid(newIsValidWithDup);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        };
-        checkEmailDup();
-      }
+      // if (isValidReturn) {
+      //   const checkEmailDup = async () => {
+      //     await axios
+      //       .get()
+      //       .then((res) => {
+      //         const newIsValidWithDup = { ...isValid };
+      //         newIsValidWithDup.emailDup = res.data;
+      //         setIsValid(newIsValidWithDup);
+      //       })
+      //       .catch((err) => {
+      //         console.log(err);
+      //       });
+      //   };
+      //   checkEmailDup();
+      // }
       setIsValid(newIsValid);
       return;
     }
@@ -133,21 +133,21 @@ export default function SignUpEmail() {
       const isValidReturn = idIsValid(targetValue);
       const newIsValid = { ...isValid };
       newIsValid.id = isValidReturn;
-      if (isValidReturn) {
-        const checkIdDup = async () => {
-          await axios
-            .get()
-            .then((res) => {
-              const newIsValidWithDup = { ...isValid };
-              newIsValidWithDup.idDup = res.data;
-              setIsValid(newIsValidWithDup);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        };
-        checkIdDup();
-      }
+      // if (isValidReturn) {
+      //   const checkIdDup = async () => {
+      //     await axios
+      //       .get()
+      //       .then((res) => {
+      //         const newIsValidWithDup = { ...isValid };
+      //         newIsValidWithDup.idDup = res.data;
+      //         setIsValid(newIsValidWithDup);
+      //       })
+      //       .catch((err) => {
+      //         console.log(err);
+      //       });
+      //   };
+      //   checkIdDup();
+      // }
       setIsValid(newIsValid);
       return;
     }
@@ -172,21 +172,20 @@ export default function SignUpEmail() {
   const signUpPost = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    // ""에 key 값 넣기
-    formData.append(
-      "data",
-      new Blob([JSON.stringify(userInfo)], {
-        type: "application/json",
-      })
-    );
-    if (profileImgFile) formData.append("file", profileImgFile);
+    // const formData = new FormData();
+    // // ""에 key 값 넣기
+    // formData.append(
+    //   "data",
+    //   new Blob([JSON.stringify(userInfo)], {
+    //     type: "application/json",
+    //   })
+    // );
+    // if (profileImgFile) formData.append("file", profileImgFile);
 
     await axios
-      .post(requests.member.postSignUp(), {
-        data: formData,
+      .post(requests.register, userInfo, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       })
       .then((res) => {
@@ -204,180 +203,87 @@ export default function SignUpEmail() {
   return (
     <div className="siginUpWrapper">
       <div className="signUpTitle">
-        <p style={{ color: "#678cff" }}>Let's</p>
-        <p style={{ color: "#FF7A5C" }}>Start!</p>
+        {/* <p style={{ color: "#678cff" }}>Welcome to</p>
+        <p style={{ color: "#FF7A5C" }}>PangParty</p> */}
+        <p>웰컴 투 팡파레!</p>
+        <span>회원가입을 위해 아래 정보를 입력해주세요.</span>
       </div>
-      {isValid.email && isValid.emailDup ? (
-        <div className="inputContainer">
-          <p>이메일</p>
-          <input
-            id="email"
-            type="email"
-            value={userInfo.email}
-            onChange={signupHandler}
-            label="이메일"
-            placeholder="example@naver.com"
-            maxLength="320"
-          />
-        </div>
-      ) : isValid.email ? (
-        <div>
-          <div className="inputContainer">
-            <p>이메일</p>
-            <input
-              id="email"
-              type="email"
-              value={userInfo.email}
-              onChange={signupHandler}
-              placeholder="example@naver.com"
-              maxLength="320"
-            />
-          </div>
-          <p className="errorMsg">이미 존재하는 email 입니다.</p>
-        </div>
+      <div className="inputContainer">
+        <p>이메일</p>
+        <input
+          id="email"
+          type="email"
+          value={userInfo.email}
+          onChange={signupHandler}
+          label="이메일"
+          placeholder="example@naver.com"
+          maxLength="320"
+        />
+      </div>
+      {isValid.email && isValid.emailDup ? null : isValid.email ? (
+        <span className="errorMsg">이미 존재하는 email 입니다.</span>
       ) : (
-        <div>
-          <div className="inputContainer">
-            <p>이메일</p>
-            <input
-              id="email"
-              type="email"
-              value={userInfo.email}
-              onChange={signupHandler}
-              placeholder="example@naver.com"
-              maxLength="320"
-            />
-          </div>
-          <p className="errorMsg">유효하지 않은 email 형식입니다.</p>
-        </div>
+        <span className="errorMsg">유효하지 않은 email 형식입니다.</span>
       )}
 
-      {isValid.password ? (
-        <div className="inputContainer">
-          <p>비밀번호</p>
-          <input
-            id="password"
-            type="password"
-            value={userInfo.password}
-            onChange={signupHandler}
-            maxLength="20"
-          />
-        </div>
-      ) : (
-        <div>
-          <div className="inputContainer">
-            <p>비밀번호</p>
-            <input
-              id="password"
-              type="password"
-              value={userInfo.password}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-          </div>
-          <p className="errorMsg">비밀번호 형식 오류</p>
-        </div>
+      <div className="inputContainer">
+        <p>비밀번호</p>
+        <input
+          id="password"
+          type="password"
+          value={userInfo.password}
+          onChange={signupHandler}
+          maxLength="20"
+        />
+      </div>
+      {isValid.password ? null : (
+        <span className="errorMsg">유효하지 않은 비밀번호 형식입니다.</span>
       )}
 
-      {isValid.passwordCheck ? (
-        <div className="inputContainer">
-          <p>비밀번호 확인</p>
-          <input
-            id="passwordCheck"
-            type="password"
-            value={userInfo.passwordCheck}
-            onChange={signupHandler}
-            maxLength="20"
-          />
-        </div>
-      ) : (
-        <div>
-          <div className="inputContainer">
-            <p>비밀번호 확인</p>
-            <input
-              id="passwordCheck"
-              type="password"
-              value={userInfo.passwordCheck}
-              onChange={signupHandler}
-              maxLength="20"
-            />
-          </div>
-          <p className="errorMsg">비밀번호가 일치하지 않습니다</p>
-        </div>
+      <div className="inputContainer">
+        <p>비밀번호 확인</p>
+        <input
+          id="passwordCheck"
+          type="password"
+          value={userInfo.passwordCheck}
+          onChange={signupHandler}
+          maxLength="20"
+        />
+      </div>
+      {isValid.passwordCheck ? null : (
+        <span className="errorMsg">비밀번호가 일치하지 않습니다</span>
       )}
 
-      {isValid.id && isValid.idDup ? (
-        <div className="inputContainer">
-          <p>ID</p>
-          <input
-            id="id"
-            type="text"
-            value={userInfo.id}
-            placeholder=""
-            onChange={signupHandler}
-            maxLength="15"
-          />
-        </div>
-      ) : isValid.id ? (
-        <div>
-          <div className="inputContainer">
-            <p>ID</p>
-            <input
-              id="id"
-              type="text"
-              value={userInfo.id}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-          </div>
-          <p className="errorMsg">이미 존재하는 ID입니다</p>
-        </div>
+      <div className="inputContainer">
+        <p>ID</p>
+        <input
+          id="id"
+          type="text"
+          value={userInfo.id}
+          placeholder=""
+          onChange={signupHandler}
+          maxLength="15"
+        />
+      </div>
+      {isValid.id && isValid.idDup ? null : isValid.id ? (
+        <span className="errorMsg">이미 존재하는 ID입니다</span>
       ) : (
-        <div>
-          <div className="inputContainer">
-            <p>ID</p>
-            <input
-              id="id"
-              type="text"
-              value={userInfo.id}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-          </div>
-          <p className="errorMsg">유효하지 않은 ID 형식입니다</p>
-        </div>
+        <span className="errorMsg">유효하지 않은 ID 형식입니다</span>
       )}
 
-      {isValid.name ? (
-        <div className="inputContainer">
-          <p>Name</p>
-          <input
-            id="name"
-            type="text"
-            value={userInfo.name}
-            placeholder=""
-            onChange={signupHandler}
-            maxLength="15"
-          />
-        </div>
-      ) : (
-        <div>
-          <div className="inputContainer">
-            <p>Name</p>
-            <input
-              id="name"
-              type="text"
-              value={userInfo.name}
-              placeholder=""
-              onChange={signupHandler}
-              maxLength="15"
-            />
-          </div>
-          <p className="errorMsg">이름 형식 오류</p>
-        </div>
-      )}
+      <div className="inputContainer">
+        <p>Name</p>
+        <input
+          id="name"
+          type="text"
+          value={userInfo.name}
+          placeholder=""
+          onChange={signupHandler}
+          maxLength="15"
+        />
+      </div>
+      {isValid.name ? null : <span className="errorMsg">이름 형식 오류</span>}
+
       <div className="loginProfileContainer">
         <div className="profileImg">
           <p>프로필 사진</p>

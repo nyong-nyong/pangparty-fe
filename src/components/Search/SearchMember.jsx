@@ -28,7 +28,7 @@ export default function SearchMemberResult({ member }) {
   // }, [member]);
 
   const onClickProfile = () => {
-    navigate("/");
+    navigate(`/friend/${member.id}`);
     const newSearchHistory = _.cloneDeep(searchHistory);
     // console.log(newSearchHistory);
     if (searchHistory.length === 10) {
