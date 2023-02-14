@@ -88,7 +88,7 @@ export default function PieceListPage() {
       <RpContainer>
         <div
           className="RpPieceStickerList"
-          style={{ width: "100%", height: "800px", paddingLeff: "5px", position: "relative" }} // 스티커페이지 연결
+          style={{ width: "100%", height: "800px", position: "relative" }} // 스티커페이지 연결
         >
           {/* 롤링페이퍼 조각 리스트 */}
           <div

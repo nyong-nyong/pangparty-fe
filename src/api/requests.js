@@ -124,12 +124,12 @@ const requests = {
 
   events: {
     postEvent: eventsBaseUrl,
+    getEvent(type) {
+      return `${eventsBaseUrl}?type=${type}`;
+    },
     /** export(pangparty) page GET 요청 */
     getPangExport(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/export`;
-    },
-    getEvent(type) {
-      return `${eventsBaseUrl}?type=${type}`;
     },
 
     album: {

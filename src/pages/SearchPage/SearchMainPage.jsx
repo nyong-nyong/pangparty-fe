@@ -4,7 +4,7 @@ import SearchBar from "../../components/Search/SearchBar";
 import SearchHistory from "../../components/Search/SearchHistory";
 import SearchResults from "../../components/Search/SearchResults";
 import { searchTypeState, searchTextState } from "../../recoils/search/Atoms";
-import SearchType from "../../components/Search/SearchType";
+// import SearchType from "../../components/Search/SearchType";
 
 export default function SearchMainPage() {
   const setType = useSetRecoilState(searchTypeState);
@@ -17,7 +17,6 @@ export default function SearchMainPage() {
   return (
     <div>
       <SearchBar />
-      <SearchType />
       {searchText ? (
         <div>
           <SearchResults />
