@@ -52,6 +52,7 @@ export default function NavBar() {
         content={() => (
           <div className="alarmPopoverContainer">
             <p>알림센터</p>
+            <hr />
           </div>
         )}
       >
