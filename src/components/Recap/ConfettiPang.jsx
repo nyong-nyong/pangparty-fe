@@ -1,18 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import JSConfetti from "js-confetti";
-import giftPangImg from "../../assets/giftPang.png";
+import giftPangOpened from "../../assets/giftPangOpened.png";
 
-export default function Confetti(props) {
-  const { touchCount, setTouchCount } = props;
+export default function Confetti() {
   // HTML Canvas 요소를 생성하여 페이지에 추가
   const jsConfetti = new JSConfetti();
 
   // 색종이 커스터마이징
   const handleClick = () => {
-    // if (touchCount <= 20) e.preventDefault();
-    const newCount = touchCount + 1;
-    // console.log(touchCount);
-    setTouchCount(newCount);
     jsConfetti.addConfetti({
       // confettiColors: [
       //   "#ff0a54",
@@ -24,18 +19,13 @@ export default function Confetti(props) {
       // ],
       emojis: ["💖", "✨", "🥳", "🎊", "🍰", "🦋"],
       confettiRadius: 5,
-      confettiNumber: 4,
+      confettiNumber: 30,
     });
   };
 
   return (
     <button className="moveButton" type="button" onClick={handleClick}>
-      <img
-        className="touchImg"
-        style={{ width: 200 + touchCount * 3 }}
-        src={giftPangImg}
-        alt="pangimage"
-      />
+      <img className="touchImg" src={giftPangOpened} alt="pangimage" />
     </button>
   );
 }

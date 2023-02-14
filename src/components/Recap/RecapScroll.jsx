@@ -1,20 +1,84 @@
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import RecapPang from "./RecapPang";
 import RecapRp from "./RecapRp";
 import RecapPhoto from "./RecapPhoto";
 import RecapGoDetail from "./RecapGoDetail";
 
 export default function RecapScroll(props) {
-  const { eventInfo } = props;
+  const { eventInfo, eventUid } = props;
+
+  const recapRef = useRef();
+  const { scrollYProgress } = useScroll({ target: recapRef });
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <div>
-      <RecapPang pangNum={eventInfo.eventExports[0].eventLikeCnt} />
-      <RecapRp
-        writerNum={eventInfo.eventExports[0].rollingPaperParticipantCnt}
-        rpNum={eventInfo.eventExports[0].rollingPaperCnt}
-      />
-      <RecapPhoto albumNum={eventInfo.eventExports[0].albumMediaCnt} />
-      <RecapGoDetail />
+      <section>
+        <RecapPang
+          ref={recapRef}
+          pangNum={eventInfo.eventExports[0].eventLikeCnt}
+        />
+      </section>
+      <section>
+        <RecapRp
+          ref={recapRef}
+          writerNum={eventInfo.eventExports[0].rollingPaperParticipantCnt}
+          rpNum={eventInfo.eventExports[0].rollingPaperCnt}
+        />
+      </section>
+      <section>
+        <RecapPhoto albumNum={eventInfo.eventExports[0].albumMediaCnt} />
+      </section>
+      <section>
+        <RecapGoDetail eventUid={eventUid} />
+      </section>
+      <motion.div className="progress" style={{ scaleX }} />
     </div>
   );
 }
+
+// 참고
+
+// function useParallax(value, distance) {
+//   return useTransform(value, [0, 1], [-distance, distance]);
+//   }
+
+//   function Image({ id }) {
+//   const ref = useRef(null);
+//   const { scrollYProgress } = useScroll({ target: ref });
+//   const y = useParallax(scrollYProgress, 300);
+
+//   return (
+//     <section>
+//       <div ref={ref}>
+//         <img src={`/${id}.jpg`}/>
+//       </div>
+//       <motion.h2 style={{ y }}>{#00${id}}</motion.h2>
+//     </section>
+//   );
+//   }
+
+// export default function RecapScroll(props) {
+//   const { eventInfo } = props;
+//   const { scrollYProgress } = useScroll();
+//   const scaleX = useSpring(scrollYProgress, {
+//   stiffness: 100,
+//   damping: 30,
+//   restDelta: 0.001
+//   });
+
+// return (
+//   <>
+//     {[1, 2, 3, 4, 5].map((image) => (
+//       <Image id={image} />
+//     ))}
+//     <motion.div className="progress" style={{ scaleX }} />
+//   </>
+// );
+// }

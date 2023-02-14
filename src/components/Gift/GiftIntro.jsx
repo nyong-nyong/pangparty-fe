@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Confetti from "../Recap/Confetti";
+import ConfettiPang from "../Recap/ConfettiPang";
 import Button from "../common/Button";
 // import giftPangImg from "../../assets/giftPang.png";
-import giftPangOpened from "../../assets/giftPangOpened.png";
+// import giftPangOpened from "../../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
 import touch1 from "../../assets/touch1.png";
 import touch2 from "../../assets/touch2.png";
 import touch3 from "../../assets/touch3.png";
 import touch4 from "../../assets/touch4.png";
-// import goUpIcon from "../assets/goUpIcon.png";
+import goDown from "../../assets/goDown.svg";
 import "../../styles/GiftIntroPage.scss";
 
 export default function GiftIntro(props) {
-  const { userName, dDay, eventId } = props;
+  const { userName, dDay, eventId, setIsOpened } = props;
   // 유저 정보, 디데이 받아오기
 
   // const navigate = useNavigate();
@@ -28,6 +29,13 @@ export default function GiftIntro(props) {
   //   // console.log(touchCount);
   //   setTouchCount(newCount);
   // };
+
+  const openRecap = () => {
+    setIsOpened(true);
+    document
+      .querySelector(".recapTitleDday")
+      .scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -78,15 +86,16 @@ export default function GiftIntro(props) {
             return null;
           })()}
           {touchCount === 20 && (
-            <motion.div
-              animate={{ scale: [1, 1.3, 1, 1.2, 1] }}
-              whileHover={{ scale: [1, 1.3, 1, 1.2, 1] }}
-              className="moveContainer"
-            >
-              <button className="moveButton" type="button">
-                <img src={giftPangOpened} alt="pangimage" />
-              </button>
-            </motion.div>
+            // <motion.div
+            //   animate={{ scale: [1, 1.3, 1, 1.2, 1] }}
+            //   whileHover={{ scale: [1, 1.3, 1, 1.2, 1] }}
+            //   className="moveContainer"
+            // >
+            //   <button className="moveButton" type="button">
+            //     <img src={giftPangOpened} alt="pangimage" />
+            //   </button>
+            // </motion.div>
+            <ConfettiPang />
           )}
         </div>
         <div className="dayInfoContainer">
@@ -114,6 +123,10 @@ export default function GiftIntro(props) {
                 <Link to={`/gift/${eventId}/recap`}>
                   <Button color="orange-1">선물 받기</Button>
                 </Link>
+                <Button color="orange-1" onClick={openRecap}>
+                  아래에서 선물 받기
+                </Button>
+                <img className="downIcon" src={goDown} alt="" />
               </div>
             );
           })()}
