@@ -43,25 +43,32 @@
   }
 
   .banner {
-    background-image: url("../assets/detailBanner.png");
+    // background-image: url("../assets/detailBanner.png");
     position: relative;
-    
+
     left: -10px;
     width: 360px;
     // width: auto;
+
+    .bannerImg {
+      width: 360px;
+      height: 212px;
+      object-fit: contain;
+    }
 
     .bannerContentBox {
       position: relative;
       display: flex;
       top: 50%;
       left: 10px;
-      height: 90px;
+      height: auto;
       width: 340px;
 
       .bannerContent {
         display: flex;
         align-items: center;
         font-weight: 600;
+        background-color: white;
       }
     }
   }
@@ -96,7 +103,6 @@
     font-weight: 700;
     color: $gray-1;
     text-align: center;
-
   }
 }
 

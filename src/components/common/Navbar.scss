@@ -1,0 +1,28 @@
+@import "../../styles/colors.scss";
+
+.alarmPopoverContainer {
+  // background-color: rgba(71, 71, 71, 0.8);
+  background-color: rgba($blue-1, 0.8);
+  //color: white;
+  box-shadow: $box-shadow;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  left: -210px;
+  p {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  hr {
+    width: 98%;
+    background-color: $gray-1;
+    height: 1px;
+    border: 0;
+  }
+}

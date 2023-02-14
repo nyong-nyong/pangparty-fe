@@ -1,27 +1,39 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Profiler, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { detailFeedState } from "../../recoils/Feed/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./FeedList.scss";
-import profile from "../../assets/profile.svg";
+import useAuth from "../../hooks/useAuth";
+import SearchEventResult from "../Search/SearchEvent";
+import Feed from "./Feed";
 
 export default function FeedList() {
   const [feedList, setFeedList] = useState([]);
-  const navigate = useNavigate();
+  const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
+
+  // 한별
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, []);
 
   // localhost
   const page = 0;
-  const limit = 3;
+  const size = 30;
   useEffect(() => {
     async function getFeed() {
       await axios
-        .get(requests.feed.getFeed(page, limit))
+        .get(requests.feed.getFeed(page, size))
         .then((response) => {
-          setFeedList(response.data.posts);
-          console.log(response.data);
+          setFeedList(response.data.feed);
+          console.log(response.data.feed);
         })
         .catch((e) => {
           console.log(e);
@@ -30,60 +42,25 @@ export default function FeedList() {
     getFeed();
   }, []);
 
-  // const handleClickPost = (e, post) => {
-  //   e.preventDefault();
-  //   console.log(post.uid);
-  //   navigate(`/${post.uid}`);
-  // };
-
-  function timeForToday(value) {
-    const today = new Date();
-    const timeValue = new Date(value);
-
-    const betweenTime = Math.floor(
-      (today.getTime() - timeValue.getTime()) / 1000 / 60
-    );
-    if (betweenTime < 1) return "방금전";
-    if (betweenTime < 60) {
-      return `${betweenTime}분전`;
-    }
-
-    const betweenTimeHour = Math.floor(betweenTime / 60);
-    if (betweenTimeHour < 24) {
-      return `${betweenTimeHour}시간전`;
-    }
-
-    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-    if (betweenTimeDay < 365) {
-      return `${betweenTimeDay}일전`;
-    }
-
-    return `${Math.floor(betweenTimeDay / 365)}년전`;
-  }
-
   return (
     <div className="feedWrapper">
       {feedList ? (
-        feedList.map((post) => {
+        feedList.map((feed) => {
+          if (!feed) return null;
           return (
-            // <div key={post.uid} onClick={(e) => handleClickPost(e, post)}>
-            <Link to={`/feed/${post.uid}`}>
-              <div key={post.uid}>
-                <div className="feedContainer">
-                  <div className="feedMember">
-                    <img src={profile} alt="" />
-                    <div className="titleAndMember">
-                      <p className="feedTitle">게시글 제목</p>
-                      <p className="feedId">@{post.id}</p>
-                    </div>
-                  </div>
-                  <div className="feedContent">
-                    <p>{post.content}</p>
-                    <p className="feedTime">{timeForToday(post.createTime)}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <div key={feed.uid}>
+              <Link
+                to={`/feed/${feed.uid}`}
+                onClick={() => {
+                  setDetailFeed(feed);
+                }}
+              >
+                <Feed feed={feed} />
+              </Link>
+              <ul>
+                {feed.event ? <SearchEventResult event={feed.event} /> : null}
+              </ul>
+            </div>
           );
         })
       ) : (

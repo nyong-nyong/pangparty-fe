@@ -17,6 +17,7 @@ const requests = {
     },
   },
 
+  // 홈 화면에 있는 피드
   feed: {
     feedBaseUrl: "/feed",
 
@@ -25,11 +26,9 @@ const requests = {
     getFeed(page, size) {
       return `${this.feedBaseUrl}?page=${page}&size=${size}`;
     },
-    // getFeed() {
-    //   return `${this.feedBaseUrl}`;
-    // },
   },
 
+  // 게시물 CRUD
   posts: {
     postsBaseUrl: "/posts",
 
@@ -39,7 +38,9 @@ const requests = {
     },
 
     /** 게시물 상세 정보 GET 요청  */
-    getPostDetail() {},
+    getPostDetail(postUid) {
+      return `${this.postsBaseUrl}/${postUid}`;
+    },
   },
 
   // 프로필
@@ -66,6 +67,12 @@ const requests = {
     },
     getProfileInvolvedEvents(memberId) {
       return `${this.profileBaseUrl}/${memberId}/involved-events`;
+    },
+    postProfilePicture() {
+      return `${this.profileBaseUrl}/profile/picture`;
+    },
+    putProfileInfo() {
+      return `${this.profileBaseUrl}/profile`;
     },
   },
 
@@ -130,6 +137,10 @@ const requests = {
     /** export(pangparty) page GET 요청 */
     getPangExport(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/export`;
+    },
+
+    postHeaderImg(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/header`;
     },
 
     album: {

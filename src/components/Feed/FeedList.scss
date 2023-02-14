@@ -1,10 +1,9 @@
 @import "../../styles/colors.scss";
 
 .feedWrapper {
-  width: 100%;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  gap: 5px;
 
   a {
     text-decoration: none;
@@ -14,14 +13,20 @@
   p {
     margin: 0;
   }
-  .feedContainer {
-    border: 1.5px solid $orange-1;
-    border-radius: 15px;
-    width: 80%;
-    height: 120px;
-    padding: 20px;
-    margin: 10px;
 
+  ul {
+    margin-top: -10px;
+    // border: 1.5px solid $orange-1;
+    // border-radius: 15px;
+  }
+  .feedContainer {
+    box-shadow: $box-shadow;
+    border: 1.5px solid $blue-1;
+    border-radius: 15px;
+    width: 298px;
+    height: auto;
+    padding: 11px 15px 11px 15px;
+    margin: 10px 5px 10px 5px;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -29,16 +34,19 @@
     .feedMember {
       display: flex;
       flex-flow: row;
+      // margin: 10px;
 
       img {
-        width: 80px;
+        width: 52px;
+        height: 52px;
       }
 
       .titleAndMember {
         display: flex;
         flex-flow: column;
-        width: 100%;
-        margin-left: 10px;
+        // width: 100%;
+        margin-left: 15px;
+        margin-top: 5px;
 
         .feedTitle {
           font-size: 19px;
@@ -47,6 +55,7 @@
         .feedId {
           font-size: 16px;
           color: $orange-1;
+          font-weight: 900;
         }
       }
     }
@@ -59,6 +68,7 @@
 
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 13px;
 
       .feedTime {
         color: $gray-4;

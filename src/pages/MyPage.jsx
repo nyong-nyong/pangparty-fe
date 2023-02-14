@@ -135,6 +135,28 @@ export default function MyPage() {
         <button className="profileEditButton" type="button" onClick={logOut}>
           로그아웃
         </button>
+        <Link
+          to={`/mypage/${profileInfo && profileInfo.id}/update`}
+          state={
+            profileInfo
+              ? {
+                  id: profileInfo.id,
+                  name: profileInfo.name,
+                  imgUrl: profileInfo.imgUrl,
+                  introduction: profileInfo.introduction,
+                }
+              : {
+                  id: "",
+                  name: "",
+                  imgUrl: "",
+                  introduction: "",
+                }
+          }
+        >
+          <button className="profileEditButton" type="button">
+            프로필 변경
+          </button>
+        </Link>
         <div className="eventInfoContainers">
           <button type="button" className="eventBox">
             <Link
