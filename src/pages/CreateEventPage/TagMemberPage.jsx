@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Button from "../../components/common/Button";
 import { targetsTagState } from "../../recoils/createEvent/Atoms";
 import "../../styles/CreateEvent.scss";
-import MemeberSearch from "./MemberSearch";
+import MemeberSearch from "../../components/CreateEvent/MemberSearch";
 import Icon from "../../components/common/Icon";
 
 import useAuth from "../../hooks/useAuth";
@@ -57,9 +57,7 @@ export default function TagMemberPage() {
           <Icon
             style={{
               display: "flex",
-              position: "absolute",
-              top: "3px",
-              right: "10px",
+              // position: "absolute",
             }}
             img="clear"
             onClick={clearText}

@@ -1,0 +1,66 @@
+@import "../../styles/colors.scss";
+
+.outline {
+  display: flex;
+  width: 328px;
+  justify-content: space-between;
+  margin: 15px auto;
+}
+
+.followContainer {
+  align-items: center;
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.followimgBox {
+  float: left;
+  width: 66px;
+  height: 66px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position: center center; */
+}
+
+.followInfoBox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.followId {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+}
+
+.followName {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-3;
+}
+
+// 입력받은 후
+.insertedNameContainer {
+  width: calc(100% - 65px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.insertedName {
+  font-family: "Pretendard";
+  font-size: 16px;
+  color: $orange-1;
+}
+
+.insertedNameClearBtn {
+  display: flex;
+  // justify-content: flex-end;
+}
