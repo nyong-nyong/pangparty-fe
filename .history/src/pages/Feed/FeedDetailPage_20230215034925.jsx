@@ -2,7 +2,7 @@
 import { useRecoilState } from "recoil";
 import { detailFeedState } from "../../recoils/Feed/Atoms";
 import Feed from "../../components/Feed/Feed";
-import PostCommentList from "../../components/Feed/PostCommentList";
+import FeedCommentList from "../../components/Feed/PostCommentList";
 
 export default function FeedDetailPage() {
   // const feedInfo = useRecoilValue(detailFeedState);
