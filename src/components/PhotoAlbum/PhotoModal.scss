@@ -1,0 +1,157 @@
+@import "../../styles/colors.scss";
+
+.photoModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.photoModal.openModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modal-bg-show 0.3s;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carouselContainer {
+  max-width: 360px;
+  margin: 0 auto;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+.detailPhotoContainer {
+  position: relative;
+  width: 290px;
+  max-height: 100vh;
+  margin: auto;
+  background-color: white;
+  padding: 10px;
+  z-index: 900;
+}
+
+.trashBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  background-image: url("../../assets/trash.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.commentMember {
+  color: $orange-1;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 7px;
+}
+
+.commentContent {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.commentTime {
+  color: $gray-3;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.commentDel {
+  color: $gray-3;
+  font-weight: 500;
+  font-size: 7px;
+}
+
+.commentHeader {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.commentBody {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentContainer {
+  margin-bottom: 10px;
+}
+
+.commentListContainer {
+  position: relative;
+  margin-top: 15px;
+  overflow: scroll;
+  max-height: 40vh;
+}
+
+.commentUpload {
+  position: relative;
+  width: 290px;
+  height: fit-content;
+
+  .commentInput {
+    font-family: "Pretendard-Regular";
+    font-size: 13px;
+    font-weight: 500;
+    width: calc(100% - 60px);
+    height: 100%;
+    padding: 5px 50px 5px 5px;
+    border-radius: 5px;
+    border: 1.5px $gray-3 solid;
+  }
+
+  .commentBtn {
+    font-family: "Pretendard-Regular";
+    font-size: 13px;
+    font-weight: 700;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border: 0px;
+    background-color: transparent;
+    color: $blue-1;
+  }
+}
+
+.moreOpen {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  font-family: "Pretendard-Regular";
+  font-size: 13px;
+  font-weight: 700;
+  background-color: transparent;
+  border: 0;
+  color: $blue-1;
+  margin-right: 10px;
+}
+
+

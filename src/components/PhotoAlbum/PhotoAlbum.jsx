@@ -6,6 +6,7 @@ import PhotoCarousel from "./PhotoCarousel";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
+import "./PhotoModal.scss";
 
 export default function PhotoAlbum({ isPart, eventUid }) {
   const page = 0;
@@ -13,6 +14,7 @@ export default function PhotoAlbum({ isPart, eventUid }) {
 
   const [photoList, setPhotoList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [photoSelected, setPhotoSelected] = useState({});
 
   const auth = useAuth();
@@ -28,7 +30,7 @@ export default function PhotoAlbum({ isPart, eventUid }) {
         requests.events.album.mediaAll(eventUid, page, limit)
       );
       setPhotoList(request.data.media);
-      console.log(request.data.media);
+      // console.log(request.data.media);
     }
     fetchData();
   }, []);
@@ -46,6 +48,8 @@ export default function PhotoAlbum({ isPart, eventUid }) {
             <PhotoUpload eventUid={eventUid} />
           </AddContainer>
         )}
+        <div className={uploadModalOpen ? "openModal photoModal" : "photoModal"}>
+        </div>
         {photoList.map((photo) => {
           if (photo) {
             return (
@@ -54,7 +58,11 @@ export default function PhotoAlbum({ isPart, eventUid }) {
                 key={photo.uid}
                 onClick={() => handleModalClick(photo)}
                 onKeyDown={() => handleModalClick(photo)}
-                style={{ backgroundColor: "transparent", border: "none" }}
+                style={{
+                  padding: "0px",
+                  backgroundColor: "transparent",
+                  border: "none",
+                }}
               >
                 <PhotoFrame src={photo.thumbnailUrl} />
               </button>
@@ -63,16 +71,17 @@ export default function PhotoAlbum({ isPart, eventUid }) {
           return null;
         })}
       </AlbumFrame>
-      <br />
-      {modalOpen && (
-        <PhotoCarousel
-          idx={photoList.indexOf(photoSelected)}
-          // mediaUid={photoSelected.uid}
-          setModalOpen={setModalOpen}
-          eventUid={eventUid}
-          photoList={photoList}
-        />
-      )}
+      <div className={modalOpen ? "openModal photoModal" : "photoModal"}>
+        {modalOpen && photoSelected ? (
+          <PhotoCarousel
+            idx={photoList.indexOf(photoSelected)}
+            // mediaUid={photoSelected.uid}
+            setModalOpen={setModalOpen}
+            eventUid={eventUid}
+            photoList={photoList}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -82,25 +91,23 @@ const AlbumFrame = styled.div`
   width: auto;
   height: fit-contents;
   flex-flow: row wrap;
-  gap: 5px;
+  gap: 11px;
   padding: 0px;
 `;
 
 const PhotoFrame = styled.img`
   display: flex;
-  width: 90px;
-  height: 90px;
+  width: 102px;
+  height: 102px;
   object-fit: cover;
   border-radius: 3px;
   box-shadow: 0px 0px 13px 4px rgba(209, 209, 209, 0.25);
 `;
 
 const AddContainer = styled.div`
-  margin: 1px;
-  padding: 0px 5px;
-  border: 1px dashed #6b6b6b;
   display: flex;
-  width: 85px;
-  height: 85px;
-  object-fit: cover;
+  border: 1px dashed #6b6b6b;
+  width: 102px;
+  height: 102px;
+  justify-content: center;
 `;
