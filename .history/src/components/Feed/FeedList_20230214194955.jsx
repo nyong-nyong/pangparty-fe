@@ -33,7 +33,7 @@ export default function FeedList() {
         .get(requests.feed.getFeed(page, size))
         .then((response) => {
           setFeedList(response.data.feed);
-          // console.log(response.data.feed);
+          console.log(response.data.feed);
         })
         .catch((e) => {
           console.log(e);

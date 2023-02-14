@@ -31,7 +31,6 @@ const requests = {
   // 게시물 CRUD
   posts: {
     postsBaseUrl: "/posts",
-    commentsBaseUrl: "/comments",
 
     /** 게시믈 POST 요청  */
     postPost() {
@@ -44,9 +43,7 @@ const requests = {
     },
 
     /** 게시물 상세페이지 댓글 조회 GET 요청 */
-    getPostComment(postUid, type, page, size) {
-      return `${this.postsBaseUrl}/${postUid}${this.commentsBaseUrl}?type=${type}&page=${page}&size=${size}`;
-    },
+    getPostComment()
   },
 
   // 프로필

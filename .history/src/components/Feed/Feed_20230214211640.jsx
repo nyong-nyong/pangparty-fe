@@ -40,7 +40,7 @@ export default function Feed({ feed }) {
           // console.log(isLiked);
           // console.log(likeCnt);
           // console.log(response.data);
-          setProfileImgUrl(response.data.profileImgUrl);
+          setProfileImgUrlresponse.data.profileImgUrl;
         })
         .catch((err) => {
           console.log(err);
@@ -73,8 +73,8 @@ export default function Feed({ feed }) {
   return (
     <div className="feedContainer">
       <div className="feedMember">
-        {profileImgUrl ? (
-          <img src={profileImgUrl} alt="프로필사진" />
+        {profilImgUrl ? (
+          <img src={`"${profilImgUrl}"`} alt="프로필사진" />
         ) : (
           <img src={profile} alt="프로필기본사진" />
         )}

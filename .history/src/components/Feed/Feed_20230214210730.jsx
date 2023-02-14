@@ -18,7 +18,6 @@ import useAuth from "../../hooks/useAuth";
 export default function Feed({ feed }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCnt, setLikeCnt] = useState(0);
-  const [profileImgUrl, setProfileImgUrl] = useState("");
 
   // 로그인 정보
   const auth = useAuth();
@@ -39,8 +38,8 @@ export default function Feed({ feed }) {
           setLikeCnt(response.data.likeCount);
           // console.log(isLiked);
           // console.log(likeCnt);
-          // console.log(response.data);
-          setProfileImgUrl(response.data.profileImgUrl);
+          console.log(response.data);
+          // console.log(response.data.profileImgUrl);
         })
         .catch((err) => {
           console.log(err);
@@ -73,11 +72,12 @@ export default function Feed({ feed }) {
   return (
     <div className="feedContainer">
       <div className="feedMember">
-        {profileImgUrl ? (
-          <img src={profileImgUrl} alt="프로필사진" />
-        ) : (
+        {/* {feed.profileImgUrl ? ( */}
+        <img src={`${feed.profileImgUrl}`} alt="프로필사진" />
+        {/* src={`${profileInfo && profileInfo.imgUrl}`} */}
+        {/* ) : (
           <img src={profile} alt="프로필기본사진" />
-        )}
+        )} */}
         <div className="titleAndMember">
           <p className="feedTitle">{feed?.title}</p>
           <p className="feedId">@{feed?.memberId}</p>

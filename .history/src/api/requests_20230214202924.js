@@ -46,7 +46,7 @@ const requests = {
     /** 게시물 상세페이지 댓글 조회 GET 요청 */
     getPostComment(postUid, type, page, size) {
       return `${this.postsBaseUrl}/${postUid}${this.commentsBaseUrl}?type=${type}&page=${page}&size=${size}`;
-    },
+    }
   },
 
   // 프로필
