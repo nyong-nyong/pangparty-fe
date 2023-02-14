@@ -1,0 +1,16 @@
+@import "../../styles/colors.scss";
+
+.likeCommentContainer {
+  display: flex;
+  
+  .postIconContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+
+    .postCntContainer {
+      test
+    }
+  }
+}

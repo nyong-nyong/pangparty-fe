@@ -1,0 +1,22 @@
+@import "../../styles/colors.scss";
+
+.feedFooterContainer {
+  display: flex;
+  justify-content: space-between;
+
+  .likeCommentContainer {
+    display: flex;
+
+    .postIconContainer {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+    }
+  }
+  .feedTime {
+    color: $gray-4;
+    display: block;
+    align-items: flex-end;
+  }
+}
