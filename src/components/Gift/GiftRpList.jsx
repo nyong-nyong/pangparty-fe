@@ -28,8 +28,8 @@ export default function GiftRpList(props) {
   const size = 30;
 
   useEffect(() => {
-    console.log(">?");
-    console.log(props);
+    // console.log(">?");
+    // console.log(props);
     // 롤페 피스 목록 GET
     // console.log(eventInfo);
     async function fetchPieceList() {
@@ -44,11 +44,11 @@ export default function GiftRpList(props) {
         )
         .then((res) => {
           setPieceListData(res.data.rollingPaperPieces);
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
+          // console.log(res);
         });
+      // .catch((err) => {
+      // console.log(err);
+      // });
     }
     fetchPieceList();
     // console.log(rpUid);
@@ -67,10 +67,11 @@ export default function GiftRpList(props) {
         .then((res) => {
           // console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
-        })
-        .catch((e) => {
-          console.log(e);
         });
+      // .catch((e) => {
+      // console.log(e);
+
+      // });
     }
     fetchStickerList();
   }, []);
