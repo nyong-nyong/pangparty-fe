@@ -229,50 +229,33 @@
 }
 
 /* 뱃지 */
-.profilebottomContainer {
-  // width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 5%;
-  font-family: "Pretendard";
-}
-
 .badgeContainer {
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 10px;
+  gap: 25px;
+  padding: 12px;
 }
 
 .badgeImgContainer {
-  display: inline-block;
-  width: 100px;
-}
-
-.badgeimgBox {
-  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
 .badgeImg {
   width: 75px;
   height: 75px;
   overflow: contain;
-  margin: 0 auto;
 }
 
-.badgeName {
-  font-family: "Pretendard";
+.badgeInfos {
+  display: flex;
+  flex-direction: column;
+  width: 80x;
+  word-break: normal;
+  text-align: center;
   font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.badgeAcquireDay {
-  font-family: "Pretendard";
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-  color: $orange-1;
 }
 
 .badgeName {
@@ -281,6 +264,24 @@
   word-break: normal;
   text-align: center;
   font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.badgeGetDate {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: $orange-1;
+  margin-top: 3px;
+}
+
+.noBadgeText {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: $gray-4;
+  margin-top: 3px;
 }
 
 /* 이벤트 달력 */

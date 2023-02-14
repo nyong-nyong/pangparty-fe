@@ -1,56 +1,59 @@
 /* eslint-disable */
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
-import { imgUrlState } from "../../recoils/createEvent/Atoms";
+import { imgFileState, readerState } from "../../recoils/createEvent/Atoms";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Button from "../../components/common/Button";
 
 export default function SelectImagePage() {
-  const [imgUrlInfo, setImgUrlInfo] = useRecoilState(imgUrlState);
-  const [photoFile, setPhotoFile] = useState("");
+  const [imgFileInfo, setImgFileInfo] = useRecoilState(imgFileState);
+  const [readerInfo, setReaderInfo] = useRecoilState(readerState);
+  // const [photoFile, setPhotoFile] = useState("");
   const photoRef = useRef();
 
   const savePhotoFile = () => {
+    console.log(photoRef.current);
     const photo = photoRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(photo);
     reader.onloadend = () => {
-      setPhotoFile(reader.result);
+      setImgFileInfo(photo);
+      setReaderInfo(reader.result);
     };
   };
 
   const submitPhotoFile = async (e) => {
-    e.preventDefault();
-    const photo = photoRef.current.files[0];
+    // e.preventDefault();
+    // const photo = photoRef.current.files[0];
 
-    if (photo) {
-      const formData = new FormData();
-      formData.append("requests", photo);
+    // if (photo) {
+    //   const formData = new FormData();
+    //   formData.append("requests", photo);
 
-      for (const data of formData) console.log(data);
+    //   for (const data of formData) console.log(data);
 
-      await axios
-      // 대표 사진 api 생기면 그쪽으로 수정하여 post 요청
-      .post(requests.events.album.postMedia(eventUid), {
-        data: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+    //   await axios
+    //     // 대표 사진 api 생기면 그쪽으로 수정하여 post 요청
+    //     .post(requests.events.postHeaderImg(eventUid), formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // }
+    savePhotoFile();
   };
 
   const test = (e) => {
-    console.log(e)
-  }
+    console.log(e);
+  };
 
   return (
     <div>
@@ -70,11 +73,15 @@ export default function SelectImagePage() {
             />
             <button onClick={submitPhotoFile}>전송</button>
           </form>
+          <div className="previewImgContainer">
+            <p>이미지 미리보기</p>
+            <img className="previewImg" src={readerInfo} alt="업로드된 사진" />
+          </div>
         </div>
       </div>
       <Link to="/event/naming">
-        <Button>다음</Button>
+        <Button onClick={imgFileInfo && submitPhotoFile}>다음</Button>
       </Link>
     </div>
   );
-};
+}

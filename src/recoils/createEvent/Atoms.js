@@ -25,8 +25,13 @@ const hashTagState = atom({
 });
 
 // 이벤트 이미지 정보
-const imgUrlState = atom({
-  key: "imgUrlState",
+const imgFileState = atom({
+  key: "imgFileState",
+  default: "",
+});
+
+const readerState = atom({
+  key: "readerState",
   default: "",
 });
 
@@ -83,6 +88,7 @@ export {
   dDayState,
   eventIntroState,
   hashTagState,
-  imgUrlState,
+  imgFileState,
+  readerState,
   eventNameState,
 };

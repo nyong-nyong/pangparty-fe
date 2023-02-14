@@ -67,6 +67,12 @@ const requests = {
     getProfileInvolvedEvents(memberId) {
       return `${this.profileBaseUrl}/${memberId}/involved-events`;
     },
+    postProfilePicture() {
+      return `${this.profileBaseUrl}/profile/picture`;
+    },
+    putProfileInfo() {
+      return `${this.profileBaseUrl}/profile`;
+    },
   },
 
   following: {
@@ -130,6 +136,10 @@ const requests = {
     /** export(pangparty) page GET 요청 */
     getPangExport(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/export`;
+    },
+
+    postHeaderImg(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/header`;
     },
 
     album: {

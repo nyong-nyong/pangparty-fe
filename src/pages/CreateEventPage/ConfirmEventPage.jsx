@@ -6,8 +6,9 @@ import {
   dDayState,
   eventIntroState,
   hashTagState,
-  imgUrlState,
-  eventNameState
+  imgFileState,
+  eventNameState,
+  readerState,
 } from "../../recoils/createEvent/Atoms";
 // import "./ConfirmEvent.css";
 import axios from "../../api/axios";
@@ -24,15 +25,18 @@ function ConfirmEventPage() {
   const dDay = useRecoilValue(dDayState);
   const eventIntro = useRecoilValue(eventIntroState);
   const hashTag = useRecoilValue(hashTagState);
-  const imgUrl = useRecoilValue(imgUrlState);
+  // const imgUrl = useRecoilValue(imgUrlState);
   const eventName = useRecoilValue(eventNameState);
+
+  const imgFileInfo = useRecoilValue(imgFileState);
+  const readerInfo = useRecoilValue(readerState);
 
   // 한별
   const auth = useAuth();
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
-  }, [])
+  }, []);
 
   // 디데이 가공
 
@@ -46,6 +50,27 @@ function ConfirmEventPage() {
 
   const navigate = useNavigate();
 
+  const postPhoto = async (uid) => {
+    // if(!imgFileInfo) return;
+    const formData = new FormData();
+    formData.append("file", imgFileInfo);
+
+    const headers = new Headers({
+      "Content-Type": "multipart/form-data",
+    });
+
+    await axios
+      .post(requests.events.postHeaderImg(uid), formData, {headers})
+      .then((res) => {
+        console.log(res);
+        navigate(`/events/${uid}`);
+      })
+      .catch((err) => {
+        console.error(err);
+        navigate(-1);
+      });
+  };
+
   const postEvent = async () => {
     const postInfo = {
       targetId: targetTag,
@@ -54,33 +79,37 @@ function ConfirmEventPage() {
       introduction: eventIntro,
       // 이미지 POST EVENT 별도로 진행
       // imgUrl: imgUrl,
-      hashtags: hashTag
+      hashtags: hashTag,
     };
 
     // console.log(requests.events.postEvent);
     await axios
       .post(requests.events.postEvent, postInfo, {
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       })
       .then((response) => {
         console.log(response);
-        const eventUid = response.data.eventUid;
-        // 렌더링 시키기
-        navigate(`/events/${eventUid}`)
+        postPhoto(response.data.eventUid);
       })
       .catch((error) => {
         console.log(error);
+        // navigate(-1);
       });
   };
+
+  useEffect(() => {
+    console.log(imgFileInfo);
+  }, [imgFileInfo]);
 
   return (
     <div>
       <div className="createContainer">
         <p className="createTitle">입력된 내용을 확인해주세요 🥳</p>
         <div className="bannerContainer">
-          <img className="banner" src={imgUrl} alt="배너" />
+          <img className="banner" src={readerInfo} alt="배너" />
+          {/* <img className="banner" src={imgUrl} alt="배너" /> */}
         </div>
         <div className="confirmInfos">
           <p className="labels">주인공</p>
@@ -117,7 +146,16 @@ function ConfirmEventPage() {
           </div>
         </div>
       </div>
-      <Button color="orange-1" onClick={postEvent}>완성하기</Button>
+      <Button color="orange-1" onClick={postEvent}>
+        완성하기
+      </Button>
+
+      <div className="previewImgContainer">
+        <p>이미지 미리보기</p>
+        {readerInfo && (
+          <img className="previewImg" src={readerInfo} alt="업로드된 사진" />
+        )}
+      </div>
     </div>
   );
 }

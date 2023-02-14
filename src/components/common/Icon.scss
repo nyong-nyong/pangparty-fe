@@ -72,17 +72,20 @@
     &.share {
       background-image: url($share);
     }
-    &.add{
+    &.add {
       background-image: url($add);
     }
-    &.link{
+    &.link {
       background-image: url($link);
     }
-    &.clear{
+    &.clear {
       background-image: url($clear);
     }
-    &.todayIssue{
+    &.todayIssue {
       background-image: url($todayIssue);
+    }
+    &.okSign {
+      background-image: url($okSign);
     }
   }
   .iconButton {

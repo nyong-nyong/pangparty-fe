@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-/* eslint-disable no-unused-vars */
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -7,19 +7,21 @@ import MemberSearchResults from "./MemberSearchResults";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 // import "./Feed.scss";
-import Icon from "../../components/common/Icon";
+import Icon from "../common/Icon";
+import "./MemberSearch.scss";
 
 export default function EventLink({
   setIsInput,
-  clickedMember,
-  setClickedMember,
+  // clickedMember,
+  // setClickedMember,
   searchText,
   setSearchText,
+  setTargetsInfo,
 }) {
   const searchType = "Member";
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  // const [clickedMember, setClickedMember] = useState({});
+  const [clickedMember, setClickedMember] = useState({});
 
   const onChange = (e) => {
     setSearchText(e.target.value);
@@ -50,28 +52,33 @@ export default function EventLink({
     }
   }, [debouncedSearchText]);
 
-  const clearText = () => {
+  const clearText = (e) => {
+    e.preventDefault();
+    setIsInput(false);
+    setTargetsInfo("");
+    setClickedMember("");
     setSearchText("");
-    setModalOpen(false);
+  };
+
+  const keyUP = (e) => {
+    console.log(e);
   };
 
   return (
     <div>
-      {modalOpen && (
-        <div className="resultsContainer">
-          <MemberSearchResults
-            setClickedMember={setClickedMember}
-            searchResults={searchResults}
-            setModalOpen={setModalOpen}
-            setIsInput={setIsInput}
-          />
-          <button onClick={clearText}>X</button>
-        </div>
-      )}
       <div className="linkContainer">
         <Icon img="link" />
         {clickedMember.id ? (
-          <div>{clickedMember.id}</div>
+          <div className="insertedNameContainer">
+            <p className="insertedName">{clickedMember.id}</p>
+            <div
+              className="insertedNameClearBtn"
+              onClick={clearText}
+              onKeyUp={keyUP}
+            >
+              <Icon img="clear" />
+            </div>
+          </div>
         ) : (
           <input
             type="text"
@@ -83,6 +90,17 @@ export default function EventLink({
           />
         )}
       </div>
+      {modalOpen && (
+        <div className="resultsContainer">
+          <MemberSearchResults
+            setClickedMember={setClickedMember}
+            searchResults={searchResults}
+            setModalOpen={setModalOpen}
+            setIsInput={setIsInput}
+            setSearchText={setSearchText}
+          />
+        </div>
+      )}
     </div>
   );
 }
