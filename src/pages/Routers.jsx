@@ -48,7 +48,7 @@ export default function Routers() {
       <Route path="feed">
         <Route path="" element={<FeedPage />} />
         <Route path="create" element={<CreateFeedPage />} />
-        <Route path=":postId" element={<FeedDetail />} />
+        <Route path=":feedId" element={<FeedDetail />} />
       </Route>
 
       {/* 이벤트 페이지 */}

@@ -3,6 +3,7 @@
 .feedWrapper {
   display: flex;
   flex-flow: column;
+  gap: 5px;
 
   a {
     text-decoration: none;
@@ -12,14 +13,20 @@
   p {
     margin: 0;
   }
+
+  ul {
+    margin-top: -10px;
+    // border: 1.5px solid $orange-1;
+    // border-radius: 15px;
+  }
   .feedContainer {
-    border: 1.5px solid $orange-1;
     box-shadow: $box-shadow;
+    border: 1.5px solid $blue-1;
     border-radius: 15px;
-    width: 80%;
+    width: 298px;
     height: auto;
-    padding: 20px;
-    margin: 10px;
+    padding: 11px 15px 11px 15px;
+    margin: 10px 5px 10px 5px;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -37,8 +44,9 @@
       .titleAndMember {
         display: flex;
         flex-flow: column;
-        width: 100%;
-        margin-left: 10px;
+        // width: 100%;
+        margin-left: 15px;
+        margin-top: 5px;
 
         .feedTitle {
           font-size: 19px;
@@ -47,6 +55,7 @@
         .feedId {
           font-size: 16px;
           color: $orange-1;
+          font-weight: 900;
         }
       }
     }
@@ -59,6 +68,7 @@
 
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 13px;
 
       .feedTime {
         color: $gray-4;
