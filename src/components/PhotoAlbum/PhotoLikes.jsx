@@ -6,15 +6,14 @@ import requests from "../../api/requests";
 import Icon from "../common/Icon";
 
 const likeContainerStyle = {
-  width: "40px",
-  height: "30px",
-  // backgroundColor: "aqua",
   display: "flex",
+  height: "30px",
+  margin: "5px 0px 5px 0px",
   justifyContnet: "flex-start",
   alignItems: "center",
 };
 
-export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt }) {
+export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt, commentLength }) {
   const [tmpLikeCnt, setTmpLikeCnt] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -22,20 +21,6 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt }
     setIsLiked(isLikedProps);
     setTmpLikeCnt(likeCnt);
   }, [mediaUid]);
-
-  // useEffect(() => {
-  //   setTmpLikeCnt(likeCnt);
-  // }, [likeCnt])
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const request = await axios.get(
-  //       requests.events.album.getMediaLikes(eventUid, mediaUid, 1, 30)
-  //     );
-  //     setTmpLikeCnt(request.data.total);
-  //   }
-  //   fetchData();
-  // }, []);
 
   const handleBtnClick = (e) => {
     e.preventDefault();
@@ -72,12 +57,13 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt }
 
   return (
     <div
-      className="likeContainer"
       onClick={handleBtnClick}
       style={likeContainerStyle}
     >
-      <Icon img="like" isActive={isLiked} style={{ position: "relative", left: "-5px" }}/>
-      {tmpLikeCnt}
+    <Icon img="like" isActive={isLiked} style={{ position: "relative", left: "-15px" }}/>
+    {tmpLikeCnt !== undefined && <span style={{ position: "relative", left: "-20px" }}>{tmpLikeCnt}</span>}
+    <Icon img="comment" style={{ position: "relative", left: "-10px" }}/>
+    {commentLength !== undefined &&<span style={{ position: "relative", left: "-15px" }}>{commentLength}</span>}
     </div>
   );
 }

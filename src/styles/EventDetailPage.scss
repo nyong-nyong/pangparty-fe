@@ -108,6 +108,8 @@
 
 .hashtagContainer {
   display: flex;
+  flex-flow: wrap row;
+  gap: 5px;
 }
 
 .hashtag {

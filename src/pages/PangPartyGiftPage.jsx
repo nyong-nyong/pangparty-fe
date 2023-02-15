@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import GiftIntro from "../components/Gift/GiftIntro";
 import useAuth from "../hooks/useAuth";
+import Recap1Page from "./PangPartyRecapPage/Recap1Page";
 // import axios from "../api/axios";
 // import requests from "../api/requests";
 
 export default function PangPartyGiftPage() {
   const auth = useAuth();
   const [user, setUser] = useState("");
+
+  const [isOpened, setIsOpened] = useState(false);
 
   const location = useLocation();
   const { userName, dDay } = location.state;
@@ -27,10 +30,17 @@ export default function PangPartyGiftPage() {
 
   return (
     <div>
-      <GiftIntro userName={userName} dDay={dDay} eventId={eventId} />
+      <GiftIntro
+        userName={userName}
+        dDay={dDay}
+        eventId={eventId}
+        isOpened={isOpened}
+        setIsOpened={setIsOpened}
+      />
       {/* <button type="button" onClick={test}>
         test
       </button> */}
+      {isOpened ? <Recap1Page eventId={eventId} /> : null}
     </div>
   );
 }

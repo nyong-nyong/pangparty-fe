@@ -11,7 +11,7 @@ export default function EventLinkResults({
 }) {
   const handleClick = (e, event) => {
     e.preventDefault();
-    console.log(event);
+    // console.log(event);
     setModalOpen(false);
     return setClickedEvent(event);
   };

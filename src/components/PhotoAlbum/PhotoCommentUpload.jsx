@@ -43,6 +43,7 @@ export default function PhotoCommentUpload({
         .then((res) => {
           newComment.uid = res.data.uid;
           setCommentList([...commentList, newComment]);
+          setCommentContent("");
           console.log(res);
         })
         .catch((error) => {
@@ -60,8 +61,10 @@ export default function PhotoCommentUpload({
 
   return (
     <form onSubmit={createBtnClick}>
-      <textarea onChange={onChangeComment} value={commentContent} />
-      <button>작성</button>
+      <div className="commentUpload">
+        <input className="commentInput" type="text" onChange={onChangeComment} value={commentContent} placeholder={`${user}(으)로 댓글 달기...`}/>
+        <button className="commentBtn">게시</button>
+      </div>
     </form>
   );
 }

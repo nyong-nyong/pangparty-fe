@@ -10,7 +10,7 @@ function IntroHeader({ params, eventInfo }) {
       <header className="header">{eventInfo && eventInfo.eventName}</header>
       <div className="PangBannerContiner">
         <div className="PangBtn">
-          <Pang eventUid={params.eventId} />
+          {params ? <Pang eventUid={params.eventId} /> : null}
         </div>
         <div
           className="banner"

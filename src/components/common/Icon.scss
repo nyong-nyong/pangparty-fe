@@ -90,6 +90,9 @@
     &.okSign {
       background-image: url($okSign);
     }
+    &.trash {
+      background-image: url($trash);
+    }
   }
   .iconButton {
     border: none;

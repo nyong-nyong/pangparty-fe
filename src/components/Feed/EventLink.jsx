@@ -10,7 +10,6 @@ import "./CreateFeed.scss";
 import Icon from "../common/Icon";
 
 export default function EventLink({ eventUid, setEventUid }) {
-  const searchType = "Event";
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,16 +20,11 @@ export default function EventLink({ eventUid, setEventUid }) {
     setModalOpen(true);
   };
 
-  const modalClose = (e) => {
-    e.preventDefault();
-    setModalOpen(false);
-  };
-
   const debouncedSearchText = useDebounce(searchText, 1000);
 
   const fetchSearchText = async (text) => {
-    const request = await axios
-      .get(requests.search.getSearch("Event", text, 1, 30))
+    await axios
+      .get(requests.search.getSearch("event", text, 1, 30))
       .then((response) => {
         setSearchResults(response.data.events);
       })
@@ -45,18 +39,18 @@ export default function EventLink({ eventUid, setEventUid }) {
     }
   }, [debouncedSearchText]);
 
-  const clearText = () => {
+  const clearText = (e) => {
+    e.preventDefault();
     setSearchText("");
     setModalOpen(false);
+    setClickedEvent({});
   };
 
   return (
     <div className="eventLinkWrapper">
       {modalOpen && (
         <div className="resultsContainer">
-          <div className="linkModalexit">
-            <Icon img="exit" onClick={clearText} />
-          </div>
+          <div className="linkModalexit" />
           <EventLinkResults
             setClickedEvent={setClickedEvent}
             searchResults={searchResults}
@@ -66,7 +60,7 @@ export default function EventLink({ eventUid, setEventUid }) {
       )}
       <div className="linkContainer">
         <Icon img="link" />
-        {clickedEvent.uid ? (
+        {clickedEvent.eventUid ? (
           <div>{clickedEvent.eventName}</div>
         ) : (
           <input
@@ -78,6 +72,7 @@ export default function EventLink({ eventUid, setEventUid }) {
             value={searchText || ""}
           />
         )}
+        <Icon img="clear" onClick={clearText} />
       </div>
     </div>
   );

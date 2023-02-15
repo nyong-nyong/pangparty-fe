@@ -1,7 +1,9 @@
-/* eslint-disable */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
 export default function PhotoComment({
@@ -10,6 +12,7 @@ export default function PhotoComment({
   setCommentList,
   eventUid,
   mediaUid,
+  moreOpen,
 }) {
   const auth = useAuth();
   const [user, setUser] = useState("");
@@ -18,17 +21,23 @@ export default function PhotoComment({
   useEffect(() => {
     const createTime = new Date(comment.createTime);
     const today = new Date();
-    if(Math.floor((today - createTime)/(1000 * 60 * 60 * 24)) >= 1) {
-      return setTimeConvert(createTime);
+    if (Math.floor((today - createTime) / (1000 * 60 * 60 * 24)) >= 1) {
+      return setTimeConvert(
+        `${Math.floor((today - createTime) / (1000 * 60 * 60 * 24))}일 전`
+      );
     }
-    if(Math.floor((today - createTime)/(1000 * 60 * 60)) >= 1 ) {
-      return setTimeConvert(`${Math.floor((today - createTime)/(1000 * 60 * 60))}시간 전`);
+    if (Math.floor((today - createTime) / (1000 * 60 * 60)) >= 1) {
+      return setTimeConvert(
+        `${Math.floor((today - createTime) / (1000 * 60 * 60))}시간 전`
+      );
     }
-    if(Math.floor((today - createTime)/(1000 * 60)) >= 1) {
-      return setTimeConvert(`${Math.floor((today - createTime)/(1000 * 60))}분 전`);
+    if (Math.floor((today - createTime) / (1000 * 60)) >= 1) {
+      return setTimeConvert(
+        `${Math.floor((today - createTime) / (1000 * 60))}분 전`
+      );
     }
-    return setTimeConvert("방금 전")
-  }, [comment])
+    return setTimeConvert("방금 전");
+  }, [comment]);
 
   useEffect(() => {
     setUser(auth.user);
@@ -61,13 +70,19 @@ export default function PhotoComment({
   };
 
   return (
-    <div>
-      {comment.memberId} : {comment.content}
-      {timeConvert ? timeConvert : null}
-      <span onClick={deleteBtnClick}>
-        {user && comment.memberId === user ? "X" : ""}
-      </span>
-      <br />
+    <div className="commentContainer">
+      <div className="commentHeader">
+        <div className="commentMember">{comment.memberId}</div>
+        <div className="commentTime">{timeConvert || null}</div>
+      </div>
+      <div className="commentBody">
+        <div className="commentContent">{comment.content}</div>
+        {moreOpen === true ? (
+          <div className="commentDel" onClick={deleteBtnClick}>
+            {user && comment.memberId === user ? "X" : ""}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

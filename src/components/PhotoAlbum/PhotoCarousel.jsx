@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 // import { useEffect } from "react";
 import Slider from "react-slick";
+import "./PhotoModal.scss";
 // import axios from "../../api/axios";
 // import requests from "../../api/requests";
 
+import { useRef } from "react";
 import PhotoDetail from "./PhotoDetail";
-
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,10 +17,10 @@ function PhotoCarousel({ idx, setModalOpen, eventUid, photoList }) {
   //   console.log(photoList);
   // }, [photoList]);
 
-  const style = {
-    width: "350px",
-    height: "400px",
-  };
+  const ref = useRef();
+  useOnClickOutside(ref, () => {
+    setModalOpen(false);
+  });
 
   const settings = {
     lazyLoad: true,
@@ -27,10 +29,11 @@ function PhotoCarousel({ idx, setModalOpen, eventUid, photoList }) {
     slidesToScroll: 1,
     infinite: true,
     initialSlide: idx,
+    // arrows: false,
   };
 
   return (
-    <div style={style}>
+    <div className="carouselContainer" ref={ref}>
       {photoList && (
         <Slider {...settings}>
           {photoList.map((item) => {

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import RecapPang from "./RecapPang";
