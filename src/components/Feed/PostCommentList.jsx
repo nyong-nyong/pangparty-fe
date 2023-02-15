@@ -14,7 +14,7 @@ export default function PostCommentList({ postUid }) {
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     async function fetchData() {
