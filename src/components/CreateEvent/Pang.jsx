@@ -12,6 +12,8 @@ function Pang({ eventUid }) {
 
   // 이벤트 소개페이지 정보 GET
   useEffect(() => {
+    console.log(eventUid)
+    if(!eventUid) return;
     async function fetchData() {
       const req = await axios.get(
         requests.events.introEvent.eventItroAll(eventUid)
@@ -20,7 +22,7 @@ function Pang({ eventUid }) {
       setPangCnt(req.data.likeCnt);
     }
     fetchData();
-  }, []);
+  }, [eventUid]);
 
   const pangClickHandler = (e) => {
     e.preventDefault();

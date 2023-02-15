@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+// import { Link } from "react-router-dom";
+// import { motion } from "framer-motion";
+import Confetti from "../Recap/Confetti";
+import ConfettiPang from "../Recap/ConfettiPang";
 import Button from "../common/Button";
-import giftPangImg from "../../assets/giftPang.png";
-import giftPangOpened from "../../assets/giftPangOpened.png";
+// import giftPangImg from "../../assets/giftPang.png";
+// import giftPangOpened from "../../assets/giftPangOpened.png";
 // import touchMent from "../assets/touchMent.png";
 import touch1 from "../../assets/touch1.png";
 import touch2 from "../../assets/touch2.png";
 import touch3 from "../../assets/touch3.png";
 import touch4 from "../../assets/touch4.png";
-// import goUpIcon from "../assets/goUpIcon.png";
+import goDown from "../../assets/goDown.svg";
 import "../../styles/GiftIntroPage.scss";
 
 export default function GiftIntro(props) {
-  const { userName, dDay, eventId } = props;
+  const { userName, dDay, setIsOpened } = props;
+  // const { userName, dDay, eventId, setIsOpened } = props;
   // 유저 정보, 디데이 받아오기
 
   // const navigate = useNavigate();
@@ -21,11 +24,24 @@ export default function GiftIntro(props) {
   // Touch 정보 저장
   const [touchCount, setTouchCount] = useState(1);
 
-  const countTouch = (e) => {
-    if (touchCount <= 20) e.preventDefault();
-    const newCount = touchCount + 1;
-    // console.log(touchCount);
-    setTouchCount(newCount);
+  // const countTouch = (e) => {
+  //   if (touchCount <= 20) e.preventDefault();
+  //   const newCount = touchCount + 1;
+  //   // console.log(touchCount);
+  //   setTouchCount(newCount);
+  // };
+
+  const openRecap = () => {
+    setIsOpened(true);
+    document
+      .querySelector(".recapTitleDday")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goDownHandler = () => {
+    document
+      .querySelector(".recapTitleDday")
+      .scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -41,14 +57,15 @@ export default function GiftIntro(props) {
           {touchCount < 20 && (
             <div className="moveContainer">
               <p className="moveText">TOUCH!</p>
-              <button className="moveButton" type="button" onClick={countTouch}>
+              <Confetti touchCount={touchCount} setTouchCount={setTouchCount} />
+              {/* <button className="moveButton" type="button" onClick={countTouch}>
                 <img
                   className="touchImg"
                   style={{ width: 200 + touchCount * 3 }}
                   src={giftPangImg}
                   alt="pangimage"
                 />
-              </button>
+              </button> */}
             </div>
           )}
           {(() => {
@@ -76,20 +93,28 @@ export default function GiftIntro(props) {
             return null;
           })()}
           {touchCount === 20 && (
-            <motion.div
-              animate={{ scale: [1, 1.3, 1, 1.2, 1] }}
-              whileHover={{ scale: [1, 1.3, 1, 1.2, 1] }}
-              className="moveContainer"
-            >
-              <button className="moveButton" type="button">
-                <img src={giftPangOpened} alt="pangimage" />
-              </button>
-            </motion.div>
+            // <motion.div
+            //   animate={{ scale: [1, 1.3, 1, 1.2, 1] }}
+            //   whileHover={{ scale: [1, 1.3, 1, 1.2, 1] }}
+            //   className="moveContainer"
+            // >
+            //   <button className="moveButton" type="button">
+            //     <img src={giftPangOpened} alt="pangimage" />
+            //   </button>
+            // </motion.div>
+            <ConfettiPang />
           )}
         </div>
         <div className="dayInfoContainer">
-          <p style={{ fontSize: "13px", marginBottom: "0px" }}>오늘은 D-DAY</p>
-          <p style={{ fontSize: "19px", marginTop: "0px", color: "#FF7A5C" }}>
+          <p style={{ fontSize: "13px", marginBottom: "0px" }}>D-DAY</p>
+          <p
+            style={{
+              fontSize: "19px",
+              marginTop: "0px",
+              marginBottom: "5px",
+              color: "#FF7A5C",
+            }}
+          >
             {dDay}
           </p>
         </div>
@@ -109,9 +134,23 @@ export default function GiftIntro(props) {
                 <p style={{ marginBottom: "10%" }}>
                   선물 받기 버튼을 눌러주세요!
                 </p>
-                <Link to={`/gift/${eventId}/recap`}>
+                {/* <Link to={`/gift/${eventId}/recap`}>
                   <Button color="orange-1">선물 받기</Button>
-                </Link>
+                </Link> */}
+                <Button color="orange-1" onClick={openRecap}>
+                  아래에서 선물 받기
+                </Button>
+                <button
+                  type="button"
+                  onClick={goDownHandler}
+                  style={{
+                    backgroundColor: "inherit",
+                    border: "none",
+                    marginTop: "15px",
+                  }}
+                >
+                  <img className="downIcon" src={goDown} alt="" />
+                </button>
               </div>
             );
           })()}
