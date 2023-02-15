@@ -9,11 +9,11 @@ import requests from "../../api/requests";
 import "./CreateFeed.scss";
 import Icon from "../common/Icon";
 
-export default function EventLink({ eventUid, setEventUid }) {
+export default function EventLink({ clickedEvent, setClickedEvent }) {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [clickedEvent, setClickedEvent] = useState({});
+  // 이거를 어케 CreateFeed 로 보내는지 모르겠습니다
 
   const onChange = (e) => {
     setSearchText(e.target.value);

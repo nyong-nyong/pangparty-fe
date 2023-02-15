@@ -176,6 +176,10 @@ const requests = {
       return `${eventsBaseUrl}/${eventUid}/export`;
     },
 
+    getPangExportAll(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/export/all`;
+    },
+
     postHeaderImg(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/header`;
     },
@@ -283,7 +287,7 @@ const requests = {
 
       /** 이벤트 좋아요 취소 DELETE 요청 */
       deletePang(eventUid) {
-        return `${eventsBaseUrl}/${eventUid}/dislike`;
+        return `${eventsBaseUrl}/${eventUid}/like`;
       },
     },
   },

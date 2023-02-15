@@ -35,15 +35,16 @@ export default function Feed({ feed }) {
     // 좋아요 갯수 T/F 받아오기
     async function fetchData() {
       if (!feed) return;
-      const request = await axios
+      await axios
         .get(requests.posts.getPostDetail(`${feed.uid}`))
-        .then((response) => {
-          setIsLiked(response.data.isLiked);
-          setLikeCnt(response.data.likeCount);
-          setIsCommented(response.data.hasCommented);
-          setCommentCnt(response.data.commentCount);
-          setProfileImgUrl(response.data.profileImgUrl);
-          console.log(response.data);
+        .then(() => {
+          setUser(auth.user);
+          setIsLiked(feed.isLiked);
+          setLikeCnt(feed.likeCnt);
+          setIsCommented(feed.hasCommented);
+          setCommentCnt(feed.commentCnt);
+          setProfileImgUrl(feed.profileImgUrl);
+          console.log(feed);
         })
         .catch((err) => {
           console.log(err);
@@ -115,12 +116,12 @@ export default function Feed({ feed }) {
         <div className="likeCommentContainer">
           <div className="postIconContainer" onClick={likeClickHandler}>
             <Icon img="like" isActive={isLiked}>
-              {likeCnt}
+              {likeCnt ? `${likeCnt}` : "0"}
             </Icon>
           </div>
           <div className="postIconContainer">
             <Icon img="comment" isActive={isCommented}>
-              {commentCnt}
+              {commentCnt ? `${commentCnt}` : "0"}
             </Icon>
           </div>
         </div>

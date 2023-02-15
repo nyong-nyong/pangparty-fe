@@ -43,12 +43,16 @@
 .linkContainer {
   display: flex;
   flex-flow: wrap row;
+  justify-content: space-around;
+  align-items: center;
   width: 324px;
   height: 90%;
   margin: auto;
   border: 1.5px solid #D9D9D9;
   border-radius: 8px;
   padding: 0px;
+  color: $blue-1;
+  font-weight: 900;
 }
 
 .EventSearchBar {

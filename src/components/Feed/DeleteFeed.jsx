@@ -10,6 +10,7 @@ export default function DeleteFeed({ feed }) {
   useEffect(() => {
     setUser(auth.user);
   }, [user]);
+
   const navigate = useNavigate();
 
   const postDeleteHandler = (e) => {
@@ -29,9 +30,13 @@ export default function DeleteFeed({ feed }) {
 
   return (
     <div>
-      <button type="button" onClick={postDeleteHandler}>
-        삭제하기
-      </button>
+      {user && feed.memberId === user ? (
+        <button type="button" onClick={postDeleteHandler}>
+          삭제하기
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

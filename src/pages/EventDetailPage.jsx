@@ -39,8 +39,11 @@ export default function EventDetailPage() {
           console.error(err);
         })
     }
+    setUser(auth.user);
+    // console.log(user);
     fetchData();
-  }, [params]);
+    // const rpUid = response.data.rollingPaperUid;
+  }, [user]);
 
   return (
     <div className="detailContainer">

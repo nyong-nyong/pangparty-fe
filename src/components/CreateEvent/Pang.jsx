@@ -8,33 +8,32 @@ import useAuth from "../../hooks/useAuth";
 import "./Pang.scss";
 
 function Pang({ eventUid }) {
-  const [isPang, setIsPang] = useState(false);
-  const [pangCnt, setPangCnt] = useState(0);
-
   const auth = useAuth();
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
   }, [user]);
 
+  const [isPang, setIsPang] = useState(false);
+  const [pangCnt, setPangCnt] = useState(0);
 
   // 이벤트 소개페이지 정보 GET
   useEffect(() => {
-    // console.log(eventUid)
-    if(!eventUid) return;
     async function fetchData() {
+      if (!eventUid) return;
       await axios
         .get(requests.events.introEvent.eventIntroAll(eventUid))
         .then((res) => {
           setIsPang(res.data.isLiked);
           setPangCnt(res.data.likeCnt);
+          console.log(res.data);
         })
         .catch((err) => {
           console.error(err);
-        })
+        });
     }
     fetchData();
-  }, [eventUid]);
+  }, []);
 
   const pangClickHandler = (e) => {
     e.preventDefault();
