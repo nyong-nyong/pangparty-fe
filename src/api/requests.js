@@ -176,6 +176,10 @@ const requests = {
       return `${eventsBaseUrl}/${eventUid}/export`;
     },
 
+    getPangExportAll(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/export/all`;
+    },
+
     postHeaderImg(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/header`;
     },

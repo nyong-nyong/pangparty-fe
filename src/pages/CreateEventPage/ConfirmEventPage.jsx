@@ -51,7 +51,7 @@ function ConfirmEventPage() {
   const navigate = useNavigate();
 
   const postPhoto = async (uid) => {
-    if(!imgFileInfo) return;
+    if (!imgFileInfo) return;
     const formData = new FormData();
     formData.append("file", imgFileInfo);
     console.log(formData);
@@ -100,7 +100,11 @@ function ConfirmEventPage() {
       })
       .then((response) => {
         console.log(response);
-        postPhoto(response.data.eventUid);
+        if (!readerInfo) {
+          navigate(`/events/${response.data.eventUid}`);
+        } else {
+          postPhoto(response.data.eventUid);
+        }
       })
       .catch((error) => {
         console.log(error);
