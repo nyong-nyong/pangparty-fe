@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { detailFeedState } from "../../recoils/Feed/Atoms";
 import Feed from "../../components/Feed/Feed";
 import PostCommentList from "../../components/Feed/PostCommentList";
+import DeleteFeed from "../../components/Feed/DeleteFeed";
 
 export default function FeedDetailPage() {
   // const feedInfo = useRecoilValue(detailFeedState);
@@ -11,9 +12,7 @@ export default function FeedDetailPage() {
 
   return (
     <div className="feedWrapper">
-      <div>
-        <p>삭제하기</p>
-      </div>
+      <DeleteFeed feed={detailFeed} />
       <Feed feed={detailFeed} />
       <Link to={`/feed/${detailFeed.uid}/modify`}>
         <p>피드 수정</p>
