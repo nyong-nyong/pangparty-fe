@@ -62,15 +62,19 @@ export default function SelectImagePage() {
 
         <div className="defaultImgsContainer">
           <form className="imgUploadForm">
-            <label htmlFor="photoUpload">+추가하기</label>
-            <input
-              type="file"
-              accept={"image/*"}
-              id="photoUpload"
-              onChange={savePhotoFile}
-              ref={photoRef}
-              // style={{ display: "none" }}
-            />
+            <div className="photoUploadLabel">
+              <label htmlFor="photoUpload" className="input-file-button">
+                +추가하기
+              </label>
+              <input
+                type="file"
+                accept={"image/*"}
+                id="photoUpload"
+                onChange={savePhotoFile}
+                ref={photoRef}
+                style={{ display: "none" }}
+              />
+            </div>
             <button onClick={submitPhotoFile}>전송</button>
           </form>
           <div className="previewImgContainer">

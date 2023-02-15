@@ -1,44 +1,54 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 // 축하 당할 사람 정보
 const targetsTagState = atom({
   key: "targetsTagState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 디데이 날짜 정보
 const dDayState = atom({
   key: "dDayState",
   default: "",
+  // effects_UNSTABLE: [persistAtom],
 });
 
 // 이벤트 설명 정보
 const eventIntroState = atom({
   key: "eventIntroState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 이벤트 해쉬태그 정보
 const hashTagState = atom({
   key: "hashTagState",
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 이벤트 이미지 정보
 const imgFileState = atom({
   key: "imgFileState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 const readerState = atom({
   key: "readerState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 이벤트명 정보
 const eventNameState = atom({
   key: "eventNameState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 /*

@@ -12,7 +12,7 @@ import { authState, userState } from "../recoils/user/Atoms";
 // const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
 
 export default function useUserAction() {
-  const [cookies, setCookie, removeCookie] = useCookies(["refreshToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
   const setAuth = useSetRecoilState(authState);
   const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();

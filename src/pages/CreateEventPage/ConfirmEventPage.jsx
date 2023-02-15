@@ -40,9 +40,10 @@ function ConfirmEventPage() {
 
   // 디데이 가공
 
-  const fullyear = dDay ? dDay.getFullYear().toString() : "디데이 없음";
+  const fullyear = dDay ? dDay.getFullYear().toString() : "";
   const month = dDay ? (dDay.getMonth() + 1).toString() : "";
   const date = dDay ? dDay.getDate().toString() : "";
+  
   const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
   const fullDDayPost = `${fullyear}-${month >= 10 ? month : "0" + month}-${
     date >= 10 ? date : "0" + date
