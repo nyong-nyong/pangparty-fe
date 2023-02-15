@@ -24,7 +24,7 @@ export default function SearchMainPage() {
         </div>
       ) : (
         <div>
-          <h4>최근 검색어</h4>
+          <h4 style={{ padding: "0px 12px 0px 12px" }}>최근 검색어</h4>
           <SearchHistory />
         </div>
       )}

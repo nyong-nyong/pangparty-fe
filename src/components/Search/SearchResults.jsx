@@ -14,7 +14,11 @@ export default function SearchResults() {
   const searchResults = useRecoilValue(searchResultsState);
 
   if (searchResults === undefined || searchResults.length < 1) {
-    return <span>검색 결과가 존재하지 않습니다</span>;
+    return (
+      <div style={{ margin: "20px 12px 10px 12px" }}>
+        검색 결과가 존재하지 않습니다
+      </div>
+    );
   }
 
   switch (type) {
@@ -48,6 +52,10 @@ export default function SearchResults() {
       );
 
     default:
-      return <span>검색 결과가 존재하지 않습니다</span>;
+      return (
+        <div style={{ margin: "20px 12px 10px 12px" }}>
+          검색 결과가 존재하지 않습니다
+        </div>
+      );
   }
 }
