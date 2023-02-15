@@ -15,13 +15,20 @@ export default function GiftRpList(props) {
   // const stickerInfo = useRecoilValue(stickerState);
 
   // const params = useParams();
-  // const rpUid = props.eventInfo.rollingPaperUid;
-  const rpUid = props.eventInfo;
+  // const rpUid = props.eventInfo.rpUid;
+  const [rpUid, setRpUid] = useState("");
+  const [eventUid, setEventUid] = useState("");
+
+  useEffect(() => {
+    if (!props) return;
+    setRpUid(props.eventInfo.rpUid);
+    setEventUid(props.params.eventId);
+  }, [props]);
 
   // axios로 Data 가져오기 (추후 컴포넌트로 분리시 같이 데리고가기)
   // fetch한 스티커리스트는 recoil에 담았음
-  const eventUid = props.params;
-  const rollingPaperUid = rpUid;
+  // const eventUid = props.params.eventId;
+  // const rpUid = rpUid;
   const topStart = 1;
   const topEnd = 800;
   const page = 0;
@@ -33,33 +40,30 @@ export default function GiftRpList(props) {
     // 롤페 피스 목록 GET
     // console.log(eventInfo);
     async function fetchPieceList() {
+      if (!eventUid || !rpUid) return;
       await axios
         .get(
-          requests.events.rollingPaper.rpPieceAll(
-            eventUid,
-            rollingPaperUid,
-            page,
-            size
-          )
+          requests.events.rollingPaper.rpPieceAll(eventUid, rpUid, page, size)
         )
         .then((res) => {
           setPieceListData(res.data.rollingPaperPieces);
           // console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      // .catch((err) => {
-      // console.log(err);
-      // });
     }
     fetchPieceList();
     // console.log(rpUid);
 
     // 롤페 스티커 목록 GET
     async function fetchStickerList() {
+      if (!eventUid || !rpUid) return;
       await axios
         .get(
           requests.events.rollingPaper.rpStickerAll(
             eventUid,
-            rollingPaperUid,
+            rpUid,
             topStart,
             topEnd
           )
@@ -67,14 +71,13 @@ export default function GiftRpList(props) {
         .then((res) => {
           // console.log(res);
           setStickerListData(res.data.rollingPaperStickers);
+        })
+        .catch((e) => {
+          console.log(e);
         });
-      // .catch((e) => {
-      // console.log(e);
-
-      // });
     }
     fetchStickerList();
-  }, []);
+  }, [props]);
 
   return (
     <div>

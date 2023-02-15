@@ -32,6 +32,8 @@ export default function GiftDetailPage() {
     // console.log(user);
     fetchData();
     // const rpUid = response.data.rollingPaperUid;
+    console.log(eventInfo);
+    console.log(params);
   }, [user]);
 
   return (

@@ -8,7 +8,7 @@ export default function RecapRp(props) {
   const { writerNum, rpNum } = props;
 
   return (
-    <div className="carouselDiv">
+    <div className="carouselDivRp">
       <div className="carouselContentBlock">
         {/* <img className="ddayTextImg" src={recapDdayText} alt="" /> */}
         <img className="recapImg" src={recap2} alt="" />

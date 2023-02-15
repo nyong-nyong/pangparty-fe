@@ -7,7 +7,7 @@ import recap4 from "../../assets/recap4.png";
 export default function RecapGoDetail(props) {
   const { eventUid } = props;
   return (
-    <div className="carouselDiv">
+    <div className="carouselDivGoDetail">
       <div className="carouselContentBlock">
         {/* <img className="ddayTextImg" src={recapDdayText} alt="" /> */}
         <img className="recapImg" src={recap4} alt="" />

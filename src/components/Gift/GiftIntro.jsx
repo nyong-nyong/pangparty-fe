@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
 import Confetti from "../Recap/Confetti";
 import ConfettiPang from "../Recap/ConfettiPang";
@@ -15,7 +15,8 @@ import goDown from "../../assets/goDown.svg";
 import "../../styles/GiftIntroPage.scss";
 
 export default function GiftIntro(props) {
-  const { userName, dDay, eventId, setIsOpened } = props;
+  const { userName, dDay, setIsOpened } = props;
+  // const { userName, dDay, eventId, setIsOpened } = props;
   // 유저 정보, 디데이 받아오기
 
   // const navigate = useNavigate();
@@ -32,6 +33,12 @@ export default function GiftIntro(props) {
 
   const openRecap = () => {
     setIsOpened(true);
+    document
+      .querySelector(".recapTitleDday")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goDownHandler = () => {
     document
       .querySelector(".recapTitleDday")
       .scrollIntoView({ behavior: "smooth" });
@@ -99,8 +106,15 @@ export default function GiftIntro(props) {
           )}
         </div>
         <div className="dayInfoContainer">
-          <p style={{ fontSize: "13px", marginBottom: "0px" }}>오늘은 D-DAY</p>
-          <p style={{ fontSize: "19px", marginTop: "0px", color: "#FF7A5C" }}>
+          <p style={{ fontSize: "13px", marginBottom: "0px" }}>D-DAY</p>
+          <p
+            style={{
+              fontSize: "19px",
+              marginTop: "0px",
+              marginBottom: "5px",
+              color: "#FF7A5C",
+            }}
+          >
             {dDay}
           </p>
         </div>
@@ -120,13 +134,23 @@ export default function GiftIntro(props) {
                 <p style={{ marginBottom: "10%" }}>
                   선물 받기 버튼을 눌러주세요!
                 </p>
-                <Link to={`/gift/${eventId}/recap`}>
+                {/* <Link to={`/gift/${eventId}/recap`}>
                   <Button color="orange-1">선물 받기</Button>
-                </Link>
+                </Link> */}
                 <Button color="orange-1" onClick={openRecap}>
                   아래에서 선물 받기
                 </Button>
-                <img className="downIcon" src={goDown} alt="" />
+                <button
+                  type="button"
+                  onClick={goDownHandler}
+                  style={{
+                    backgroundColor: "inherit",
+                    border: "none",
+                    marginTop: "15px",
+                  }}
+                >
+                  <img className="downIcon" src={goDown} alt="" />
+                </button>
               </div>
             );
           })()}

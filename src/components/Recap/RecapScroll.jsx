@@ -4,6 +4,7 @@ import RecapPang from "./RecapPang";
 import RecapRp from "./RecapRp";
 import RecapPhoto from "./RecapPhoto";
 import RecapGoDetail from "./RecapGoDetail";
+import goDown from "../../assets/goDown.svg";
 
 export default function RecapScroll(props) {
   const { eventInfo, eventUid } = props;
@@ -17,14 +18,40 @@ export default function RecapScroll(props) {
     restDelta: 0.001,
   });
 
+  const goDownToRpHandler = () => {
+    document
+      .querySelector(".carouselDivRp")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goDownToPhotoHandler = () => {
+    document
+      .querySelector(".carouselDivPhoto")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goDownToGoDetailHandler = () => {
+    document
+      .querySelector(".carouselDivGoDetail")
+      .scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div>
-      <section>
+    <div className="scrollContainer">
+      <section onWheel={goDownToRpHandler}>
         <RecapPang
           ref={recapRef}
           pangNum={eventInfo.eventExports[0].eventLikeCnt}
         />
       </section>
+      <button
+        className="downIcon"
+        type="button"
+        onClick={goDownToRpHandler}
+        style={{ backgroundColor: "inherit", border: "none" }}
+      >
+        <img className="downIcon" src={goDown} alt="" />
+      </button>
       <section>
         <RecapRp
           ref={recapRef}
@@ -32,9 +59,25 @@ export default function RecapScroll(props) {
           rpNum={eventInfo.eventExports[0].rollingPaperCnt}
         />
       </section>
+      <button
+        className="downIcon"
+        type="button"
+        onClick={goDownToPhotoHandler}
+        style={{ backgroundColor: "inherit", border: "none" }}
+      >
+        <img className="downIcon" src={goDown} alt="" />
+      </button>
       <section>
         <RecapPhoto albumNum={eventInfo.eventExports[0].albumMediaCnt} />
       </section>
+      <button
+        className="downIcon"
+        type="button"
+        onClick={goDownToGoDetailHandler}
+        style={{ backgroundColor: "inherit", border: "none" }}
+      >
+        <img className="downIcon" src={goDown} alt="" />
+      </button>
       <section>
         <RecapGoDetail eventUid={eventUid} />
       </section>

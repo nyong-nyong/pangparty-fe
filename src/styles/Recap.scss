@@ -46,6 +46,7 @@
   width: 100%;
 }
 
+
 section {
   height: 80vh;
   display: flex;
@@ -77,7 +78,8 @@ section {
 }
 
 .downIcon {
-  margin: 10px auto;
+  display: flex;
+  margin: 0px auto;
   animation: moveY 1s infinite;
 }
 
@@ -96,9 +98,48 @@ section {
   background-size: cover;
   height: 330px;
   width: 100%;
-  // background-size: contain;
-  // overflow: hidden;
-  // height: 290px;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.carouselDivRp {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: url("../assets/textbox.png");
+  background-size: cover;
+  height: 330px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.carouselDivPhoto {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: url("../assets/textbox.png");
+  background-size: cover;
+  height: 330px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.carouselDivGoDetail {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: url("../assets/textbox.png");
+  background-size: cover;
+  height: 330px;
+  width: 100%;
   text-align: center;
   align-items: center;
   margin: 0 auto;
@@ -127,13 +168,13 @@ section {
 .recapAboutText {
   margin-top: 5px;
   margin-bottom: 0px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .goDetailContainer {
   position: fixed;
-  bottom: 100px;
+  bottom: 70px;
 }
 
 /* Arrows */
