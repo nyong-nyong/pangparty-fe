@@ -14,7 +14,7 @@ const targetsTagState = atom({
 const dDayState = atom({
   key: "dDayState",
   default: "",
-  // effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 이벤트 설명 정보

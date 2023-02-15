@@ -39,15 +39,18 @@ function ConfirmEventPage() {
   }, []);
 
   // 디데이 가공
-
-  const fullyear = dDay ? dDay.getFullYear().toString() : "";
-  const month = dDay ? (dDay.getMonth() + 1).toString() : "";
-  const date = dDay ? dDay.getDate().toString() : "";
-
-  const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
-  const fullDDayPost = `${fullyear}-${month >= 10 ? month : "0" + month}-${
-    date >= 10 ? date : "0" + date
-  }`;
+  const getDday = (dDay) => {
+    console.log(dDay);
+    console.log(typeof(dDay));
+    const fullyear = dDay ? dDay.slice(0, 4) : "";
+    const month = dDay ? dDay.slice(5, 7) : "";
+    const date = dDay ? dDay.slice(8, 10) : "";
+  
+    const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
+    const fullDDayPost = `${fullyear}-${month}-${date}`;
+    console.log(fullDDayPost);
+    return {fullDDay, fullDDayPost};
+  }
 
   const navigate = useNavigate();
 
@@ -76,10 +79,8 @@ function ConfirmEventPage() {
     const postInfo = {
       targetId: targetTag,
       eventName: eventName,
-      dday: fullDDayPost,
+      dday: getDday(dDay).fullDDayPost,
       introduction: eventIntro,
-      // 이미지 POST EVENT 별도로 진행
-      // imgUrl: imgUrl,
       hashtags: hashTag,
     };
 
@@ -126,7 +127,7 @@ function ConfirmEventPage() {
           </p>
           <p className="labels">축하일 D-day</p>
           <p className="confirmContent">
-            {fullDDay ? fullDDay : "디데이 없음"}
+            {dDay ? getDday(dDay).fullDDay : "디데이 없음"}
           </p>
           <p className="labels">설명</p>
           <p className="confirmContent">

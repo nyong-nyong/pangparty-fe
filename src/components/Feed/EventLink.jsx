@@ -24,7 +24,7 @@ export default function EventLink({ eventUid, setEventUid }) {
 
   const fetchSearchText = async (text) => {
     await axios
-      .get(requests.search.getSearch("event", text, 1, 30))
+      .get(requests.search.getSearch("event", text, 0, 30))
       .then((response) => {
         setSearchResults(response.data.events);
       })

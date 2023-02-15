@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { imgFileState, readerState } from "../../recoils/createEvent/Atoms";
-import axios from "../../api/axios";
-import requests from "../../api/requests";
+// import axios from "../../api/axios";
+// import requests from "../../api/requests";
 import Button from "../../components/common/Button";
 
 export default function SelectImagePage() {
@@ -14,7 +14,7 @@ export default function SelectImagePage() {
   const photoRef = useRef();
 
   const savePhotoFile = () => {
-    console.log(photoRef.current);
+    // console.log(photoRef.current.files[0]);
     const photo = photoRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(photo);
@@ -25,7 +25,7 @@ export default function SelectImagePage() {
   };
 
   const submitPhotoFile = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // const photo = photoRef.current.files[0];
 
     // if (photo) {
@@ -51,9 +51,9 @@ export default function SelectImagePage() {
     savePhotoFile();
   };
 
-  const test = (e) => {
-    console.log(e);
-  };
+  // const test = (e) => {
+  //   console.log(e);
+  // };
 
   return (
     <div>
@@ -92,7 +92,7 @@ export default function SelectImagePage() {
         </div>
       </div>
       <Link to="/event/naming" className="eventNextBtn">
-        <Button color="orange-1" onClick={imgFileInfo && submitPhotoFile}>다음</Button>
+        <Button color="orange-1">다음</Button>
       </Link>
     </div>
   );
