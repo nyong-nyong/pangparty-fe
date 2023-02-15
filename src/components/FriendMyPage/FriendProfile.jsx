@@ -37,7 +37,7 @@ export default function FriendProfile(props) {
     };
     const newTarget = e.target.id;
     newActivation[newTarget] = true;
-    console.log(profileInfo);
+    // console.log(profileInfo);
     setIsActivate(newActivation);
   };
 
@@ -93,12 +93,14 @@ export default function FriendProfile(props) {
                         follower: true,
                         followingCount: profileInfo.followingCount,
                         followerCount: profileInfo.followerCount,
+                        userInfo: friendId,
                       }
                     : {
                         following: false,
                         follower: true,
                         followingCount: 0,
                         followerCount: 0,
+                        userInfo: "",
                       }
                 }
                 style={{ textDecoration: "none" }}
@@ -119,12 +121,14 @@ export default function FriendProfile(props) {
                         follower: false,
                         followingCount: profileInfo.followingCount,
                         followerCount: profileInfo.followerCount,
+                        userInfo: friendId,
                       }
                     : {
                         following: true,
                         follower: false,
                         followingCount: 0,
                         followerCount: 0,
+                        userInfo: "",
                       }
                 }
                 style={{ textDecoration: "none" }}

@@ -88,12 +88,14 @@ export default function MyPage() {
                         follower: true,
                         followingCount: profileInfo.followingCount,
                         followerCount: profileInfo.followerCount,
+                        userInfo: user,
                       }
                     : {
                         following: false,
                         follower: true,
                         followingCount: 0,
                         followerCount: 0,
+                        userInfo: "",
                       }
                 }
                 style={{ textDecoration: "none" }}
@@ -114,12 +116,14 @@ export default function MyPage() {
                         follower: false,
                         followingCount: profileInfo.followingCount,
                         followerCount: profileInfo.followerCount,
+                        userInfo: user,
                       }
                     : {
                         following: true,
                         follower: false,
                         followingCount: 0,
                         followerCount: 0,
+                        userInfo: "",
                       }
                 }
                 style={{ textDecoration: "none" }}

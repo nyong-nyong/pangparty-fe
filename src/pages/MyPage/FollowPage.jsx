@@ -40,7 +40,7 @@ export default function FollowPage() {
       followerTab: false,
     };
     const newTarget = e.target.id;
-    console.log(e.target.value);
+    // console.log(e.target.value);
     newTab[newTarget] = true;
     setTabState(newTab);
     console.log(tabState);
@@ -95,8 +95,8 @@ export default function FollowPage() {
           )}
         </button>
       </header>
-      {tabState.followerTab ? <Follower followsInfo={followsInfo} setFollowsInfos={setFollowsInfos}/> : null}
-      {tabState.followingTab ? <Following followsInfo={followsInfo} setFollowsInfos={setFollowsInfos}/> : null}
+      {tabState.followerTab ? <Follower followsInfo={followsInfo} setFollowsInfos={setFollowsInfos} id={location.state.userInfo} /> : null}
+      {tabState.followingTab ? <Following followsInfo={followsInfo} setFollowsInfos={setFollowsInfos} id={location.state.userInfo} /> : null}
     </div>
   );
 }

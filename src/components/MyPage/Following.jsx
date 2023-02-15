@@ -7,7 +7,7 @@ import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/MyPage.scss";
 
-export default function Following({ followsInfo, setFollowsInfos }) {
+export default function Following({ followsInfo, setFollowsInfos, id }) {
   const page = 0;
   const size = 30;
   const [followingInfo, setFollowingInfos] = useState(undefined);
@@ -21,7 +21,7 @@ export default function Following({ followsInfo, setFollowsInfos }) {
     async function fetchData() {
       if (!user) return;
       const request = await axios.get(
-        requests.myfollow.getMyFollowings(user, page, size)
+        requests.myfollow.getMyFollowings(id, page, size)
       );
       setFollowingInfos(request.data);
     }
