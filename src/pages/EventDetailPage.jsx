@@ -32,10 +32,10 @@ export default function EventDetailPage() {
       // console.log(request.data.isParticipant);
     }
     setUser(auth.user);
-    console.log(user);
+    // console.log(user);
     fetchData();
     // const rpUid = response.data.rollingPaperUid;
-  }, []);
+  }, [user]);
 
   return (
     <div className="detailContainer">

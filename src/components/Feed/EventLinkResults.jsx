@@ -44,7 +44,7 @@ export default function EventLinkResults({
                     {event.eventName && (
                       <div className="EventTitle">{event.eventName}</div>
                     )}
-                    <div className="EventDday">D{getDday(event.dday)}</div>
+                    <div className="EventDday">D-{getDday(event.dday)}</div>
                   </div>
                   <div className="EventTag">@{event.targetId}</div>
                   <div className="EventDate">{event.dday}</div>
