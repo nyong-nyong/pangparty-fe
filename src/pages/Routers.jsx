@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./HomePage";
-import IntroEvent from "./IntroEventPage";
+// import IntroEvent from "./IntroEventPage";
 import CreatePiece from "./CreatePiecePage";
 import PieceList from "./PieceListPage";
 import NotFoundPage from "./NotFoundPage";
@@ -57,7 +57,7 @@ export default function Routers() {
 
       {/* 이벤트 페이지 */}
       <Route path="event">
-        <Route path="intro" element={<IntroEvent />} />
+        {/* <Route path="intro" element={<IntroEvent />} /> */}
         <Route>
           <Route path="tagmember" element={<TagMemberPage />} />
           <Route path="calendar" element={<DdayCalendar />} />
