@@ -4,7 +4,6 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { useCookies } from "react-cookie";
 import axios from "../api/axios";
 import requests from "../api/requests";
 import { authState, userState } from "../recoils/user/Atoms";
@@ -12,7 +11,6 @@ import { authState, userState } from "../recoils/user/Atoms";
 // const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
 
 export default function useUserAction() {
-  const [cookies, setCookie, removeCookie] = useCookies();
   const setAuth = useSetRecoilState(authState);
   const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();
@@ -56,7 +54,7 @@ export default function useUserAction() {
           { withCredentials: true }
         )
         .then((res) => {
-          setCookie("Token", res.data.accessToken);
+          localStorage.setItem("Token", res.data.accessToken);
           // httpOnly option 넣기 -> but 브라우저에서 접근 불가능. 백엔드 완성되면 넣자.
           setAuth(true);
           setUser(res.data.id);
@@ -68,7 +66,7 @@ export default function useUserAction() {
           // setTimeout(() => {onSilentRefresh(res.data.refreshToken)}, JWT_EXPIRY_TIME - 3590000);
         })
         .catch((err) => {
-          removeCookie("Token");
+          localStorage.removeItem("Token");
           setAuth(false);
           setUser(null);
           navigate("/login");
@@ -78,7 +76,7 @@ export default function useUserAction() {
   }
 
   function logOut() {
-    removeCookie("Token");
+    localStorage.removeItem("Token");
     setAuth(false);
     setUser(null);
     if(axios.defaults.common) {
