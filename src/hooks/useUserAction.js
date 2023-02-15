@@ -81,7 +81,9 @@ export default function useUserAction() {
     removeCookie("Token");
     setAuth(false);
     setUser(null);
-    delete axios.defaults.common["Authorization"];
+    if(axios.defaults.common) {
+      delete axios.defaults.common["Authorization"];
+    }
     navigate("/");
   }
 
