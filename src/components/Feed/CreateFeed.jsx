@@ -43,6 +43,10 @@ export default function CreateFeed() {
     };
     postData(contentObj);
     return navigate("/feed");
+    // 나중에 수정할 수 있으면 수정할 것(규연)
+    // : <Feed /> 에서 useEffect를 하기 때문에 피드 위의 상위 컴포넌트인 <FeedList />는 새로고침 적용이 안 됨
+    //   그렇기 때문에 나중에 <FeedList />에서 useEffect로 해당 내용들을 Feed로 내려줘야될 듯
+    //   그래야 navigate("/feed") 상황에서 최신 피드리스트가 불러와짐
   };
 
   return (
