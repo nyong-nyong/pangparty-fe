@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { userState } from "../../recoils/user/Atoms";
@@ -28,6 +28,56 @@ export default function Footbar() {
     newActivation[id] = true;
     setIsActive(newActivation);
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    if (!location) return;
+    const nowURL = location.pathname;
+    const newActivation = {
+      Home: false,
+      Feed: false,
+      Event: false,
+      Search: false,
+      MyPage: false,
+    };
+    if (nowURL.startsWith("/events")) {
+      return;
+    }
+    if (nowURL.startsWith("/event")) {
+      newActivation.Event = true;
+      setIsActive(newActivation);
+      return;
+    }
+    if (nowURL.startsWith("/feed")) {
+      newActivation.Feed = true;
+      setIsActive(newActivation);
+      return;
+    }
+    if (nowURL.startsWith("/search")) {
+      newActivation.Search = true;
+      setIsActive(newActivation);
+      return;
+    }
+    if (
+      nowURL.startsWith("/login") ||
+      nowURL.startsWith("/signup") ||
+      nowURL.startsWith("/mypage") ||
+      nowURL.startsWith("/follows") ||
+      nowURL.startsWith("/myevents") ||
+      nowURL.startsWith("/friend") ||
+      nowURL.startsWith("/gift")
+    ) {
+      newActivation.MyPage = true;
+      setIsActive(newActivation);
+      return;
+    }
+    if (nowURL === "/") {
+      newActivation.Home = true;
+      setIsActive(newActivation);
+      return;
+    }
+    setIsActive(newActivation);
+  }, [location]);
 
   return (
     <FootbarContainer>
