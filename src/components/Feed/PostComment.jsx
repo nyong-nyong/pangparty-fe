@@ -15,9 +15,7 @@ export default function PostComment({
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
-  }, []);
-
-  useEffect(() => {});
+  }, [user]);
 
   function timeForToday(value) {
     const today = new Date();
