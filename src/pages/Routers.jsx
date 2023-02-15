@@ -27,9 +27,10 @@ import SearchResultPage from "./SearchPage/SearchResultPage";
 import HashtagPage from "./SearchPage/HashtagPage";
 import FeedPage from "./Feed/FeedPage";
 import CreateFeedPage from "./Feed/CreateFeedPage";
-import FeedDetail from "./Feed/FeedDetailPage";
+import FeedDetailPage from "./Feed/FeedDetailPage";
 import FriendMyPage from "./FriendMyPage";
 import UpdateProfilePage from "./MyPage/UpdateProfilePage";
+import ModifyPost from "../components/Feed/ModifyPost";
 
 // 라우터만 모이는 곳 (차후에 관리하기 편하도록 여기 다 때려박으면됨)
 
@@ -49,7 +50,8 @@ export default function Routers() {
       <Route path="feed">
         <Route path="" element={<FeedPage />} />
         <Route path="create" element={<CreateFeedPage />} />
-        <Route path=":feedId" element={<FeedDetail />} />
+        <Route path=":feedId" element={<FeedDetailPage />} />
+        <Route path=":feedId/modify" element={<ModifyPost />} />
       </Route>
 
       {/* 이벤트 페이지 */}

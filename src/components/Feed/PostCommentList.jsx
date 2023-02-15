@@ -5,6 +5,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import PostComment from "./PostComment";
+import PostCommentUpload from "./PostCommentUpload";
 
 export default function PostCommentList({ postUid }) {
   const [postCommentList, setPostCommentList] = useState([]);
@@ -46,6 +47,8 @@ export default function PostCommentList({ postUid }) {
           }
           return null;
         })}
+      <p>총 {postCommentList.length}개의 댓글</p>
+      <PostCommentUpload />
     </div>
   );
 }
