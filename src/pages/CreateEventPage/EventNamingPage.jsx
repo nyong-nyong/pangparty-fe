@@ -31,12 +31,14 @@ function EventNamingPage() {
           마지막으로, <br />
           이벤트명을 정해주세요
         </p>
-        <input
-          type="text"
-          className="inputBox"
-          value={typingEventName}
-          onChange={eventNameHandler}
-        />
+        <div className="tagLabel">
+          <input
+            type="text"
+            className="tagInput"
+            value={typingEventName}
+            onChange={eventNameHandler}
+          />
+        </div>
       </div> 
       <Link to="/event/confirm">
         {!typingEventName && <Button onClick={titleHandler}>다음</Button>}

@@ -1,6 +1,8 @@
 import Slider from "react-slick";
-import banner1 from "../../assets/eventDefaultBanner1.png";
-import banner2 from "../../assets/eventDefaultBanner2.png";
+// import banner1 from "../../assets/eventDefaultBanner1.png";
+// import banner2 from "../../assets/eventDefaultBanner2.png";
+import banner1 from "../../assets/Banner1.svg";
+import banner2 from "../../assets/Banner2.svg";
 
 export default function HomeCarousel() {
   const settings = {
@@ -8,7 +10,7 @@ export default function HomeCarousel() {
     dots: false,
     infinite: true,
     fade: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,

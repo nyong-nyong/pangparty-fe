@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import styled from "styled-components";
+// import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -18,7 +18,6 @@ export default function PhotoDetail({ item, setModalOpen, eventUid }) {
   useEffect(() => {
     setUser(auth.user);
   }, [user]);
-
 
   const handleDeleteBtn = () => {
     location.reload();

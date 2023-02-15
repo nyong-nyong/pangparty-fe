@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import {
   targetsTagState,
   dDayState,
@@ -8,7 +8,7 @@ import {
   hashTagState,
   imgFileState,
   eventNameState,
-  readerState,
+  readerState
 } from "../../recoils/createEvent/Atoms";
 // import "./ConfirmEvent.css";
 import axios from "../../api/axios";
@@ -21,57 +21,64 @@ import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
 function ConfirmEventPage() {
-  const targetTag = useRecoilValue(targetsTagState);
-  const dDay = useRecoilValue(dDayState);
-  const eventIntro = useRecoilValue(eventIntroState);
-  const hashTag = useRecoilValue(hashTagState);
+  const [targetTag, setTargetTag] = useRecoilState(targetsTagState);
+  const [dDay, setDDay] = useRecoilState(dDayState);
+  const [eventIntro, setEventIntro] = useRecoilState(eventIntroState);
+  const [hashTag, setHashTag] = useRecoilState(hashTagState);
   // const imgUrl = useRecoilValue(imgUrlState);
-  const eventName = useRecoilValue(eventNameState);
+  const [eventName, setEventName] = useRecoilState(eventNameState);
 
-  const imgFileInfo = useRecoilValue(imgFileState);
-  const readerInfo = useRecoilValue(readerState);
+  const [imgFileInfo, setImgFileInfo] = useRecoilState(imgFileState);
+  const [readerInfo, setReaderInfo] = useRecoilState(readerState);
 
   // 한별
   const auth = useAuth();
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
-  }, []);
+  }, [user]);
 
   // 디데이 가공
   const getDday = (dDay) => {
     console.log(dDay);
-    console.log(typeof(dDay));
-    const fullyear = dDay ? dDay.slice(0, 4) : "";
-    const month = dDay ? dDay.slice(5, 7) : "";
-    const date = dDay ? dDay.slice(8, 10) : "";
-  
-    const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
-    const fullDDayPost = `${fullyear}-${month}-${date}`;
-    console.log(fullDDayPost);
-    return {fullDDay, fullDDayPost};
-  }
+    if (dDay) {
+      const fullDDay = dDay.fullDDay;
+      const fullDDayPost = dDay.fullDDayPost;
+      return { fullDDay, fullDDayPost };
+    }
+  };
 
   const navigate = useNavigate();
 
   const postPhoto = async (uid) => {
-    // if(!imgFileInfo) return;
+    if (!imgFileInfo) return;
     const formData = new FormData();
     formData.append("file", imgFileInfo);
+    console.log(formData);
 
     const headers = new Headers({
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "multipart/form-data"
     });
 
     await axios
       .post(requests.events.postHeaderImg(uid), formData, { headers })
       .then((res) => {
         console.log(res);
+        // recoil 비우기 작업
+        setTargetTag("");
+        setDDay("");
+        setEventIntro("");
+        setHashTag("");
+        setEventName("");
+        setImgFileInfo("");
+        setReaderInfo("");
+        // 이벤트 디테일로 이동
         navigate(`/events/${uid}`);
       })
       .catch((err) => {
         console.error(err);
-        navigate(-1);
+        alert(err);
+        // navigate(-1);
       });
   };
 
@@ -81,19 +88,23 @@ function ConfirmEventPage() {
       eventName: eventName,
       dday: getDday(dDay).fullDDayPost,
       introduction: eventIntro,
-      hashtags: hashTag,
+      hashtags: hashTag
     };
 
     // console.log(requests.events.postEvent);
     await axios
       .post(requests.events.postEvent, postInfo, {
         headers: {
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       })
       .then((response) => {
         console.log(response);
-        postPhoto(response.data.eventUid);
+        if (!readerInfo) {
+          navigate(`/events/${response.data.eventUid}`);
+        } else {
+          postPhoto(response.data.eventUid);
+        }
       })
       .catch((error) => {
         console.log(error);

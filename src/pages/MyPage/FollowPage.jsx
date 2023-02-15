@@ -5,8 +5,15 @@ import { useLocation } from "react-router-dom";
 import Following from "../../components/MyPage/Following";
 import Follower from "../../components/MyPage/Follower";
 import "../../components/MyPage/Follow.scss";
+import useAuth from "../../hooks/useAuth";
 
 export default function FollowPage() {
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
+
   // MyPage에서 클릭한 지점 저장
   const location = useLocation();
   const [tabState, setTabState] = useState({
@@ -26,7 +33,6 @@ export default function FollowPage() {
       followerCount: location.state.followerCount,
     });
   }, [])
-
 
   const tabHandler = (e) => {
     const newTab = {

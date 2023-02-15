@@ -83,7 +83,7 @@ export default function EventLink({
           <input
             type="text"
             placeholder="검색어를 입력해주세요"
-            className="EventSearchBar"
+            className="EventSearchBarinput"
             onChange={onChange}
             maxLength="19"
             value={searchText || ""}

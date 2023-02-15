@@ -27,6 +27,9 @@ export default function Feed({ feed }) {
   // 로그인 정보
   const auth = useAuth();
   const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
 
   useEffect(() => {
     // 좋아요 갯수 T/F 받아오기

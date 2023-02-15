@@ -22,14 +22,22 @@ export default function EventDetailPage() {
   const params = useParams();
 
   useEffect(() => {
+    setUser(auth.user);
+  }, [user])
+
+  useEffect(() => {
     const id = params.eventId;
     async function fetchData() {
-      const request = await axios.get(
-        requests.events.introEvent.eventItroAll(id)
-      );
-      setEventInfo(request.data);
-      setIsPart(request.data.isParticipant);
-      // console.log(request.data.isParticipant);
+      if(!id) return;
+      await axios
+        .get(requests.events.introEvent.eventIntroAll(id))
+        .then((res) => {
+          setEventInfo(res.data);
+          setIsPart(res.data.isParticipant);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
     }
     setUser(auth.user);
     // console.log(user);

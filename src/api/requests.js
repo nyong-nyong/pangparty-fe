@@ -176,6 +176,10 @@ const requests = {
       return `${eventsBaseUrl}/${eventUid}/export`;
     },
 
+    getPangExportAll(eventUid) {
+      return `${eventsBaseUrl}/${eventUid}/export/all`;
+    },
+
     postHeaderImg(eventUid) {
       return `${eventsBaseUrl}/${eventUid}/header`;
     },
@@ -267,7 +271,7 @@ const requests = {
       pangBaseUrl: "/like",
 
       /** 이벤트 소개페이지 조회 GET 요청 */
-      eventItroAll(eventUid) {
+      eventIntroAll(eventUid) {
         return `${eventsBaseUrl}/${eventUid}`;
       },
 

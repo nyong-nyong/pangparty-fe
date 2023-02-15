@@ -20,8 +20,23 @@ function DdayCalendar() {
       alert("디데이를 입력해주세요 🥳");
     }
     const newDDay = value;
-    // console.log(typeof(value));
-    setDDayInfo(newDDay);
+
+    const fullyear = newDDay.getFullYear().toString();
+    const month = (newDDay.getMonth() + 1).toString();
+    const date = newDDay.getDate().toString();
+    const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
+    const fullDDayPost = `${fullyear}-${month >= 10 ? month : "0" + month}-${
+      date >= 10 ? date : "0" + date
+    }`;
+
+    setDDayInfo({
+      fullyear: fullyear,
+      month: month,
+      date: date,
+      fullDDay: fullDDay,
+      fullDDayPost: fullDDayPost
+    });
+    // setDDayInfo(newDDay);
   };
 
   /*
