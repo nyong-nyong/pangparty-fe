@@ -37,7 +37,7 @@ function EventNamingPage() {
           value={typingEventName}
           onChange={eventNameHandler}
         />
-      </div>
+      </div> 
       <Link to="/event/confirm">
         {!typingEventName && <Button onClick={titleHandler}>다음</Button>}
         {typingEventName && (

@@ -80,7 +80,7 @@
 // Img
 .imgpreview {
   width: 300px;
-  overflow: cover;
+  object-fit: contain;
 }
 
 .defaultImgsContainer {
@@ -93,12 +93,19 @@
   display: flex;
   flex-wrap: wrap;
   width: 150px;
-  height: 88px;
-  margin: 5px;
+  height: auto;
 }
 
-.photoUploadLabel{
-  background-color: aqua;
+.submitImgBtn {
+  margin: 20px 0;
+  padding: 6px 10px;
+  background-color: inherit;
+  border-radius: 18px;
+  border: 1px solid $orange-2;
+  width: auto;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Pretendard";
 }
 
 .defaultImg {
@@ -108,18 +115,40 @@
 
 .previewImgContainer {
   width: 100%;
-}
-
-.previewImg {
-  width: 100%;
   height: 212px;
   object-fit: contain;
+  // border: 1px solid;
+}
+
+.uploadForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-file-button {
+  padding: 5px 10px;
+  background-color: $orange-2;
+  border-radius: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Pretendard";
+  cursor: pointer;
+}
+
+.eventNextBtn {
+  position: absolute;
+  bottom: 150px;
 }
 
 // confirm page
 
 .bannerContainer {
-  width: 80%;
+  width: 100%;
+  height: 212px;
+  object-fit: contain;
+  // border: 1px solid;
 }
 
 .banner {

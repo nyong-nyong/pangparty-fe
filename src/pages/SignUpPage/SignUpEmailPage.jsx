@@ -3,14 +3,15 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Button from "../../components/common/Button";
 import "./SignUpEmailPage.scss";
 // import ok from "../../assets/myActive.svg";
-import profile from "../../assets/profile.svg";
+// import profile from "../../assets/profile.svg";
+// import SignUpImage from "../../components/SignUp/SignUpImage";
 
 export default function SignUpEmail() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function SignUpEmail() {
     password: "",
     passwordCheck: "",
     name: "",
-    imgUrl: "",
+    imgUrl: `${process.env.PUBLIC_URL}/profileDefaults/defaultProfile.svg`,
     introduction: "",
   });
 
@@ -37,17 +38,17 @@ export default function SignUpEmail() {
     introduction: true,
   });
 
-  const [profileImgFile, setProfileImgFile] = useState("");
-  const profileImgRef = useRef();
+  // const [profileImgFile, setProfileImgFile] = useState("");
+  // const profileImgRef = useRef();
 
-  const saveProfileImgFile = () => {
-    const profileImg = profileImgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(profileImg);
-    reader.onloadend = () => {
-      setProfileImgFile(reader.result);
-    };
-  };
+  // const saveProfileImgFile = () => {
+  //   const profileImg = profileImgRef.current.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(profileImg);
+  //   reader.onloadend = () => {
+  //     setProfileImgFile(reader.result);
+  //   };
+  // };
 
   const emailIsValid = (email) => {
     const emailRegExp =
@@ -285,22 +286,20 @@ export default function SignUpEmail() {
       {isValid.name ? null : <span className="errorMsg">이름 형식 오류</span>}
 
       <div className="loginProfileContainer">
-        <div className="profileImg">
+        {/* <div className="profileImg">
           <p>프로필 사진</p>
           <input
             type="file"
             accept={"image/*"}
-            // id="profileImgUpload"
             onChange={saveProfileImgFile}
             ref={profileImgRef}
           />
-          {/* <br /> */}
           {profileImgFile ? (
             <img src={profileImgFile} alt="프로필 사진 업로드" />
           ) : (
             <img src={profile} alt="기본 프로필 이미지" />
           )}
-        </div>
+        </div> */}
         <div className="profileIntro">
           <p>소개</p>
           <textarea

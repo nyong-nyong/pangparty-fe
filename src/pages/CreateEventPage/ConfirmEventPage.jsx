@@ -43,7 +43,7 @@ function ConfirmEventPage() {
   const fullyear = dDay ? dDay.getFullYear().toString() : "";
   const month = dDay ? (dDay.getMonth() + 1).toString() : "";
   const date = dDay ? dDay.getDate().toString() : "";
-  
+
   const fullDDay = fullyear + "년 " + month + "월 " + date + "일";
   const fullDDayPost = `${fullyear}-${month >= 10 ? month : "0" + month}-${
     date >= 10 ? date : "0" + date
@@ -61,7 +61,7 @@ function ConfirmEventPage() {
     });
 
     await axios
-      .post(requests.events.postHeaderImg(uid), formData, {headers})
+      .post(requests.events.postHeaderImg(uid), formData, { headers })
       .then((res) => {
         console.log(res);
         navigate(`/events/${uid}`);
@@ -108,8 +108,11 @@ function ConfirmEventPage() {
     <div>
       <div className="createContainer">
         <p className="createTitle">입력된 내용을 확인해주세요 🥳</p>
-        <div className="bannerContainer">
-          <img className="banner" src={readerInfo} alt="배너" />
+        <div
+          className="previewImgContainer"
+          style={{ backgroundImage: `url(${readerInfo})` }}
+        >
+          {/* <img className="banner" src={readerInfo} alt="배너" /> */}
           {/* <img className="banner" src={imgUrl} alt="배너" /> */}
         </div>
         <div className="confirmInfos">
@@ -150,13 +153,6 @@ function ConfirmEventPage() {
       <Button color="orange-1" onClick={postEvent}>
         완성하기
       </Button>
-
-      <div className="previewImgContainer">
-        <p>이미지 미리보기</p>
-        {readerInfo && (
-          <img className="previewImg" src={readerInfo} alt="업로드된 사진" />
-        )}
-      </div>
     </div>
   );
 }

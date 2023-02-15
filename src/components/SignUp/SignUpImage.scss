@@ -1,0 +1,15 @@
+@import "../../styles/colors.scss";
+
+.uploadForm {
+  display: flex;
+  justify-contents: center;
+  align-items: center;
+}
+
+.input-file-button {
+  padding: 1px 20px;
+  background-color: $orange-2;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}

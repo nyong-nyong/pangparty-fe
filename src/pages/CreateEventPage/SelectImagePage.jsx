@@ -62,29 +62,37 @@ export default function SelectImagePage() {
 
         <div className="defaultImgsContainer">
           <form className="imgUploadForm">
-            <div className="photoUploadLabel">
-              <label htmlFor="photoUpload" className="input-file-button">
-                +추가하기
-              </label>
-              <input
-                type="file"
-                accept={"image/*"}
-                id="photoUpload"
-                onChange={savePhotoFile}
-                ref={photoRef}
-                style={{ display: "none" }}
-              />
-            </div>
-            <button onClick={submitPhotoFile}>전송</button>
+            <label htmlFor="photoUpload" className="input-file-button">
+              사진 업로드
+            </label>
+            <input
+              type="file"
+              accept={"image/*"}
+              id="photoUpload"
+              onChange={savePhotoFile}
+              ref={photoRef}
+              style={{ display: "none" }}
+            />
+            {readerInfo && (
+              <button className="submitImgBtn" onClick={submitPhotoFile}>
+                이 이미지로 할래요 ✔
+              </button>
+            )}
           </form>
-          <div className="previewImgContainer">
-            <p>이미지 미리보기</p>
-            <img className="previewImg" src={readerInfo} alt="업로드된 사진" />
+          <div
+            className="previewImgContainer"
+            style={{ backgroundImage: `url(${readerInfo})` }}
+          >
+            {/* <img
+                className="previewImg"
+                src={readerInfo}
+                alt="업로드된 사진"
+              /> */}
           </div>
         </div>
       </div>
-      <Link to="/event/naming">
-        <Button onClick={imgFileInfo && submitPhotoFile}>다음</Button>
+      <Link to="/event/naming" className="eventNextBtn">
+        <Button color="orange-1" onClick={imgFileInfo && submitPhotoFile}>다음</Button>
       </Link>
     </div>
   );
