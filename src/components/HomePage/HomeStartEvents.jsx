@@ -22,18 +22,30 @@ export default function HomeStartEvents() {
   }, []);
   return (
     <div className="homeEventSectionContainer">
-      <div className="homeEventHeader">
-        <img className="checkIcon" />
-        <span>오늘 생성된 이벤트, 같이 축하해요!</span>
-      </div>
-      <ul>
-        {events
-          ? events.map((event) => {
-              if (!event) return null;
-              return <SearchEventResult key={event.eventUid} event={event} />;
-            })
-          : null}
-      </ul>
+      {events ? (
+        <div>
+          {" "}
+          <div className="homeEventHeader">
+            <img className="checkIcon" />
+            <span>오늘 생성된 이벤트, 같이 축하해요!</span>
+          </div>
+          <ul>
+            {events
+              ? events.map((event) => {
+                  if (!event) return null;
+                  return (
+                    <SearchEventResult key={event.eventUid} event={event} />
+                  );
+                })
+              : null}
+          </ul>{" "}
+        </div>
+      ) : (
+        <div className="homeEventHeader">
+          <img className="checkIcon" />
+          <span>아직 생성된 이벤트가 없어요. 이벤트를 만들어볼까요?</span>
+        </div>
+      )}
     </div>
   );
 }
