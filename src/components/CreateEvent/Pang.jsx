@@ -6,7 +6,6 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import "./Pang.scss";
-import useAuth from "../../hooks/useAuth";
 
 function Pang({ eventUid }) {
   const auth = useAuth();
@@ -18,16 +17,8 @@ function Pang({ eventUid }) {
   const [isPang, setIsPang] = useState(false);
   const [pangCnt, setPangCnt] = useState(0);
 
-  const auth = useAuth();
-  const [user, setUser] = useState("");
-  useEffect(() => {
-    setUser(auth.user);
-  }, [user]);
-
-
   // 이벤트 소개페이지 정보 GET
   useEffect(() => {
-    // // console.log(eventUid);
     async function fetchData() {
       if (!eventUid) return;
       await axios
