@@ -63,6 +63,7 @@ export default function PhotoPreview({
               src={preview}
               alt="업로드된 사진"
               style={{ width: "290px", height: "290px" }}
+              className="albumImg"
             />
             <button type="submit" className="commonButton small orange-1">
               제출하기

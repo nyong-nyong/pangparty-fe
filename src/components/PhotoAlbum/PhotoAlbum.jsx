@@ -114,7 +114,7 @@ const PhotoFrame = styled.img`
   display: flex;
   width: 102px;
   height: 102px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 3px;
   box-shadow: 0px 0px 13px 4px rgba(209, 209, 209, 0.25);
 `;

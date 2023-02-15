@@ -56,7 +56,7 @@ export default function PhotoDetail({ item, setModalOpen, eventUid }) {
           className="trashBtn"
         />
       ) : null}
-      <img src={photo.mediaUrl} width="290px" height="290px" />
+      <img src={photo.mediaUrl} width="290px" height="290px" className="albumImg"/>
       <PhotoLikes
         mediaUid={photo.uid}
         eventUid={eventUid}
