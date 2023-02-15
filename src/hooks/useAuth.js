@@ -14,7 +14,7 @@ export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
   const getAuth = useRecoilValue(authState);
   const getUser = useRecoilValue(userState);
-  const [cookies, setCookie] = useCookies(["Token"]);
+  const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {
