@@ -24,7 +24,7 @@ function Pang({ eventUid }) {
     if(!eventUid) return;
     async function fetchData() {
       await axios
-        .get(requests.events.introEvent.eventItroAll(eventUid))
+        .get(requests.events.introEvent.eventIntroAll(eventUid))
         .then((res) => {
           setIsPang(res.data.isLiked);
           setPangCnt(res.data.likeCnt);

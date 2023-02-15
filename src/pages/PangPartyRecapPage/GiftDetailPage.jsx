@@ -21,7 +21,7 @@ export default function GiftDetailPage() {
     const id = params.eventId;
     async function fetchData() {
       const request = await axios.get(
-        requests.events.introEvent.eventItroAll(id)
+        requests.events.introEvent.eventIntroAll(id)
       );
       // console.log(request.data);
       setEventInfo(request.data);
