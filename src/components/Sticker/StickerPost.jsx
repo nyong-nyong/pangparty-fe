@@ -23,7 +23,7 @@ export default function StickerPost({ eventUid, rpUid }) {
   }, [user]);
 
   const postHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const stickerValue = document.querySelector(".moveable");
     const stickerCssAllList = stickerValue.style.cssText.split(";");
@@ -56,7 +56,7 @@ export default function StickerPost({ eventUid, rpUid }) {
           console.log(saveInfo);
           // POST 완료하면 sticker 상태 다시 reset하기
           setSticker(undefined);
-          location.reload();
+          // location.reload();
           // console.log(res);
         })
         .catch((error) => {
