@@ -12,9 +12,12 @@ export default function ModifyPost() {
   const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
   const [eventUid, setEventUid] = useState("");
 
+  const navigate = useNavigate();
   const auth = useAuth();
   const [user, setUser] = useState("");
-  const navigate = useNavigate();
+
+  const newDetailFeed = { ...detailFeed };
+
   useEffect(() => {
     setUser(auth.user);
     const newEventUid = detailFeed.eventUid;
@@ -23,21 +26,20 @@ export default function ModifyPost() {
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
-    setDetailFeed(newTitle);
+    newDetailFeed.title = newTitle;
+    setDetailFeed(newDetailFeed);
   };
   const handleContentChange = (e) => {
     const newContent = e.target.value;
-    setDetailFeed(newContent);
+    newDetailFeed.content = newContent;
+    setDetailFeed(newDetailFeed);
   };
 
-  const handleSubmit = () => {
-    const contentObj = {
-      detailFeed,
-      eventUid,
-    };
-    const postData = async (body) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const submit = async () => {
       await axios
-        .post(requests.posts.putPost(), body, {
+        .put(requests.posts.putPost(detailFeed.uid), detailFeed, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -47,10 +49,10 @@ export default function ModifyPost() {
           navigate(-1);
         })
         .catch((err) => {
-          console.err(err);
+          console.error(err);
         });
     };
-    postData(contentObj);
+    submit();
   };
 
   return (

@@ -54,6 +54,7 @@ export default function FeedList() {
                 to={`/feed/${feed.uid}`}
                 onClick={() => {
                   setDetailFeed(feed);
+                  console.log(feed);
                 }}
               >
                 <Feed feed={feed} />
