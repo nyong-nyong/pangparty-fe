@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { detailFeedState } from "../../recoils/Feed/Atoms";
 import useAuth from "../../hooks/useAuth";
 import EventLink from "./EventLink";
 import Button from "../common/Button";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
 export default function ModifyPost() {
   const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
   const [eventUid, setEventUid] = useState("");
 
+  const navigate = useNavigate();
   const auth = useAuth();
   const [user, setUser] = useState("");
+
+  const newDetailFeed = { ...detailFeed };
+
   useEffect(() => {
     setUser(auth.user);
     const newEventUid = detailFeed.eventUid;
@@ -19,16 +26,33 @@ export default function ModifyPost() {
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
-    setDetailFeed(newTitle);
+    newDetailFeed.title = newTitle;
+    setDetailFeed(newDetailFeed);
   };
   const handleContentChange = (e) => {
     const newContent = e.target.value;
-    setDetailFeed(newContent);
+    newDetailFeed.content = newContent;
+    setDetailFeed(newDetailFeed);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const submit = async () => {
+      await axios
+        .put(requests.posts.putPost(detailFeed.uid), detailFeed, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          navigate(-1);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+    submit();
   };
 
   return (

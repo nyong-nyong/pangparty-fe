@@ -21,6 +21,7 @@ export default function FeedList() {
   const auth = useAuth();
   const [user, setUser] = useState("");
   useEffect(() => {
+    console.log("rerender");
     setUser(auth.user);
   }, []);
 
@@ -53,6 +54,7 @@ export default function FeedList() {
                 to={`/feed/${feed.uid}`}
                 onClick={() => {
                   setDetailFeed(feed);
+                  console.log(feed);
                 }}
               >
                 <Feed feed={feed} />

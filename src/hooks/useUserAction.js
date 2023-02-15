@@ -43,6 +43,7 @@ export default function useUserAction() {
   function logIn(userInfo) {
     // eslint-disable-next-line no-shadow
     async function postLogin(userInfo) {
+      if (!userInfo) return;
       await axios
         .post(
           requests.login,
