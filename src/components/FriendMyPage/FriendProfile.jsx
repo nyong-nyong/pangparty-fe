@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-import Feed from "../MyPage/Feed";
+import FriendFeed from "./FriendFeed";
 import ReceicedEvent from "../MyPage/ReceivedEvent";
 import Badges from "../MyPage/Badges";
 import Button from "../common/Button";
@@ -218,7 +218,7 @@ export default function FriendProfile(props) {
         </button>
       </div>
       <div>
-        {isActivate.Feed && <Feed />}
+        {isActivate.Feed && <FriendFeed friendId={friendId} />}
         {isActivate.ReceicedEvent && <ReceicedEvent />}
         {isActivate.Badges && <Badges />}
       </div>
