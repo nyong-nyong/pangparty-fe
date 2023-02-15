@@ -21,21 +21,28 @@ export default function Feed() {
 
   useEffect(() => {
     setUser(auth.user);
+  }, [user]);
+
+  useEffect(() => {
     async function fetchData() {
       if (!user) return;
-      const request = await axios.get(
-        requests.profile.getProfileFeed(`${user}`, 0, 30)
-      );
-      setFeedInfo(request.data);
-      console.log(request.data);
+      await axios
+        .get(requests.profile.getProfileFeed(`${user}`, 0, 30))
+        .then((res) => {
+          // console.log(res);
+          setFeedInfo(res.data);
+        })
+        .catch((err) => console.error(err));
     }
     fetchData();
     // 렌더링 시점 수정필요
-  }, [userRef]);
+  }, [user]);
 
   return (
     <div>
-      <p ref={userRef}>{user || null}님이 작성한 글만 표시됩니다</p>
+      <p className="recievedCnt" ref={userRef}>
+        {user || null}님이 작성한 글만 표시됩니다
+      </p>
       {feedInfo &&
         feedInfo.feed.map((post) => {
           if (post) {
@@ -48,7 +55,8 @@ export default function Feed() {
                     console.log(post);
                   }}
                 >
-                  <Feed feed={post} />
+                  {/* 여기 왠 무한루프가 도는 친구가 있죠.. */}
+                  {/* <Feed feed={post} /> */}
                 </Link>
                 <ul>
                   {post.event ? <SearchEventResult event={post.event} /> : null}
