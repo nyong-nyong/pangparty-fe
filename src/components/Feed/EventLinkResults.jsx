@@ -15,6 +15,7 @@ export default function EventLinkResults({
     setModalOpen(false);
     console.log(event);
     return setClickedEvent(event);
+    // 그리고 여기*********************
   };
 
   const getDday = (date) => {

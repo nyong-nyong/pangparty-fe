@@ -14,6 +14,7 @@ export default function EventLink() {
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedEvent, setClickedEvent] = useState({});
+  // 이거를 어케 CreateFeed 로 보내는지 모르겠습니다
 
   const onChange = (e) => {
     setSearchText(e.target.value);

@@ -12,7 +12,6 @@ import useAuth from "../../hooks/useAuth";
 export default function CreateFeed() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [eventUid, setEventUid] = useState("");
   const navigate = useNavigate();
 
   const auth = useAuth();
@@ -32,7 +31,7 @@ export default function CreateFeed() {
     const contentObj = {
       title,
       content,
-      eventUid,
+      // eventUid, 어케 넣지?! ㅜ9ㅜ
     };
     const postData = async (body) => {
       await axios
@@ -79,6 +78,7 @@ export default function CreateFeed() {
         />
         <h4>이벤트 링크하기</h4>
         <EventLink />
+        {/* 어케 받아오지? **********여기****** */}
         <Button color="orange-1" type="submit">
           글작성 완료
         </Button>
