@@ -19,7 +19,7 @@ export default function TagMemberPage() {
 
   useEffect(() => {
     setUser(auth.user);
-  }, []);
+  }, [user]);
 
   const prevent = (e) => {
     e.preventDefault();

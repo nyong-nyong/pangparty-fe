@@ -1,6 +1,8 @@
-/* eslint-disable */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Icon from "../common/Icon";
@@ -13,7 +15,19 @@ const likeContainerStyle = {
   alignItems: "center",
 };
 
-export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt, commentLength }) {
+export default function PhotoLikes({
+  mediaUid,
+  eventUid,
+  isLikedProps,
+  likeCnt,
+  commentLength,
+}) {
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
+
   const [tmpLikeCnt, setTmpLikeCnt] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -56,14 +70,23 @@ export default function PhotoLikes({ mediaUid, eventUid, isLikedProps, likeCnt, 
   };
 
   return (
-    <div
-      onClick={handleBtnClick}
-      style={likeContainerStyle}
-    >
-    <Icon img="like" isActive={isLiked} style={{ position: "relative", left: "-15px" }}/>
-    {tmpLikeCnt !== undefined && <span style={{ position: "relative", left: "-20px" }}>{tmpLikeCnt}</span>}
-    <Icon img="comment" style={{ position: "relative", left: "-10px" }}/>
-    {commentLength !== undefined &&<span style={{ position: "relative", left: "-15px" }}>{commentLength}</span>}
+    <div onClick={handleBtnClick} style={likeContainerStyle}>
+      <Icon
+        img="like"
+        isActive={isLiked}
+        style={{ position: "relative", left: "-15px" }}
+      />
+      {tmpLikeCnt !== undefined && (
+        <span style={{ position: "relative", left: "-20px" }}>
+          {tmpLikeCnt}
+        </span>
+      )}
+      <Icon img="comment" style={{ position: "relative", left: "-10px" }}/>
+      {commentLength !== undefined && (
+        <span style={{ position: "relative", left: "-15px" }}>
+          {commentLength}
+        </span>
+      )}
     </div>
   );
 }

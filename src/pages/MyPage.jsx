@@ -34,12 +34,14 @@ export default function MyPage() {
     setUser(auth.user);
     async function fetchData() {
       if (!user) return;
-      const request = await axios.get(
-        requests.profile.getProfileTop(`${user}`)
-        // requests.profile.getProfileTop("pang3333")
-      );
-      console.log(request.data);
-      setProfileInfo(request.data);
+      await axios
+        .get(requests.profile.getProfileTop(`${user}`))
+        .then((res) => {
+          setProfileInfo(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
     fetchData();
   }, [user]);

@@ -267,7 +267,7 @@ const requests = {
       pangBaseUrl: "/like",
 
       /** 이벤트 소개페이지 조회 GET 요청 */
-      eventItroAll(eventUid) {
+      eventIntroAll(eventUid) {
         return `${eventsBaseUrl}/${eventUid}`;
       },
 

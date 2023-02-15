@@ -36,7 +36,7 @@ function ConfirmEventPage() {
   const [user, setUser] = useState("");
   useEffect(() => {
     setUser(auth.user);
-  }, []);
+  }, [user]);
 
   // 디데이 가공
   const getDday = (dDay) => {
