@@ -4,7 +4,7 @@ import Icon from "../common/Icon";
 
 export default function HomeEvents() {
   return (
-    <section className="homeEventContainer">
+    <div className="homeEventContainer">
       <div className="todayIssue">
         <Icon
           style={{
@@ -16,6 +16,6 @@ export default function HomeEvents() {
       </div>
       <HomeStartEvents />
       <HomeEndEvents />
-    </section>
+    </div>
   );
 }
