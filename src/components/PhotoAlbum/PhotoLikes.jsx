@@ -81,7 +81,7 @@ export default function PhotoLikes({
           {tmpLikeCnt}
         </span>
       )}
-      <Icon img="comment" style={{ position: "relative", left: "-10px" }}/>
+      <Icon img="comment" style={{ position: "relative", left: "-10px" }} />
       {commentLength !== undefined && (
         <span style={{ position: "relative", left: "-15px" }}>
           {commentLength}
