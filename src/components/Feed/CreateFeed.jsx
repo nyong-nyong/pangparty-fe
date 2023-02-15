@@ -1,7 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import EventLink from "./EventLink";
 import axios from "../../api/axios";
