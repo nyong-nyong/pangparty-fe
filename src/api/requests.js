@@ -58,6 +58,16 @@ const requests = {
     getPostComment(postUid, type, page, size) {
       return `${this.postsBaseUrl}/${postUid}${this.commentsBaseUrl}?type=${type}&page=${page}&size=${size}`;
     },
+
+    /** 게시물 댓글 추가 POST 요청 */
+    postPostComment(postUid) {
+      return `${this.postsBaseUrl}/${postUid}${this.commentsBaseUrl}`;
+    },
+
+    /** 게시물 댓글 삭제 DELETE 요청 */
+    deletePostComment(postUid, commentUid) {
+      return `${this.postsBaseUrl}/${postUid}${this.commentsBaseUrl}/${commentUid}`;
+    },
   },
 
   // 프로필

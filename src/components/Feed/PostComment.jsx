@@ -1,9 +1,13 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import profile from "../../assets/profile.svg";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
 export default function PostComment({
   comment,
+  postUid,
   postCommentList,
   setPostCommentList,
 }) {
@@ -36,18 +40,53 @@ export default function PostComment({
     return `${Math.floor(betweenTimeDay / 365)}년전`;
   }
 
+  const deleteCommentClick = (e) => {
+    e.preventDefault();
+
+    async function deleteComment() {
+      await axios
+        .delete(requests.posts.deletePostComment(postUid, comment.uid))
+        .then((res) => {
+          const newCommentList = postCommentList.filter(
+            (c) => c.uid !== comment.uid
+          );
+          console.log(res);
+          setPostCommentList(newCommentList);
+          // console.log("delete");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    deleteComment();
+  };
+
   return (
     <div>
+      <hr style={{ width: "100%", border: "1px solid black" }} />
       <div>
         <div>
-          <img src={comment.profileImgUrl} style={{width: "24px"}}/>
+          {comment.profileImgUrl ? (
+            <img
+              src={comment.profileImgUrl}
+              style={{ width: "24px", height: "24px", borderRadius: "24px" }}
+            />
+          ) : (
+            <img src={profile} alt="프로필기본사진" style={{ width: "24px" }} />
+          )}
           <div>{comment.memberId}</div>
         </div>
         <div>{comment.content}</div>
       </div>
       <div>
-        <p>{timeForToday(comment.createTime)}</p>
-        <button>삭제하기</button>
+        <p>{timeForToday(comment?.createTime)}</p>
+        {user && comment.memberId === user ? (
+          <button onClick={deleteCommentClick} type="button">
+            삭제하기
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

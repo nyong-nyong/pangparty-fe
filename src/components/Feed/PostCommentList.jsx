@@ -42,13 +42,19 @@ export default function PostCommentList({ postUid }) {
                 comment={comment}
                 postCommentList={postCommentList}
                 setPostCommentList={setPostCommentList}
+                postUid={postUid}
               />
             );
           }
           return null;
         })}
+      <hr style={{ width: "100%", border: "1px solid black" }} />
       <p>총 {postCommentList.length}개의 댓글</p>
-      <PostCommentUpload />
+      <PostCommentUpload
+        postUid={postUid}
+        postCommentList={postCommentList}
+        setPostCommentList={setPostCommentList}
+      />
     </div>
   );
 }
