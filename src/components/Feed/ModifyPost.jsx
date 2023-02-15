@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { detailFeedState } from "../../recoils/Feed/Atoms";
 import useAuth from "../../hooks/useAuth";
 import EventLink from "./EventLink";
 import Button from "../common/Button";
+import axios from "../../api/axios";
+import requests from "../../api/requests";
 
 export default function ModifyPost() {
   const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
@@ -11,6 +14,7 @@ export default function ModifyPost() {
 
   const auth = useAuth();
   const [user, setUser] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     setUser(auth.user);
     const newEventUid = detailFeed.eventUid;
@@ -26,9 +30,27 @@ export default function ModifyPost() {
     setDetailFeed(newContent);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target);
+  const handleSubmit = () => {
+    const contentObj = {
+      detailFeed,
+      eventUid,
+    };
+    const postData = async (body) => {
+      await axios
+        .post(requests.posts.putPost(), body, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          navigate(-1);
+        })
+        .catch((err) => {
+          console.err(err);
+        });
+    };
+    postData(contentObj);
   };
 
   return (
