@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import FriendFeed from "./FriendFeed";
 import FriendReceicedEvent from "./FriendReceivedEvent";
-import Badges from "../MyPage/Badges";
+import FriendBadges from "./FriendBadges";
 import Button from "../common/Button";
 
 export default function FriendProfile(props) {
@@ -222,7 +222,7 @@ export default function FriendProfile(props) {
         {isActivate.ReceicedEvent && (
           <FriendReceicedEvent friendId={friendId} />
         )}
-        {isActivate.Badges && <Badges />}
+        {isActivate.Badges && <FriendBadges friendId={friendId} />}
       </div>
     </div>
   );
