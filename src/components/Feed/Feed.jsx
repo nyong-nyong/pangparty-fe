@@ -20,6 +20,8 @@ import "./Feed.scss";
 export default function Feed({ feed }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCnt, setLikeCnt] = useState(0);
+  const [isCommented, setIsCommented] = useState(false);
+  const [commentCnt, setCommentCnt] = useState(0);
   const [profileImgUrl, setProfileImgUrl] = useState("");
 
   // 로그인 정보
@@ -38,9 +40,9 @@ export default function Feed({ feed }) {
         .then((response) => {
           setIsLiked(response.data.isLiked);
           setLikeCnt(response.data.likeCount);
+          setIsCommented(response.data.hasCommented);
+          setCommentCnt(response.data.commentCount);
           setProfileImgUrl(response.data.profileImgUrl);
-          console.log(isLiked);
-          console.log(likeCnt);
           console.log(response.data);
         })
         .catch((err) => {
@@ -116,12 +118,13 @@ export default function Feed({ feed }) {
               {likeCnt}
             </Icon>
           </div>
-          {/* CSS 추후 수정 및 추가 예정 */}
           <div className="postIconContainer">
-            <Icon img="comment" />
+            <Icon img="comment" isActive={isCommented}>
+              {commentCnt}
+            </Icon>
           </div>
         </div>
-          <p className="feedTime">{timeForToday(feed?.createTime)}</p>
+        <p className="feedTime">{timeForToday(feed?.createTime)}</p>
       </div>
     </div>
   );
