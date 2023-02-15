@@ -44,6 +44,16 @@ const requests = {
       return `${this.postsBaseUrl}/${postUid}`;
     },
 
+    /** 게시물 삭제 DELETE 요청 */
+    deletePost(postUid) {
+      return `${this.postsBaseUrl}/${postUid}`;
+    },
+
+    /** 게시물 수정 PUT 요청 */
+    putPost(postUid) {
+      return `${this.postsBaseUrl}/${postUid}`;
+    },
+
     /** 게시물 좋아요 GET 요청 */
     getPostLike(postUid) {
       return `${this.postsBaseUrl}/${postUid}${this.likeBaseUrl}`;
