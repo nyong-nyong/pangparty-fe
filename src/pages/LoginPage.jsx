@@ -93,14 +93,14 @@ export default function LoginPage() {
           </Button>
         </div>
       </form>
-      <div className="loginFindingForm">
+      {/* <div className="loginFindingForm">
         <button type="button">아이디 찾기</button>
         <button type="button">비밀번호 찾기</button>
       </div>
       <div className="loginSnSLogo">
         <img src={naver} alt="naver" />
         <img src={google} alt="naver" />
-      </div>
+      </div> */}
       <div className="loginPageSignup">
         <Link to="/signup/email">
           <Button color="blue-1" type="button">

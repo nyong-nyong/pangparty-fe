@@ -2,6 +2,7 @@
 
 body {
   background-color: $blue-3;
+  margin: 0;
 }
 
 ul {
@@ -26,8 +27,8 @@ input {
   max-width: 340px;
 
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 600px;
-  padding: 9px;
+  min-height: 100vh;
+  padding: 10px;
   margin: auto;
   top: -100px;
   overflow: hidden;
@@ -57,7 +58,7 @@ p {
   bottom: 0;
   height: 8%;
   display: flex;
-  min-width: 330px;
+  min-width: 328px;
   max-width: 360px;
   width: 100%;
   justify-content: space-around;

@@ -25,7 +25,8 @@
   display: flex;
   width: 19px;
   height: 19px;
-  // background-image: url($check);
+  border: 0;
+  background-image: url("../assets/check.svg");
 }
 
 .homeEventHeader {
