@@ -7,12 +7,19 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./CreateFeed.scss";
 import Button from "../common/Button";
+import useAuth from "../../hooks/useAuth";
 
 export default function CreateFeed() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [eventUid, setEventUid] = useState("");
   const navigate = useNavigate();
+
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -71,7 +78,7 @@ export default function CreateFeed() {
           onChange={handleContentChange}
         />
         <h4>이벤트 링크하기</h4>
-        <EventLink eventUid={eventUid} setEventUid={setEventUid} />
+        <EventLink />
         <Button color="orange-1" type="submit">
           글작성 완료
         </Button>

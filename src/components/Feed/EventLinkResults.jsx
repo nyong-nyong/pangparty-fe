@@ -13,6 +13,7 @@ export default function EventLinkResults({
     e.preventDefault();
     // console.log(event);
     setModalOpen(false);
+    console.log(event);
     return setClickedEvent(event);
   };
 
@@ -42,10 +43,10 @@ export default function EventLinkResults({
                     {event.eventName && (
                       <div className="EventTitle">{event.eventName}</div>
                     )}
-                    <div className="EventDday">D-{getDday(event.dDay)}</div>
+                    <div className="EventDday">D{getDday(event.dday)}</div>
                   </div>
                   <div className="EventTag">@{event.targetId}</div>
-                  <div className="EventDate">{event.dDay}</div>
+                  <div className="EventDate">{event.dday}</div>
                   <br />
                 </div>
               </div>

@@ -9,7 +9,7 @@ import requests from "../../api/requests";
 import "./CreateFeed.scss";
 import Icon from "../common/Icon";
 
-export default function EventLink({ eventUid, setEventUid }) {
+export default function EventLink() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
