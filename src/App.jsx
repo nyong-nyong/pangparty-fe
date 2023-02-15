@@ -1,6 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import { CookiesProvider } from "react-cookie";
 import Routers from "./pages/Routers";
 import NavBar from "./components/common/Navbar";
 import Footbar from "./components/common/Footbar";
@@ -12,19 +11,17 @@ function App() {
   return (
     <div className="appContainer">
       <RecoilRoot>
-        <CookiesProvider>
-          <BrowserRouter>
-            <div className="wrapper">
-              <NavBar />
-              <div className="contentWrapper">
-                <Routers />
-              </div>
+        <BrowserRouter>
+          <div className="wrapper">
+            <NavBar />
+            <div className="contentWrapper">
+              <Routers />
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <Footbar />
-            </div>
-          </BrowserRouter>
-        </CookiesProvider>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Footbar />
+          </div>
+        </BrowserRouter>
       </RecoilRoot>
     </div>
   );
