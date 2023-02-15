@@ -7,6 +7,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import PhotoComment from "./PhotoComment";
 import PhotoCommentUpload from "./PhotoCommentUpload";
+import useAuth from "../../hooks/useAuth";
 
 export default function PhotoCommentList({
   mediaUid,
@@ -14,6 +15,12 @@ export default function PhotoCommentList({
   commentLength,
   setCommentLength,
 }) {
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
+
   const [commentList, setCommentList] = useState([]);
   const [moreOpen, setMoreOpen] = useState(false);
 

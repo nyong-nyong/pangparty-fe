@@ -7,12 +7,19 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./CreateFeed.scss";
 import Button from "../common/Button";
+import useAuth from "../../hooks/useAuth";
 
 export default function CreateFeed() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [eventUid, setEventUid] = useState("");
   const navigate = useNavigate();
+
+  const auth = useAuth();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(auth.user);
+  }, [user]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
