@@ -13,15 +13,21 @@ export default function SelectImagePage() {
   // const [photoFile, setPhotoFile] = useState("");
   const photoRef = useRef();
 
-  const savePhotoFile = () => {
+  const savePhotoFile = (e) => {
     // console.log(photoRef.current.files[0]);
-    const photo = photoRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(photo);
-    reader.onloadend = () => {
-      setImgFileInfo(photo);
-      setReaderInfo(reader.result);
-    };
+    const file = photoRef.current.files;
+    if (file.length === 0) {
+      return;
+    } else {
+      const photo = photoRef.current.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(photo);
+      // console.log(reader.result);
+      reader.onloadend = () => {
+        setImgFileInfo(photo);
+        setReaderInfo(reader.result);
+      };
+    }
   };
 
   const submitPhotoFile = async (e) => {
@@ -49,6 +55,9 @@ export default function SelectImagePage() {
     //     });
     // }
     savePhotoFile();
+    if(imgFileInfo) {
+      alert('등록되었습니다!')
+    }
   };
 
   // const test = (e) => {
@@ -61,6 +70,16 @@ export default function SelectImagePage() {
         <p className="createTitle">대표 사진을 지정하시겠어요?</p>
 
         <div className="defaultImgsContainer">
+          <div
+            className="previewImgContainer"
+            style={{ backgroundImage: `url(${readerInfo})` }}
+          >
+            {/* <img
+                className="previewImg"
+                src={readerInfo}
+                alt="업로드된 사진"
+              /> */}
+          </div>
           <form className="imgUploadForm">
             <label htmlFor="photoUpload" className="input-file-button">
               사진 업로드
@@ -79,16 +98,6 @@ export default function SelectImagePage() {
               </button>
             )}
           </form>
-          <div
-            className="previewImgContainer"
-            style={{ backgroundImage: `url(${readerInfo})` }}
-          >
-            {/* <img
-                className="previewImg"
-                src={readerInfo}
-                alt="업로드된 사진"
-              /> */}
-          </div>
         </div>
       </div>
       <Link to="/event/naming" className="eventNextBtn">

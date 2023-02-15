@@ -47,16 +47,18 @@
 // TagKeywordPage
 .tagLabel {
   position: relative;
-  width: 100%;
+  width: 99%;
   margin-bottom: 30px;
+  border: 1.5px solid #d9d9d9;
+  border-radius: 15px;
 }
 
 .tagInput {
   // position: relative;
-  width: 99%;
+  margin-left: 15px;
+  width: 80%;
   height: 55px;
-  border-radius: 15px;
-  border: 1.5px solid #d9d9d9;
+  border: none;
 }
 
 .tagBtn {
@@ -94,6 +96,7 @@
   flex-wrap: wrap;
   width: 150px;
   height: auto;
+  margin-top: 20px;
 }
 
 .submitImgBtn {
@@ -106,6 +109,11 @@
   font-size: 13px;
   font-weight: 500;
   font-family: "Pretendard";
+}
+
+.submitImgBtn:hover {
+  cursor: pointer;
+  background-color: $orange-2;
 }
 
 .defaultImg {

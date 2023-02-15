@@ -12,7 +12,7 @@ function TagKeywordPage() {
   // 페이지 내부에서 추가되는 해쉬태그를 저장할 배열
   const [typingHashTag, setTypingHashTag] = useState({
     // uid: null
-    name: "",
+    name: ""
   });
   // atom으로 저장할 곳
   const [hashTagsInfo, setHashTagsInfo] = useRecoilState(hashTagState);
@@ -20,7 +20,7 @@ function TagKeywordPage() {
   const [dayInfo, setDayInfo] = useState({
     year: null,
     month: null,
-    date: null,
+    date: null
   });
   // 유저로 부터 입력된 dDay값
   const dDay = useRecoilValue(dDayState);
@@ -29,10 +29,10 @@ function TagKeywordPage() {
   // 방법1, 2 결정나야 확실히 할듯. 근데 1번이 방법으로 해야지 나중에 dDay 계산하기 쉬움.
   useEffect(() => {
     if (dDay) {
-      const fullyear = dDay.getFullYear().toString();
-      const year = fullyear.substring(2, 4);
-      const month = dDay.getMonth() + 1;
-      const date = dDay.getDate();
+      // console.log(dDay);
+      const year = dDay.fullyear.substring(2, 4);
+      const month = dDay.month;
+      const date = dDay.date;
       const dDayTagform =
         year +
         ("00" + month.toString()).slice(-2) +
@@ -41,15 +41,20 @@ function TagKeywordPage() {
       setDayInfo({
         year: year,
         month: month,
-        date: date,
+        date: date
       });
       // 해쉬태그 자동 등록
       if (hashTagsInfo) {
+        // console.log(hashTagsInfo);
         if (hashTagsInfo.find((v) => v.name === dDayTagform) === undefined) {
           const renderHashTags = [{ name: dDayTagform }];
           setHashTagsInfo(renderHashTags);
           setTypingHashTag({ name: "" });
         }
+      } else {
+        const renderHashTags = [{ name: dDayTagform }];
+        setHashTagsInfo(renderHashTags);
+        setTypingHashTag({ name: "" });
       }
     }
   }, [dDay]);
@@ -58,7 +63,7 @@ function TagKeywordPage() {
   const hashTagHandler = (e) => {
     const newhashTag = {
       // 임의로 uid 지정
-      name: e.target.value,
+      name: e.target.value
     };
     setTypingHashTag(newhashTag);
   };
@@ -69,6 +74,7 @@ function TagKeywordPage() {
   unique함을 유지하기 위함.
   */
   const saveHashTag = (e) => {
+    console.log(hashTagsInfo);
     if (hashTagsInfo) {
       if (
         hashTagsInfo.find((v) => v.name === typingHashTag.name) === undefined
@@ -83,12 +89,26 @@ function TagKeywordPage() {
     }
   };
 
+  const randomColor = () => {
+    const colorsObjs = {
+      orange1: "orange",
+      // orange3: "orange-3",
+      gray1: "gray-1",
+      blue1: "blue",
+      blue3: "blue-3"
+    };
+    let colorArr = Object.values(colorsObjs);
+    const randomIdx = Math.floor(Math.random() * 3);
+    const newRandomColor = colorArr[randomIdx];
+    return newRandomColor;
+  }
+
   return (
     <div>
       <div className="createContainer">
         <p className="createTitle">관련 키워드를 태그해주세요</p>
         {/* 검색 기능과 합쳐야합니다. */}
-        <label className="tagLabel">
+        <div className="tagLabel">
           <input
             className="tagInput"
             type="text"
@@ -101,7 +121,7 @@ function TagKeywordPage() {
               추가
             </button>
           )}
-        </label>
+        </div>
         <div className="createdTags">
           {hashTagsInfo.length > 0 &&
             hashTagsInfo.map((hashTag) => {
@@ -109,9 +129,9 @@ function TagKeywordPage() {
                 return (
                   <HashTag
                     key={hashTag.name}
-                    color="gray"
+                    color={randomColor()}
                     children={`# ${hashTag.name}`}
-                    style={{ margin:"5px 3px"}}
+                    style={{ margin: "5px 3px" }}
                   ></HashTag>
                 );
               }

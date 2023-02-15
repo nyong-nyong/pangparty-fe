@@ -22,7 +22,7 @@ function EventDiscription() {
 
   const eventIntroSave = () => {
     setEventIntroInfo(typingIntro);
-    setTypingIntro("");
+    // setTypingIntro("");
   };
 
   return (

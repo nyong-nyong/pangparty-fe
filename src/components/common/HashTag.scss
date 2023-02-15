@@ -30,6 +30,17 @@
     @include outline-btn($blue-1);
   }
 
+  &.gray-1 {
+    @include outline-btn($gray-2);
+  }
+
+  &.blue-3 {
+    @include outline-btn($blue-3);
+  }
+
+  &.orange-3 {
+    @include outline-btn($orange-2);
+  }
   // & + & {
   //   margin: 8px;
   // }
