@@ -1,7 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-import classNames from "classnames";
 import { useDebounce } from "../../hooks/useDebounce";
 import EventLinkResults from "./EventLinkResults";
 import axios from "../../api/axios";
@@ -60,7 +59,7 @@ export default function EventLink({ clickedEvent, setClickedEvent }) {
       )}
       <div className="linkContainer">
         <Icon img="link" />
-        {clickedEvent.eventUid ? (
+        {clickedEvent ? (
           <div>{clickedEvent.eventName}</div>
         ) : (
           <input
