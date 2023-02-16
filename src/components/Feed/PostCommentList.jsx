@@ -22,7 +22,7 @@ export default function PostCommentList({ postUid }) {
       await axios
         .get(requests.posts.getPostComment(postUid, "all", 0, 50))
         .then((response) => {
-          console.log(response.data.comments);
+          // console.log(response.data.comments);
           setPostCommentList(response.data.comments);
         })
         .catch((err) => {

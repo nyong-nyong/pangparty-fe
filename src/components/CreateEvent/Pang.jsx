@@ -26,7 +26,7 @@ function Pang({ eventUid }) {
         .then((res) => {
           setIsPang(res.data.isLiked);
           setPangCnt(res.data.likeCnt);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((err) => {
           console.error(err);

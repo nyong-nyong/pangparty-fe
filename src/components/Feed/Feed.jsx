@@ -8,6 +8,7 @@ import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import "./FeedList.scss";
 import "./Feed.scss";
+import { useNavigate } from "react-router-dom";
 
 // FeedList에서 feed 객체를 recoil로부터 받아옴(한 개의 게시물)
 // 피드(게시물) 상세페이지
@@ -23,6 +24,8 @@ export default function Feed({ feed }) {
   const [isCommented, setIsCommented] = useState(false);
   const [commentCnt, setCommentCnt] = useState(0);
   const [profileImgUrl, setProfileImgUrl] = useState("");
+
+  const navigate = useNavigate();
 
   // 로그인 정보
   const auth = useAuth();
@@ -44,7 +47,7 @@ export default function Feed({ feed }) {
           setIsCommented(feed.hasCommented);
           setCommentCnt(feed.commentCnt);
           setProfileImgUrl(feed.profileImgUrl);
-          console.log(feed);
+          // console.log(feed);
         })
         .catch((err) => {
           console.log(err);
@@ -96,11 +99,15 @@ export default function Feed({ feed }) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
   }
 
+  const navToProfile = () => {
+    navigate(`/friend/${feed.memberId}`);
+  };
+
   return (
     <div className="feedContainer">
       <div className="feedMember">
         {profileImgUrl ? (
-          <img src={profileImgUrl} alt="프로필사진" />
+          <img src={profileImgUrl} alt="프로필사진" onClick={navToProfile} />
         ) : (
           <img src={profile} alt="프로필기본사진" />
         )}

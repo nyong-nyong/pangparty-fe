@@ -111,6 +111,8 @@
         margin: 10px;
         justify-content: space-between;
 
+        .rightCommentArea {
+          width: 245px;
         .postMemberProfile {
           display: flex;
           margin-bottom: 10px;
@@ -128,12 +130,14 @@
             font-weight: 900;
           }
         }
+      }
 
         .commentTimeDeleteContainer {
           display: flex;
           flex-flow: column;
           text-align: right;
-          justify-content: center;
+          justify-content: space-between;
+          margin: 10px 0px;
           gap: 20px;
           p {
             color: $gray-3;

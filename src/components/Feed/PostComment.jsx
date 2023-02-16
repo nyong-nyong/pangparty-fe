@@ -5,6 +5,7 @@ import profile from "../../assets/profile.svg";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "./FeedList.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function PostComment({
   comment,
@@ -12,6 +13,7 @@ export default function PostComment({
   postCommentList,
   setPostCommentList,
 }) {
+  const navigate = useNavigate();
   const auth = useAuth();
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -60,12 +62,16 @@ export default function PostComment({
     deleteComment();
   };
 
+  const navToProfile = () => {
+    navigate(`/friend/${comment.memberId}`);
+  };
+
   return (
     <>
       <hr />
       <div className="oneCommentContainer">
-        <div>
-          <div className="postMemberProfile">
+        <div className="rightCommentArea">
+          <div className="postMemberProfile" onClick={navToProfile}>
             {comment.profileImgUrl ? (
               <img src={comment.profileImgUrl} />
             ) : (
