@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { useNavigate } from "react-router-dom";
 import HashTag from "../common/HashTag";
 
 const randomColor = () => {
@@ -16,6 +17,8 @@ const randomColor = () => {
 };
 
 function IntroHashTag({ eventInfo }) {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="hashtagContainer">
@@ -23,7 +26,10 @@ function IntroHashTag({ eventInfo }) {
           eventInfo.hashtags.map((hashtag) => {
             if (hashtag) {
               return (
-                <div key={hashtag.name}>
+                <div
+                  key={hashtag.name}
+                  onClick={() => navigate(`/search/hashtag/${hashtag.name}`)}
+                >
                   {/* <p className="hashtag">{hashtag.name}</p> */}
                   <HashTag color={randomColor()}>{hashtag.name}</HashTag>
                 </div>

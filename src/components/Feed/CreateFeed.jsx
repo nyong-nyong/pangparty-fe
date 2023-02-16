@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import EventLink from "./EventLink";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
@@ -42,7 +43,8 @@ export default function CreateFeed() {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
+          Swal.fire("글이 등록되었어요!");
         })
         .catch((err) => {
           console.err(err);

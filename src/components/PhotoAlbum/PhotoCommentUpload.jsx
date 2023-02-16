@@ -44,7 +44,7 @@ export default function PhotoCommentUpload({
           newComment.uid = res.data.uid;
           setCommentList([...commentList, newComment]);
           setCommentContent("");
-          console.log(res);
+          // console.log(res);
         })
         .catch((error) => {
           console.log(e.target);

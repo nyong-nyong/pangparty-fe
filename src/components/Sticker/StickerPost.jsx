@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { userState } from "../../recoils/user/Atoms";
 import useAuth from "../../hooks/useAuth";
 import { stickerState } from "./Atom";
 import axios from "../../api/axios";
@@ -28,7 +27,7 @@ export default function StickerPost({ eventUid, rpUid }) {
 
     const stickerValue = document.querySelector(".moveable");
     const stickerCssAllList = stickerValue.style.cssText.split(";");
-    console.log(stickerCssAllList);
+    // console.log(stickerCssAllList);
 
     const lefLoc = stickerCssAllList[3].slice(7, -2);
     const topLoc = stickerCssAllList[4].slice(6, -2);
@@ -62,6 +61,7 @@ export default function StickerPost({ eventUid, rpUid }) {
         })
         .catch((error) => {
           console.log(error);
+          setSticker(undefined);
           Swal.fire("스티커가 너무 커요!");
         });
     }
@@ -81,6 +81,6 @@ export default function StickerPost({ eventUid, rpUid }) {
 
 const StickerCompleteBtn = styled.div`
   position: fixed;
-  bottom: calc(11% + 55px);
+  bottom: calc(12% + 55px);
   // height: calc(12% + 55px);
 `;
