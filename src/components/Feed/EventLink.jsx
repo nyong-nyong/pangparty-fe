@@ -59,8 +59,8 @@ export default function EventLink({ clickedEvent, setClickedEvent }) {
       )}
       <div className="linkContainer">
         <Icon img="link" />
-        {clickedEvent ? (
-          <div>{clickedEvent.eventName}</div>
+        {clickedEvent && clickedEvent.eventName ? (
+          <div className="EventSearchBar">{clickedEvent.eventName}</div>
         ) : (
           <input
             type="text"

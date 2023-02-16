@@ -59,7 +59,7 @@ export default function CreateFeed() {
   return (
     <div className="postContainer">
       {/* 상단 component에서 handleSubmit 가능하게 */}
-      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+      <form className="postFormContainer" onSubmit={handleSubmit}>
         <h4>제목</h4>
         <input
           type="text"
@@ -82,7 +82,11 @@ export default function CreateFeed() {
           clickedEvent={clickedEvent}
           setClickedEvent={setClickedEvent}
         />
-        <Button color="orange-1" type="submit">
+        <Button
+          color="orange-1"
+          type="submit"
+          style={{ width: "303px", margin: "10px 15px" }}
+        >
           글작성 완료
         </Button>
       </form>
