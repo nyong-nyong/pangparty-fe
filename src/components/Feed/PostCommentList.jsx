@@ -6,6 +6,7 @@ import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import PostComment from "./PostComment";
 import PostCommentUpload from "./PostCommentUpload";
+import "./FeedList.scss";
 
 export default function PostCommentList({ postUid }) {
   const [postCommentList, setPostCommentList] = useState([]);
@@ -32,29 +33,33 @@ export default function PostCommentList({ postUid }) {
   }, []);
 
   return (
-    <div>
-      {postCommentList &&
-        postCommentList.map((comment) => {
-          if (comment) {
-            return (
-              <PostComment
-                key={comment.uid}
-                comment={comment}
-                postCommentList={postCommentList}
-                setPostCommentList={setPostCommentList}
-                postUid={postUid}
-              />
-            );
-          }
-          return null;
-        })}
-      <hr style={{ width: "100%", border: "1px solid black" }} />
-      <p>총 {postCommentList.length}개의 댓글</p>
-      <PostCommentUpload
-        postUid={postUid}
-        postCommentList={postCommentList}
-        setPostCommentList={setPostCommentList}
-      />
+    <div className="postCommentUploadContainer">
+      <div className="postCommentContainer">
+        {postCommentList &&
+          postCommentList.map((comment) => {
+            if (comment) {
+              return (
+                <PostComment
+                  key={comment.uid}
+                  comment={comment}
+                  postCommentList={postCommentList}
+                  setPostCommentList={setPostCommentList}
+                  postUid={postUid}
+                />
+              );
+            }
+            return null;
+          })}
+      </div>
+      <div className="postUploadContainer">
+        <hr />
+        <p>총 {postCommentList.length}개의 댓글</p>
+        <PostCommentUpload
+          postUid={postUid}
+          postCommentList={postCommentList}
+          setPostCommentList={setPostCommentList}
+        />
+      </div>
     </div>
   );
 }
