@@ -58,9 +58,12 @@ export default function GiftDetailPage() {
     <div className="detailContainer" onTouchStart={confettiPang}>
       <p>test</p>
       {eventInfo ? <p>받았다</p> : <p>no</p>}
-      <IntroHeader eventInfo={eventInfo.eventIntroduce} params={params} />
+      {eventInfo ? (
+        <IntroHeader eventInfo={eventInfo.eventIntroduce} params={params} />
+      ) : null}
+
       {/* <GiftRpList eventInfo={eventInfo} params={params} /> */}
-      <IntroHashTag eventInfo={eventInfo.eventIntroduce} />
+      {eventInfo ? <IntroHashTag eventInfo={eventInfo.eventIntroduce} /> : null}
       <p className="albumTitle">
         @{eventInfo && eventInfo.eventIntroduce.targetId} 과의 추억
       </p>

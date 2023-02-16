@@ -149,7 +149,7 @@ export default function GiftIntro(props) {
                     marginTop: "15px",
                   }}
                 >
-                  <img className="downIcon" src={goDown} alt="" />
+                  <img className="giftIntrodownIcon" src={goDown} alt="" />
                 </button>
               </div>
             );

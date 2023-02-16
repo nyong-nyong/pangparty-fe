@@ -19,7 +19,7 @@ export default function Confetti() {
       ],
       // emojis: ["💖", "✨", "🥳", "🎊", "🍰", "🦋"],
       confettiRadius: 5,
-      confettiNumber: 150,
+      confettiNumber: 250,
     });
   };
 

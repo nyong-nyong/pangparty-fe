@@ -20,6 +20,7 @@ export default function PangPartyGiftPage() {
 
   useEffect(() => {
     setUser(auth.user);
+    window.scrollTo(0, 0);
   }, [user]);
 
   // const test = () => {
