@@ -22,10 +22,10 @@
   margin-left: 10px;
 }
 
-.imgBox {
+.profileimgBox {
   float: left;
-  width: 100px;
-  height: 89px;
+  width: 89px !important;
+  height: 89px !important;
   border-radius: 100%;
   overflow: hidden;
 }
@@ -37,6 +37,10 @@
   /* object-position: center center; */
 }
 
+.profileBox {
+  width: 70%;
+}
+
 .userInputName {
   // border: none;
   border: 1px $blue-1 solid;
@@ -44,6 +48,7 @@
   color: #678cff;
   font-weight: normal;
   margin: 2px 0;
+  width: 200px;
 }
 
 .userInputName:active {
@@ -61,4 +66,5 @@
   resize: none;
   border: 1px $blue-1 solid;
   background-color: inherit;
+  width: 200px;
 }

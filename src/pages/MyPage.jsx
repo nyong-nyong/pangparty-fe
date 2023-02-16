@@ -63,7 +63,7 @@ export default function MyPage() {
       {/* 프로필 상단 */}
       <div>
         <div className="profileContainer">
-          <div className="imgBox">
+          <div className="profileimgBox">
             <img
               className="profileImg"
               src={`${profileInfo && profileInfo.imgUrl}`}
