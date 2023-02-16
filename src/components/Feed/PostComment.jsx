@@ -86,7 +86,7 @@ export default function PostComment({
               삭제하기
             </button>
           ) : (
-            <button>""</button>
+            <button></button>
           )}
         </div>
       </div>

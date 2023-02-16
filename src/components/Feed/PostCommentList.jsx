@@ -51,15 +51,15 @@ export default function PostCommentList({ postUid }) {
             return null;
           })}
       </div>
-      <div className="postUploadContainer">
-        <hr />
-        <p>총 {postCommentList.length}개의 댓글</p>
-        <PostCommentUpload
-          postUid={postUid}
-          postCommentList={postCommentList}
-          setPostCommentList={setPostCommentList}
-        />
-      </div>
+      <hr />
+      <p className="commentLength">
+        총<p>&nbsp;{postCommentList.length}</p>개의 댓글
+      </p>
+      <PostCommentUpload
+        postUid={postUid}
+        postCommentList={postCommentList}
+        setPostCommentList={setPostCommentList}
+      />
     </div>
   );
 }
