@@ -34,13 +34,14 @@ function CompleteStickerList() {
                       height: `${sticker.scale * 50}px`,
                       transform: `rotate(${sticker.angle}deg)`,
                       position: "relative",
-                      top: `${sticker.topLoc + 40}px`,
-                      left: `${sticker.leftLoc + 80}px`,
+                      top: `${sticker.topLoc}px`,
+                      left: `${sticker.leftLoc}px`,
+                      // 화면 크기에 따라 붙여지는 위치가 달라짐 조정 필요!!!!!****
                       // zIndex: sticker.zIndex,
                       position: "absolute",
                     }}
                     alt="sticker"
-                    onClick={() => console.log(sticker)}
+                    // onClick={() => console.log(sticker)}
                   />
                 </>
               );

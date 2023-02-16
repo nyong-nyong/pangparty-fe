@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import profile from "../../assets/profile.svg";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
+import "./FeedList.scss";
 
 export default function PostComment({
   comment,
@@ -60,32 +61,35 @@ export default function PostComment({
   };
 
   return (
-    <div>
-      <hr style={{ width: "100%", border: "1px solid black" }} />
-      <div>
+    <>
+      <hr />
+      <div className="oneCommentContainer">
         <div>
-          {comment.profileImgUrl ? (
-            <img
-              src={comment.profileImgUrl}
-              style={{ width: "24px", height: "24px", borderRadius: "24px" }}
-            />
-          ) : (
-            <img src={profile} alt="프로필기본사진" style={{ width: "24px" }} />
-          )}
-          <div>{comment.memberId}</div>
+          <div className="postMemberProfile">
+            {comment.profileImgUrl ? (
+              <img src={comment.profileImgUrl} />
+            ) : (
+              <img
+                src={profile}
+                alt="프로필기본사진"
+                style={{ width: "24px" }}
+              />
+            )}
+            <p>@{comment.memberId}</p>
+          </div>
+          <div>{comment.content}</div>
         </div>
-        <div>{comment.content}</div>
+        <div className="commentTimeDeleteContainer">
+          <p>{timeForToday(comment?.createTime)}</p>
+          {user && comment.memberId === user ? (
+            <button onClick={deleteCommentClick} type="button">
+              삭제하기
+            </button>
+          ) : (
+            <button></button>
+          )}
+        </div>
       </div>
-      <div>
-        <p>{timeForToday(comment?.createTime)}</p>
-        {user && comment.memberId === user ? (
-          <button onClick={deleteCommentClick} type="button">
-            삭제하기
-          </button>
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
+    </>
   );
 }

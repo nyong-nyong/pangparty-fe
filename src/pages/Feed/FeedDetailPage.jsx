@@ -23,7 +23,10 @@ export default function FeedDetailPage() {
       <DeleteFeed feed={detailFeed} />
       <Feed feed={detailFeed} />
       {user && user === detailFeed.memberId ? (
-        <Link to={`/feed/${detailFeed.uid}/modify`}>
+        <Link
+          to={`/feed/${detailFeed.uid}/modify`}
+          className="modifyFeedContainer"
+        >
           <p>피드 수정</p>
         </Link>
       ) : (

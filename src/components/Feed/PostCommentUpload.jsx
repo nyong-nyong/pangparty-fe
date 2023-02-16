@@ -19,6 +19,7 @@ export default function PostCommentUpload({
 
   useEffect(() => {
     setUser(auth.user);
+    console.log(auth);
   }, [user]);
 
   const createBtnClick = (e) => {
@@ -52,18 +53,21 @@ export default function PostCommentUpload({
   };
 
   return (
-    <form onSubmit={createBtnClick}>
-      <input
-        onChange={onChangeComment}
-        value={commentContent}
-        placeholder={`${user}(으)로 댓글 달기...`}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            createBtnClick;
-          }
-        }}
-      />
-      <button type="submit">작성</button>
-    </form>
+    <div className="commentUploadWrapper">
+      {/* <img src={comment.profileImgUrl} alt="프로필사진" /> */}
+      <form onSubmit={createBtnClick} className="postCommentUploadContainer">
+        <input
+          onChange={onChangeComment}
+          value={commentContent}
+          placeholder={`${user}(으)로 댓글 달기...`}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              createBtnClick;
+            }
+          }}
+        />
+        <button type="submit">작성</button>
+      </form>
+    </div>
   );
 }

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import FeedList from "../../components/Feed/FeedList";
+import LetsPost from "../../components/Feed/LetsPost";
 
 export default function FeedPage() {
   return (
     <div>
-      {/* FeedList가 없으면 글쓰러 가볼까요? 추가하기 */}
-      <FeedList />
+      {<FeedList /> ? <FeedList /> : <LetsPost />}
       <Link to="/feed/create">
         <Button color="blue-1">글쓰기</Button>
       </Link>

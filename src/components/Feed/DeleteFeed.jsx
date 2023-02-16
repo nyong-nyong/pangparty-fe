@@ -29,8 +29,9 @@ export default function DeleteFeed({ feed }) {
   };
 
   return (
-    <div>
+    <div className="postDeleteBtn">
       {user && feed.memberId === user ? (
+        // 정말삭제하시겠습니까? alert창 띄우기
         <button type="button" onClick={postDeleteHandler}>
           삭제하기
         </button>
