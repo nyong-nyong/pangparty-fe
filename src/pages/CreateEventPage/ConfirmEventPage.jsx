@@ -8,7 +8,7 @@ import {
   hashTagState,
   imgFileState,
   eventNameState,
-  readerState
+  readerState,
 } from "../../recoils/createEvent/Atoms";
 // import "./ConfirmEvent.css";
 import axios from "../../api/axios";
@@ -57,7 +57,7 @@ function ConfirmEventPage() {
     console.log(formData);
 
     const headers = new Headers({
-      "Content-Type": "multipart/form-data"
+      "Content-Type": "multipart/form-data",
     });
 
     await axios
@@ -88,15 +88,15 @@ function ConfirmEventPage() {
       eventName: eventName,
       dday: getDday(dDay).fullDDayPost,
       introduction: eventIntro,
-      hashtags: hashTag
+      hashtags: hashTag,
     };
 
     // console.log(requests.events.postEvent);
     await axios
       .post(requests.events.postEvent, postInfo, {
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       })
       .then((response) => {
         console.log(response);
@@ -110,6 +110,21 @@ function ConfirmEventPage() {
         console.log(error);
         // navigate(-1);
       });
+  };
+
+  // hash 랜덤 색상
+  const randomColor = () => {
+    const colorsObjs = {
+      orange1: "orange",
+      // orange3: "orange-3",
+      gray1: "gray-1",
+      blue1: "blue",
+      blue3: "blue-3",
+    };
+    let colorArr = Object.values(colorsObjs);
+    const randomIdx = Math.floor(Math.random() * 3);
+    const newRandomColor = colorArr[randomIdx];
+    return newRandomColor;
   };
 
   useEffect(() => {
@@ -152,7 +167,7 @@ function ConfirmEventPage() {
                   return (
                     <HashTag
                       key={tag.name}
-                      color="gray"
+                      color={randomColor()}
                       children={`# ${tag.name}`}
                       style={{ margin: "5px 3px" }}
                     ></HashTag>

@@ -6,8 +6,8 @@ import JSConfetti from "js-confetti";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import "../../styles/EventDetailPage.scss";
-// import GiftRpList from "../../components/Gift/GiftRpList";
-// import PhotoAlbum from "../../components/PhotoAlbum/PhotoAlbum";
+import GiftRpList from "../../components/Gift/GiftRpList";
+import PhotoAlbum from "../../components/PhotoAlbum/PhotoAlbum";
 import IntroHeader from "../../components/CreateEvent/IntroHeader";
 import IntroHashTag from "../../components/CreateEvent/IntroHashTag";
 import useAuth from "../../hooks/useAuth";
@@ -28,8 +28,8 @@ export default function GiftDetailPage() {
       await axios
         .get(requests.events.getPangExportAll(id))
         .then((res) => {
-          setEventInfo(res.data);
           console.log(res.data);
+          setEventInfo(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -62,18 +62,19 @@ export default function GiftDetailPage() {
       onTouchStart={confettiPang}
       onClick={confettiPang}
     >
-      <p>test</p>
-      {eventInfo ? <p>받았다</p> : <p>no</p>}
       {eventInfo ? (
         <IntroHeader eventInfo={eventInfo.eventIntroduce} params={params} />
       ) : null}
 
       {/* <GiftRpList eventInfo={eventInfo} params={params} /> */}
-      {eventInfo ? <IntroHashTag eventInfo={eventInfo.eventIntroduce} /> : null}
+      {eventInfo ? <GiftRpList eventInfo={eventInfo} params={params} /> : null}
+      {eventInfo ? (
+        <IntroHashTag eventInfo={eventInfo.eventIntroduce} params={params} />
+      ) : null}
       <p className="albumTitle">
         @{eventInfo && eventInfo.eventIntroduce.targetId} 과의 추억
       </p>
-      {/* <PhotoAlbum isPart={isPart} eventUid={params.eventId} /> */}
+      <PhotoAlbum isPart={false} eventUid={params.eventId} />
     </div>
   );
 }
