@@ -8,7 +8,6 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Button from "../common/Button";
 import styled from "styled-components";
-import Swal from "sweetalert2";
 
 // sticker POST 요청 보내기
 export default function StickerPost({ eventUid, rpUid }) {
@@ -62,7 +61,7 @@ export default function StickerPost({ eventUid, rpUid }) {
         })
         .catch((error) => {
           console.log(error);
-          Swal.fire("스티커가 너무 커요!");
+          Swalㅑ.fire("스티커를 다시 붙여주세요.");
         });
     }
     return sticker(saveInfo);
@@ -82,5 +81,5 @@ export default function StickerPost({ eventUid, rpUid }) {
 const StickerCompleteBtn = styled.div`
   position: fixed;
   bottom: 0;
-  height: calc(12% + 55px);
+  height: calc(24% + 55px);
 `;

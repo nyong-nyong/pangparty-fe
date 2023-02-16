@@ -25,7 +25,7 @@ function CompleteStickerList() {
     //   const stickerListData = useRecoilValue(stickerListState);
     //   return stickerListData;
     // } 
-    // console.log(stickerListData)
+    console.log(stickerListData)
   }, [stickerListData]);
 
   return (

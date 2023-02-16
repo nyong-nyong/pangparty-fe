@@ -62,7 +62,7 @@ export default function StickerPost({ eventUid, rpUid }) {
         })
         .catch((error) => {
           console.log(error);
-          Swal.fire("스티커가 너무 커요!");
+          Swal.fire("스티커를 다시 붙여주세요.");
         });
     }
     return sticker(saveInfo);
@@ -82,5 +82,5 @@ export default function StickerPost({ eventUid, rpUid }) {
 const StickerCompleteBtn = styled.div`
   position: fixed;
   bottom: 0;
-  height: calc(12% + 55px);
+  height: calc(24% + 55px);
 `;

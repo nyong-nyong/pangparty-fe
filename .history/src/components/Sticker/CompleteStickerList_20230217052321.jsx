@@ -25,7 +25,7 @@ function CompleteStickerList() {
     //   const stickerListData = useRecoilValue(stickerListState);
     //   return stickerListData;
     // } 
-    // console.log(stickerListData)
+    console.log(stickerListData)
   }, [stickerListData]);
 
   return (
@@ -45,8 +45,8 @@ function CompleteStickerList() {
                       height: `${sticker.scale * 50}px`,
                       transform: `rotate(${sticker.angle}deg)`,
                       position: "relative",
-                      top: `${sticker.topLoc + 97}px`,
-                      left: `${sticker.leftLoc - 66}px`,
+                      top: `${sticker.topLoc + 100}px`,
+                      left: `${sticker.leftLoc - 68}px`,
                       // 화면 크기에 따라 붙여지는 위치가 달라짐 조정 필요!!!!!****
                       // zIndex: sticker.zIndex,
                       position: "absolute",
