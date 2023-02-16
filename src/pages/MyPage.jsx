@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import { useRecoilValue } from "recoil";
 // import { userState } from "../recoils/user/Atoms";
-import Feed from "../components/MyPage/Feed";
+import MyFeed from "../components/MyPage/Feed";
 import ReceicedEvent from "../components/MyPage/ReceivedEvent";
 import Badges from "../components/MyPage/Badges";
 import EventCalander from "../components/MyPage/EventCalander";
@@ -167,7 +167,12 @@ export default function MyPage() {
           <button type="button" className="eventBox">
             <Link
               to="/myevents"
-              state={{ host: true, involving: false, involved: false }}
+              state={{
+                host: true,
+                involving: false,
+                involved: false,
+                id: user,
+              }}
             >
               <p className="eventBoxText">
                 주최한 <br /> 이벤트
@@ -180,7 +185,12 @@ export default function MyPage() {
           <button type="button" className="eventBox">
             <Link
               to="/myevents"
-              state={{ host: false, involving: true, involved: false }}
+              state={{
+                host: false,
+                involving: true,
+                involved: false,
+                id: user,
+              }}
             >
               <p className="eventBoxText">
                 참여중인 <br /> 이벤트
@@ -193,7 +203,12 @@ export default function MyPage() {
           <button type="button" className="eventBox">
             <Link
               to="/myevents"
-              state={{ host: false, involving: false, involved: true }}
+              state={{
+                host: false,
+                involving: false,
+                involved: true,
+                id: user,
+              }}
             >
               <p className="eventBoxText">
                 참여한 <br /> 이벤트
@@ -245,7 +260,7 @@ export default function MyPage() {
         </button>
       </div>
       <div>
-        {isActivate.Feed && <Feed />}
+        {isActivate.Feed && <MyFeed />}
         {isActivate.ReceicedEvent && (
           <ReceicedEvent userName={profileInfo ? profileInfo.name : null} />
         )}

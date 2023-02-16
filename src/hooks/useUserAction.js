@@ -4,9 +4,11 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import Swal from "sweetalert2";
 import axios from "../api/axios";
 import requests from "../api/requests";
 import { authState, userState } from "../recoils/user/Atoms";
+
 
 // const JWT_EXPIRY_TIME = 1 * 3600 * 1000;
 
@@ -69,6 +71,8 @@ export default function useUserAction() {
           localStorage.removeItem("Token");
           setAuth(false);
           setUser(null);
+          // eslint-disable-next-line no-alert
+          Swal.fire(err.response.data.message);
           navigate("/login");
         });
     }

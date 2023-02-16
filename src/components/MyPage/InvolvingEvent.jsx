@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 
-export default function InvolvingEvent() {
+export default function InvolvingEvent({ id }) {
   const [involvingEventInfo, setInvolvingEventInfo] = useState(undefined);
 
   const auth = useAuth();
@@ -12,20 +12,29 @@ export default function InvolvingEvent() {
 
   useEffect(() => {
     setUser(auth.user);
+  }, [user]);
+
+  useEffect(() => {
     async function fetchData() {
-      if (!user) return;
-      const request = await axios.get(
-        requests.profile.getProfileInvolvingEvents(`${user}`)
-      );
-      setInvolvingEventInfo(request.data);
+      if (!user || !id) return;
+      await axios
+        .get(requests.profile.getProfileInvolvingEvents(`${id}`))
+        .then((res) => {
+          setInvolvingEventInfo(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
     fetchData();
-  }, [user]);
+  }, [user, id]);
 
   return (
     <div>
       {involvingEventInfo && (
-        <p>내가 참여중인 이벤트는 총 {involvingEventInfo.totalCnt}건 이에요</p>
+        <p>
+          @{id}님이 참여중인 이벤트는 총 {involvingEventInfo.totalCnt}건 이에요
+        </p>
       )}
       {involvingEventInfo &&
         involvingEventInfo.involvingEvents.map((event) => {

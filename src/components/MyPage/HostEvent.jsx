@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 
-export default function HostEvent() {
+export default function HostEvent({ id }) {
   const [hostEventInfo, setHostEventInfo] = useState(undefined);
 
   const auth = useAuth();
@@ -12,20 +12,29 @@ export default function HostEvent() {
 
   useEffect(() => {
     setUser(auth.user);
+  }, [user]);
+
+  useEffect(() => {
     async function fetchData() {
-      if (!user) return;
-      const request = await axios.get(
-        requests.profile.getProfileHostEvents(`${user}`)
-      );
-      setHostEventInfo(request.data);
+      if (!user || !id) return;
+      await axios
+        .get(requests.profile.getProfileHostEvents(`${id}`))
+        .then((res) => {
+          setHostEventInfo(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
     fetchData();
-  }, [user]);
+  }, [user, id]);
 
   return (
     <div>
       {hostEventInfo && (
-        <p>내가 주최한 이벤트는 총 {hostEventInfo.totalCnt}건 이에요</p>
+        <p>
+          @{id}님이 주최한 이벤트는 총 {hostEventInfo.totalCnt}건 이에요
+        </p>
       )}
       {hostEventInfo &&
         hostEventInfo.hostEvents.map((event) => {
