@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useRef } from "react";
 import { useRecoilState } from "recoil";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { imgFileState, readerState } from "../../recoils/createEvent/Atoms";
@@ -16,6 +16,7 @@ export default function SelectImagePage() {
   const photoRef = useRef();
 
   const MySwal = withReactContent(Swal);
+  const navigate = useNavigate();
 
   const savePhotoFile = (e) => {
     // console.log(photoRef.current.files[0]);
@@ -36,32 +37,19 @@ export default function SelectImagePage() {
 
   const submitPhotoFile = async (e) => {
     e.preventDefault();
-    // const photo = photoRef.current.files[0];
-
-    // if (photo) {
-    //   const formData = new FormData();
-    //   formData.append("requests", photo);
-
-    //   for (const data of formData) console.log(data);
-
-    //   await axios
-    //     // 대표 사진 api 생기면 그쪽으로 수정하여 post 요청
-    //     .post(requests.events.postHeaderImg(eventUid), formData, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     })
-    //     .then((response) => {
-    //       console.log(response);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
     savePhotoFile();
     if (imgFileInfo) {
       MySwal.fire(<p>등록되었습니다!</p>);
+      navigate("/event/naming");
     }
+  };
+
+  const withoutImgNext = () => {
+    // e.preventDefault();
+    setImgFileInfo("");
+    setReaderInfo("");
+
+    navigate("/event/naming");
   };
 
   // const test = (e) => {
@@ -72,6 +60,9 @@ export default function SelectImagePage() {
     <div>
       <div className="createContainer">
         <p className="createTitle">대표 사진을 지정하시겠어요?</p>
+        <p style={{ fontSize: "13px" }}>
+          권장 이미지 크기: 360px * 212px, 5MB이하
+        </p>
 
         <div className="defaultImgsContainer">
           <div
@@ -97,16 +88,23 @@ export default function SelectImagePage() {
               style={{ display: "none" }}
             />
             {readerInfo && (
-              <button className="submitImgBtn" onClick={submitPhotoFile}>
+              // <button className="submitImgBtn" onClick={submitPhotoFile}>
+              //   이 이미지로 할래요 ✔
+              // </button>
+              <Button
+                color={imgFileInfo ? "orange-1" : ""}
+                onClick={submitPhotoFile}
+              >
                 이 이미지로 할래요 ✔
-              </button>
+              </Button>
             )}
           </form>
         </div>
       </div>
-      <Link to="/event/naming" className="eventNextBtn">
-        <Button color="orange-1">다음</Button>
-      </Link>
+
+      <Button color={!imgFileInfo ? "orange-1" : ""} onClick={withoutImgNext}>
+        이미지 없이 다음으로
+      </Button>
     </div>
   );
 }

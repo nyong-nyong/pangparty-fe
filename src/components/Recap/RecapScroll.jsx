@@ -21,19 +21,19 @@ export default function RecapScroll(props) {
   const goDownToRpHandler = () => {
     document
       .querySelector(".carouselDivRp")
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const goDownToPhotoHandler = () => {
     document
       .querySelector(".carouselDivPhoto")
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const goDownToGoDetailHandler = () => {
     document
       .querySelector(".carouselDivGoDetail")
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -43,41 +43,43 @@ export default function RecapScroll(props) {
           ref={recapRef}
           pangNum={eventInfo.eventExports[0].eventLikeCnt}
         />
+        <button
+          className="recapFirstdownIcon"
+          type="button"
+          onClick={goDownToRpHandler}
+          style={{ backgroundColor: "inherit", border: "none" }}
+        >
+          <img className="downIcon" src={goDown} alt="" />
+        </button>
       </section>
-      <button
-        className="downIcon"
-        type="button"
-        onClick={goDownToRpHandler}
-        style={{ backgroundColor: "inherit", border: "none" }}
-      >
-        <img className="downIcon" src={goDown} alt="" />
-      </button>
       <section>
+        <div className="inSectionBlankBoxRp" />
         <RecapRp
           ref={recapRef}
           writerNum={eventInfo.eventExports[0].rollingPaperParticipantCnt}
           rpNum={eventInfo.eventExports[0].rollingPaperCnt}
         />
+        <button
+          className="recapFirstdownIcon"
+          type="button"
+          onClick={goDownToPhotoHandler}
+          style={{ backgroundColor: "inherit", border: "none" }}
+        >
+          <img className="downIcon" src={goDown} alt="" />
+        </button>
       </section>
-      <button
-        className="downIcon"
-        type="button"
-        onClick={goDownToPhotoHandler}
-        style={{ backgroundColor: "inherit", border: "none" }}
-      >
-        <img className="downIcon" src={goDown} alt="" />
-      </button>
       <section>
+        <div className="inSectionBlankBoxPhoto" />
         <RecapPhoto albumNum={eventInfo.eventExports[0].albumMediaCnt} />
+        <button
+          className="recapFirstdownIcon"
+          type="button"
+          onClick={goDownToGoDetailHandler}
+          style={{ backgroundColor: "inherit", border: "none" }}
+        >
+          <img className="downIcon" src={goDown} alt="" />
+        </button>
       </section>
-      <button
-        className="downIcon"
-        type="button"
-        onClick={goDownToGoDetailHandler}
-        style={{ backgroundColor: "inherit", border: "none" }}
-      >
-        <img className="downIcon" src={goDown} alt="" />
-      </button>
       <section>
         <RecapGoDetail eventUid={eventUid} />
       </section>

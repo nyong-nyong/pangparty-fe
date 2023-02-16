@@ -105,7 +105,7 @@ export default function UpadateProfile(props) {
       </div>
       <div className="updatedContainer">
         <div className="profilePreviewContainer">
-          <div className="imgBox">
+          <div className="profileimgBox">
             <img
               className="profileImg"
               src={`${photoFile || (profileInfo && profileInfo.imgUrl)}`}

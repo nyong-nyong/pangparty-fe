@@ -10,7 +10,7 @@ import axios from "../api/axios";
 import requests from "../api/requests";
 import "../styles/MyPage.scss";
 import useAuth from "../hooks/useAuth";
-import useUserAction from "../hooks/useUserAction";
+// import useUserAction from "../hooks/useUserAction";
 
 export default function MyPage() {
   const [profileInfo, setProfileInfo] = useState(undefined);
@@ -24,11 +24,11 @@ export default function MyPage() {
   // const userID = useRecoilValue(userState);
   const auth = useAuth();
   const [user, setUser] = useState("");
-  const userAction = useUserAction();
-  const logOut = (e) => {
-    e.preventDefault();
-    userAction.logOut();
-  };
+  // const userAction = useUserAction();
+  // const logOut = (e) => {
+  //   e.preventDefault();
+  //   userAction.logOut();
+  // };
 
   useEffect(() => {
     setUser(auth.user);
@@ -63,7 +63,7 @@ export default function MyPage() {
       {/* 프로필 상단 */}
       <div>
         <div className="profileContainer">
-          <div className="imgBox">
+          <div className="profileimgBox">
             <img
               className="profileImg"
               src={`${profileInfo && profileInfo.imgUrl}`}
@@ -138,9 +138,6 @@ export default function MyPage() {
             </div>
           </div>
         </div>
-        <button className="profileEditButton" type="button" onClick={logOut}>
-          로그아웃
-        </button>
         <Link
           to={`/mypage/${profileInfo && profileInfo.id}/update`}
           state={

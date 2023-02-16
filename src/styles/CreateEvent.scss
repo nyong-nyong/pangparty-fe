@@ -94,7 +94,7 @@
 .imgUploadForm {
   display: flex;
   flex-wrap: wrap;
-  width: 150px;
+  width: 100%;
   height: auto;
   margin-top: 20px;
 }
@@ -143,6 +143,13 @@
   font-weight: 500;
   font-family: "Pretendard";
   cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.eventImgNextBtn {
+  // position: absolute;
+  // bottom: 150px;
+  margin-top: 0px;
 }
 
 .eventNextBtn {
