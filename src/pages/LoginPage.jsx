@@ -27,11 +27,11 @@ export default function LoginPage() {
   }, []);
 
   const emailIsValid = (email) => {
-    // const emailRegExp =
-    //   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    // if (emailRegExp.test(email)) return true;
-    // return false;
-    return true;
+    const emailRegExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    if (emailRegExp.test(email)) return true;
+    return false;
+    // return true;
   };
 
   const checkIsValid = (targetId, targetValue) => {
@@ -64,33 +64,30 @@ export default function LoginPage() {
       </div>
       <form onSubmit={(e) => login(e)}>
         <div className="loginInputContainer">
-          {isValid ? (
-            <input
-              id="email"
-              type="email"
-              onChange={loginHandler}
-              placeholder="이메일"
-            />
-          ) : (
-            <>
-              <input
-                id="email"
-                type="email"
-                onChange={loginHandler}
-                placeholder="이메일"
-              />
-              <p className="errorMsg">유효하지 않은 email 값입니다.</p>
-            </>
-          )}
+          <input
+            id="email"
+            type="email"
+            onChange={loginHandler}
+            placeholder="이메일"
+          />
+          {!isValid ? (
+            <p className="errorMsg">유효하지 않은 email 값입니다.</p>
+          ) : null}
           <input
             id="password"
             type="password"
             onChange={loginHandler}
             placeholder="비밀번호"
           />
-          <Button color="orange-1" type="submit">
-            로그인하기
-          </Button>
+          {isValid && userInfo.email.length > 1 ? (
+            <Button color="orange-1" type="submit">
+              로그인하기
+            </Button>
+          ) : (
+            <Button color="orange-1" type="button">
+              로그인하기
+            </Button>
+          )}
         </div>
       </form>
       {/* <div className="loginFindingForm">

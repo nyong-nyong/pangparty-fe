@@ -115,3 +115,23 @@ input::placeholder {
   color: $gray-4;
   font-family: "Pretendard-Regular";
 }
+
+.swal2-popup {
+  width: 280px !important;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 20px !important;
+}
+
+.swal2-title {
+  font-size: 16px;
+  font-family: "Pretendard";
+  margin-bottom: 0px !important;
+}
+
+.swal2-styled.swal2-confirm {
+  height: auto;
+  font-size: 13px;
+  background-color: $blue-1;
+  margin-top: 0px !important;
+}
