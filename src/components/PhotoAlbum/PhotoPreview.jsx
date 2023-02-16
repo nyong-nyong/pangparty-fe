@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
@@ -29,7 +30,7 @@ export default function PhotoPreview({
     setPreview(photoFile);
   }, [photoFile]);
 
-  const submitPhotoFile = async () => {
+  const submitPhotoFile = async (e) => {
     if (uploadPhoto) {
       const formData = new FormData();
       formData.append("file", uploadPhoto);
@@ -41,7 +42,7 @@ export default function PhotoPreview({
           },
         })
         .then((response) => {
-          navigate(`/events/${response.data.uid}`);
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -65,6 +66,7 @@ export default function PhotoPreview({
               style={{ width: "290px", height: "290px" }}
               className="albumImg"
             />
+            <NoticeSpan>권장 이미지 크기: 290x * 290px, 5MB이하</NoticeSpan>
             <button type="submit" className="commonButton small orange-1">
               제출하기
             </button>
@@ -74,3 +76,7 @@ export default function PhotoPreview({
     </form>
   );
 }
+
+const NoticeSpan = styled.span`
+  font-size: 13px;
+`;

@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-// import Icon from "../common/Icon";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
@@ -15,7 +14,7 @@ import { detailFeedState } from "../../recoils/Feed/Atoms";
 
 export default function MyFeed() {
   const [feedInfo, setFeedInfo] = useState(undefined);
-  const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
+  const setDetailFeed = useSetRecoilState(detailFeedState);
 
   const auth = useAuth();
   const [user, setUser] = useState("");
@@ -36,7 +35,6 @@ export default function MyFeed() {
         .catch((err) => console.error(err));
     }
     fetchData();
-    // 렌더링 시점 수정필요
   }, [user]);
 
   return (

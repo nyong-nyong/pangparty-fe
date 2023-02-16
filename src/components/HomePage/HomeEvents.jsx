@@ -1,5 +1,6 @@
 import HomeEndEvents from "./HomeEndEvents";
 import HomeStartEvents from "./HomeStartEvents";
+import HomeTrendingEvents from "./HomeTrendingEvents";
 import Icon from "../common/Icon";
 
 export default function HomeEvents() {
@@ -14,6 +15,7 @@ export default function HomeEvents() {
         />
         <span>오늘의 이슈</span>
       </div>
+      <HomeTrendingEvents />
       <HomeStartEvents />
       <HomeEndEvents />
     </div>
