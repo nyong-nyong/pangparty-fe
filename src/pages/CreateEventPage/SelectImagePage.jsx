@@ -2,6 +2,8 @@
 import { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { imgFileState, readerState } from "../../recoils/createEvent/Atoms";
 // import axios from "../../api/axios";
 // import requests from "../../api/requests";
@@ -12,6 +14,8 @@ export default function SelectImagePage() {
   const [readerInfo, setReaderInfo] = useRecoilState(readerState);
   // const [photoFile, setPhotoFile] = useState("");
   const photoRef = useRef();
+
+  const MySwal = withReactContent(Swal);
 
   const savePhotoFile = (e) => {
     // console.log(photoRef.current.files[0]);
@@ -55,8 +59,8 @@ export default function SelectImagePage() {
     //     });
     // }
     savePhotoFile();
-    if(imgFileInfo) {
-      alert('등록되었습니다!')
+    if (imgFileInfo) {
+      MySwal.fire(<p>등록되었습니다!</p>);
     }
   };
 
