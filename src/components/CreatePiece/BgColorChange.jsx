@@ -11,7 +11,7 @@ function BgColorChange() {
   };
 
   return (
-    <div>
+    <div className="colorChipsContainer">
       <div className="colorsContainer" id="line-1">
         <div
           className="colorBox"

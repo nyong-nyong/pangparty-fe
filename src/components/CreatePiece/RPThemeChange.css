@@ -9,3 +9,9 @@
   margin:  5px;
   border-radius: 8px;
 }
+
+.colorChipsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
