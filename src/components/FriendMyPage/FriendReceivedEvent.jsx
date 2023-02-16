@@ -35,7 +35,7 @@ export default function FriendReceicedEvent({ friendId }) {
         recievedEventInfo.receivedEvents.map((event) => {
           if (event) {
             return (
-              <div key={event.eventUid} className="eventCardContainer">
+              <div key={event.eventUid} className="eventCardContainerBorder">
                 <Link
                   to={`/events/${event.eventUid}`}
                   className="eventCardContainer"
