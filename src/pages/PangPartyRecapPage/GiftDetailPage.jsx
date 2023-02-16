@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JSConfetti from "js-confetti";
@@ -55,7 +57,11 @@ export default function GiftDetailPage() {
   };
 
   return (
-    <div className="detailContainer" onTouchStart={confettiPang}>
+    <div
+      className="detailContainer"
+      onTouchStart={confettiPang}
+      onClick={confettiPang}
+    >
       <p>test</p>
       {eventInfo ? <p>받았다</p> : <p>no</p>}
       {eventInfo ? (
