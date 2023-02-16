@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     // justify-content: space-between;
-    margin: 20px 0px;
+    margin: 25px 0px 5px 0px;
 
     width: 324px;
     height: 55px;
@@ -43,7 +43,7 @@
     input {
       border: none;
       font-size: 16px;
-      width: 180px;
+      width: 210px;
     }
 
     p {
@@ -59,8 +59,14 @@
       margin-left: 10px;
     }
   }
+  .guideMsg {
+    font-size: 13px;
+    color: $gray-4;
+    margin-left: 5px;
+  }
 
   .errorMsg {
+    font-size: 13px;
     color: $orange-1;
     margin-left: 5px;
   }
@@ -93,14 +99,56 @@
     color: $gray-1;
   }
 
-  textarea {
-    border: 1.5px solid $gray-4;
-    border-radius: 15px;
-    width: 150px;
+  // textarea {
+  //   border: 1.5px solid $gray-4;
+  //   border-radius: 15px;
+  //   width: 150px;
 
-    height: 120px;
-    align-items: center;
-    margin-right: 5px;
+  //   height: 120px;
+  //   align-items: center;
+  //   margin-right: 5px;
+  //   padding: 10px;
+  // }
+}
+
+.profileIntro {
+  display: flex;
+  align-items: top;
+  // justify-content: space-between;
+  margin: 20px 0px;
+
+  width: 324px;
+  height: fit-content;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 16px;
+  padding-left: 10px;
+  border: 1.5px solid $gray-4;
+  color: black;
+
+  p {
+    color: $gray-1;
+    // margin-right: 5px;
+    // margin-left: 5px;
+    width: 90px;
+    font-size: 13px;
+  }
+
+
+  #introduction {
+    resize: none;
+    width: 190px !important;
+    height: 80px;
+    border: none;
     padding: 10px;
+    outline-color: none;
+  }
+  :focus {
+    outline: 0;
+  }
+  #introduction::placeholder {
+    color: $gray-4;
   }
 }
