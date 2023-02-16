@@ -29,7 +29,7 @@ export default function PieceListPage() {
   const eventUid = params.eventId;
   const rollingPaperUid = rpUid;
   const topStart = -100;
-  const topEnd = 800;
+  const topEnd = 10000;
   const page = 0;
   const size = 30;
 
@@ -88,12 +88,12 @@ export default function PieceListPage() {
       <RpContainer>
         <div
           className="RpPieceStickerList"
-          style={{ width: "100%", height: "800px", position: "relative" }} // 스티커페이지 연결
+          style={{ width: "100%", height: "100vh", position: "relative" }} // 스티커페이지 연결
         >
           {/* 롤링페이퍼 조각 리스트 */}
           <div
             className="pieceListPageContainer"
-            style={{ display: "flex", flexWrap: "wrap" }}
+            style={{ display: "flex", flexWrap: "wrap", marginBottom: "100px" }}
           >
             {pieceListData &&
               pieceListData.map((piece, index) => {
@@ -142,8 +142,8 @@ const RpButtonsContainer = styled.div`
 
   flexflow: column;
   position: fixed;
-  bottom: 0;
-  height: calc(18% + 55px);
+  bottom: calc(5% + 55px);
+  // height: calc(18% + 55px);
 `;
 
 const RpContainer = styled.div`

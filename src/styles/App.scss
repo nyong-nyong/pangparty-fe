@@ -33,7 +33,7 @@ input {
   max-width: 340px;
 
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 90vh;
+  min-height: calc(90vh + 55px);
   padding: 10px;
   margin: auto;
   top: -100px;
