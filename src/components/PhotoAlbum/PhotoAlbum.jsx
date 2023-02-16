@@ -103,10 +103,10 @@ export default function PhotoAlbum({ isPart, eventUid }) {
 
 const AlbumFrame = styled.div`
   display: flex;
-  width: auto;
+  width: 100%;
   height: fit-contents;
   flex-flow: row wrap;
-  gap: 11px;
+  gap: 15px;
   padding: 0px;
 `;
 

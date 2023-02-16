@@ -1,8 +1,9 @@
 @import "./colors.scss";
-// .detailContainer {
-//   display: flex;
-//   flex-direction: column;
-// }
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .dDayInfoBox {
   display: flex;
@@ -80,7 +81,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0px;
+  margin: 20px auto;
   width: 328px;
   height: 167px;
   border-radius: 10px;

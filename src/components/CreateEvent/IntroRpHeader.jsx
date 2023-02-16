@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function IntroRpHeader({ eventInfo }) {
-  useEffect(() => {
-    console.log("Child useEffect");
-  }, [eventInfo]);
+  // useEffect(() => {
+  //   // console.log("Child useEffect");
+  // }, [eventInfo]);
   return (
     <div>
       <div className="rPinfoBox">
