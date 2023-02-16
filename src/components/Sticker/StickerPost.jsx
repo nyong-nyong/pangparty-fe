@@ -80,5 +80,5 @@ export default function StickerPost({ eventUid, rpUid }) {
 const StickerCompleteBtn = styled.div`
   position: fixed;
   bottom: 0;
-  height: 35%;
+  height: 26%;
 `;

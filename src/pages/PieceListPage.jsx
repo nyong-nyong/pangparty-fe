@@ -28,7 +28,7 @@ export default function PieceListPage() {
   // fetch한 스티커리스트는 recoil에 담았음
   const eventUid = params.eventId;
   const rollingPaperUid = rpUid;
-  const topStart = 1;
+  const topStart = -100;
   const topEnd = 800;
   const page = 0;
   const size = 30;
@@ -143,7 +143,7 @@ const RpButtonsContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  height: 27%;
+  height: 20%;
 `;
 
 const RpContainer = styled.div`
