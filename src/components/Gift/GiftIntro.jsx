@@ -34,8 +34,8 @@ export default function GiftIntro(props) {
   const openRecap = () => {
     setIsOpened(true);
     document
-      .querySelector(".recapTitleDday")
-      .scrollIntoView({ behavior: "smooth" });
+      .querySelector("#targetTextinPang")
+      .scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const goDownHandler = () => {
@@ -108,6 +108,7 @@ export default function GiftIntro(props) {
         <div className="dayInfoContainer">
           <p style={{ fontSize: "13px", marginBottom: "0px" }}>D-DAY</p>
           <p
+            id="targetTextinPang"
             style={{
               fontSize: "19px",
               marginTop: "0px",

@@ -36,6 +36,7 @@
   border: none;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .moveContainer {
@@ -119,6 +120,7 @@
 .giftIntrodownIcon {
   display: flex;
   margin: 0px auto;
+  cursor: pointer;
   animation: moveY 1s infinite;
 }
 

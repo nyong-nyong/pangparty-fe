@@ -34,7 +34,7 @@ export default function InvolvedEvent({ id }) {
     <div>
       {involvedEventInfo && (
         <p>
-          @{id}님이 참여중인 이벤트는 총 {involvedEventInfo.totalCnt}건 이에요
+          @{id}님이 참여한 이벤트는 총 {involvedEventInfo.totalCnt}건 이에요
         </p>
       )}
       {involvedEventInfo &&

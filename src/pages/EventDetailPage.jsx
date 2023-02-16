@@ -23,12 +23,13 @@ export default function EventDetailPage() {
 
   useEffect(() => {
     setUser(auth.user);
-  }, [user])
+    window.scrollTo(0, 0);
+  }, [user]);
 
   useEffect(() => {
     const id = params.eventId;
     async function fetchData() {
-      if(!id) return;
+      if (!id) return;
       await axios
         .get(requests.events.introEvent.eventIntroAll(id))
         .then((res) => {
@@ -37,7 +38,7 @@ export default function EventDetailPage() {
         })
         .catch((err) => {
           console.error(err);
-        })
+        });
     }
     setUser(auth.user);
     // console.log(user);

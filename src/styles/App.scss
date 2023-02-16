@@ -3,6 +3,12 @@
 body {
   background-color: $blue-3;
   margin: 0;
+
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 ul {
@@ -27,7 +33,7 @@ input {
   max-width: 340px;
 
   /* 세로 길이는 임의로 설정. 추후 필요에 따라 수정 가능합니다. */
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 10px;
   margin: auto;
   top: -100px;
@@ -57,7 +63,7 @@ p {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 5%;
+  height: 55px;
   display: flex;
   justify-content: flex-end;
   min-width: 328px;

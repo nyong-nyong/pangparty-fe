@@ -18,6 +18,7 @@ function IntroHeader({ params, eventInfo }) {
             backgroundImage: eventInfo ? `url(${eventInfo.imgUrl}` : null,
           }}
         >
+          {/* {eventInfo ? <p>{eventInfo.imgUrl}</p> : "없음"} */}
           <div className="bannerContentBox">
             <p className="bannerContent">
               {eventInfo && eventInfo.introduction}

@@ -31,7 +31,6 @@ function CompleteStickerList() {
   return (
     <>
       <div className="stickerPageContainer" style={stickerPageStyle}>
-        {stickerListData ? "있다" : "없네"}
         {stickerListData &&
           stickerListData.map((sticker, idx) => {
             if (sticker) {
