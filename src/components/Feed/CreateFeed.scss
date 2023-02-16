@@ -82,4 +82,8 @@
   display: flex;
   width: 100%;
   flex-flow: wrap column;
+
+  h4 {
+    padding-left: 15px;
+  }
 }

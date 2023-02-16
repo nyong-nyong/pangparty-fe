@@ -79,6 +79,6 @@ const RpButtonContainer = styled.div`
   height: "50px";
 
   position: absolute;
-  top: 85%;
-  left: 84%;
+  top: 78%;
+  left: 85%;
 `;

@@ -142,7 +142,7 @@ const RpButtonsContainer = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 63px;
   height: 20%;
 `;
 
