@@ -61,29 +61,35 @@ export default function PostComment({
   };
 
   return (
-    <div>
+    <>
       <hr />
-      <div>
-        <div className="postMemberProfile">
-          {comment.profileImgUrl ? (
-            <img src={comment.profileImgUrl} />
-          ) : (
-            <img src={profile} alt="프로필기본사진" style={{ width: "24px" }} />
-          )}
-          <div>{comment.memberId}</div>
+      <div className="oneCommentContainer">
+        <div>
+          <div className="postMemberProfile">
+            {comment.profileImgUrl ? (
+              <img src={comment.profileImgUrl} />
+            ) : (
+              <img
+                src={profile}
+                alt="프로필기본사진"
+                style={{ width: "24px" }}
+              />
+            )}
+            <p>@{comment.memberId}</p>
+          </div>
+          <div>{comment.content}</div>
         </div>
-        <div>{comment.content}</div>
+        <div className="commentTimeDeleteContainer">
+          <p>{timeForToday(comment?.createTime)}</p>
+          {user && comment.memberId === user ? (
+            <button onClick={deleteCommentClick} type="button">
+              삭제하기
+            </button>
+          ) : (
+            <button>""</button>
+          )}
+        </div>
       </div>
-      <div>
-        <p>{timeForToday(comment?.createTime)}</p>
-        {user && comment.memberId === user ? (
-          <button onClick={deleteCommentClick} type="button">
-            삭제하기
-          </button>
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
+    </>
   );
 }

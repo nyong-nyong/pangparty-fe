@@ -105,13 +105,46 @@
       border: 1px solid $gray-4;
     }
     .postCommentContainer {
-      .postMemberProfile {
+      .oneCommentContainer {
         display: flex;
+        margin: 10px;
+        justify-content: space-between;
 
-        img {
-          width: 24px;
-          height: 24px;
-          border-radius: 24px;
+        .postMemberProfile {
+          display: flex;
+          margin-bottom: 10px;
+
+          img {
+            width: 24px;
+            height: 24px;
+            border-radius: 24px;
+            margin: 10px 10px 3px 0px;
+          }
+          p {
+            display: flex;
+            align-items: center;
+            color: $blue-1;
+            font-weight: 900;
+          }
+        }
+
+        .commentTimeDeleteContainer {
+          display: flex;
+          flex-flow: column;
+          text-align: right;
+          justify-content: center;
+          gap: 20px;
+          p {
+            color: $gray-3;
+            font-size: 13px;
+          }
+          button {
+            border: none;
+            background-color: transparent;
+            color: $orange-1;
+            padding: 0px;
+            font-weight: 900;
+          }
         }
       }
     }
