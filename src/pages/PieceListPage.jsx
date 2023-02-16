@@ -47,7 +47,7 @@ export default function PieceListPage() {
         )
         .then((res) => {
           setPieceListData(res.data.rollingPaperPieces);
-          console.log(res)
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);
@@ -120,12 +120,14 @@ export default function PieceListPage() {
           >
             <Button color="orange-1">롤링페이퍼 쓰기 버튼</Button>
           </Link>
-          <Button color="orange-3" type="button" onClick={showModal}>
-            🧸스티커 붙이기🧸
-          </Button>
-          {stickerInfo && <StickerPost eventUid={eventUid} rpUid={rpUid} />}
+          {stickerInfo ? (
+            <StickerPost eventUid={eventUid} rpUid={rpUid} />
+          ) : (
+            <Button color="orange-3" type="button" onClick={showModal}>
+              🧸스티커 붙이기🧸
+            </Button>
+          )}
         </RpButtonsContainer>
-        {/* <div style={{ width: "344px", height: "520px", background: "orange" }} /> */}
         {modalOpen && <StickerListModal setModalOpen={setModalOpen} />}
         {stickerInfo && <MoveablePiece sticker={stickerInfo} />}
       </RpContainer>
@@ -140,10 +142,8 @@ const RpButtonsContainer = styled.div`
 
   flexflow: column;
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 63px;
-  height: 20%;
+  bottom: 0;
+  height: calc(18% + 55px);
 `;
 
 const RpContainer = styled.div`

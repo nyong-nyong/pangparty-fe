@@ -61,6 +61,7 @@ export default function StickerPost({ eventUid, rpUid }) {
         })
         .catch((error) => {
           console.log(error);
+          Swal.fire("스티커를 다시 붙여주세요.");
         });
     }
     return sticker(saveInfo);
@@ -80,5 +81,5 @@ export default function StickerPost({ eventUid, rpUid }) {
 const StickerCompleteBtn = styled.div`
   position: fixed;
   bottom: 0;
-  height: 26%;
+  height: calc(24% + 55px);
 `;
