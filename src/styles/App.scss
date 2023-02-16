@@ -57,15 +57,16 @@ p {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 8%;
+  height: 5%;
   display: flex;
+  justify-content: flex-end;
   min-width: 328px;
   max-width: 360px;
   width: 100%;
   justify-content: space-around;
   flex-flow: row;
   background-color: white;
-  padding-top: 3%;
+  padding-top: 1%;
   box-shadow: $box-shadow;
 
   /* display: flex;

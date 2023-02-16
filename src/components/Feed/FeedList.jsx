@@ -6,15 +6,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { detailFeedState } from "../../recoils/Feed/Atoms";
-import axios from "../../api/axios";
-import requests from "../../api/requests";
+// import axios from "../../api/axios";
+// import requests from "../../api/requests";
 import "./FeedList.scss";
 import useAuth from "../../hooks/useAuth";
 import SearchEventResult from "../Search/SearchEvent";
 import Feed from "./Feed";
 
-export default function FeedList() {
-  const [feedList, setFeedList] = useState([]);
+export default function FeedList({ feedList }) {
+  // const [feedList, setFeedList] = useState([]);
   const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
 
   // 한별
@@ -24,23 +24,23 @@ export default function FeedList() {
     setUser(auth.user);
   }, [user]);
 
-  // localhost
-  const page = 0;
-  const size = 30;
-  useEffect(() => {
-    async function getFeed() {
-      await axios
-        .get(requests.feed.getFeed(page, size))
-        .then((response) => {
-          setFeedList(response.data.feed);
-          // console.log(response.data.feed);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    getFeed();
-  }, []);
+  // // localhost
+  // const page = 0;
+  // const size = 30;
+  // useEffect(() => {
+  //   async function getFeed() {
+  //     await axios
+  //       .get(requests.feed.getFeed(page, size))
+  //       .then((response) => {
+  //         setFeedList(response.data.feed);
+  //         // console.log(response.data.feed);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  //   getFeed();
+  // }, []);
 
   return (
     <div className="feedWrapper">
