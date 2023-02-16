@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 // import Icon from "../common/Icon";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -7,17 +7,18 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
 import SearchEventResult from "../Search/SearchEvent";
+import Feed from "../Feed/Feed";
+import "../Feed/FeedList.scss";
+import "../Feed/Feed.scss";
 
 import { detailFeedState } from "../../recoils/Feed/Atoms";
 
-export default function Feed() {
+export default function MyFeed() {
   const [feedInfo, setFeedInfo] = useState(undefined);
   const [detailFeed, setDetailFeed] = useRecoilState(detailFeedState);
 
   const auth = useAuth();
   const [user, setUser] = useState("");
-
-  const userRef = useRef();
 
   useEffect(() => {
     setUser(auth.user);
@@ -39,10 +40,7 @@ export default function Feed() {
   }, [user]);
 
   return (
-    <div>
-      <p className="recievedCnt" ref={userRef}>
-        {user || null}님이 작성한 글만 표시됩니다
-      </p>
+    <div className="feedWrapper">
       {feedInfo &&
         feedInfo.feed.map((post) => {
           if (post) {
@@ -52,11 +50,9 @@ export default function Feed() {
                   to={`/feed/${post.uid}`}
                   onClick={() => {
                     setDetailFeed(post);
-                    console.log(post);
                   }}
                 >
-                  {/* 여기 왠 무한루프가 도는 친구가 있죠.. */}
-                  {/* <Feed feed={post} /> */}
+                  <Feed feed={post} />
                 </Link>
                 <ul>
                   {post.event ? <SearchEventResult event={post.event} /> : null}

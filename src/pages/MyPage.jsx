@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import { useRecoilValue } from "recoil";
 // import { userState } from "../recoils/user/Atoms";
-import Feed from "../components/MyPage/Feed";
+import MyFeed from "../components/MyPage/Feed";
 import ReceicedEvent from "../components/MyPage/ReceivedEvent";
 import Badges from "../components/MyPage/Badges";
 import EventCalander from "../components/MyPage/EventCalander";
@@ -245,7 +245,7 @@ export default function MyPage() {
         </button>
       </div>
       <div>
-        {isActivate.Feed && <Feed />}
+        {isActivate.Feed && <MyFeed />}
         {isActivate.ReceicedEvent && (
           <ReceicedEvent userName={profileInfo ? profileInfo.name : null} />
         )}
