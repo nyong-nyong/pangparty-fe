@@ -1,0 +1,22 @@
+@import "../../styles/colors.scss";
+
+.LetsPostWrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+
+  p {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 16px;
+    color: $gray-1;
+  }
+
+  .LstsPangBtnContainer {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+  }
+}
