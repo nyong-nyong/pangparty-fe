@@ -54,6 +54,6 @@ export default function FeedPage() {
 }
 
 const FeedPageCreateButton = styled.div`
-  position: absolute;
-  bottom: 11%;
+  position: fixed;
+  bottom: 7%;
 `;

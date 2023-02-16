@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column;
   padding: 10px;
+  margin-bottom: 12%;
 
   a {
     text-decoration: none;
@@ -172,10 +173,9 @@
       justify-content: center;
 
       position: fixed;
-      bottom: 15%;
+      bottom: 7%;
       width: 325px;
-      
-      
+
       .postCommentUploadContainer {
         border: 1.5px solid $gray-4;
         border-radius: 15px;
@@ -183,6 +183,7 @@
         height: 55px;
         display: flex;
         justify-content: space-around;
+        background-color: white;
 
         input {
           width: 70%;

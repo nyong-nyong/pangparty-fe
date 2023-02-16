@@ -20,7 +20,7 @@ export default function PostCommentList({ postUid }) {
   useEffect(() => {
     async function fetchData() {
       await axios
-        .get(requests.posts.getPostComment(postUid, "all", 0, 5))
+        .get(requests.posts.getPostComment(postUid, "all", 0, 50))
         .then((response) => {
           console.log(response.data.comments);
           setPostCommentList(response.data.comments);

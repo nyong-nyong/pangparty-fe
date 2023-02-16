@@ -57,8 +57,9 @@ p {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 8%;
+  height: 5%;
   display: flex;
+  justify-content: flex-end;
   min-width: 328px;
   max-width: 360px;
   width: 100%;
