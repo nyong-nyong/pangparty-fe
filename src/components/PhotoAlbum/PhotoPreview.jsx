@@ -41,7 +41,8 @@ export default function PhotoPreview({
           },
         })
         .then((response) => {
-          navigate(`/events/${response.data.uid}`);
+          console.log(response);
+          // navigate(`/events/${response.data.uid}`);
         })
         .catch((error) => {
           console.log(error);
