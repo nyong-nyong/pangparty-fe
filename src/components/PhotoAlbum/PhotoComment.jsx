@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import useAuth from "../../hooks/useAuth";
@@ -14,6 +15,7 @@ export default function PhotoComment({
   mediaUid,
   moreOpen,
 }) {
+  const navigate = useNavigate();
   const auth = useAuth();
   const [user, setUser] = useState("");
   const [timeConvert, setTimeConvert] = useState("");
@@ -69,10 +71,16 @@ export default function PhotoComment({
     deleteComment();
   };
 
+  const navToprofile = () => {
+    navigate(`/friend/${comment.memberId}`);
+  };
+
   return (
     <div className="commentContainer">
       <div className="commentHeader">
-        <div className="commentMember">{comment.memberId}</div>
+        <div className="commentMember" onClick={navToprofile}>
+          {comment.memberId}
+        </div>
         <div className="commentTime">{timeConvert || null}</div>
       </div>
       <div className="commentBody">

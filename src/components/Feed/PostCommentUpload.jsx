@@ -19,7 +19,7 @@ export default function PostCommentUpload({
 
   useEffect(() => {
     setUser(auth.user);
-    console.log(auth);
+    // console.log(auth);
   }, [user]);
 
   const createBtnClick = (e) => {

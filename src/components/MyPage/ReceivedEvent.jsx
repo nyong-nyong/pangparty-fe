@@ -37,8 +37,8 @@ export default function ReceicedEvent(props) {
   return (
     <div>
       <p className="recievedCnt">
-        총 {recievedEventInfo ? recievedEventInfo.totalCnt : 0}건의 받은
-        이벤트가 있어요
+        총 {recievedEventInfo ? recievedEventInfo.totalCnt : 0}건의 받은 선물이
+        있어요
       </p>
       {recievedEventInfo &&
         recievedEventInfo.receivedEvents.map((event) => {

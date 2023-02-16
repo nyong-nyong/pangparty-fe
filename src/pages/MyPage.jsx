@@ -235,7 +235,7 @@ export default function MyPage() {
           }
           onClick={activateHandler}
         >
-          받은 이벤트
+          받은 선물
         </button>
         <button
           type="button"
