@@ -48,9 +48,11 @@ export default function SearchEventResult({ event }) {
   const getDday = (date) => {
     const dDay = new Date(date);
     const today = new Date();
-    const answer = Math.floor((dDay - today) / (1000 * 60 * 60 * 24));
-    if (answer >= 0) return `D-${answer}`;
-    return "완료";
+    const calcDay = Math.floor((today - dDay) / (1000 * 60 * 60 * 24));
+
+    if (calcDay === 0) return "D-Day";
+    if (calcDay < 0) return `D-${-1 * calcDay}`;
+    return `D+${calcDay}`;
   };
 
   return (

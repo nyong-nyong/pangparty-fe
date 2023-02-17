@@ -21,7 +21,11 @@ export default function EventLinkResults({
   const getDday = (date) => {
     const dDay = new Date(date);
     const today = new Date();
-    return Math.floor((dDay - today) / (1000 * 60 * 60 * 24));
+    const calcDay = Math.floor((today - dDay) / (1000 * 60 * 60 * 24));
+
+    if (calcDay === 0) return "D-Day";
+    if (calcDay < 0) return `D-${-1 * calcDay}`;
+    return `D+${calcDay}`;
   };
 
   return (
@@ -44,7 +48,7 @@ export default function EventLinkResults({
                     {event.eventName && (
                       <div className="EventTitle">{event.eventName}</div>
                     )}
-                    <div className="EventDday">D{getDday(event.dday)}</div>
+                    <div className="EventDday">{getDday(event.dday)}</div>
                   </div>
                   <div className="EventTag">@{event.targetId}</div>
                   <div className="EventDate">{event.dday}</div>
