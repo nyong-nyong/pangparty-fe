@@ -26,6 +26,26 @@ export default function SignUpEmail() {
   const [authEmailPosted, setAuthEmailPosted] = useState(false);
   const [authCode, setAuthCode] = useState("");
 
+  const [minutes, setMinutes] = useState(5);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      if (parseInt(seconds, 10) > 0) {
+        setSeconds(parseInt(seconds, 10) - 1);
+      }
+      if (parseInt(seconds, 10) === 0) {
+        if (parseInt(minutes, 10) === 0) {
+          clearInterval(countdown);
+        } else {
+          setMinutes(parseInt(minutes, 10) - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+    return () => clearInterval(countdown);
+  }, [minutes, seconds]);
+
   useEffect(() => {
     if (isEmailDup && isEmailValid && userEmail && userEmail.length > 0) {
         return setCanSubmit(true);
@@ -42,6 +62,9 @@ export default function SignUpEmail() {
   };
 
   const postAuthEmail = async () => {
+    setAuthEmailPosted(true);
+    setMinutes(5);
+    setSeconds(0);
     await axios
       .post(requests.postAuth, { email : userEmail }, {
         headers: {
@@ -50,7 +73,6 @@ export default function SignUpEmail() {
       })
       .then((res) => {
         console.log(res);
-        setAuthEmailPosted(true);        
       })
       .catch((err) => {
         console.error(err);
@@ -145,7 +167,7 @@ export default function SignUpEmail() {
       ) : <span className="guideMsg">이메일은 example@gmail.com 형식으로 입력해주세요.</span>
       }
 
-      { authEmailPosted && dupChecked ? (
+      { authEmailPosted ? (
         <div className="inputContainer">
           <p>인증 번호</p>
           <input
@@ -155,7 +177,9 @@ export default function SignUpEmail() {
             onChange={authHandler}
             label="인증 번호"
             maxLength="6"
+            style={{ width: "120px" }}
           />
+          <p style={{ "text-align": "end" }}>{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
         </div>
       ) : 
         <div className="inputContainer" style={{ visibility: "hidden" }} /> 
