@@ -86,6 +86,7 @@ export default function SignUpEmail() {
   const emailHandler = (e) => {
     const targetValue = e.target.value;
     setUserEmail(targetValue);
+    setIsEmailDup(false);
     setDupChecked(false);
     setIsEmailValid(emailIsValid(targetValue));
     // console.log(targetValue);
@@ -144,7 +145,7 @@ export default function SignUpEmail() {
       ) : <span className="guideMsg">이메일은 example@gmail.com 형식으로 입력해주세요.</span>
       }
 
-      { authEmailPosted ? (
+      { authEmailPosted && dupChecked ? (
         <div className="inputContainer">
           <p>인증 번호</p>
           <input
