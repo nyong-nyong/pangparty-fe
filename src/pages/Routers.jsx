@@ -7,6 +7,7 @@ import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
 import SingUpIntro from "./SignUpPage/SignUpIntroPage";
 import SignUpEmail from "./SignUpPage/SignUpEmailPage";
+import SignUpDetail from "./SignUpPage/SignUpDetailPage";
 import MyPage from "./MyPage";
 import FollowPage from "./MyPage/FollowPage";
 import MyEventsPage from "./MyPage/MyEventsPage";
@@ -19,7 +20,6 @@ import EventNamingPage from "./CreateEventPage/EventNamingPage";
 import ConfirmEventPage from "./CreateEventPage/ConfirmEventPage";
 import EventDonePage from "./CreateEventPage/EventDonePage";
 import PangPartyGiftPage from "./PangPartyGiftPage";
-// import GiftIntroPage from "../components/Gift/GiftIntroPage";
 import Recap1Page from "./PangPartyRecapPage/Recap1Page";
 import GiftDetailPage from "./PangPartyRecapPage/GiftDetailPage";
 import EventDetailPage from "./EventDetailPage";
@@ -46,6 +46,7 @@ export default function Routers() {
       <Route path="signup">
         <Route path="intro" element={<SingUpIntro />} />
         <Route path="email" element={<SignUpEmail />} />
+        <Route path="email/detail" element={<SignUpDetail />} />
       </Route>
       {/* 피드 페이지 */}
       <Route path="feed">

@@ -7,6 +7,10 @@ const requests = {
   logout: "/account/logout",
   refreshToken: "/account/refresh-token",
   register: "/account/register",
+  checkEmail: "/account/check-email",
+  postAuth: "/account/auth-email",
+  confirmAuth: "/account/confirm-auth-email",
+  checkId: "/account/check-id",
 
   search: {
     searchBaseUrl: "/search",
