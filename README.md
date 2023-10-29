@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+![image](https://github.com/nyong-nyong/.github/assets/77232235/1c3ba21a-d0d8-41e0-aaf6-e5d45a3a64ed)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **🎉 Introduction**
 
-## Available Scripts
+일상 속 쉽게 지나칠 수 있는 소소한 즐거움부터
 
-In the project directory, you can run:
+누구에게나 축하하고 싶은 특별한 기념일까지 🎉
 
-### `npm start`
+모두 함께 일상을 축하하고 공유하는 소셜 플랫폼, 팡파티를 소개합니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+𝓛𝓲𝓯𝓮'𝓼 𝓪 𝓟𝓪𝓻𝓽𝔂, 𝓟𝓪𝓷𝓰!𝓟𝓪𝓻𝓽𝔂
+</br>
+</br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# **🎉 UCC**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://user-images.githubusercontent.com/50512938/228402393-835f2321-3ffb-4450-8097-b6e5e48beeea.mp4
 
-### `npm run build`
+</br>  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![예제](https://cdn.discordapp.com/attachments/1056854505192427576/1090528300348227584/gotoyoutube.png)](https://www.youtube.com/watch?v=eqvsx7ZYbE8) 
+</br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[![이미지 텍스트](https://cdn.discordapp.com/attachments/1056854505192427576/1090529913569808425/blank.png)](https://www.youtube.com/watch?v=eqvsx7ZYbE8)
 
-### `npm run eject`
+# **🎊 Language, Tech Stack**
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=#007396" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <br> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/JSON Web Tokens-000000?style=for-the-badge&logo=JSON Web Tokens&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Redis-D82C20?style=for-the-badge&logo=redis&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/><br>
+<img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=NGINX&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=Jenkins&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <br>
+<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="https://img.shields.io/badge/GitLab-FCA121?style=for-the-badge&logo=GitLab&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+</br>
+</br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# **🎁 Project Build Guide**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **IDE**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+FrontEnd: VSCode
+BackEnd: IntelliJ
+```
 
-## Learn More
+## **저장소 클론하기**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+깃 저장소를 로컬에 복사합니다.
+git clone https://github.com/nyong-nyong/pangparty-fe.git
+git clone https://github.com/nyong-nyong/pangparty-be.git
+```
+</br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Build**
 
-### Code Splitting
+**React FrontEnd**
+```
+npm i
+npm run build
+```
+**SpringBoot BackEnd**
+```
+./gradlew clean build --exclude-task test
+```
+</br>
+</br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# **🎉 기획**
 
-### Analyzing the Bundle Size
+## **WireFrame**
+<img src="https://cdn.discordapp.com/attachments/1072902318388953169/1075955212096913428/230125_mvp_flowchart_.drawio_1.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## **ERD**
+<img src="https://cdn.discordapp.com/attachments/1072902318388953169/1075952833884598362/230125_ERD_Final_cut.png">
+</br>
+</br>
 
-### Making a Progressive Web App
+## [**API 명세서 바로가기**](https://www.notion.so/randallkk/API-74915461bf5949c2bf931c364c488274?pvs=4)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+</br>
+</br>
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# **👨‍👩‍👦‍👦 Team NyongNyong**
 
-### Deployment
+| name       | role            |
+| ---------- | --------------- |
+| 👑 김영빈  | CI/CD & BackEnd |
+| 🎁 강희연  | BackEnd         |
+| 🎈 정희주| BackEnd         |
+| 🎁 박다솜 | FrontEnd        |
+| 🎈 김규연     | FrontEnd        |
+| 🎁 유한별    | FrontEnd        |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
